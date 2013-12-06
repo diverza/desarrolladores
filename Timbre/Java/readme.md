@@ -17,12 +17,10 @@ Eclipse Kepler. Sin embargo el codigo de ejemplo puede ser ejecutado sin usar Ec
 
 Para ejecutar un timbrado de prueba:
 
-1. Importar el proyecto usando Eclipse
-2. Seleccionar la clase Timbrar
+1. Importar el proyecto nombrado "Timbrar" usando Eclipse
 2. Seleccióna "Debug" desde el menu Run
 
 Para ejecutar una cancelación de prueba:
 
-1. Importar el proyecto usando Eclipse
-2. Seleccionar la clase Cancelar
+1. Importar el proyecto nombrado "Cancelar" usando Eclipse
 2. Seleccióna "Debug" desde el menu Run
