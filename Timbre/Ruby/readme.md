@@ -17,10 +17,10 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 
 ```sh
 # Timbrar
-C:\>ruby timbrar.rb
+C:\> ruby timbrar.rb
 
 # Cancelar
-C:\>ruby cancelar.rb
+C:\> ruby cancelar.rb
 ```
 
 ## Unix/Linux/OSX

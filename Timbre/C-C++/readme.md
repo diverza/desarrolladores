@@ -17,13 +17,13 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la "Devel
 
 ```sh
 # Timbrar
-C:\>cl timbrar.c libcurl.lib /I include
-C:\>timbrar
+C:\> cl timbrar.c libcurl.lib /I include
+C:\> timbrar
 
 # Cancelar
-C:\>cl cancelar.c libcurl.lib /I include
-C:\>cancelar
-``
+C:\> cl cancelar.c libcurl.lib /I include
+C:\> cancelar
+```
 
 ## Unix/Linux/OSX
 Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la terminal usando:

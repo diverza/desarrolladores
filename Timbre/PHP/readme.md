@@ -17,10 +17,10 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 
 ```sh
 # Timbrar
-C:\>"C:\Program Files (x86)\PHP\v5.3\php.exe" timbrar.php
+C:\> "C:\Program Files (x86)\PHP\v5.3\php.exe" timbrar.php
 
 # Cancelar
-C:\>"C:\Program Files (x86)\PHP\v5.3\php.exe" cancelar.php
+C:\> "C:\Program Files (x86)\PHP\v5.3\php.exe" cancelar.php
 ```
 
 **Nota** Es posible que el archivo php.exe se encuentre en una ruta distinta dependiendo de la configuración del sistema.
