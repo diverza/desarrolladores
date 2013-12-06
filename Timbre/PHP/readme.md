@@ -19,7 +19,6 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 # Timbrar
 C:\>"C:\Program Files (x86)\PHP\v5.3\php.exe" timbrar.php
 
-
 # Cancelar
 C:\>"C:\Program Files (x86)\PHP\v5.3\php.exe" cancelar.php
 ```
