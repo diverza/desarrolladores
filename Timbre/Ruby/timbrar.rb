@@ -60,10 +60,10 @@ request = Net::HTTP::Post.new("/stamp")
 # para timbrar
 request.add_field('x-auth-token', 'abc')
 
-# El CFD a timbrar debe ser agregado como cuerpo de la pertición.
+# El CFD a timbrar debe ser agregado como cuerpo de la pertición
 request.body = cfd
 
-# Finalmente ejecutamos la petición al servidor.
+# Finalmente ejecutamos la petición al servidor
 response = http.request(request)
 
 # Obtenemos el codigo de respuesta del servidor y el timbre para nuestro CFD
