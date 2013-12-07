@@ -1,6 +1,6 @@
-# Timbrar desde Python
+# Timbrar desde Perl
 
-Para poder ejecutar los ejemplos es necesario tener Python instalado en la version 2.7.6 o similar y en el caso de Windows es necesario tener instalada la libreria httplib2 (Es preferible tener instalado Python usando ActivePython).
+Para poder ejecutar los ejemplos es necesario tener Perl instalado en la version 5.18.1 o superior, en Windows ss preferible tenerlo instalado usando ActivePerl.
 
 ## Parametros de prueba
 
@@ -17,21 +17,21 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 
 ```sh
 # Timbrar
-C:\> "C:\Python\python.exe" timbrar.py
+C:\> "C:\Perl64\perl.exe" timbrar.pl
 
 # Cancelar
-C:\> "C:\Python\python.exe" cancelar.py
+C:\> "C:\Perl64\perl.exe" cancelar.pl
 ```
 
-**Nota** Es posible que el archivo python.exe se encuentre en una ruta distinta dependiendo de la configuración del sistema.
+**Nota** Es posible que el archivo perl.exe se encuentre en una ruta distinta dependiendo de la configuración del sistema.
 
 ## Unix/Linux/OSX
 Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la terminal usando:
 
 ```sh
 # Timbrar
-$ python timbrar.py
+$ perl timbrar.pl
 
 # Cancelar
-$ python cancelar.py
+$ perl cancelar.pl
 ```
