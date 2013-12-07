@@ -1,6 +1,6 @@
 # Timbrar desde Python
 
-Para poder ejecutar los ejemplos es necesario tener Python instalado en la version 2.7.6 o superior y en el caso de Windows es necesario tener instalada la libreria httplib2 (Es preferible tener instalado Python usando ActivePython).
+Para poder ejecutar los ejemplos es necesario tener Python instalado en la version 2.7.6 o similar y en el caso de Windows es necesario tener instalada la libreria httplib2 (Es preferible tener instalado Python usando ActivePython).
 
 ## Parametros de prueba
 
