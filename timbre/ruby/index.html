@@ -257,7 +257,12 @@
 <span class="nb">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">response_code</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="nb">puts</span> <span class="s2">&quot;Timbre: </span><span class="si">#{</span><span class="n">stamp</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
-<p>El timbre es devuelto por el servicio en el cuerpo de la respuesta de la petición, si revisamos la variable stamp deberemos observar lo siguiente:</p>
+<p>Si ejecutamos el código utilizando:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ ruby timbrar.rb
+</code></pre></div>
+<p><strong>Nota:</strong> La dirección del ejecutable <em>ruby</em> puede variar entre sistemas operativos y procesos de instalación.</p>
+
+<p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
   <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
   <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
@@ -280,7 +285,7 @@
   <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
   <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>El código de respuesta del servidor cuando la petición sea exitosa deberá ser <em>200 OK</em>, en caso de que sea diferente te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
+<p>El código de respuesta del servidor que se encuentra en la variable <em>response_code</em> deberá ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
 
 <hr>
 
