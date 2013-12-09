@@ -128,13 +128,15 @@
               <div class="clr">&nbsp;</div>
               <p>La siguiente guía comprende la conexión con el servicio de timbrado utilizando Ruby 1.9.3 o superior.</p>
 
-<h2>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/Ruby">repositorio de ejemplos para Timbre Fiscal.</a></h2>
+<p>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/Ruby">repositorio de ejemplos para Timbre Fiscal.</a></p>
+
+<hr>
 
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de pruebas: http://lol:4444/stamp
- Token de pruebas: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
+ Token de prueba: AAAA111123344
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -251,6 +253,9 @@
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">response_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">code</span>
 <span class="n">stamp</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">body</span>
+
+<span class="nb">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">response_code</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">puts</span> <span class="s2">&quot;Timbre: </span><span class="si">#{</span><span class="n">stamp</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <p>El timbre es devuelto por el servicio en el cuerpo de la respuesta de la petición, si revisamos la variable stamp deberemos observar lo siguiente:</p>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
@@ -312,8 +317,8 @@
 				<div class="module-content">
 					<ul class="menu">
 						<li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
-						<li class="item-178"><a href="/timbre/c-c++">C/C++</a></li>
-						<li class="item-178"><a href="/timbre/elixir-erlang">Elixir/Erlang</a></li>
+						<li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
+						<li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
 						<li class="item-178"><a href="/timbre/go">Go</a></li>
 						<li class="item-178"><a href="/timbre/java">Java</a></li>
 						<li class="item-178"><a href="/timbre/php">PHP</a></li>

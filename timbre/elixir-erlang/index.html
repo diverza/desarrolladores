@@ -226,7 +226,7 @@
 
 <h3>Petición HTTP</h3>
 
-<p>Para realizar peticiones HTTP desde Elixir es necesario iniciar el actor inets:</p>
+<p>Para realizar peticiones HTTP desde Elixir es necesario iniciar el actor <em>inets</em>:</p>
 <div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="ss">:inets</span><span class="o">.</span><span class="n">start</span>
 </code></pre></div>
 <p>Creamos una variable para almacenar la dirección HTTP del servicio de timbrado:</p>
@@ -245,8 +245,10 @@
 <h3>Obtener el timbre</h3>
 
 <p>Una vez realizada la petición podremos tener acceso a los datos de respuesta:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">http_code</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">stamp_response</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">http_code</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Timbre: </span><span class="si">#{</span><span class="n">stamp_response</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="ss">:inets</span><span class="o">.</span><span class="n">stop</span>
 </code></pre></div>
 <p>El timbre es devuelto por el servicio en el cuerpo de la respuesta, si revisamos la variable <em>stamp_response</em> deberemos observar lo siguiente:</p>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
@@ -308,8 +310,8 @@
 				<div class="module-content">
 					<ul class="menu">
 						<li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
-						<li class="item-178"><a href="/timbre/c-c++">C/C++</a></li>
-						<li class="item-178"><a href="/timbre/elixir-erlang">Elixir/Erlang</a></li>
+						<li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
+						<li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
 						<li class="item-178"><a href="/timbre/go">Go</a></li>
 						<li class="item-178"><a href="/timbre/java">Java</a></li>
 						<li class="item-178"><a href="/timbre/php">PHP</a></li>
