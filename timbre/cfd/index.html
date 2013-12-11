@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Timbre Fiscal</title>
+  <title>CFDi</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -123,51 +123,158 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>Timbre Fiscal<span class="diverza-dot">.</span></h1>
+              <h1>CFDi<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p><strong>Timbre fiscal</strong> es la solución de diverza para certificar los comprobantes CFD que hoy ya haces.</p>
+              <p><strong>El CFD</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales</em> generados por medios propios.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Recureda que a partir del 2014 todas las facturas electrónicas deberán ser certificadas o timbradas por un PAC.
 
-<p>Conecta tu software de facturación con nuestro <strong>servicio web REST</strong> y obtén tus comprobantes certificados, solo debes entregarle un CFD completo y recibirás el certificado.</p>
+ Diverza provee el servicio para convertirlas en un CFDi, Comprobantes Fiscales Digitales por Internet.
+</code></pre></div>
+<hr>
 
-<p><img src="/images/tf-como-funciona.png" alt="Cómo funciona" title="Timbre fiscal"></p>
+<p>El CFD es un archivo XML con la estructura definida por el SAT</p>
+
+<ul>
+<li>Descarga la <a href="/resources/Anexo20_cfdiv32_30122011.pdf">descripción del esquema</a> versión 3.2 como la documenta el Anexo 20 (30/12/2011)</li>
+<li>Descarga el <a href="/resources/cfdv32.xsd">XSD esquema</a> que puedes usar para validar su estructura.</li>
+</ul>
 
 <hr>
 
-<h3>prueba tu integración</h3>
-
-<p>Prueba nuestros servicios siguiendo los siguientes pasos.</p>
-
-<p>Puedes verificar que tus XMLs están bien construidos y que la conexión con nuestro sistema es correcta.</p>
-
-<p>Cuando estes listo, llámanos para contratar y obtener acceso a un ambiente productivo.</p>
-
-<h3>para conectarte con nosotros</h3>
-
-<ol>
-<li><a href="cfd">Construir el CFD</a>
+<h2>Contenido del CFD</h2>
 
 <ul>
-<li><a href="cfd.html">Los datos del comprobante</a></li>
-<li><a href="cfd.html">La cadena original</a></li>
-<li><a href="cfd.html">El certificado</a></li>
-<li><a href="cfd.html">El sello</a></li>
-</ul></li>
-<li><a href="terminal">Conectarte con nuestro webservice</a>
-
-<ul>
-<li>Usa el lenguaje de tu elección</li>
-</ul></li>
-</ol>
-
-<h3>Recursos y referencias</h3>
-
-<ul>
-<li><a href="cfd.html">Solicitar una cuenta de acceso web</a>, para ver los comprobantes de prueba que ya emitiste</li>
-<li><a href="cfd.html">Conoce la especificación del CFDi</a></li>
-<li><a href="/stamp/validate">Comprueba que tu XML tiene la estructura correcta</a></li>
-<li><a href="codigos">Conoce los códigos de error que podrías recibir</a></li>
+<li>Información propia del comprobante fiscal, como <a href="#emisor">emisor</a>, receptor, conceptos</li>
+<li>Metadatos sobre el propio documento, como la versión del esquema</li>
+<li>Metadatos de seguridad, como tu certificado, serie y cadena original</li>
 </ul>
+
+<h3>Ejemplo de un CFD</h3>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span> 
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
+    <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+    <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+    <span class="na">LugarExpedicion=</span><span class="s">&quot;D.F.,MEXICO&quot;</span> 
+    <span class="na">NumCtaPago=</span><span class="s">&quot;DESCONOCIDO&quot;</span> 
+    <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> 
+    <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+    <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
+    <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
+    <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
+    <span class="na">certificado=</span><span class="s">&quot;...&quot;</span> 
+    <span class="na">noCertificado=</span><span class="s">&quot;...&quot;</span> 
+    <span class="na">sello=</span><span class="s">&quot;...&quot;</span> 
+    <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
+    <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA DEMO&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;34343&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">estado=</span><span class="s">&quot;DISTRITO FEDERAL&quot;</span> <span class="na">municipio=</span><span class="s">&quot;BENITO JUAREZ&quot;</span> <span class="na">calle=</span><span class="s">&quot;REFORMA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;PERSONA FISCA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;PUBLICO EN GENERAL&quot;</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">calle=</span><span class="s">&quot;INSURGENTES&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;PZA&quot;</span> <span class="na">unidad=</span><span class="s">&quot;CANT&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Impuestos&gt;</span>
+        <span class="nt">&lt;cfdi:Traslados&gt;</span>
+            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;160.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;160.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+    <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<h3>Encabezado</h3>
+
+<ul>
+<li><em>xsi:schemaLocation</em>=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </li>
+<li><em>xmlns:cfdi</em>=&quot;http://www.sat.gob.mx/cfd/3&quot; </li>
+<li><em>xmlns:xsi</em>=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </li>
+<li><em>xmlns:xs</em>=&quot;http://www.w3.org/2001/XMLSchema&quot;</li>
+<li><em>LugarExpedicion</em>=&quot;D.F.,MEXICO&quot; </li>
+<li><em>NumCtaPago</em>=&quot;DESCONOCIDO&quot; </li>
+<li><em>formaDePago</em>=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </li>
+<li>*metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</li>
+<li><em>subTotal</em>=&quot;1000.00&quot; </li>
+<li><em>total</em>=&quot;1160.00&quot; </li>
+<li><em>fecha</em>=&quot;2013-12-02T22:18:24&quot; </li>
+<li><em><a href="cfd/certificado">certificado=...</a></em></li>
+<li><em><a href="cfd/certificado">noCertificado=...</a></em></li>
+<li><em><a href="cfd/sello">sello=...</a></em></li>
+<li><em>tipoDeComprobante</em>=&quot;ingreso&quot;</li>
+<li><em>version</em>=&quot;3.2&quot;</li>
+</ul>
+
+<h3>Emisor</h3>
+
+<ul>
+<li><em>nombre</em>=&quot;EMPRESA DEMO&quot;</li>
+<li><em>rfc</em>=&quot;AAA010101AAA&quot;</li>
+<li>DomicilioFiscal
+
+<ul>
+<li><em>codigoPostal</em>=&quot;34343&quot;</li>
+<li><em>pais</em>=&quot;MEXICO&quot;</li>
+<li><em>estado</em>=&quot;DISTRITO FEDERAL&quot;</li>
+<li><em>municipio</em>=&quot;BENITO JUAREZ&quot;</li>
+<li><em>calle</em>=&quot;REFORMA&quot;</li>
+</ul></li>
+</ul>
+
+<h3>Receptor</h3>
+
+<ul>
+<li><em>nombre</em>=&quot;PUBLICO EN GENERAL&quot;</li>
+<li><em>rfc</em>=&quot;XAXX010101000&quot;</li>
+<li>Domicilio
+
+<ul>
+<li><em>pais</em>=&quot;MEXICO&quot;</li>
+<li><em>calle</em>=&quot;INSURGENTES&quot;</li>
+</ul></li>
+</ul>
+
+<h3>Conceptos</h3>
+
+<ul>
+<li>Concepto
+
+<ul>
+<li><em>importe</em>=&quot;1000.00&quot;</li>
+<li><em>valorUnitario</em>=&quot;1000.00&quot;</li>
+<li><em>descripcion</em>=&quot;PZA&quot;</li>
+<li><em>unidad</em>=&quot;CANT&quot;</li>
+<li><em>cantidad</em>=&quot;1&quot;</li>
+</ul></li>
+</ul>
+
+<h3>Impuestos</h3>
+
+<ul>
+<li>Trasladados
+
+<ul>
+<li><em>importe</em>=&quot;160.00&quot;</li>
+<li><em>tasa</em>=&quot;160.00&quot;</li>
+<li><em>impuesto</em>=&quot;IVA&quot;</li>
+</ul></li>
+<li>Retenidos
+
+<ul>
+<li><em>importe</em>=&quot;160.00&quot;</li>
+<li><em>tasa</em>=&quot;160.00&quot;</li>
+<li><em>impuesto</em>=&quot;IVA&quot;</li>
+</ul></li>
+</ul>
+
+<h3>Addendas</h3>
+
+<h3>Complementos</h3>
+
+<h3>Cadena original</h3>
 
             </div>
           </div>
