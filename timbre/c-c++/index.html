@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Terminal</title>
+  <title>C / C++</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -123,10 +123,337 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>Terminal<span class="diverza-dot">.</span></h1>
+              <h1>C / C++<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Para poder completar esta guia es necesario que descargues los certificados de prueba: <a href="../resources/AAA010101AAA.pfx">Certificados de Prueba</a></p>
+              <p>La siguiente guía comprende la conexión con el servicio de timbrado utilizando C / C++, en el caso de Windows es necesario tener instalado Visual Studio 2005 o superior y para Unix/Linux/OSX gcc y cURL.</p>
+
+<p>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/C-C++">repositorio de ejemplos para Timbre Fiscal.</a></p>
+
+<hr>
+
+<h2>Generar Timbre</h2>
+
+<p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
+ Token de prueba: AAAA111123344
+ Metodo HTTP: POST
+ Header HTTP: x-auth-token
+</code></pre></div>
+<p>Así como también el CFD de prueba que usaremos en este ejercicio:</p>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span> 
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
+    <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+    <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+    <span class="na">LugarExpedicion=</span><span class="s">&quot;D.F.,MEXICO&quot;</span> 
+    <span class="na">NumCtaPago=</span><span class="s">&quot;DESCONOCIDO&quot;</span> 
+    <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> 
+    <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+    <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
+    <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
+    <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
+    <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span> 
+    <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> 
+    <span class="na">sello=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+    <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
+    <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA DEMO&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;34343&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">estado=</span><span class="s">&quot;DISTRITO FEDERAL&quot;</span> <span class="na">municipio=</span><span class="s">&quot;BENITO JUAREZ&quot;</span> <span class="na">calle=</span><span class="s">&quot;REFORMA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;PERSONA FISCA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;PUBLICO EN GENERAL&quot;</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">calle=</span><span class="s">&quot;INSURGENTES&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;PZA&quot;</span> <span class="na">unidad=</span><span class="s">&quot;CANT&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Impuestos&gt;</span>
+        <span class="nt">&lt;cfdi:Traslados&gt;</span>
+            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;160.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;160.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+    <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<p><strong>Nota:</strong> Para conocer más acerca de como construir un CFD, te recomendamos visitar la siguiente guía: <a href="/poner-link/">Como generar un CFD.</a></p>
+
+<hr>
+
+<h3>Inicio</h3>
+
+<p>Primeramente necesitamos crear una nueva carpeta con el nombre <strong>timbrar</strong> y crear dos archivos:</p>
+
+<ul>
+<li><strong>cfd.xml</strong> - Deberemos guardar el contenido del CFD a timbrar en el:</li>
+</ul>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span> 
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
+    <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+    <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+    <span class="na">LugarExpedicion=</span><span class="s">&quot;D.F.,MEXICO&quot;</span> 
+    <span class="na">NumCtaPago=</span><span class="s">&quot;DESCONOCIDO&quot;</span> 
+    <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> 
+    <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+    <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
+    <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
+    <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
+    <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span> 
+    <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> 
+    <span class="na">sello=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+    <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
+    <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA DEMO&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;34343&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">estado=</span><span class="s">&quot;DISTRITO FEDERAL&quot;</span> <span class="na">municipio=</span><span class="s">&quot;BENITO JUAREZ&quot;</span> <span class="na">calle=</span><span class="s">&quot;REFORMA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;PERSONA FISCA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;PUBLICO EN GENERAL&quot;</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">calle=</span><span class="s">&quot;INSURGENTES&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;PZA&quot;</span> <span class="na">unidad=</span><span class="s">&quot;CANT&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Impuestos&gt;</span>
+        <span class="nt">&lt;cfdi:Traslados&gt;</span>
+            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;160.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;160.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+    <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<ul>
+<li><strong>timbrar.c</strong> - El archivo de codigo fuente que estaremos modificando en este ejercicio.</li>
+</ul>
+
+<p><strong>Unicamente para Windows:</strong> Se debera descargar el archivo comprimido <a href="">includes.zip</a> y descomprimirlo dentro de la carpeta timbrar </p>
+
+<p>El siguiente paso es incluir las librerias que utilizaremos en el proyecto:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1">#include &lt;curl/curl.h&gt;</span>
+<span class="c1">#include &lt;string.h&gt;</span>
+<span class="c1">#include &lt;stdlib.h&gt;</span>
+</code></pre></div>
+<p>Ahora es necesario agregar algunas funciones de soporte para el resto de nuestro codigo:</p>
+
+<p><strong>Windows</strong></p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Estructura</span> <span class="n">necesaria</span> <span class="n">para</span> <span class="n">la</span> <span class="n">escritura</span> <span class="n">del</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span>
+<span class="n">struct</span> <span class="no">WriteStructure</span> 
+<span class="p">{</span>
+  <span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">readptr</span><span class="p">;</span>
+  <span class="n">long</span> <span class="n">sizeleft</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="sr">//</span> <span class="no">Funcion</span> <span class="n">de</span> <span class="n">lectura</span> <span class="n">para</span> <span class="n">la</span> <span class="n">respuesta</span> <span class="n">del</span> <span class="n">servicio</span> <span class="n">de</span> <span class="n">timbrado</span>
+<span class="n">static</span> <span class="n">void</span> <span class="n">write_callback_function</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="n">userp</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">char</span> <span class="o">**</span><span class="n">response_ptr</span> <span class="o">=</span>  <span class="p">(</span><span class="n">char</span><span class="o">**</span><span class="p">)</span><span class="n">userp</span><span class="p">;</span>
+  <span class="o">*</span><span class="n">response_ptr</span> <span class="o">=</span> <span class="n">strdup</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="sr">//</span> <span class="no">Funcion</span> <span class="n">de</span> <span class="n">escritura</span> <span class="n">para</span> <span class="n">el</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span> <span class="no">HTTP</span>
+<span class="n">static</span> <span class="n">size_t</span> <span class="n">read_callback_function</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="n">userp</span><span class="p">)</span>
+<span class="p">{</span> 
+  <span class="n">struct</span> <span class="no">WriteStructure</span> <span class="o">*</span><span class="n">writeStructure</span> <span class="o">=</span> <span class="p">(</span><span class="n">struct</span> <span class="no">WriteStructure</span> <span class="o">*</span><span class="p">)</span><span class="n">userp</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">size</span><span class="o">*</span><span class="n">nmemb</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">sizeleft</span><span class="p">)</span> 
+  <span class="p">{</span>
+    <span class="o">*</span><span class="p">(</span><span class="n">char</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">readptr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span> 
+    <span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">readptr</span><span class="o">++</span><span class="p">;</span>                 
+    <span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">sizeleft</span><span class="o">--</span><span class="p">;</span>               
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>                        
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>                          
+<span class="p">}</span>
+
+<span class="sr">//</span> <span class="no">Function</span> <span class="n">de</span> <span class="n">lectura</span> <span class="n">para</span> <span class="n">el</span> <span class="n">archivo</span> <span class="no">XML</span> <span class="n">que</span> <span class="n">contiene</span> <span class="n">el</span> <span class="no">CFD</span> <span class="n">a</span> <span class="n">timbrar</span>
+<span class="n">static</span> <span class="n">char</span><span class="o">*</span> <span class="n">read_cfd_file</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">char</span> <span class="o">*</span><span class="n">cfd</span><span class="p">;</span>
+  <span class="n">long</span> <span class="n">cfd_file_size</span><span class="p">;</span>
+
+  <span class="no">FILE</span> <span class="o">*</span><span class="n">cfd_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s2">&quot;cfd.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">);</span>
+
+  <span class="n">fseek</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">SEEK_END</span><span class="p">);</span>
+  <span class="n">cfd_file_size</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">);</span>
+  <span class="n">rewind</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">);</span>
+  <span class="n">cfd</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">cfd_file_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="n">char</span><span class="p">)));</span>
+  <span class="n">fread</span><span class="p">(</span><span class="n">cfd</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">cfd_file_size</span><span class="p">,</span> <span class="n">cfd_file</span><span class="p">);</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">cfd</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Unix/Linux/OSX</strong></p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Estructura</span> <span class="n">necesaria</span> <span class="n">para</span> <span class="n">la</span> <span class="n">escritura</span> <span class="n">del</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span>
+<span class="n">struct</span> <span class="no">WriteStructure</span> 
+<span class="p">{</span>
+  <span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">readptr</span><span class="p">;</span>
+  <span class="n">long</span> <span class="n">sizeleft</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="sr">//</span> <span class="no">Funcion</span> <span class="n">de</span> <span class="n">lectura</span> <span class="n">para</span> <span class="n">la</span> <span class="n">respuesta</span> <span class="n">del</span> <span class="n">servicio</span> <span class="n">de</span> <span class="n">timbrado</span>
+<span class="n">static</span> <span class="n">void</span> <span class="n">write_callback_function</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="n">userp</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">char</span> <span class="o">**</span><span class="n">response_ptr</span> <span class="o">=</span>  <span class="p">(</span><span class="n">char</span><span class="o">**</span><span class="p">)</span><span class="n">userp</span><span class="p">;</span>
+  <span class="o">*</span><span class="n">response_ptr</span> <span class="o">=</span> <span class="n">strndup</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="p">(</span><span class="n">size_t</span><span class="p">)(</span><span class="n">size</span> <span class="o">*</span><span class="n">nmemb</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="sr">//</span> <span class="no">Funcion</span> <span class="n">de</span> <span class="n">escritura</span> <span class="n">para</span> <span class="n">el</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span> <span class="no">HTTP</span>
+<span class="n">static</span> <span class="n">size_t</span> <span class="n">read_callback_function</span><span class="p">(</span><span class="n">void</span> <span class="o">*</span><span class="n">ptr</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">nmemb</span><span class="p">,</span> <span class="n">void</span> <span class="o">*</span><span class="n">userp</span><span class="p">)</span>
+<span class="p">{</span> 
+  <span class="n">struct</span> <span class="no">WriteStructure</span> <span class="o">*</span><span class="n">writeStructure</span> <span class="o">=</span> <span class="p">(</span><span class="n">struct</span> <span class="no">WriteStructure</span> <span class="o">*</span><span class="p">)</span><span class="n">userp</span><span class="p">;</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">size</span><span class="o">*</span><span class="n">nmemb</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="p">{</span>
+   <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">sizeleft</span><span class="p">)</span> 
+  <span class="p">{</span>
+    <span class="o">*</span><span class="p">(</span><span class="n">char</span> <span class="o">*</span><span class="p">)</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">readptr</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span> 
+    <span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">readptr</span><span class="o">++</span><span class="p">;</span>                 
+    <span class="n">writeStructure</span><span class="o">-&gt;</span><span class="n">sizeleft</span><span class="o">--</span><span class="p">;</span>               
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>                        
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>                          
+<span class="p">}</span>
+
+<span class="sr">//</span> <span class="no">Function</span> <span class="n">de</span> <span class="n">lectura</span> <span class="n">para</span> <span class="n">el</span> <span class="n">archivo</span> <span class="no">XML</span> <span class="n">que</span> <span class="n">contiene</span> <span class="n">el</span> <span class="no">CFD</span> <span class="n">a</span> <span class="n">timbrar</span>
+<span class="n">static</span> <span class="n">char</span><span class="o">*</span> <span class="n">read_cfd_file</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">char</span> <span class="o">*</span><span class="n">cfd</span><span class="p">;</span>
+  <span class="n">long</span> <span class="n">cfd_file_size</span><span class="p">;</span>
+
+  <span class="no">FILE</span> <span class="o">*</span><span class="n">cfd_file</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s2">&quot;cfd.xml&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">);</span>
+
+  <span class="n">fseek</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="no">SEEK_END</span><span class="p">);</span>
+  <span class="n">cfd_file_size</span> <span class="o">=</span> <span class="n">ftell</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">);</span>
+  <span class="n">rewind</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">);</span>
+  <span class="n">cfd</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="n">cfd_file_size</span> <span class="o">*</span> <span class="p">(</span><span class="n">sizeof</span><span class="p">(</span><span class="n">char</span><span class="p">)));</span>
+  <span class="n">fread</span><span class="p">(</span><span class="n">cfd</span><span class="p">,</span> <span class="n">sizeof</span><span class="p">(</span><span class="n">char</span><span class="p">),</span> <span class="n">cfd_file_size</span><span class="p">,</span> <span class="n">cfd_file</span><span class="p">);</span>
+  <span class="n">fclose</span><span class="p">(</span><span class="n">cfd_file</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">cfd</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Nota:</strong> Por favor seleccione la version del sistema operativo que le corresponde para las funciones de ayuda.</p>
+
+<hr>
+
+<h3>Petición HTTP</h3>
+
+<p>Es momento de crear nuestra funcion main y declarar las variables que utilizaremos en ella:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">char</span> <span class="o">*</span><span class="n">cfd</span><span class="p">;</span>
+  <span class="n">char</span> <span class="o">*</span><span class="n">stamp</span><span class="p">;</span>
+  <span class="n">long</span> <span class="n">response_code</span><span class="p">;</span>
+  <span class="no">CURL</span> <span class="o">*</span><span class="n">curl</span><span class="p">;</span>
+  <span class="no">CURLcode</span> <span class="n">result</span><span class="p">;</span>
+  <span class="n">struct</span> <span class="n">curl_slist</span> <span class="o">*</span><span class="n">headers</span> <span class="o">=</span> <span class="no">NULL</span><span class="p">;</span>
+  <span class="n">struct</span> <span class="no">WriteStructure</span> <span class="n">writeStructure</span><span class="p">;</span>
+</code></pre></div>
+<p>Ahora deberemos inicializar las librerias de CURL:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">result</span> <span class="o">=</span> <span class="n">curl_global_init</span><span class="p">(</span><span class="no">CURL_GLOBAL_DEFAULT</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="no">CURLE_OK</span><span class="p">)</span> 
+<span class="p">{</span>
+  <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error en curl_global_init(): %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+  <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El siguiente paso es inicializar una petición de cURL:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
+<span class="k">if</span><span class="p">(</span><span class="n">curl</span><span class="p">)</span> 
+<span class="p">{</span>
+</code></pre></div>
+<p>Incluimos el CFD leyendo el archivo cfd.xml y lo guardamos en una estructura que utilizaremos posteriormente:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">cfd</span> <span class="o">=</span> <span class="n">read_cfd_file</span><span class="p">();</span>
+
+<span class="n">writeStructure</span><span class="o">.</span><span class="n">readptr</span> <span class="o">=</span> <span class="n">cfd</span><span class="p">;</span>
+<span class="n">writeStructure</span><span class="o">.</span><span class="n">sizeleft</span> <span class="o">=</span> <span class="p">(</span><span class="n">long</span><span class="p">)</span><span class="n">strlen</span><span class="p">(</span><span class="n">cfd</span><span class="p">);</span>
+</code></pre></div>
+<p>Agregamos a la petición de cURL la URL del servicio de timbrado:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Es necesario que la petición use el metodo HTTP post:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="n">L</span><span class="p">);</span>
+</code></pre></div>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">headers</span> <span class="o">=</span> <span class="n">curl_slist_append</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="s2">&quot;x-auth-token: abc&quot;</span><span class="p">);</span>
+<span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span><span class="n">headers</span><span class="p">);</span>
+</code></pre></div>
+<p>Es necesario decirle a la petición de cURL que utilizaremos dos funciones una para la escritura del mensaje en el servicio de timbrado y la otra para la escritura:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_READFUNCTION</span><span class="p">,</span> <span class="n">read_callback_function</span><span class="p">);</span>
+<span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_READDATA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">writeStructure</span><span class="p">);</span>
+<span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDSIZE</span><span class="p">,</span> <span class="n">writeStructure</span><span class="o">.</span><span class="n">sizeleft</span><span class="p">);</span>
+
+<span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_WRITEFUNCTION</span><span class="p">,</span> <span class="n">write_callback_function</span><span class="p">);</span>
+<span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_WRITEDATA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stamp</span><span class="p">);</span>
+</code></pre></div>
+<p>Finalmente ejecutamos la petición:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">result</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+</code></pre></div>
+<hr>
+
+<h3>Obtener el timbre</h3>
+
+<p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby">    <span class="n">curl_easy_getinfo</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLINFO_RESPONSE_CODE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">response_code</span><span class="p">);</span>
+    <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+
+    <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Codigo HTTP: %lu</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_code</span><span class="p">);</span>
+    <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Timbre: %s&quot;</span><span class="p">,</span> <span class="n">stamp</span><span class="p">);</span>  
+  <span class="p">}</span>
+
+  <span class="n">curl_global_cleanup</span><span class="p">();</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Si ejecutamos el código utilizando:</p>
+
+<p><strong>Windows</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">C:\&gt; cl timbrar.c libcurl.lib /I include
+C:\&gt; timbrar
+</code></pre></div>
+<p><strong>Nota:</strong> Se debe utilizar la <strong>Developer Command Prompt</strong> que instala Visual Studio.</p>
+
+<p><strong>Unix/Linux/OSX</strong></p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ gcc timbrar.c -o timbrar -lcurl
+$ ./timbrar
+</code></pre></div>
+<p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
+  <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> 
+  <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+  <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> 
+  <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> 
+  <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> 
+  <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> 
+  <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> 
+  <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> 
+  <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> 
+  <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> 
+  <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> 
+  <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span> 
+  <span class="na">selloSAT=</span><span class="s">&quot;vW6bOQHFS5ne5Z9ADkhqZYvfI9zCbm15BF7CeJKwXZeZnTRwC204gHCHlemecbDfQ4Qv8CGi1+zS8yW5tGwuz2G6TUs3fp3MUe8mj7PV0bxSEybZB0M3aG0xHPHytzq1wE+z6wADo1e1O1fo4Y0C4ik1lvHDxstfJhHaRlmN920=&quot;</span> 
+  <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
+  <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-12-09T19:57:34&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
+  <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>El código de respuesta del servidor que se encuentra en la variable <em>response_code</em> deberá ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
+
+<hr>
 
             </div>
           </div>
