@@ -126,9 +126,9 @@
               <h1>Go<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>La siguiente guía comprende la conexión con el servicio de timbrado utilizando Ruby 1.9.3 o superior.</p>
+              <p>La siguiente guía comprende la conexión con el servicio de timbrado utilizando Go 1.2 o superior.</p>
 
-<p>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/Ruby">repositorio de ejemplos para Timbre Fiscal.</a></p>
+<p>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/Go">repositorio de ejemplos para Timbre Fiscal.</a></p>
 
 <hr>
 
@@ -183,84 +183,89 @@
 
 <h3>Inicio</h3>
 
-<p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.rb</em> y una vez que lo hayamos creado, por motivos de facilidad para esta guía es almacenar el CFD a timbrar en una variable:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">cfd</span> <span class="o">=</span> <span class="o">&lt;&lt;-</span><span class="no">EOF</span>
-<span class="sh">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="sh">&lt;cfdi:Comprobante </span>
-<span class="sh">    xsi:schemaLocation=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </span>
-<span class="sh">    xmlns:cfdi=&quot;http://www.sat.gob.mx/cfd/3&quot; </span>
-<span class="sh">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span>
-<span class="sh">    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
-<span class="sh">    LugarExpedicion=&quot;D.F.,MEXICO&quot; </span>
-<span class="sh">    NumCtaPago=&quot;DESCONOCIDO&quot; </span>
-<span class="sh">    formaDePago=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </span>
-<span class="sh">    metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
-<span class="sh">    subTotal=&quot;1000.00&quot; </span>
-<span class="sh">    total=&quot;1160.00&quot; </span>
-<span class="sh">    fecha=&quot;2013-12-02T22:18:24&quot; </span>
-<span class="sh">    certificado=&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot; </span>
-<span class="sh">    noCertificado=&quot;20001000000100005867&quot; </span>
-<span class="sh">    sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot; </span>
-<span class="sh">    tipoDeComprobante=&quot;ingreso&quot;</span>
-<span class="sh">    version=&quot;3.2&quot; &gt;</span>
-<span class="sh">    &lt;cfdi:Emisor nombre=&quot;EMPRESA DEMO&quot; rfc=&quot;AAA010101AAA&quot;&gt;</span>
-<span class="sh">        &lt;cfdi:DomicilioFiscal codigoPostal=&quot;34343&quot; pais=&quot;MEXICO&quot; estado=&quot;DISTRITO FEDERAL&quot; municipio=&quot;BENITO JUAREZ&quot; calle=&quot;REFORMA&quot;/&gt;</span>
-<span class="sh">        &lt;cfdi:RegimenFiscal Regimen=&quot;PERSONA FISCA&quot;/&gt;</span>
-<span class="sh">    &lt;/cfdi:Emisor&gt;</span>
-<span class="sh">    &lt;cfdi:Receptor nombre=&quot;PUBLICO EN GENERAL&quot; rfc=&quot;XAXX010101000&quot;&gt;</span>
-<span class="sh">        &lt;cfdi:Domicilio pais=&quot;MEXICO&quot; calle=&quot;INSURGENTES&quot;/&gt;</span>
-<span class="sh">    &lt;/cfdi:Receptor&gt;</span>
-<span class="sh">    &lt;cfdi:Conceptos&gt;</span>
-<span class="sh">        &lt;cfdi:Concepto importe=&quot;1000.00&quot; valorUnitario=&quot;1000.00&quot; descripcion=&quot;PZA&quot; unidad=&quot;CANT&quot; cantidad=&quot;1&quot;/&gt;</span>
-<span class="sh">    &lt;/cfdi:Conceptos&gt;</span>
-<span class="sh">    &lt;cfdi:Impuestos&gt;</span>
-<span class="sh">        &lt;cfdi:Traslados&gt;</span>
-<span class="sh">            &lt;cfdi:Traslado importe=&quot;160.00&quot; tasa=&quot;160.00&quot; impuesto=&quot;IVA&quot;/&gt;</span>
-<span class="sh">        &lt;/cfdi:Traslados&gt;</span>
-<span class="sh">    &lt;/cfdi:Impuestos&gt;</span>
-<span class="sh">    &lt;cfdi:Addenda/&gt;</span>
-<span class="sh">&lt;/cfdi:Comprobante&gt;</span>
-<span class="no">EOF</span>
+<p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.go</em> y una vez que lo hayamos creado agregar la estructura basica del script: con los importando las librerias necesarias y creando la funcion principal:</p>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+  <span class="s">&quot;net/http&quot;</span>
+  <span class="s">&quot;io/ioutil&quot;</span>
+  <span class="s">&quot;fmt&quot;</span>
+  <span class="s">&quot;bytes&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span> <span class="nx">main</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div>
+<p>Ahora por motivos de facilidad almacenaremos el CFD de forma estatica en una variable:</p>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">cfd</span> <span class="o">:=</span> <span class="s">`&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="s">       &lt;cfdi:Comprobante </span>
+<span class="s">           xsi:schemaLocation=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </span>
+<span class="s">           xmlns:cfdi=&quot;http://www.sat.gob.mx/cfd/3&quot; </span>
+<span class="s">           xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span>
+<span class="s">           xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="s">           LugarExpedicion=&quot;D.F.,MEXICO&quot; </span>
+<span class="s">           NumCtaPago=&quot;DESCONOCIDO&quot; </span>
+<span class="s">           formaDePago=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </span>
+<span class="s">           metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+<span class="s">           subTotal=&quot;1000.00&quot; </span>
+<span class="s">           total=&quot;1160.00&quot; </span>
+<span class="s">           fecha=&quot;2013-12-02T22:18:24&quot; </span>
+<span class="s">           certificado=&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot; </span>
+<span class="s">           noCertificado=&quot;20001000000100005867&quot; </span>
+<span class="s">           sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot; </span>
+<span class="s">           tipoDeComprobante=&quot;ingreso&quot;</span>
+<span class="s">           version=&quot;3.2&quot; &gt;</span>
+<span class="s">           &lt;cfdi:Emisor nombre=&quot;EMPRESA DEMO&quot; rfc=&quot;AAA010101AAA&quot;&gt;</span>
+<span class="s">             &lt;cfdi:DomicilioFiscal codigoPostal=&quot;34343&quot; pais=&quot;MEXICO&quot; estado=&quot;DISTRITO FEDERAL&quot; municipio=&quot;BENITO JUAREZ&quot; calle=&quot;REFORMA&quot;/&gt;</span>
+<span class="s">             &lt;cfdi:RegimenFiscal Regimen=&quot;PERSONA FISCA&quot;/&gt;</span>
+<span class="s">           &lt;/cfdi:Emisor&gt;</span>
+<span class="s">           &lt;cfdi:Receptor nombre=&quot;PUBLICO EN GENERAL&quot; rfc=&quot;XAXX010101000&quot;&gt;</span>
+<span class="s">             &lt;cfdi:Domicilio pais=&quot;MEXICO&quot; calle=&quot;INSURGENTES&quot;/&gt;</span>
+<span class="s">           &lt;/cfdi:Receptor&gt;</span>
+<span class="s">           &lt;cfdi:Conceptos&gt;</span>
+<span class="s">             &lt;cfdi:Concepto importe=&quot;1000.00&quot; valorUnitario=&quot;1000.00&quot; descripcion=&quot;PZA&quot; unidad=&quot;CANT&quot; cantidad=&quot;1&quot;/&gt;</span>
+<span class="s">           &lt;/cfdi:Conceptos&gt;</span>
+<span class="s">           &lt;cfdi:Impuestos&gt;</span>
+<span class="s">             &lt;cfdi:Traslados&gt;</span>
+<span class="s">               &lt;cfdi:Traslado importe=&quot;160.00&quot; tasa=&quot;160.00&quot; impuesto=&quot;IVA&quot;/&gt;</span>
+<span class="s">             &lt;/cfdi:Traslados&gt;</span>
+<span class="s">           &lt;/cfdi:Impuestos&gt;</span>
+<span class="s">           &lt;cfdi:Addenda/&gt;</span>
+<span class="s">         &lt;/cfdi:Comprobante&gt;`</span>
 </code></pre></div>
 <hr>
 
 <h3>Petición HTTP</h3>
 
-<p>Para realizar peticiones HTTP desde Ruby es necesario importar <em>net/http</em>, lo cual se realiza de la siguiente manera:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">&quot;net/http&quot;</span>
+<p>Para realizar peticiones HTTP desde Go es necesario utilizar una instancia de Http Client, la cual obtendremos de la siguiente manera</p>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
 </code></pre></div>
-<p>El siguiente paso es crear un nuevo objeto HTTP, para realizar la petición al servicio web indicando la URL del servidor de timbrado y el puerto en el cual esta publicado:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;213.239.207.18&quot;</span><span class="p">,</span> <span class="mi">4444</span><span class="p">)</span>
-</code></pre></div>
-<p><strong>Nota:</strong> Se agrego la URL sin extension alguna.</p>
-
-<p>Lo siguiente seria indicar que tipo de metido queremos ejecutar en el servicio, en este caso es un <em>POST</em> a la extension <em>stamp</em>:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/stamp&quot;</span><span class="p">)</span>
+<p>Ahora deberemos indicar que realizaremos una petición a la URL del servicio de timbre, usando el metodo POST y como cuerpo del mensaje el CFD que deseamos timbrar:</p>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">request</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBufferString</span><span class="p">(</span><span class="nx">cfd</span><span class="p">))</span>
 </code></pre></div>
 <p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">request</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
-</code></pre></div>
-<p>El CFD a timbrar se debe agregar como cuerpo de la petición HTTP de la siguiente manera:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">request</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">cfd</span>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de timbrado:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">response</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">response</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>
+<span class="k">defer</span> <span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
 </code></pre></div>
 <hr>
 
 <h3>Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">response_code</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">code</span>
-<span class="n">stamp</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">body</span>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">stamp</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="nx">responseCode</span> <span class="o">:=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">Status</span>
 
-<span class="nb">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">response_code</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="nb">puts</span> <span class="s2">&quot;Timbre: </span><span class="si">#{</span><span class="n">stamp</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Codigo HTTP:&quot;</span><span class="p">,</span> <span class="nx">responseCode</span><span class="p">)</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="s">&quot;Timbre:&quot;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">stamp</span><span class="p">))</span>
 </code></pre></div>
 <p>Si ejecutamos el código utilizando:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ ruby timbrar.rb
+<div class="highlight"><pre><code class="text language-text" data-lang="text">$ go run timbrar.rb
 </code></pre></div>
-<p><strong>Nota:</strong> La dirección del ejecutable <em>ruby</em> puede variar entre sistemas operativos y procesos de instalación.</p>
+<p><strong>Nota:</strong> La dirección del ejecutable <em>go</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
 <p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
