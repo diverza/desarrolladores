@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Terminal</title>
+  <title>C# .NET</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -123,10 +123,185 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>Terminal<span class="diverza-dot">.</span></h1>
+              <h1>C# .NET<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Para poder completar esta guia es necesario que descargues los certificados de prueba: <a href="../resources/AAA010101AAA.pfx">Certificados de Prueba</a></p>
+              <p>La siguiente guía comprende la conexión con el servicio de timbrado utilizando Visual Studio 2010 o superior.</p>
+
+<p>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/C%23">repositorio de ejemplos para Timbre Fiscal.</a></p>
+
+<hr>
+
+<h2>Generar Timbre</h2>
+
+<p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
+ Token de prueba: AAAA111123344
+ Metodo HTTP: POST
+ Header HTTP: x-auth-token
+</code></pre></div>
+<p>Así como también el CFD de prueba que usaremos en este ejercicio:</p>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span> 
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
+    <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+    <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+    <span class="na">LugarExpedicion=</span><span class="s">&quot;D.F.,MEXICO&quot;</span> 
+    <span class="na">NumCtaPago=</span><span class="s">&quot;DESCONOCIDO&quot;</span> 
+    <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> 
+    <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+    <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
+    <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
+    <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
+    <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span> 
+    <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> 
+    <span class="na">sello=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+    <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
+    <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA DEMO&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;34343&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">estado=</span><span class="s">&quot;DISTRITO FEDERAL&quot;</span> <span class="na">municipio=</span><span class="s">&quot;BENITO JUAREZ&quot;</span> <span class="na">calle=</span><span class="s">&quot;REFORMA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;PERSONA FISCA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;PUBLICO EN GENERAL&quot;</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">calle=</span><span class="s">&quot;INSURGENTES&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;PZA&quot;</span> <span class="na">unidad=</span><span class="s">&quot;CANT&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Impuestos&gt;</span>
+        <span class="nt">&lt;cfdi:Traslados&gt;</span>
+            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;160.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;160.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+    <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<p><strong>Nota:</strong> Para conocer más acerca de como construir un CFD, te recomendamos visitar la siguiente guía: <a href="/poner-link/">Como generar un CFD.</a></p>
+
+<hr>
+
+<h3>Inicio</h3>
+
+<p>Primeramente necesitamos crear un nuevo proyecto en Visual Studio 2010 de tipo <strong>C# Console Application</strong>,  una vez realizado esto necesitamos abrir el archivo <strong>Program.cs</strong>, que debe ser algo similar a lo siguiente:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">Timbrar</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>El primer paso es importar una nueva libreria agregando la siguiente linea al inicio del archivo:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+</code></pre></div>
+<p>Ahora deberemos editar el metodo Main, agregando por facilidad nuestro CFD a timbrar en una variable:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">cfd</span> <span class="p">=</span> <span class="s">@&quot;&lt;?xml version=&quot;&quot;1.0&quot;&quot; encoding=&quot;&quot;UTF-8&quot;&quot;?&gt;</span>
+<span class="s">                           &lt;cfdi:Comprobante </span>
+<span class="s">                                xsi:schemaLocation=&quot;&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;&quot; </span>
+<span class="s">                                xmlns:cfdi=&quot;&quot;http://www.sat.gob.mx/cfd/3&quot;&quot; </span>
+<span class="s">                                xmlns:xsi=&quot;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&quot; </span>
+<span class="s">                                xmlns:xs=&quot;&quot;http://www.w3.org/2001/XMLSchema&quot;&quot;</span>
+<span class="s">                                LugarExpedicion=&quot;&quot;D.F.,MEXICO&quot;&quot; </span>
+<span class="s">                                NumCtaPago=&quot;&quot;DESCONOCIDO&quot;&quot; </span>
+<span class="s">                                formaDePago=&quot;&quot;PAGO EN UNA SOLA EXHIBICION&quot;&quot; </span>
+<span class="s">                                metodoDePago=&quot;&quot;TRANSFERENCIA ELECTRONICA&quot;&quot;</span>
+<span class="s">                                subTotal=&quot;&quot;1000.00&quot;&quot; </span>
+<span class="s">                                total=&quot;&quot;1160.00&quot;&quot; </span>
+<span class="s">                                fecha=&quot;&quot;2013-12-02T22:18:24&quot;&quot; </span>
+<span class="s">                                certificado=&quot;&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;&quot; </span>
+<span class="s">                                noCertificado=&quot;&quot;20001000000100005867&quot;&quot; </span>
+<span class="s">                                sello=&quot;&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;&quot; </span>
+<span class="s">                                tipoDeComprobante=&quot;&quot;ingreso&quot;&quot;</span>
+<span class="s">                                version=&quot;&quot;3.2&quot;&quot; &gt;</span>
+<span class="s">                                &lt;cfdi:Emisor nombre=&quot;&quot;EMPRESA DEMO&quot;&quot; rfc=&quot;&quot;AAA010101AAA&quot;&quot;&gt;</span>
+<span class="s">                                    &lt;cfdi:DomicilioFiscal codigoPostal=&quot;&quot;34343&quot;&quot; pais=&quot;&quot;MEXICO&quot;&quot; estado=&quot;&quot;DISTRITO FEDERAL&quot;&quot; municipio=&quot;&quot;BENITO JUAREZ&quot;&quot; calle=&quot;&quot;REFORMA&quot;&quot;/&gt;</span>
+<span class="s">                                    &lt;cfdi:RegimenFiscal Regimen=&quot;&quot;PERSONA FISCA&quot;&quot;/&gt;</span>
+<span class="s">                                &lt;/cfdi:Emisor&gt;</span>
+<span class="s">                                &lt;cfdi:Receptor nombre=&quot;&quot;PUBLICO EN GENERAL&quot;&quot; rfc=&quot;&quot;XAXX010101000&quot;&quot;&gt;</span>
+<span class="s">                                    &lt;cfdi:Domicilio pais=&quot;&quot;MEXICO&quot;&quot; calle=&quot;&quot;INSURGENTES&quot;&quot;/&gt;</span>
+<span class="s">                                &lt;/cfdi:Receptor&gt;</span>
+<span class="s">                                &lt;cfdi:Conceptos&gt;</span>
+<span class="s">                                    &lt;cfdi:Concepto importe=&quot;&quot;1000.00&quot;&quot; valorUnitario=&quot;&quot;1000.00&quot;&quot; descripcion=&quot;&quot;PZA&quot;&quot; unidad=&quot;&quot;CANT&quot;&quot; cantidad=&quot;&quot;1&quot;&quot;/&gt;</span>
+<span class="s">                                &lt;/cfdi:Conceptos&gt;</span>
+<span class="s">                                &lt;cfdi:Impuestos&gt;</span>
+<span class="s">                                    &lt;cfdi:Traslados&gt;</span>
+<span class="s">                                        &lt;cfdi:Traslado importe=&quot;&quot;160.00&quot;&quot; tasa=&quot;&quot;160.00&quot;&quot; impuesto=&quot;&quot;IVA&quot;&quot;/&gt;</span>
+<span class="s">                                    &lt;/cfdi:Traslados&gt;</span>
+<span class="s">                                &lt;/cfdi:Impuestos&gt;</span>
+<span class="s">                                &lt;cfdi:Addenda/&gt;</span>
+<span class="s">                            &lt;/cfdi:Comprobante&gt;&quot;</span><span class="p">;</span>
+</code></pre></div>
+<hr>
+
+<h3>Petición HTTP</h3>
+
+<p>Para realizar una petición HTTP desde .NET es necesario tener una instancia del objeto <strong>Web Client</strong> lo cual se realiza de la siguiente manera:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">try</span>
+<span class="p">{</span>
+  <span class="n">WebClient</span> <span class="n">webClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebClient</span><span class="p">();</span>
+</code></pre></div>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="n">webClient</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">);</span>
+</code></pre></div>
+<p>Finalmente ejecutamos la petición de timbrado indicando la URL del servicio de timbrado, el metodo HTTP POST y el CFD que deseamos timbrar:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">stamp</span> <span class="p">=</span> <span class="n">webClient</span><span class="p">.</span><span class="n">UploadString</span><span class="p">(</span><span class="s">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="n">cfd</span><span class="p">);</span>
+</code></pre></div>
+<hr>
+
+<h3>Obtener el timbre</h3>
+
+<p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#">  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;Timbre: {0}&quot;</span><span class="p">,</span> <span class="n">stamp</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="k">catch</span> <span class="p">(</span><span class="n">WebException</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="cm">/* En caso de error podemos obtener el codigo de estatus de la petición consultando la excepción que</span>
+<span class="cm">  // arrojada por la instancia del web client. */</span>
+  <span class="n">HttpWebResponse</span> <span class="n">httpWebResponse</span> <span class="p">=</span> <span class="p">((</span><span class="n">HttpWebResponse</span><span class="p">)</span><span class="n">e</span><span class="p">.</span><span class="n">Response</span><span class="p">);</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;Codigo HTTP: {0} {1}&quot;</span><span class="p">,</span> <span class="n">httpWebResponse</span><span class="p">.</span><span class="n">StatusCode</span><span class="p">,</span> <span class="n">httpWebResponse</span><span class="p">.</span><span class="n">StatusDescription</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+</code></pre></div>
+<p>Si ejecutamos el código utilizando:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&quot;Start Debugging&quot; desde el menu Debug o F5
+</code></pre></div>
+<p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
+  <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> 
+  <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+  <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> 
+  <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> 
+  <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> 
+  <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> 
+  <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> 
+  <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> 
+  <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> 
+  <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> 
+  <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> 
+  <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span> 
+  <span class="na">selloSAT=</span><span class="s">&quot;vW6bOQHFS5ne5Z9ADkhqZYvfI9zCbm15BF7CeJKwXZeZnTRwC204gHCHlemecbDfQ4Qv8CGi1+zS8yW5tGwuz2G6TUs3fp3MUe8mj7PV0bxSEybZB0M3aG0xHPHytzq1wE+z6wADo1e1O1fo4Y0C4ik1lvHDxstfJhHaRlmN920=&quot;</span> 
+  <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
+  <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-12-09T19:57:34&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
+  <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>En caso de que la petición no sea exitosa podremos obtener el codigo de error del servidor a traves de la excepción, puedes revisar todos los posibles códigos de respuesta y sus posibles soluciones desde la <a href="../codigos">Lista de Códigos de Respuesta</a>.</p>
+
+<hr>
 
             </div>
           </div>
