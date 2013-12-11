@@ -17,10 +17,10 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 
 ```sh
 # Timbrar
-C:\> "C:\GO\bin\go.exe" timbrar.go
+C:\> "C:\GO\bin\go.exe" run timbrar.go
 
 # Cancelar
-C:\> "C:\GO\bin\go.exe" cancelar.go
+C:\> "C:\GO\bin\go.exe" run cancelar.go
 ```
 
 ## Unix/Linux/OSX

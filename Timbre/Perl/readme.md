@@ -1,6 +1,6 @@
 # Timbrar desde Perl
 
-Para poder ejecutar los ejemplos es necesario tener Perl instalado en la version 5.18.1 o superior, en Windows ss preferible tenerlo instalado usando ActivePerl.
+Para poder ejecutar los ejemplos es necesario tener Perl instalado en la version 5.18.1 o superior, en Windows es preferible tenerlo instalado usando ActivePerl.
 
 ## Parametros de prueba
 
