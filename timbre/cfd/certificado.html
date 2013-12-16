@@ -126,7 +126,45 @@
               <h1>Certificado<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              
+              <p>El CFD requiere el atributos <em>&quot;certificado&quot;</em> y <em>noCertificado</em> que identifican el certificado utilizado, para que el SAT verifique su validez y vigencia en su sitema.</p>
+
+<p>* Para explicar el proceso, los siguientes ejemplos utilizan la herramienta openssl (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.openssl.org/related/binaries.html">aquí</a>).</p>
+
+<h2>atributo certificado</h2>
+
+<p>Este atributo expresar el certificado de sello digital que ampara al comprobante como texto, en formato base 64.</p>
+
+<p>Es necesario contar con:</p>
+
+<ol>
+<li>El certificado (archivo <a href="/timbre/resources/CSD/aaa010101aaa.cer">.cer</a>)</li>
+</ol>
+
+<p>Para obtener una versión imprimible (base64) del certificado, ejecuta:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in CSD/aaa010101aaa.cer  -a -A -out cerB64.txt
+</code></pre></div>
+<p>Obtendrás un archivo de texto con el certificado codificado en base64.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==
+</code></pre></div>
+<h2>Atributo noCertificado</h2>
+
+<p>Este atributo expresa el número de serie del certificado de sello digital que ampara al comprobante, de acuerdo al acuse correspondiente a 20 posiciones otorgado por el sistema del SAT.</p>
+
+<p>Es necesario contar con:</p>
+
+<ol>
+<li>El certificado (archivo <a href="/timbre/resources/CSD/aaa010101aaa.cer">.cer</a>)</li>
+</ol>
+
+<p>Y ejecutar las instrucciones:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">OpenSSL X509 -inform DER -in aaa010101aaa.cer -serial
+</code></pre></div>
+<p>Obtendrás el número de serie en ascii hexadecimal. Deberás transformar a texto legible, elimina el primer número (siempre 3) de cada par</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">32 30 30 30 31 30 30 30 30 30 30 31 30 30 30 30 35 38 36 37
+
+
+20001000000100005867
+</code></pre></div>
             </div>
           </div>
         </div>

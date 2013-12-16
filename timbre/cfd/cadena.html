@@ -128,9 +128,11 @@
               <div class="clr">&nbsp;</div>
               <p>La cadena original es la secuencia de datos formada con la información contenida dentro del comprobante fiscal digital.</p>
 
+<p>Con la cadena original y tu <a href="/timbre/cfd/certificado.html">certificado</a>, podrás generar el <a href="/timbre/cfd/sello.html">sello</a> que también debes colocar en el comprobante.</p>
+
 <p>Para generarla puedes utilizar un transformador xslt o construirla manualmente.</p>
 
-<h3>Construcción automática con xslt</h3>
+<h2>Construcción automática con xslt</h2>
 
 <p>Para la construcción de la cadena original automática, necesitas:</p>
 
@@ -140,15 +142,15 @@
 <li>Instalar la herramienta <a href="http://xmlsoft.org/XSLT/xsltproc2.html">xsltproc</a> (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.zlatkovic.com/libxml.en.html">aquí</a>).</li>
 </ul>
 
-<p>El que deberás ejecutar es:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ xsltproc cadenaoriginal_3_2.xslt cfd_ejemplo.xml
+<p>Desde la linea de comando deberás ejecutar:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&gt;xsltproc cadenaoriginal_3_2.xslt cfd_ejemplo.xml
 </code></pre></div>
 <p>Recibirás la cadena original:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">||3.2|2013-12-02T22:18:24|ingreso|PAGO EN UNA SOLA EXHIBICION|1000.00|1160.00|TRANSFERENCIA ELECTRONICA|D.F.,MEXICO|DESCONOCIDO|AAA010101AAA|EMPRESA DEMO|REFORMA|BENITO JUAREZ|DISTRITO FEDERAL|MEXICO|34343|PERSONA FISCA|XAXX010101000|PUBLICO EN GENERAL|INSURGENTES|MEXICO|1|CANT|PZA|1000.00|1000.00|IVA|160.00|160.00||~
 </code></pre></div>
 <hr>
 
-<h3>Construcción manual</h3>
+<h2>Construcción manual</h2>
 
 <p>Si deseas construirla manualmente, estas son las reglas generales:</p>
 
@@ -170,6 +172,8 @@
 <li> El nodo o nodos adicionales <ComplementoConcepto> se integrarán a la cadena original como se indica en la secuencia de formación en su numeral 10, respetando la secuencia de formación y número de orden del ComplemetoConcepto.</li>
 <li>El nodo o nodos adicionales <Complemento> se integraran al final de la cadena original respetando la secuencia de formación para cada complemento y número de orden del Complemento.</li>
 </ol>
+
+<h3>Secuencia de formación</h3>
 
 <p>La secuencia de formación será siempre en el orden que se expresa a continuación, tomando en cuenta las reglas generales expresadas en el párrafo anterior.
 Puedes consultarlo en el <a href="/timbre/resources/Anexo20_cfdiv32_30122011.pdf">Anexo 20</a>, página 52</p>

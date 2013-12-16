@@ -230,12 +230,12 @@
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s2">&quot;net/http&quot;</span>
 </code></pre></div>
 <p>El siguiente paso es crear un nuevo objeto HTTP, para realizar la petición al servicio web indicando la URL del servidor de timbrado y el puerto en el cual esta publicado:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">http</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;213.239.207.18&quot;</span><span class="p">,</span> <span class="mi">4444</span><span class="p">)</span>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">http</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;213.239.207.18&quot;</span><span class="p">,</span> <span class="mi">4444</span><span class="p">)</span>
 </code></pre></div>
 <p><strong>Nota:</strong> Se agrego la URL sin extension alguna.</p>
 
 <p>Lo siguiente seria indicar que tipo de metido queremos ejecutar en el servicio, en este caso es un <em>POST</em> a la extension <em>stamp</em>:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">request</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">::</span><span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/stamp&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">request</span> <span class="o">=</span> <span class="ss">Net</span><span class="p">:</span><span class="ss">:HTTP</span><span class="o">::</span><span class="no">Post</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;/stamp&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">request</span><span class="o">.</span><span class="n">add_field</span><span class="p">(</span><span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>

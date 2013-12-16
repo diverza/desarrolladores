@@ -126,7 +126,212 @@
               <h1>complemento de nómina<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              
+              <p>Debe colocarse un complemento de nómina por recibo.</p>
+
+<p>El complemento contine información laboral del patrón y el empleado.</p>
+
+<h2>Datos del complemento de nómina</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.</p>
+
+<ul>
+<li>&quot;registro_patronal&quot; : 23232<br>
+
+<ul>
+<li> Atributo requerido para expresar el registro patronal a 20 posiciones máximo</li>
+</ul></li>
+<li>&quot;num_empleado&quot;      : 9872<br>
+
+<ul>
+<li> Atributo requerido para expresar el número de empleado de 1 a 15 posiciones</li>
+</ul></li>
+<li>&quot;curp_empleado&quot;     : TARE860821HNLRNL09<br>
+
+<ul>
+<li> Atributo requerido para la expresión de la CURP del trabajador<br></li>
+</ul></li>
+<li>&quot;tipo_regimen&quot;      : Asimilados a salarios<br>
+
+<ul>
+<li> Atributo requerido para la expresión del tipo de régimen por el cual se tiene contratado al trabajador Este tiene dos posibles valores: “Asimilados a salarios” o “Sueldos y salarios”</li>
+</ul></li>
+<li>&quot;num_seguro_social&quot; : 98765434<br>
+
+<ul>
+<li> Atributo opcional para la expresión del número de seguridad social aplicable al trabajador<br></li>
+</ul></li>
+<li>&quot;fecha_pago&quot;        : 2013-11-15<br>
+
+<ul>
+<li> Atributo requerido para la expresión de la fecha efectiva de erogación del gasto. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.<br></li>
+</ul></li>
+<li>&quot;fecha_inicial_pago&quot;: 2013-11-01 
+
+<ul>
+<li> Atributo requerido para la expresión de la fecha inicial del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.<br></li>
+</ul></li>
+<li>&quot;fecha_final_pago&quot;  : 2013-11-15<br>
+
+<ul>
+<li>  Atributo requerido para la expresión de la fecha final del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
+</ul></li>
+<li>&quot;num_dias_pagados&quot;  : 15<br>
+
+<ul>
+<li> Atributo opcional para la expresión del número de días pagados</li>
+</ul></li>
+<li>&quot;departamento&quot;      : Administarción 
+
+<ul>
+<li> Atributo opcional para la expresión del departamento o área a la que pertenece el trabajador</li>
+</ul></li>
+<li>&quot;clabe&quot;             : 123123123123123123 
+
+<ul>
+<li> Atributo opcional para la expresión de la CLABE </li>
+</ul></li>
+<li>&quot;banco&quot;             : 123<br>
+
+<ul>
+<li> Atributo opcional para la expresión del Banco conforme al catalógo, donde se realiza un depósito de nómina</li>
+</ul></li>
+<li>&quot;fecha_inicio_relacion_laboral&quot;: 2009-06-01 
+
+<ul>
+<li>        Atributo requerido para expresar la fecha de inicio de la relación laboral entre el empleador y el empleado</li>
+</ul></li>
+<li>&quot;antiguedad&quot;        : 228 
+
+<ul>
+<li> Número de semanas que el empleado ha mantenido relación laboral con el empleador</li>
+</ul></li>
+<li>&quot;puesto&quot;            : Administarción 
+
+<ul>
+<li>  Puesto asignado al empleado o actividad que realiza</li>
+</ul></li>
+<li>&quot;tipo_contrato&quot;     : Base<br>
+
+<ul>
+<li> Tipo de contrato que tiene el trabajador: Base, Eventual, Confianza, Sindicalizado, a prueba, etc</li>
+</ul></li>
+<li>&quot;tipo_jornada&quot;      : Diurna 
+
+<ul>
+<li> Tipo de jornada que cubre el trabajador: Diurna, nocturna, mixta, por hora, reducida, continuada, partida, por turnos, etc.</li>
+</ul></li>
+<li>&quot;periodicidad_pago&quot; : Quincenal 
+
+<ul>
+<li> Forma en que se establece el pago del salario: diario, semanal, quincenal, catorcenal mensual, bimestral, unidad de obra, comisión, precio alzado, etc.</li>
+</ul></li>
+<li>&quot;salario_base&quot;      : 10000.00 
+
+<ul>
+<li> Retribución otorgada al trabajador, que se integra por los pagos hechos en efectivo por cuota diaria, gratificaciones, percepciones, alimentación, habitación, primas, comisiones, prestaciones en especie y cualquiera otra cantidad o prestación que se entregue al trabajador por su trabajo</li>
+</ul></li>
+<li>&quot;riesgo_puesto&quot;     : 1 
+
+<ul>
+<li> Clave conforme a la Clase en que deben inscribirse los patrones, de acuerdo a las actividades que desempeñan sus trabajadores, según lo previsto en el artículo 196 del Reglamento en Materia de Afiliación Clasificación de Empresas, Recaudación y Fiscalización. Catálogo publicado en el portal del SAT en internet</li>
+</ul></li>
+<li><p>&quot;salario_diario_integrado&quot;: 696.80 </p>
+
+<ul>
+<li> Salario diario integrado</li>
+</ul></li>
+<li><p>percepciones</p>
+
+<ul>
+<li>&quot;total_gravado_percepciones: 13000.00<br></li>
+<li> Atributo requerido para expresar el total de Percepciones gravados que se relaciona en el comprobante</li>
+<li>&quot;total_exento_percepciones&quot;: 379.00<br></li>
+<li> Atributo requerido para expresar el total de Percepciones exentos que se relaciona en el comprobante </li>
+</ul></li>
+<li><p>percepción&quot; (se repite por cada concepto de percepciones):</p>
+
+<ul>
+<li>&quot;tipo_percepcion&quot;: 001<br></li>
+<li> Atributo requerido para la descripción de un tipo de Percepcion conforme al catálogo actual del DIMM</li>
+<li>&quot;clave&quot;          : 123<br></li>
+<li> Atributo requerido, representa la clave de Percepcion de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres<br></li>
+<li>&quot;concepto&quot;       : Sueldos, Salarios Rayas y Jornales </li>
+<li> Atributo requerido para la descripción del concepto de Percepcion</li>
+<li>&quot;importe_gravado&quot;: 10000.00<br></li>
+<li> Atributo requerido, representa el importe gravado de un concepto de Percepcion</li>
+<li>&quot;importe_exento&quot; : 0.00<br></li>
+<li> Atributo requerido, representa el importe exento de un concepto de Percepcion</li>
+</ul></li>
+<li><p>deducciones:</p>
+
+<ul>
+<li>&quot;total_gravado_deducciones&quot;: 3332.10<br></li>
+<li> Atributo requerido para expresar el total de deducciones gravados que se relaciona en el comprobante</li>
+<li>&quot;total_exento_deducciones&quot; : 0.0<br></li>
+<li> Atributo requerido para expresar el total de deducciones exentos que se relaciona en el comprobante</li>
+<li>&quot;deducción&quot; (se repite por cada concepto de percepciones):</li>
+<li>&quot;tipo_deduccion&quot; : 345<br></li>
+<li> Atributo requerido para la descripción del tipo de Deduccion conforme al catálogo actual del DIMM </li>
+<li>&quot;clave&quot;          : 2323<br></li>
+<li> Atributo requerido para la clave de Deduccion de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres<br></li>
+<li>&quot;concepto&quot;       : Seguro Social<br></li>
+<li> Atributo requerido para la descripción del concepto de Deduccion<br></li>
+<li>&quot;importe_gravado&quot;: 278.39<br></li>
+<li> Atributo requerido, representa el importe gravado de un concepto de Deducciónn</li>
+<li>&quot;importe_exento&quot; : 0.00<br></li>
+<li> Atributo requerido, representa el importe exento de un concepto de Deduccion<br></li>
+</ul></li>
+<li><p>incapacidades</p>
+
+<ul>
+<li>&quot;incapacidad&quot; (se repite por cada concepto de incapacidad)</li>
+<li>&quot;dias&quot;     : 2 </li>
+<li> Número de días que el trabajador se incapacitó en el periodo</li>
+<li>&quot;tipo&quot;     : 1 </li>
+<li> Razón de la incapacidad: Catálogo publicado en el portal del SAT en internet</li>
+<li>&quot;descuento&quot;: 1000.00 </li>
+<li> Monto del descuento por la incapacidad</li>
+</ul></li>
+<li><p>horas_extra</p>
+
+<ul>
+<li>&quot;hora_extra&quot; (se repite por cada concepto de hora extra)</li>
+<li>dias: 2 </li>
+<li> Número de días en que el trabajador realizó horas extra en el periodo</li>
+<li>&quot;tipo&quot;: 1 </li>
+<li> Tipo de pago de las horas extra: dobles o triples Dobles</li>
+<li>&quot;horas&quot;: 3 </li>
+<li> Número de horas extra trabajadas en el periodo</li>
+<li>&quot;importe_pagado&quot;: 1000.00 </li>
+<li> Importe pagado por las horas extra</li>
+</ul></li>
+</ul>
+
+<h3>Ejemplo</h3>
+<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"> <span class="nt">&lt;cfdi:Complemento&gt;</span>
+    <span class="nt">&lt;nomina:Nomina</span> <span class="na">RegistroPatronal=</span><span class="s">&quot;23232&quot;</span> <span class="na">NumEmpleado=</span><span class="s">&quot;9872&quot;</span> <span class="na">CURP=</span><span class="s">&quot;TARE860821HNLRNL09&quot;</span> <span class="na">TipoRegimen=</span><span class="s">&quot;1&quot;</span> <span class="na">NumSeguridadSocial=</span><span class="s">&quot;98765434&quot;</span> <span class="na">FechaPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">FechaInicialPago=</span><span class="s">&quot;2013-11-1&quot;</span> <span class="na">FechaFinalPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">NumDiasPagados=</span><span class="s">&quot;15&quot;</span> <span class="na">Departamento=</span><span class="s">&quot;Administración&quot;</span> <span class="na">CLABE=</span><span class="s">&quot;123123123123123123&quot;</span> <span class="na">Banco=</span><span class="s">&quot;123&quot;</span> <span class="na">FechaInicioRelLaboral=</span><span class="s">&quot;2009-06-01&quot;</span> <span class="na">Antiguedad=</span><span class="s">&quot;228&quot;</span> <span class="na">Puesto=</span><span class="s">&quot;Administración&quot;</span> <span class="na">TipoContrato=</span><span class="s">&quot;Base&quot;</span> <span class="na">TipoJornada=</span><span class="s">&quot;Diurna&quot;</span> <span class="na">PeriodicidadPago=</span><span class="s">&quot;Quincenal&quot;</span> <span class="na">SalarioBaseCotApor=</span><span class="s">&quot;10000&quot;</span> <span class="na">RiesgoPuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">SalarioDiarioIntegrado=</span><span class="s">&quot;696.8&quot;</span><span class="nt">&gt;</span>
+       <span class="nt">&lt;nomina:Percepciones</span> <span class="na">TotalGravado=</span><span class="s">&quot;13000&quot;</span> <span class="na">TotalExento=</span><span class="s">&quot;379&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">Clave=</span><span class="s">&quot;123&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Sueldos, Salarios Rayas y Jornales&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;10000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
+          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;2&quot;</span> <span class="na">Clave=</span><span class="s">&quot;124&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Premios por puntualidad&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
+          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;3&quot;</span> <span class="na">Clave=</span><span class="s">&quot;125&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Premios por Asistencia&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
+          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;455&quot;</span> <span class="na">Clave=</span><span class="s">&quot;56d&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Bonos de Despensa&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;0&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;379&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
+          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;432&quot;</span> <span class="na">Clave=</span><span class="s">&quot;5445&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Horas Extra&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
+       <span class="nt">&lt;/nomina:Percepciones&gt;</span>
+       <span class="nt">&lt;nomina:Deducciones</span> <span class="na">TotalGravado=</span><span class="s">&quot;3332.1&quot;</span> <span class="na">TotalExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;345&quot;</span> <span class="na">Clave=</span><span class="s">&quot;2323&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Seguro Social&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;278.39&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
+          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;&quot;</span> <span class="na">Clave=</span><span class="s">&quot;231&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;ISPT&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;2053.71&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
+          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;&quot;</span> <span class="na">Clave=</span><span class="s">&quot;653&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;incapacidad&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
+          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;&quot;</span> <span class="na">Clave=</span><span class="s">&quot;223&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Comedor&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;0&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
+       <span class="nt">&lt;/nomina:Deducciones&gt;</span>
+       <span class="nt">&lt;nomina:Incapacidades&gt;</span>
+          <span class="nt">&lt;nomina:Incapacidad</span> <span class="na">DiasIncapacidad=</span><span class="s">&quot;2&quot;</span> <span class="na">TipoIncapacidad=</span><span class="s">&quot;1&quot;</span> <span class="na">Descuento=</span><span class="s">&quot;1000&quot;</span><span class="nt">&gt;&lt;/nomina:Incapacidad&gt;</span>
+       <span class="nt">&lt;/nomina:Incapacidades&gt;</span>
+       <span class="nt">&lt;nomina:HorasExtras&gt;</span>
+          <span class="nt">&lt;nomina:HorasExtra</span> <span class="na">Dias=</span><span class="s">&quot;2&quot;</span> <span class="na">TipoHoras=</span><span class="s">&quot;Dobles&quot;</span> <span class="na">HorasExtra=</span><span class="s">&quot;3&quot;</span> <span class="na">ImportePagado=</span><span class="s">&quot;1000&quot;</span><span class="nt">&gt;&lt;/nomina:HorasExtra&gt;</span>
+       <span class="nt">&lt;/nomina:HorasExtras&gt;</span>
+    <span class="nt">&lt;/nomina:Nomina&gt;</span>
+ <span class="nt">&lt;/cfdi:Complemento&gt;</span>
+</code></pre></div>
             </div>
           </div>
         </div>

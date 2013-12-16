@@ -126,7 +126,50 @@
               <h1>Sello<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              
+              <p>El CFD requiere el atributos <em>&quot;sello&quot;</em>, que avalan la autenticidad de de los datos contenidos en el archivo que enviamos al SAT.</p>
+
+<p>* Para explicar el proceso, los siguientes ejemplos utilizan la herramienta openssl (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.openssl.org/related/binaries.html">aquí</a>).</p>
+
+<h2>Recursos previos:</h2>
+
+<ol>
+<li><a href="/timbre/cfd/cadena.html">Cadena original</a> (archivo <a href="/timbre/resources/cadena_ejemplo.txt">.txt</a>)</li>
+<li>Llave de certificado (archivo <a href="/timbre/resources/CSD/aaa010101aaa.key">.key</a>)</li>
+<li>Contraseña de la firma</li>
+</ol>
+
+<h2>Secuencia de pasos:</h2>
+
+<ol>
+<li>Generar la llave de firmado (archivo .pem)</li>
+<li>Firmar la cadena original</li>
+<li>Transformar la firma a base64</li>
+</ol>
+
+<hr>
+
+<p>Para generar la llave de firmado (archivo .pem), ejecuta:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl pkcs8 -inform DET -in aaa010101aaa.key -passin pass:12345678a -out key.pem
+</code></pre></div>
+<p>Obtendrás un archivo key.pem que podrás usar en todos los firmados que realices con el mismo certificado.</p>
+
+<p>* Este proceso solo deberás ejecutarlo una vez, cada renueves el certificado.</p>
+
+<hr>
+
+<p>Para firmar la cadena original, utiliza el archivo .pem (que acabas de generar) sobre la cadena original, aplicando el método de digestión SHA-1:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl dgst -sha1 -out sign.bin -sign key.pem cadena_ejemplo.txt
+</code></pre></div>
+<p>Obtendrás un archivo sign.bin de 20 bytes, que contiene la cadena original firmada con tu certificada.</p>
+
+<hr>
+
+<p>Para integrarla al comprobante deberás transformarla a base64. Puedes hacerlo con este comando de lectura segura:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in sign.bin -a -A -out signB64.txt
+</code></pre></div>
+<p>Obtendrás un archivo signB64.txt que contiene el sello listo para colocarlo en el atributo <em>&quot;sello&quot;</em> del <a href="/timbre/cfd">cfd</a>.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;
+</code></pre></div>
             </div>
           </div>
         </div>
