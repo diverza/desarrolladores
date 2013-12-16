@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -242,10 +242,10 @@
 <div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
 </code></pre></div>
 <p>Ahora deberemos indicar que realizaremos una petición a la URL del servicio de timbre, usando el metodo POST y como cuerpo del mensaje el CFD que deseamos timbrar:</p>
-<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">request</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBufferString</span><span class="p">(</span><span class="nx">cfd</span><span class="p">))</span>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">request</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">,</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewBufferString</span><span class="p">(</span><span class="nx">cfd</span><span class="p">))</span>
 </code></pre></div>
-<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">)</span>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">request</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;ABCD1234&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de timbrado:</p>
 <div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">response</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">request</span><span class="p">)</span>

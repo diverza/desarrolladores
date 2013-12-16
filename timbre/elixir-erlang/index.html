@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de pruebas: http://lol:4444/stamp
- Token de pruebas: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de pruebas: http://staging.diverza.com/stamp
+ Token de pruebas: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -230,12 +230,12 @@
 <div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="ss">:inets</span><span class="o">.</span><span class="n">start</span>
 </code></pre></div>
 <p>Creamos una variable para almacenar la dirección HTTP del servicio de timbrado:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://213.239.207.18:4444/stamp&#39;</span>
+<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://staging.diverza.com/stamp&#39;</span>
 </code></pre></div>
 <p><strong>Nota:</strong> Se agrega la URL completa como viene en el inicio de la guía.</p>
 
 <p>El siguiente paso es crear una lista para los Headers de la petición, estos son necesarios para incluir el token de seguridad:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">headers</span> <span class="o">=</span> <span class="p">[{</span> <span class="s1">&#39;x-auth-token&#39;, &#39;abc&#39;</span> <span class="p">}]</span>
+<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">headers</span> <span class="o">=</span> <span class="p">[{</span> <span class="s1">&#39;x-auth-token&#39;, &#39;ABCD1234&#39;</span> <span class="p">}]</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición al servidor indicando que utilizaremos el método <em>POST</em> y como cuerpo del mensaje deberá agregar el CFD a timbrar:</p>
 <div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="p">{</span> <span class="ss">:ok</span><span class="p">,</span> <span class="p">{</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">http_code</span><span class="p">,</span> <span class="n">_</span> <span class="p">},</span> <span class="n">_</span><span class="p">,</span> <span class="n">stamp_response</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="ss">:httpc</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="ss">:post</span><span class="p">,</span> <span class="p">{</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">cfd</span> <span class="p">},</span> <span class="p">[],</span> <span class="p">[])</span>

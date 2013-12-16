@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -249,11 +249,11 @@
 <span class="p">{</span>
   <span class="n">WebClient</span> <span class="n">webClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebClient</span><span class="p">();</span>
 </code></pre></div>
-<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="n">webClient</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;abc&quot;</span><span class="p">);</span>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="n">webClient</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;ABCD1234&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de timbrado indicando la URL del servicio de timbrado, el metodo HTTP POST y el CFD que deseamos timbrar:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">stamp</span> <span class="p">=</span> <span class="n">webClient</span><span class="p">.</span><span class="n">UploadString</span><span class="p">(</span><span class="s">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="n">cfd</span><span class="p">);</span>
+<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">stamp</span> <span class="p">=</span> <span class="n">webClient</span><span class="p">.</span><span class="n">UploadString</span><span class="p">(</span><span class="s">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="n">cfd</span><span class="p">);</span>
 </code></pre></div>
 <hr>
 

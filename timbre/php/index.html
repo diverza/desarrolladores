@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -232,18 +232,18 @@
 <div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">$request_options = array(</span>
 <span class="x">  &#39;http&#39; =&gt; array(</span>
 <span class="x">    &#39;method&#39; =&gt; &quot;POST&quot;,</span>
-<span class="x">    &#39;header&#39; =&gt; &quot;x-auth-token: abc\r\n&quot;,</span>
+<span class="x">    &#39;header&#39; =&gt; &quot;x-auth-token: ABCD1234\r\n&quot;,</span>
 <span class="x">    &#39;content&#39; =&gt; $cfd,</span>
 <span class="x">    &#39;ignore_errors&#39; =&gt; true</span>
 <span class="x">));</span>
 </code></pre></div>
-<p>El token de seguridad que se utilizara para la guía sera el de prueba <strong>TOKEN</strong>, sin embargo una vez que se desee pasar a ambiente productivo este deberá ser cambiado. </p>
+<p>El token de seguridad que se utilizara para la guía sera el de prueba <strong>ABCD1234</strong>, sin embargo una vez que se desee pasar a ambiente productivo este deberá ser cambiado. </p>
 
 <p>Para realizar la petición es necesario crear una instancia de <em>stream context</em> utilizando el siguiente método pasándole como parámetro las opciones anteriormente creadas:</p>
 <div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">$stream_context = stream_context_create($request_options);</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de la siguiente manera:</p>
-<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">$response = file_get_contents(&#39;http://213.239.207.18:4444/stamp&#39;, false, $stream_context);</span>
+<div class="highlight"><pre><code class="php language-php" data-lang="php"><span class="x">$response = file_get_contents(&#39;http://staging.diverza.com/stamp&#39;, false, $stream_context);</span>
 </code></pre></div>
 <p><strong>Nota:</strong> Se agrego la URL tal cual como se muestra al inicio de la guía.</p>
 

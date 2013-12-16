@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -255,11 +255,11 @@
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Set</span> <span class="n">xmlhttp</span> <span class="o">=</span> <span class="no">New</span> <span class="n">xmlhttp</span>
 </code></pre></div>
 <p>Ahora deberemos abrir la conexión con el servicio de timbrado indicando la URL y que utilizaremos el metodo HTTP POST:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://213.239.207.18:4444/stamp&quot;</span>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://staging.diverza.com/stamp&quot;</span>
 <span class="n">xmlhttp</span><span class="o">.</span><span class="n">Open</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">False</span>
 </code></pre></div>
-<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">setRequestHeader</span> <span class="s2">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s2">&quot;abc&quot;</span>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">setRequestHeader</span> <span class="s2">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s2">&quot;ABCD1234&quot;</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de timbrado indicando el CFD que deseamos timbrar:</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">send</span> <span class="n">cfd</span>

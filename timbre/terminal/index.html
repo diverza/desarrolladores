@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -221,11 +221,11 @@
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
 <p>El siguiente paso es usando la terminal o linea de comandos colocarnos en la ruta donde se encuentra el archivo que creamos previamente y ejecutar lo siguiente:</p>
-<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">cURL http://213.239.207.18:4444/stamp -X POST --data @cfd.xml -H <span class="s2">&quot;x-auth-token: abc&quot;</span> -i
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">cURL http://staging.diverza.com/stamp -X POST --data @cfd.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
-<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de timbrado, utilizando el metodo POST, agregando como cuerpo del mensaje el CFD a timbrar y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>TOKEN DE SEGURIDAD</strong>.</p>
+<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de timbrado, utilizando el metodo POST, agregando como cuerpo del mensaje el CFD a timbrar y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>ABCD1234</strong>.</p>
 
 <p>Una vez ejecutado el comando podremos observar en la respuesta, que el timbre es devuelto en el cuerpo de la petición, siendo algo similar a lo siguiente:</p>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 

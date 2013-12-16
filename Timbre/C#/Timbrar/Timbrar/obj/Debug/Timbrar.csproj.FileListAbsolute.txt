@@ -1,6 +1,0 @@
-c:\users\juanj_000\documents\visual studio 2013\Projects\Timbrar\Timbrar\bin\Debug\Timbrar.exe.config
-c:\users\juanj_000\documents\visual studio 2013\Projects\Timbrar\Timbrar\bin\Debug\Timbrar.exe
-c:\users\juanj_000\documents\visual studio 2013\Projects\Timbrar\Timbrar\bin\Debug\Timbrar.pdb
-c:\users\juanj_000\documents\visual studio 2013\Projects\Timbrar\Timbrar\obj\Debug\Timbrar.csprojResolveAssemblyReference.cache
-c:\users\juanj_000\documents\visual studio 2013\Projects\Timbrar\Timbrar\obj\Debug\Timbrar.exe
-c:\users\juanj_000\documents\visual studio 2013\Projects\Timbrar\Timbrar\obj\Debug\Timbrar.pdb

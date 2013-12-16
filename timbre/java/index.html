@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -247,7 +247,7 @@
 <h3>Petición HTTP</h3>
 
 <p>Para realizar una petición HTTP desde Java es necesario tener una instancia del objeto <em>URL</em>* lo cual se realiza de la siguiente manera:</p>
-<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="o">);</span>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="n">URL</span><span class="o">(</span><span class="s">&quot;http://staging.diverza.com/stamp&quot;</span><span class="o">);</span>
 </code></pre></div>
 <p>Ahora es necesario abrir la conexión a esa URL:</p>
 <div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">HttpURLConnection</span> <span class="n">connection</span> <span class="o">=</span> <span class="o">(</span><span class="n">HttpURLConnection</span><span class="o">)</span><span class="n">url</span><span class="o">.</span><span class="na">openConnection</span><span class="o">();</span>
@@ -258,8 +258,8 @@
 <p>El siguiente paso es indicarle a la conexión que esta utilizara el metodo POST de HTTP:</p>
 <div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">connection</span><span class="o">.</span><span class="na">setRequestMethod</span><span class="o">(</span><span class="s">&quot;POST&quot;</span><span class="o">);</span>
 </code></pre></div>
-<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="o">,</span> <span class="s">&quot;abc&quot;</span><span class="o">);</span>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">connection</span><span class="o">.</span><span class="na">setRequestProperty</span><span class="o">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="o">,</span> <span class="s">&quot;ABCD1234&quot;</span><span class="o">);</span>
 </code></pre></div>
 <p>Finalmente enviamos el CFD que deseamos timbrar al servicio:</p>
 <div class="highlight"><pre><code class="java language-java" data-lang="java"><span class="n">DataOutputStream</span> <span class="n">dataOutputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DataOutputStream</span><span class="o">(</span><span class="n">connection</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">());</span>

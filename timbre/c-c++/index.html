@@ -135,8 +135,8 @@
 <h2>Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://lol:4444/stamp
- Token de prueba: AAAA111123344
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
@@ -380,13 +380,13 @@
 <span class="n">writeStructure</span><span class="o">.</span><span class="n">sizeleft</span> <span class="o">=</span> <span class="p">(</span><span class="n">long</span><span class="p">)</span><span class="n">strlen</span><span class="p">(</span><span class="n">cfd</span><span class="p">);</span>
 </code></pre></div>
 <p>Agregamos a la petición de cURL la URL del servicio de timbrado:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">&quot;http://213.239.207.18:4444/stamp&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Es necesario que la petición use el metodo HTTP post:</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="n">L</span><span class="p">);</span>
 </code></pre></div>
-<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>TOKEN DE PRUEBA</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">headers</span> <span class="o">=</span> <span class="n">curl_slist_append</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="s2">&quot;x-auth-token: abc&quot;</span><span class="p">);</span>
+<p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
+<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">headers</span> <span class="o">=</span> <span class="n">curl_slist_append</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span><span class="p">);</span>
 <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span><span class="n">headers</span><span class="p">);</span>
 </code></pre></div>
 <p>Es necesario decirle a la petición de cURL que utilizaremos dos funciones una para la escritura del mensaje en el servicio de timbrado y la otra para la escritura:</p>
