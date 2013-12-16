@@ -157,10 +157,13 @@
 </ol>
 
 <p>Y ejecutar las instrucciones:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in CSD/aaa010101aaa.cer  -a -A -out cerB64.txt
+<div class="highlight"><pre><code class="text language-text" data-lang="text">OpenSSL X509 -inform DER -in aaa010101aaa.cer -serial
 </code></pre></div>
-<p>Obtendrás un archivo de texto con el certificado en base64.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">
+<p>Obtendrás el número de serie en ascii hexadecimal. Deberás transformar a texto legible, elimina el primer número (siempre 3) de cada par</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">32 30 30 30 31 30 30 30 30 30 30 31 30 30 30 30 35 38 36 37
+
+
+20001000000100005867
 </code></pre></div>
             </div>
           </div>
