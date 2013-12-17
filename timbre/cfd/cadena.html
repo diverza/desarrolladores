@@ -126,7 +126,7 @@
               <h1>Cadena original<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>La cadena original es la secuencia de datos formada con la información contenida dentro del comprobante fiscal digital.</p>
+              <p>La cadena original es la secuencia de datos formada con parte de la información contenida dentro del comprobante fiscal digital.</p>
 
 <p>Con la cadena original y tu <a href="/timbre/cfd/certificado.html">certificado</a>, podrás generar el <a href="/timbre/cfd/sello.html">sello</a> que también debes colocar en el comprobante.</p>
 
@@ -175,8 +175,18 @@
 
 <h3>Secuencia de formación</h3>
 
-<p>La secuencia de formación será siempre en el orden que se expresa a continuación, tomando en cuenta las reglas generales expresadas en el párrafo anterior.
-Puedes consultarlo en el <a href="/timbre/resources/Anexo20_cfdiv32_30122011.pdf">Anexo 20</a>, página 52</p>
+<p>La secuencia de formación será siempre en el orden que se expresa a continuación, tomando en cuenta las reglas generales expresadas en el párrafo anterior.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">**||version|fecha|tipoDeComprobante|formaDePago|condicionesDePago|subTotal|descuento|TipoCambio|Moneda|total|metodoDePago|LugarExpedicion|NumCtaPago|FolioFiscalOrig|SerieFolioFiscalOrig|FechaFolioFiscalOrig|MontoFolioFiscalOrig|Emisor:rfc|Emisor:nombre|Emisor:DomicilioFiscal:calle|Emisor:DomicilioFiscal:noExterior|Emisor:DomicilioFiscal:noInterior|Emisor:DomicilioFiscal:colonia|Emisor:DomicilioFiscal:localidad|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:municipio|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:pais|Emisor:DomicilioFiscal:codigoPostal|Emisor:ExpedidoEn:calle|Emisor:ExpedidoEn:noExterior|Emisor:ExpedidoEn:noInterior|Emisor:ExpedidoEn:colonia|Emisor:ExpedidoEn:localidad|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:municipio|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:pais|Emisor:ExpedidoEn:codigoPostal|Emisor:RegimenFiscal:Regimen|Receptor:rfc|Receptor:nombre|Receptor:DomicilioFiscal:calle|Receptor:DomicilioFiscal:noExterior|Receptor:DomicilioFiscal:noInterior|Receptor:DomicilioFiscal:colonia|Receptor:DomicilioFiscal:localidad|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:municipio|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:pais|Receptor:DomicilioFiscal:codigoPostal|Concepto:cantidad|Concepto:unidad|Concepto:noIdentificacion|Concepto:descripcion|Concepto:valorUnitario|Concepto:importe|Concepto:InformacionAduanera:numero|Concepto:InformacionAduanera:fecha|Concepto:InformacionAduanera:aduana|Concepto:CuentaPredial:numero|ComplementoConcepto|Impuestos:Retencion:impuesto|Impuestos:Retencion:importe|Impuestos:totalImpuestosRetenidos|Impuestos:Traslado:impuesto|Impuestos:Traslado:importe|Impuestos:totalImpuestosTrasladados||
+</code></pre></div>
+<p>* Los campos no obligatorios en la definición del CFDi, se podrían ignorar en la cadena. Como <strong>Emisor:ExpedidoEn</strong> <strong>Receptor:ExpedidoEn</strong></p>
+
+<p>* Para cada los nodos de <strong>Emisor:RegimenFiscal</strong>, se deberá incluir cada valor <em>Regimen</em></p>
+
+<p>* Para cada los nodos de <strong>Concepto:InformacionAduanera</strong> deberá incluir cada valor <em>numero</em>, <em>fecha</em>, <em>aduana</em></p>
+
+<p>* Para todos los nodos de <strong>Impuestos:Trasladado</strong> y <strong>Impuestos:Retencion</strong> <em>impuesto</em>, <em>importe</em></p>
+
+<p>Puedes consultarlo en el <a href="/timbre/resources/Anexo20_cfdiv32_30122011.pdf">Anexo 20</a>, página 48</p>
 
             </div>
           </div>
@@ -197,9 +207,7 @@ Puedes consultarlo en el <a href="/timbre/resources/Anexo20_cfdiv32_30122011.pdf
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/addendas">Addendas</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos">Complementos</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento Nómina</a></li>
                     </ul>               
                 </div>
 

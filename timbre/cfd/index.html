@@ -128,7 +128,7 @@
               <div class="clr">&nbsp;</div>
               <p><strong>El CFD</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales</em> generados por medios propios.</p>
 
-<p><strong>El CFDi</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales por Internet</em> certificados por el emisor y sellados por el SAT.</p>
+<p><strong>El CFDi</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales por Internet</em> certificados por el emisor y sellados por el PAC.</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text"> Recuerda que a partir del 2014 todas las facturas electrónicas deberán ser certificadas o timbradas por un PAC.
 
  Diverza provee el servicio para convertirlas en un CFDi:
@@ -153,7 +153,7 @@
 <li>Metadatos de seguridad, como tu certificado, serie y cadena original</li>
 <li>Complemento con el timbre del SAT</li>
 </ul>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">El servicio de **timbre fiscal** recibe CFDi completos sin el complemento de **TimbreFiscalDigital**; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
+<div class="highlight"><pre><code class="text language-text" data-lang="text">El servicio de timbre fiscal recibe CFDi completos sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
 </code></pre></div>
 <h3>Ejemplo de un CFDi</h3>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -312,20 +312,24 @@
 <li><strong>selloSAT</strong> = ...
 
 <ul>
-<li>sello devuelto por el SAT</li>
+<li>Sello de recepción</li>
 </ul></li>
 <li><strong>noCertificadoSAT</strong>
 
 <ul>
-<li>número de certificado usado por el SAT</li>
+<li>Número de certificado de la recepción</li>
 </ul></li>
-<li>selloCFD= <em>Mismo sello con que fue enviado el documento</em></li>
+<li>selloCFD = ...
+
+<ul>
+<li>Mismo sello con que fue enviado el documento</li>
+</ul></li>
 <li><strong>FechaTimbrado</strong>=&quot;2013-12-09T19:57:34&quot;
 
 <ul>
-<li>La fecha y hora de ejecucuón del timbrado</li>
+<li>La fecha y hora de ejecución del timbrado</li>
 </ul></li>
-<li><strong>UUID</strong>=&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;
+<li><strong>UUID</strong> = ...
 
 <ul>
 <li>Identificador del comprobante ante el SAT</li>
@@ -333,7 +337,7 @@
 <li>version=&quot;1.0&quot;</li>
 </ul>
 
-<p>* Los campos en <strong>negritas</strong> representan a los nodos de información que responde el SAT.</p>
+<p>* Los campos en <strong>negritas</strong> representan a los nodos de información que genera diverza como PAC y es entregada al SAT.</p>
 
 <h4>Complemento nómina</h4>
 
@@ -360,9 +364,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/addendas">Addendas</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos">Complementos</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento Nómina</a></li>
                     </ul>               
                 </div>
 

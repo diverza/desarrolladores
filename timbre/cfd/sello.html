@@ -126,7 +126,7 @@
               <h1>Sello<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>El CFDi requiere el atributos <em>&quot;sello&quot;</em>, que avalan la autenticidad de de los datos contenidos en el archivo que enviamos al SAT.</p>
+              <p>El CFDi requiere el atributo <strong>sello</strong>, que avala la autenticidad de los datos contenidos en el archivo que enviamos al SAT.</p>
 
 <p>* Para explicar el proceso, los siguientes ejemplos utilizan la herramienta openssl (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.openssl.org/related/binaries.html">aquí</a>).</p>
 
@@ -164,7 +164,7 @@
 
 <hr>
 
-<p>Para integrarla al comprobante deberás transformarla a base64. Puedes hacerlo con este comando de lectura segura:</p>
+<p>Para integrarla al comprobante deberás transformarla a formato base64. Puedes hacerlo con este comando de lectura segura:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in sign.bin -a -A -out signB64.txt
 </code></pre></div>
 <p>Obtendrás un archivo signB64.txt que contiene el sello listo para colocarlo en el atributo <em>&quot;sello&quot;</em> del <a href="/timbre/cfd">cfdi</a>.</p>
@@ -189,9 +189,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/addendas">Addendas</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos">Complementos</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento Nómina</a></li>
                     </ul>               
                 </div>
 
