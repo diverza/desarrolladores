@@ -157,7 +157,7 @@
 </ol>
 
 <p>Y ejecutar las instrucciones:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">OpenSSL X509 -inform DER -in aaa010101aaa.cer -serial
+<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl x509 -inform DER -in aaa010101aaa.cer -serial -noout
 </code></pre></div>
 <p>Obtendrás el número de serie en ascii hexadecimal. Deberás transformar a texto legible, elimina el primer número (siempre 3) de cada par</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">32 30 30 30 31 30 30 30 30 30 30 31 30 30 30 30 35 38 36 37
