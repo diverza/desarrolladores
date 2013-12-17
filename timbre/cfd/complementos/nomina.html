@@ -126,188 +126,218 @@
               <h1>complemento de nómina<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Debe colocarse un complemento de nómina por recibo.</p>
+              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesta en el primer nivel del xml.</p>
 
-<p>El complemento contine información laboral del patrón y el empleado.</p>
+<p>Para este complemento, como los demás, debe colocarse un complemento de nómina por recibo.</p>
 
-<p>Puedes descargar la documentación y definición del complemento en el [sitio del SAT][<a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_26019.html">nomina_sat</a>.</p>
+<p>El complemento contine información laboral del patrón y el empleado. Además del detalle de las percepciones y deducciones realizadas por el periodo de tiempo especificado.</p>
+
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_26019.html">sitio del SAT</a>.</p>
 
 <h2>Datos del complemento de nómina</h2>
 
 <p>A continuación una descripción y ejemplo de cada atributo en el  complemento.</p>
 
 <ul>
-<li>&quot;registro_patronal&quot; : 23232<br>
+<li><strong>RegistroPatronal</strong>       : 23232<br>
 
 <ul>
-<li> Atributo requerido para expresar el registro patronal a 20 posiciones máximo</li>
+<li> Registro patronal a 20 posiciones máximo</li>
 </ul></li>
-<li>&quot;num_empleado&quot;      : 9872<br>
+<li><strong>NumEmpleado</strong>            : 9872<br>
 
 <ul>
-<li> Atributo requerido para expresar el número de empleado de 1 a 15 posiciones</li>
+<li> Número de empleado de 1 a 15 posiciones</li>
 </ul></li>
-<li>&quot;curp_empleado&quot;     : TARE860821HNLRNL09<br>
+<li><strong>CURP</strong>                   : TARE860821HNLRNL09
 
 <ul>
-<li> Atributo requerido para la expresión de la CURP del trabajador<br></li>
+<li> CURP del trabajador</li>
 </ul></li>
-<li>&quot;tipo_regimen&quot;      : Asimilados a salarios<br>
+<li><strong>TipoRegimen</strong>            : 1<br>
 
 <ul>
-<li> Atributo requerido para la expresión del tipo de régimen por el cual se tiene contratado al trabajador Este tiene dos posibles valores: “Asimilados a salarios” o “Sueldos y salarios”</li>
+<li> Clave del tipo de régimen por el cual se tiene contratado al trabajador Este tiene dos posibles valores: “Asimilados a salarios” o “Sueldos y salarios”</li>
 </ul></li>
-<li>&quot;num_seguro_social&quot; : 98765434<br>
+<li>NumSeguridadSocial     : 98765434
 
 <ul>
-<li> Atributo opcional para la expresión del número de seguridad social aplicable al trabajador<br></li>
+<li> Expresión del número de seguridad social aplicable al trabajador</li>
 </ul></li>
-<li>&quot;fecha_pago&quot;        : 2013-11-15<br>
+<li><strong>FechaPago</strong>              : 2013-11-15
 
 <ul>
-<li> Atributo requerido para la expresión de la fecha efectiva de erogación del gasto. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.<br></li>
+<li> Fecha efectiva de erogación del gasto. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
 </ul></li>
-<li>&quot;fecha_inicial_pago&quot;: 2013-11-01 
+<li><strong>FechaInicialPago</strong>       : 2013-11-01
 
 <ul>
-<li> Atributo requerido para la expresión de la fecha inicial del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.<br></li>
+<li> Fecha inicial del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
 </ul></li>
-<li>&quot;fecha_final_pago&quot;  : 2013-11-15<br>
+<li><strong>FechaFinalPago</strong>         : 2013-11-15<br>
 
 <ul>
-<li>  Atributo requerido para la expresión de la fecha final del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
+<li> Fecha final del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
 </ul></li>
-<li>&quot;num_dias_pagados&quot;  : 15<br>
+<li>NumDiasPagados         : 15<br>
 
 <ul>
-<li> Atributo opcional para la expresión del número de días pagados</li>
+<li> Número de días pagados</li>
 </ul></li>
-<li>&quot;departamento&quot;      : Administarción 
+<li>Departamento           : Administración<br>
 
 <ul>
-<li> Atributo opcional para la expresión del departamento o área a la que pertenece el trabajador</li>
+<li> Departamento o área a la que pertenece el trabajador</li>
 </ul></li>
-<li>&quot;clabe&quot;             : 123123123123123123 
+<li>CLABE                  : 123123123123123123<br>
 
 <ul>
-<li> Atributo opcional para la expresión de la CLABE </li>
+<li> CLABE interbancaria</li>
 </ul></li>
-<li>&quot;banco&quot;             : 123<br>
+<li>Banco                  : 123<br>
 
 <ul>
-<li> Atributo opcional para la expresión del Banco conforme al catalógo, donde se realiza un depósito de nómina</li>
+<li> Clave del banco conforme al catalógo, donde se realiza un depósito de nómina</li>
 </ul></li>
-<li>&quot;fecha_inicio_relacion_laboral&quot;: 2009-06-01 
+<li><strong>FechaInicioRelLaboral</strong>  : 2009-06-01
 
 <ul>
-<li>        Atributo requerido para expresar la fecha de inicio de la relación laboral entre el empleador y el empleado</li>
+<li> Fecha de inicio de la relación laboral entre el empleador y el empleado</li>
 </ul></li>
-<li>&quot;antiguedad&quot;        : 228 
+<li>Antiguedad             : 228<br>
 
 <ul>
 <li> Número de semanas que el empleado ha mantenido relación laboral con el empleador</li>
 </ul></li>
-<li>&quot;puesto&quot;            : Administarción 
+<li>Puesto                 : Administración<br>
 
 <ul>
-<li>  Puesto asignado al empleado o actividad que realiza</li>
+<li> Puesto asignado al empleado o actividad que realiza</li>
 </ul></li>
-<li>&quot;tipo_contrato&quot;     : Base<br>
+<li>TipoContrato           : Base<br>
 
 <ul>
 <li> Tipo de contrato que tiene el trabajador: Base, Eventual, Confianza, Sindicalizado, a prueba, etc</li>
 </ul></li>
-<li>&quot;tipo_jornada&quot;      : Diurna 
+<li>TipoJornada            : Diurna<br>
 
 <ul>
 <li> Tipo de jornada que cubre el trabajador: Diurna, nocturna, mixta, por hora, reducida, continuada, partida, por turnos, etc.</li>
 </ul></li>
-<li>&quot;periodicidad_pago&quot; : Quincenal 
+<li>PeriodicidadPago       : Quincenal<br>
 
 <ul>
 <li> Forma en que se establece el pago del salario: diario, semanal, quincenal, catorcenal mensual, bimestral, unidad de obra, comisión, precio alzado, etc.</li>
 </ul></li>
-<li>&quot;salario_base&quot;      : 10000.00 
+<li>SalarioBaseCotApor     : 10000.00<br>
 
 <ul>
 <li> Retribución otorgada al trabajador, que se integra por los pagos hechos en efectivo por cuota diaria, gratificaciones, percepciones, alimentación, habitación, primas, comisiones, prestaciones en especie y cualquiera otra cantidad o prestación que se entregue al trabajador por su trabajo</li>
 </ul></li>
-<li>&quot;riesgo_puesto&quot;     : 1 
+<li>RiesgoPuesto           : 1<br>
 
 <ul>
 <li> Clave conforme a la Clase en que deben inscribirse los patrones, de acuerdo a las actividades que desempeñan sus trabajadores, según lo previsto en el artículo 196 del Reglamento en Materia de Afiliación Clasificación de Empresas, Recaudación y Fiscalización. Catálogo publicado en el portal del SAT en internet</li>
 </ul></li>
-<li><p>&quot;salario_diario_integrado&quot;: 696.80 </p>
+<li>SalarioDiarioIntegrado : 696.80<br>
 
 <ul>
 <li> Salario diario integrado</li>
 </ul></li>
-<li><p>percepciones</p>
+<li><p>Percepciones:</p>
 
 <ul>
-<li>&quot;total_gravado_percepciones: 13000.00<br></li>
-<li> Atributo requerido para expresar el total de Percepciones gravados que se relaciona en el comprobante</li>
-<li>&quot;total_exento_percepciones&quot;: 379.00<br></li>
-<li> Atributo requerido para expresar el total de Percepciones exentos que se relaciona en el comprobante </li>
+<li><strong>TotalGravado</strong> : 10000.00</li>
+<li>El total de Percepciones gravados que se relaciona en el comprobante</li>
+<li><strong>TotalExento</strong>  : 0.00</li>
+<li>El total de Percepciones exentos que se relaciona en el comprobante<br></li>
+<li><strong>Percepcion</strong> : (nodo que se repite por cada percepción)
+
+<ul>
+<li><strong>TipoPercepcion</strong> : 001</li>
+<li>Clave para la descripción de un tipo de precepción conforme al catálogo actual del DIMM</li>
+<li><strong>Clave</strong>          : 123</li>
+<li>Clave de precepción de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres</li>
+<li><strong>Concepto</strong>       : Sueldos, Salarios Rayas y Jornales</li>
+<li>Descripción del concepto de precepción</li>
+<li><strong>ImporteGravado</strong> : 10000.00</li>
+<li>Importe gravado de un concepto de precepción</li>
+<li><strong>ImporteExento</strong>  : 0.00</li>
+<li>Importe exento de un concepto de precepción</li>
 </ul></li>
-<li><p>percepción&quot; (se repite por cada concepto de percepciones):</p>
-
-<ul>
-<li>&quot;tipo_percepcion&quot;: 001<br></li>
-<li> Atributo requerido para la descripción de un tipo de Percepcion conforme al catálogo actual del DIMM</li>
-<li>&quot;clave&quot;          : 123<br></li>
-<li> Atributo requerido, representa la clave de Percepcion de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres<br></li>
-<li>&quot;concepto&quot;       : Sueldos, Salarios Rayas y Jornales </li>
-<li> Atributo requerido para la descripción del concepto de Percepcion</li>
-<li>&quot;importe_gravado&quot;: 10000.00<br></li>
-<li> Atributo requerido, representa el importe gravado de un concepto de Percepcion</li>
-<li>&quot;importe_exento&quot; : 0.00<br></li>
-<li> Atributo requerido, representa el importe exento de un concepto de Percepcion</li>
 </ul></li>
-<li><p>deducciones:</p>
+<li><p>Deducciones:</p>
 
 <ul>
-<li>&quot;total_gravado_deducciones&quot;: 3332.10<br></li>
-<li> Atributo requerido para expresar el total de deducciones gravados que se relaciona en el comprobante</li>
-<li>&quot;total_exento_deducciones&quot; : 0.0<br></li>
-<li> Atributo requerido para expresar el total de deducciones exentos que se relaciona en el comprobante</li>
-<li>&quot;deducción&quot; (se repite por cada concepto de percepciones):</li>
-<li>&quot;tipo_deduccion&quot; : 345<br></li>
-<li> Atributo requerido para la descripción del tipo de Deduccion conforme al catálogo actual del DIMM </li>
-<li>&quot;clave&quot;          : 2323<br></li>
-<li> Atributo requerido para la clave de Deduccion de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres<br></li>
-<li>&quot;concepto&quot;       : Seguro Social<br></li>
-<li> Atributo requerido para la descripción del concepto de Deduccion<br></li>
-<li>&quot;importe_gravado&quot;: 278.39<br></li>
-<li> Atributo requerido, representa el importe gravado de un concepto de Deducciónn</li>
-<li>&quot;importe_exento&quot; : 0.00<br></li>
-<li> Atributo requerido, representa el importe exento de un concepto de Deduccion<br></li>
+<li><strong>TotalGravado</strong> : 278.00</li>
+<li>El total de Deducciones gravados que se relaciona en el comprobante</li>
+<li><strong>TotalExento</strong>  : 0.00</li>
+<li>El total de Deducciones exentos que se relaciona en el comprobante</li>
+<li><strong>Deduccion</strong> : (nodo que se repite por cada deducción)
+
+<ul>
+<li><strong>TipoDeduccion</strong> : 345</li>
+<li>Clave para la descripción de un tipo de deducción conforme al catálogo actual del DIMM</li>
+<li><strong>Clave</strong>          : 2323</li>
+<li>Clave de dedución de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres</li>
+<li><strong>Concepto</strong>       : Seguro Social</li>
+<li>Descripción del concepto de deducción</li>
+<li><strong>ImporteGravado</strong> : 278.39</li>
+<li>Importe gravado de un concepto de deducción</li>
+<li><strong>ImporteExento</strong>  : 0.00</li>
+<li>Importe exento de un concepto de deducción</li>
 </ul></li>
-<li><p>incapacidades</p>
-
-<ul>
-<li>&quot;incapacidad&quot; (se repite por cada concepto de incapacidad)</li>
-<li>&quot;dias&quot;     : 2 </li>
-<li> Número de días que el trabajador se incapacitó en el periodo</li>
-<li>&quot;tipo&quot;     : 1 </li>
-<li> Razón de la incapacidad: Catálogo publicado en el portal del SAT en internet</li>
-<li>&quot;descuento&quot;: 1000.00 </li>
-<li> Monto del descuento por la incapacidad</li>
 </ul></li>
-<li><p>horas_extra</p>
+<li><p>Incapacidades (Nodo opcional para expresar información de las incapacidades)</p>
 
 <ul>
-<li>&quot;hora_extra&quot; (se repite por cada concepto de hora extra)</li>
-<li>dias: 2 </li>
-<li> Número de días en que el trabajador realizó horas extra en el periodo</li>
-<li>&quot;tipo&quot;: 1 </li>
-<li> Tipo de pago de las horas extra: dobles o triples Dobles</li>
-<li>&quot;horas&quot;: 3 </li>
-<li> Número de horas extra trabajadas en el periodo</li>
-<li>&quot;importe_pagado&quot;: 1000.00 </li>
-<li> Importe pagado por las horas extra</li>
+<li>Incapacidad</li>
+<li>Este bloque se repite por cada movimiento de incapacidad</li>
+<li>DiasIncapacidad : 2
+
+<ul>
+<li>Número de días que el trabajador se incapacitó en el periodo</li>
+</ul></li>
+<li>TipoIncapacidad : 1
+
+<ul>
+<li>Razón de la incapacidad: Catálogo publicado en el portal del SAT en internet</li>
+</ul></li>
+<li>Descuento       : 1000.00
+
+<ul>
+<li>Monto del descuento por la incapacidad</li>
+</ul></li>
+</ul></li>
+<li><p>HorasExtra (Nodo opcional para expresar información de las horas extras)</p>
+
+<ul>
+<li>HoraExtra</li>
+<li>Este bloque se repite por cada movimiento de horas extra</li>
+<li>Dias          : 2
+
+<ul>
+<li>Número de días en que el trabajador realizó horas extra en el periodo</li>
+</ul></li>
+<li>TipoHoras     : Dobles
+
+<ul>
+<li>Tipo de pago de las horas extra: dobles o triples Dobles</li>
+</ul></li>
+<li>HorasExtra    : 3
+
+<ul>
+<li>Número de horas extra trabajadas en el periodo</li>
+</ul></li>
+<li>ImportePagado : 1000.00
+
+<ul>
+<li>Importe pagado por las horas extra</li>
+</ul></li>
 </ul></li>
 </ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatórios</p>
 
 <h3>Ejemplo</h3>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"> <span class="nt">&lt;cfdi:Complemento&gt;</span>
@@ -334,6 +364,8 @@
     <span class="nt">&lt;/nomina:Nomina&gt;</span>
  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
 </code></pre></div>
+<p>Para conocer más acerca de como construir un CFD, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFD</a>.</p>
+
             </div>
           </div>
         </div>
@@ -387,7 +419,7 @@
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de Respuesta</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Codigos de Respuesta</a></li>
                     </ul>               
                 </div>
 
