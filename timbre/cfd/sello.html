@@ -54,7 +54,7 @@
               <a href="https://github.com/diverza/desarrolladores">Github</a>
             </li>
             <li class="item-106">
-              <a href="http://www.diverza.com/ecosistema">Soporte</a>
+              <a href="http://www.diverza.com/soporte/">Soporte</a>
             </li>
             <li id="colors-bar">
               <div class="color-bar color-bar-blue"></div>
@@ -79,7 +79,7 @@
             <div class="row">
 
               <div class="span2 nav-welcome ">
-                <span class="welcome">bienvenido, feliz lunes<span class="diverza-dot">.</span></span>
+                <span class="welcome">desarrolladores<span class="diverza-dot">.</span></span>
               </div>
 
               <div class="nav-collapse-brand" id="menu-sub">
@@ -126,7 +126,7 @@
               <h1>Sello<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>El CFD requiere el atributos <em>&quot;sello&quot;</em>, que avalan la autenticidad de de los datos contenidos en el archivo que enviamos al SAT.</p>
+              <p>El CFDi requiere el atributos <em>&quot;sello&quot;</em>, que avalan la autenticidad de de los datos contenidos en el archivo que enviamos al SAT.</p>
 
 <p>* Para explicar el proceso, los siguientes ejemplos utilizan la herramienta openssl (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.openssl.org/related/binaries.html">aquí</a>).</p>
 
@@ -160,14 +160,14 @@
 <p>Para firmar la cadena original, utiliza el archivo .pem (que acabas de generar) sobre la cadena original, aplicando el método de digestión SHA-1:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">openssl dgst -sha1 -out sign.bin -sign key.pem cadena_ejemplo.txt
 </code></pre></div>
-<p>Obtendrás un archivo sign.bin de 20 bytes, que contiene la cadena original firmada con tu certificada.</p>
+<p>Obtendrás un archivo sign.bin de 20 bytes, que contiene la cadena original firmada con tu certificado.</p>
 
 <hr>
 
 <p>Para integrarla al comprobante deberás transformarla a base64. Puedes hacerlo con este comando de lectura segura:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in sign.bin -a -A -out signB64.txt
 </code></pre></div>
-<p>Obtendrás un archivo signB64.txt que contiene el sello listo para colocarlo en el atributo <em>&quot;sello&quot;</em> del <a href="/timbre/cfd">cfd</a>.</p>
+<p>Obtendrás un archivo signB64.txt que contiene el sello listo para colocarlo en el atributo <em>&quot;sello&quot;</em> del <a href="/timbre/cfd">cfdi</a>.</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;
 </code></pre></div>
             </div>
@@ -179,13 +179,13 @@
 		<div class=" ">
 			<div class="module">
 
-                <h3>Generar un cfd<span class="diverza-dot">.</span></h3>
+                <h3>Generar un cfdi<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd">Datos del CFD</a></li>
+                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
