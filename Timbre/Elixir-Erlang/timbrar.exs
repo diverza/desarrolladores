@@ -55,7 +55,7 @@ headers = [{ 'x-auth-token', 'ABCD1234' }]
 :inets.start
 
 # Finalmente ejecutamos la petición enviando la url, los headers y el CFD en el cuerpo del mensaje
-{ :ok, { { _, http_code, _ }, _, stamp_response } } = :httpc.request(:post, { url, headers, '', cfd }, [], [])
+{ :ok, { { _, http_code, _ }, _, stamp_response } } = :httpc.request(:post, { url, headers, 'application/xml', cfd }, [], [])
 
 IO.puts "Codigo HTTP: #{http_code}"
 IO.puts "Timbre: #{stamp_response}"
