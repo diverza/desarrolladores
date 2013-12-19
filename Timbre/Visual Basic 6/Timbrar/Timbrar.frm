@@ -39,10 +39,9 @@ Private Sub timbra_Click()
  Dim xmlhttp As MSXML2.xmlhttp
  
  ' Recuerda que:
- ' La URL de prueba es: http://213.239.207.18:4444/stamp
- ' El token de seguridad de prueba es: abc
+ ' La URL de prueba es: http://staging.diverza.com/stamp
+ ' El token de seguridad de prueba es: ABCD1234
  ' El RFC emisor de prueba es: AAA010101AAA
- ' El certificado de prueba lo puedes descargar de: ----LLENAR-----
 
  ' Por facilidad leemos el CFD a timbrar del archivo cfd.xml que se
  ' encuentra en la misma carpeta del proyecto
@@ -54,16 +53,16 @@ Private Sub timbra_Click()
  ' Inicializamos un nuevo objeto HttpURLConnection que nos servira para
  ' realizar la petición HTTP
  Set xmlhttp = New xmlhttp
- url = "http://213.239.207.18:4444/stamp"
+ url = "http://staging.diverza.com/stamp"
 
  ' Abrimos la conexión al servicio de timbrado utilizando el metodo post,
  ' de HTTP y la URL
  xmlhttp.Open "POST", url, False
  
  ' Agregamos un header a la petición indicando el token que utilizaremos,
- ' en este caso el de prueba 'abc'. Este debe ser modificado una vez que
+ ' en este caso el de prueba 'ABCD1234'. Este debe ser modificado una vez que
  ' querramos utilizar nuestra propia cuenta para timbrar
- xmlhttp.setRequestHeader "x-auth-token", "abc"
+ xmlhttp.setRequestHeader "x-auth-token", "ABCD1234"
  
  ' Enviarmos el CFD a timbrar como cuerpo de la petición.
  xmlhttp.send cfd
