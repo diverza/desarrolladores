@@ -39,18 +39,17 @@ cfd = """
 """
 
 # Recuerda que:
-# La URL de prueba es: http://213.239.207.18:4444/stamp
-# El token de seguridad de prueba es: abc
+# La URL de prueba es: http://staging.diverza.com/stamp
+# El token de seguridad de prueba es: ABCD1234
 # El RFC emisor de prueba es: AAA010101AAA
-# El certificado de prueba lo puedes descargar de: ----LLENAR-----
 
 # Guardamos la URL del servidor de timbrado en la variable url
-url = 'http://213.239.207.18:4444/stamp'
+url = 'http://staging.diverza.com/stamp'
 
 # Creamos una lista con el header que enviaremos en la petición indicando el token que utilizaremos, 
-# en este caso el de prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra 
+# en este caso el de prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra 
 # propia cuenta para timbrar
-headers = [{ 'x-auth-token', 'abc' }]
+headers = [{ 'x-auth-token', 'ABCD1234' }]
 
 # Iniciamos el actor inets, necesario para ejecutar la petición HTTP
 :inets.start

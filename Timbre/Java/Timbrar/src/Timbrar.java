@@ -12,10 +12,9 @@ public class Timbrar {
 	public static void main(String args[]) {
 		try {
 			/* Recuerda que:
-			 *  La URL de prueba es: http://213.239.207.18:4444/stamp
-			 *  El token de seguridad de prueba es: abc
-			 *	El RFC emisor de prueba es: AAA010101AAA
-			 *	El certificado de prueba lo puedes descargar de: ----LLENAR----- */
+       * La URL de prueba es: http://staging.diverza.com/stamp
+       * El token de seguridad de prueba es: ABCD1234
+       * El RFC emisor de prueba es: AAA010101AAA */
 			
 			/* Por facilidad leemos el CFD a timbrar del archivo cfd.xml que se encuentra
 			 * en la carpeta resources */
@@ -23,7 +22,7 @@ public class Timbrar {
 						
 			/* Creamos una nueva instancia del objeto URL con la direcci—n del servicio de
 			 * timbrado */
-			URL url = new URL("http://213.239.207.18:4444/stamp");
+			URL url = new URL("http://staging.diverza.com/stamp");
 			
 			/* Inicializamos un nuevo objeto HttpURLConnection que nos servira para realizar
 			 * la petici—n HTTP */
@@ -33,9 +32,9 @@ public class Timbrar {
 			connection.setRequestMethod("POST");
 			
 			/* Agregamos un header a la petici—n indicando el token que utilizaremos, en este caso el de 
-			 * prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
+			 * prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
 			 * para timbrar */
-			connection.setRequestProperty("x-auth-token", "abc");
+			connection.setRequestProperty("x-auth-token", "ABCD1234");
 
 			// Configuramos la conexi—n para permitirnos recibir y enviar informaci—n
 			connection.setUseCaches(false);

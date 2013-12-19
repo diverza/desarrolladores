@@ -50,23 +50,22 @@ namespace Timbrar
                             </cfdi:Comprobante>";
 
             /* Recuerda que:
-            // La URL de prueba es: http://213.239.207.18:4444/stamp
-            // El token de seguridad de prueba es: abc
-            // El RFC emisor de prueba es: AAA010101AAA
-            // El certificado de prueba lo puedes descargar de: ----LLENAR----- */
+            // La URL de prueba es: http://staging.diverza.com/stamp
+            // El token de seguridad de prueba es: ABCD1234
+            // El RFC emisor de prueba es: AAA010101AAA */
             try
             {
                 // Creamos una nueva instancia del objeto Webclient que utilizaremos para realizar la petición
                 WebClient webClient = new WebClient();
 
                 /* Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
-                // prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
+                // prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
                 // para timbrar */
-                webClient.Headers.Add("x-auth-token", "abc");
+                webClient.Headers.Add("x-auth-token", "ABCD1234");
 
                 /* Finalmente ejecutamos la petición al servidor de timbrado indicando la URL completa, el metodo
                 // HTTP en este caso POST y el CFD como cuerpo del mensaje */
-                string stamp = webClient.UploadString("http://213.239.207.18:4444/stamp", "POST", cfd);
+                string stamp = webClient.UploadString("http://staging.diverza.com/stamp", "POST", cfd);
 
                 Console.WriteLine(string.Format("Timbre: {0}", stamp));
             }

@@ -41,21 +41,20 @@ $cfd = <<<EOF
 EOF;
 
 # Recuerda que:
-# La URL de prueba es: http://213.239.207.18:4444/stamp
-# El token de seguridad de prueba es: abc
+# La URL de prueba es: http://staging.diverza.com/stamp
+# El token de seguridad de prueba es: ABCD1234
 # El RFC emisor de prueba es: AAA010101AAA
-# El certificado de prueba lo puedes descargar de: ----LLENAR-----
 
 # Creamos un arreglo para almacenar las opciones para la petición
 # HTTP:
 # - Se requiere utilizar el metodo HTTP POST
 # - Agregamos el header 'x-auth-token' con el valor del token de seguridad que utilizaremos
-#   en este caso 'abc'
+#   en este caso 'ABCD1234'
 # - Como contenido agregamos el CFD a timbrar.
 $request_options = array(
   'http' => array(
     'method' => "POST",
-    'header' => "x-auth-token: abc\r\n",
+    'header' => "x-auth-token: ABCD1234\r\n",
     'content' => $cfd,
     'ignore_errors' => true
 ));
@@ -64,7 +63,7 @@ $request_options = array(
 $stream_context = stream_context_create($request_options);
 
 # Ejecutamos el request a la URL del servidor de timbrado
-$response = file_get_contents('http://213.239.207.18:4444/stamp', false, $stream_context);
+$response = file_get_contents('http://staging.diverza.com/stamp', false, $stream_context);
 
 # Obtenemos el codigo de respuesta del servidor y el timbre para nuestro CFD
 $response_code = $http_response_header[0];

@@ -57,10 +57,9 @@ static char* read_cfd_file()
 int main(void)
 {
   /* Recuerda que:
-  // La URL de prueba es: http://213.239.207.18:4444/stamp
-  // El token de seguridad de prueba es: abc
-  // El RFC emisor de prueba es: AAA010101AAA
-  // El certificado de prueba lo puedes descargar de: ----LLENAR----- */
+  // La URL de prueba es: http://staging.diverza.com/stamp
+  // El token de seguridad de prueba es: ABCD1234
+  // El RFC emisor de prueba es: AAA010101AAA */
   char *cfd;
   char *stamp;
   long response_code;
@@ -91,15 +90,15 @@ int main(void)
     writeStructure.sizeleft = (long)strlen(cfd);
 
     // Agregamos en URL del servicio de timbrado
-    curl_easy_setopt(curl, CURLOPT_URL, "http://213.239.207.18:4444/stamp");
+    curl_easy_setopt(curl, CURLOPT_URL, "http://staging.diverza.com/stamp");
 
     // Para solicitar el timbrado es necesario enviar una solicitud HTTP usando el verbo POST
     curl_easy_setopt(curl, CURLOPT_POST, 1L);
 
     /* Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
-     * prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
+     * prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
      * para timbrar */
-    headers = curl_slist_append(headers, "x-auth-token: abc");
+    headers = curl_slist_append(headers, "x-auth-token: ABCD1234");
     curl_easy_setopt(curl, CURLOPT_HTTPHEADER,headers);
 
     /* Damos de alta la funcion que utilizaremos para escribir el cuerpo del mensaje para la

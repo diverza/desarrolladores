@@ -4,23 +4,21 @@ Para poder ejecutar los ejemplos es necesario tener cURL instalado.
 
 ## Parametros de prueba
 
-- La URL de prueba es: **http://213.239.207.18:4444/stamp**
+- La URL de prueba es: **http://staging.diverza.com/stamp**
 
-- El token de seguridad de prueba es: **abc**
+- El token de seguridad de prueba es: **ABCD1234**
 
 - El RFC emisor de prueba es: **AAA010101AAA**
-
-- El certificado de prueba lo puedes descargar de: **----LLENAR-----**
 
 ## Windows
 Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea de comandos usando:
 
 ```sh
 # Timbrar
-C:\>"C:\Program Files\cURL\bin\cURL.exe" http://213.239.207.18:4444/stamp -X POST --data @cfd.xml -H "x-auth-token: abc" -i
+C:\>"C:\Program Files\cURL\bin\cURL.exe" http://staging.diverza.com/stamp -X POST --data @cfd.xml -H "x-auth-token: ABCD1234" -i
 
 # Cancelar
-C:\>"C:\Program Files\cURL\bin\cURL.exe" http://213.239.207.18:4444/stamp/cancel -X POST --data @cancelar.xml -H "x-auth-token: abc" -i
+C:\>"C:\Program Files\cURL\bin\cURL.exe" http://staging.diverza.com/stamp/cancel -X POST --data @cancelar.xml -H "x-auth-token: ABCD1234" -i
 ```
 
 ## Unix/Linux/OSX
@@ -28,8 +26,8 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 
 ```sh
 # Timbrar
-$ cURL http://213.239.207.18:4444/stamp -X POST --data @cfd.xml -H "x-auth-token: abc" -i
+$ cURL http://staging.diverza.com/stamp -X POST --data @cfd.xml -H "x-auth-token: ABCD1234" -i
 
 # Cancelar
-$ cURL http://213.239.207.18:4444/stamp/cancel -X POST --data @cancelar.xml -H "x-auth-token: abc" -i
+$ cURL http://staging.diverza.com/stamp/cancel -X POST --data @cancelar.xml -H "x-auth-token: ABCD1234" -i
 ```

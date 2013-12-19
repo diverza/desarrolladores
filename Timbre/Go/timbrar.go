@@ -47,22 +47,21 @@ func main() {
           </cfdi:Comprobante>`  
 
   /* Recuerda que:
-   * La URL de prueba es: http://213.239.207.18:4444/stamp
-   * El token de seguridad de prueba es: abc
-   * El RFC emisor de prueba es: AAA010101AAA
-   * El certificado de prueba lo puedes descargar de: ----LLENAR----- */
+   * La URL de prueba es: http://staging.diverza.com/stamp
+   * El token de seguridad de prueba es: ABCD1234
+   * El RFC emisor de prueba es: AAA010101AAA */
 
   // Usaremos una instancia de client para realizar la petición al servidor de timbrado
   client := &http.Client{}
 
   /* Creamos un nuevo request indicando que usaremos el metodo POST de HTTP, la URL del
    * servidor de timbrado y como cuerpo del mensaje el cfd a timbrar */
-  request, _ := http.NewRequest("POST", "http://213.239.207.18:4444/stamp", bytes.NewBufferString(cfd))
+  request, _ := http.NewRequest("POST", "http://staging.diverza.com/stamp", bytes.NewBufferString(cfd))
 
   /* Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
-   * prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
+   * prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
    * para timbrar */
-  request.Header.Add("x-auth-token", "abc")
+  request.Header.Add("x-auth-token", "ABCD1234")
 
   // Finalmente ejecutamos la petición al servidor
   response, _ := client.Do(request)

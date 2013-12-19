@@ -43,19 +43,18 @@ $cfd = <<EOF;
 EOF
 
 # Recuerda que:
-# La URL de prueba es: http://213.239.207.18:4444/stamp
-# El token de seguridad de prueba es: abc
+# La URL de prueba es: http://staging.diverza.com/stamp
+# El token de seguridad de prueba es: ABCD1234
 # El RFC emisor de prueba es: AAA010101AAA
-# El certificado de prueba lo puedes descargar de: ----LLENAR-----
 
 # Creamos una nueva instancia del objeto UserAgent
 my $user_agent = new LWP::UserAgent;
 
 # Initializamos un nuevo HTTP::Request indicando la URL del servidor de timbrado,
 # el methodo POST de HTTP y el token de seguridad que usaremos, en este caso el de 
-# prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra 
+# prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra 
 # propia cuenta para timbrar
-my $request = new HTTP::Request POST => 'http://213.239.207.18:4444/stamp', HTTP::Headers->new('x-auth-token' => 'abc');
+my $request = new HTTP::Request POST => 'http://staging.diverza.com/stamp', HTTP::Headers->new('x-auth-token' => 'ABCD1234');
 
 # El CFD a timbrar debe ser agregado como cuerpo de la petición
 $request->content($cfd);

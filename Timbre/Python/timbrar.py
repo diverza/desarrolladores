@@ -40,19 +40,18 @@ cfd = """<?xml version="1.0" encoding="UTF-8"?>
 </cfdi:Comprobante>"""
 
 # Recuerda que:
-# La URL de prueba es: http://213.239.207.18:4444/stamp
-# El token de seguridad de prueba es: abc
+# La URL de prueba es: http://staging.diverza.com/stamp
+# El token de seguridad de prueba es: ABCD1234
 # El RFC emisor de prueba es: AAA010101AAA
-# El certificado de prueba lo puedes descargar de: ----LLENAR-----
 
 # Creamos una nueva instancia del objeto HTTPConnection con la dirección URL 
-# del servicio de timbrado y el puerto que utilizaremos, en este caso 4444
-connection = httplib.HTTPConnection("213.239.207.18:4444")
+# del servicio de timbrado y el puerto que utilizaremos, en este caso 80
+connection = httplib.HTTPConnection("staging.diverza.com")
 
 # Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
-# prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
+# prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
 # para timbrar
-headers = {"x-auth-token": "abc"}
+headers = {"x-auth-token": "ABCD1234"}
 
 # Solicitamos el timbrado enviando una petición HTTP usando el metodo POST a la URL "/stamp",
 # agregando el header previamente instanciado y enviando el CFD en el cuerpo.

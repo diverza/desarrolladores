@@ -42,23 +42,22 @@ cfd = <<-EOF
 EOF
 
 # Recuerda que:
-# La URL de prueba es: http://213.239.207.18:4444/stamp
-# El token de seguridad de prueba es: abc
+# La URL de prueba es: http://staging.diverza.com/stamp
+# El token de seguridad de prueba es: ABCD1234
 # El RFC emisor de prueba es: AAA010101AAA
-# El certificado de prueba lo puedes descargar de: ----LLENAR-----
 
 # Creamos una nueva instancia del objeto HTTP con la dirección URL del servicio de timbrado
-# y el puerto que utilizaremos, en este caso 4444
-http = Net::HTTP.new("213.239.207.18", 4444)
+# y el puerto que utilizaremos, en este caso 80
+http = Net::HTTP.new("staging.diverza.com", 80)
 
 # Para solicitar el timbrado es necesario enviar una solicitud HTTP usando el verbo POST a la
 # URL "/stamp"
 request = Net::HTTP::Post.new("/stamp")
 
 # Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
-# prueba 'abc'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
+# prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
 # para timbrar
-request.add_field('x-auth-token', 'abc')
+request.add_field('x-auth-token', 'ABCD1234')
 
 # El CFD a timbrar debe ser agregado como cuerpo de la pertición
 request.body = cfd
