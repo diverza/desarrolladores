@@ -34,27 +34,30 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container">
-        <a id="logo" class="brand icon-logo" href="/"></a>
+        <a id="logo" class="brand icon-logo-off" href="http://diverza.com"></a>
         <div class="nav-collapse">
 
           <ul class="menu nav">
             <li class="item-101">
               <a href="">Portada</a>
             </li>
-            <li class="item-102" id="stamp-menu-item">
-              <a href="/timbre/">Timbre Fiscal</a>
+            <li class="item-102">
+              <a href="http://www.diverza.com/historia" >Historia</a>
+            </li>
+            <li class="item-103 parent">
+              <a href="http://www.diverza.com/oficinas" >Oficinas</a>
             </li>
             <li class="item-104">
-              <a href="http://blog.diverza.com">Estatus</a>
+              <a href="http://blog.diverza.com" >Blog</a>
             </li>
             <li class="item-105">
-              <a href="https://groups.google.com/forum/#!forum/diverza">Groups</a>
+              <a href="http://www.diverza.com/ecosistema" >Ecosistema</a>
             </li>
             <li class="item-106">
-              <a href="https://github.com/diverza/desarrolladores">Github</a>
+              <a href="http://www.diverza.com/soporte" >Soporte</a>
             </li>
-            <li class="item-106">
-              <a href="http://www.diverza.com/soporte/">Soporte</a>
+            <li class="item-107">
+            <a href="http://www.diverza.com/acceso" >Acceso</a>
             </li>
             <li id="colors-bar">
               <div class="color-bar color-bar-blue"></div>
@@ -79,10 +82,21 @@
             <div class="row">
 
               <div class="span2 nav-welcome ">
-                <span class="welcome">desarrolladores<span class="diverza-dot">.</span></span>
+                <a href="/"><span class="welcome">desarrolladores<span class="diverza-dot">.</span></span></a>
               </div>
 
               <div class="nav-collapse-brand" id="menu-sub">
+                <ul class="menu nav">
+                  <li class="item-102" id="stamp-menu-item">
+                    <a href="/timbre/">Timbre Fiscal</a>
+                  </li>
+                  <li class="item-103">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-104">
+                    <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
+                  </li>
+                </ul>
               </div>
               <div class="nav-account">
                 <div class="module">
@@ -99,7 +113,7 @@
 
   <style>
   #stamp-menu-item { color: #fff !important;
-    background: #2d3235;
+    background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -110,7 +124,10 @@
     -o-border-radius: 20px;
     -ms-border-radius: 20px;
     border-radius: 20px;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.20) }
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
 </style>
 
 <div id="body">
@@ -155,7 +172,7 @@
 <p>Si deseas construirla manualmente, estas son las reglas generales:</p>
 
 <ol>
-<li> Ninguno de los atributos que conforman al comprobante fiscal digital deberá contener el carácter | (“pipe”) debido a que este será utilizado como carácter de control en la formación de la cadena original.</li>
+<li> Ninguno de los atributos que conforman al comprobante fiscal digital deberá contener el caracter | (“pipe”) debido a que este será utilizado como caracter de control en la formación de la cadena original.</li>
 <li> El inicio de la cadena original se encuentra marcado mediante una secuencia de caracteres || (doble “pipe”).</li>
 <li> Se expresará únicamente la información del dato sin expresar el atributo al que hace referencia. Esto es, si la serie del comprobante es la “A” solo se expresará |A| y nunca |Serie A|.</li>
 <li> Cada dato individual se encontrará separado de su dato subsiguiente, en caso de existir, mediante un carácter | (“pipe” sencillo).</li>
@@ -163,12 +180,12 @@
 
 <ul>
 <li>Se deberán remplazar todos los tabuladores, retornos de carro y saltos de línea por espacios en blanco.</li>
-<li>Acto seguido se elimina cualquier carácter en blanco al principio y al final de cada separador | (“pipe” sencillo).</li>
-<li>Finalmente, toda secuencia de caracteres en blanco intermedias se sustituyen por un único carácter en blanco.</li>
+<li>Acto seguido se elimina cualquier caracter en blanco al principio y al final de cada separador | (“pipe” sencillo).</li>
+<li>Finalmente, toda secuencia de caracteres en blanco intermedias se sustituyen por un único caracter en blanco.</li>
 </ul></li>
 <li> Los datos opcionales no expresados, no aparecerán en la cadena original y no tendrán delimitador alguno.</li>
 <li> El final de la cadena original será expresado mediante una cadena de caracteres || (doble “pipe”).</li>
-<li> Toda la cadena de original se expresará en el formato de codificación UTF-8.</li>
+<li> Toda la cadena original se expresará en el formato de codificación UTF-8.</li>
 <li> El nodo o nodos adicionales <ComplementoConcepto> se integrarán a la cadena original como se indica en la secuencia de formación en su numeral 10, respetando la secuencia de formación y número de orden del ComplemetoConcepto.</li>
 <li>El nodo o nodos adicionales <Complemento> se integraran al final de la cadena original respetando la secuencia de formación para cada complemento y número de orden del Complemento.</li>
 </ol>
@@ -180,9 +197,9 @@
 </code></pre></div>
 <p>* Los campos no obligatorios en la definición del CFDI, se podrían ignorar en la cadena. Como <strong>Emisor:ExpedidoEn</strong> <strong>Receptor:ExpedidoEn</strong></p>
 
-<p>* Para cada los nodos de <strong>Emisor:RegimenFiscal</strong>, se deberá incluir cada valor <em>Regimen</em></p>
+<p>* Para cada uno de los nodos de <strong>Emisor:RegimenFiscal</strong>, se deberá incluir cada valor <em>Regimen</em></p>
 
-<p>* Para cada los nodos de <strong>Concepto:InformacionAduanera</strong> deberá incluir cada valor <em>numero</em>, <em>fecha</em>, <em>aduana</em></p>
+<p>* Para cada uno de los nodos de <strong>Concepto:InformacionAduanera</strong> deberá incluir cada valor <em>numero</em>, <em>fecha</em>, <em>aduana</em></p>
 
 <p>* Para todos los nodos de <strong>Impuestos:Trasladado</strong> y <strong>Impuestos:Retencion</strong> <em>impuesto</em>, <em>importe</em></p>
 

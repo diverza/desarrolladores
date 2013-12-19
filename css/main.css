@@ -4896,7 +4896,7 @@ hr {
     line-height: 40px;
     width: 200px;
     color: #3d464b;
-    font-size: 1em
+    font-size: 1.4em;
 }
 
 #header-brand .nav-welcome {
@@ -4930,7 +4930,7 @@ hr {
 }
 
 #header-brand .menu li {
-    margin-right: 20px
+    margin-right: 50px
 }
 
 #header-brand .menu a {
