@@ -18,7 +18,9 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 C:\> "C:\GO\bin\go.exe" run timbrar.go
 
 # Cancelar
-C:\> "C:\GO\bin\go.exe" run cancelar.go
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.go:13
+
+2) C:\> "C:\GO\bin\go.exe" run cancelar.go
 ```
 
 ## Unix/Linux/OSX
@@ -29,5 +31,7 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 $ go run timbrar.go
 
 # Cancelar
-$ go run cancelar.go
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.go:13
+
+2) $ go run cancelar.go
 ```
