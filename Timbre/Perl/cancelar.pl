@@ -20,9 +20,6 @@ my $user_agent = new LWP::UserAgent;
 # querramos utilizar nuestra propia cuenta para timbrar
 my $request = new HTTP::Request DELETE => "http://staging.diverza.com/stamp/${UUID}", HTTP::Headers->new('x-auth-token' => 'ABCD1234');
 
-# El CFD a timbrar debe ser agregado como cuerpo de la petición
-$request->content($cfd);
-
 # Finalmente ejecutamos la petición al servidor
 my $response = $user_agent->request($request); 
 
