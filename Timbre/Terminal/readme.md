@@ -18,7 +18,9 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 C:\>"C:\Program Files\cURL\bin\cURL.exe" http://staging.diverza.com/stamp -X POST --data @cfd.xml -H "x-auth-token: ABCD1234" -i
 
 # Cancelar
-C:\>"C:\Program Files\cURL\bin\cURL.exe" http://staging.diverza.com/stamp/cancel -X POST --data @cancelar.xml -H "x-auth-token: ABCD1234" -i
+C:\>"C:\Program Files\cURL\bin\cURL.exe" http://staging.diverza.com/stamp/<Agregar UUID del Timbre a Cancelar> -X DELETE -H "x-auth-token: ABCD1234" -i
+
+## Ejemplo cURL http://staging.diverza.com/stamp/222fe27b-2c49-4dba-95d4-cd61c0514e63 -X DELETE -H "x-auth-token: ABCD1234" -i
 ```
 
 ## Unix/Linux/OSX
@@ -29,5 +31,7 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 $ cURL http://staging.diverza.com/stamp -X POST --data @cfd.xml -H "x-auth-token: ABCD1234" -i
 
 # Cancelar
-$ cURL http://staging.diverza.com/stamp/cancel -X POST --data @cancelar.xml -H "x-auth-token: ABCD1234" -i
+$ cURL http://staging.diverza.com/stamp/<Agregar UUID del Timbre a Cancelar> -X DELETE -H "x-auth-token: ABCD1234" -i
+
+## Ejemplo cURL http://staging.diverza.com/stamp/222fe27b-2c49-4dba-95d4-cd61c0514e63 -X DELETE -H "x-auth-token: ABCD1234" -i
 ```
