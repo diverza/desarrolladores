@@ -18,7 +18,9 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 C:\> "C:\Python\python.exe" timbrar.py
 
 # Cancelar
-C:\> "C:\Python\python.exe" cancelar.py
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.py:6
+
+2) C:\> "C:\Python\python.exe" cancelar.py
 ```
 
 **Nota** Es posible que el archivo python.exe se encuentre en una ruta distinta dependiendo de la configuración del sistema.
@@ -31,5 +33,7 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 $ python timbrar.py
 
 # Cancelar
-$ python cancelar.py
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.py:6
+
+2) $ python cancelar.py
 ```
