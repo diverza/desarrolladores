@@ -14,8 +14,8 @@ UUID = "<Agregar UUID del Timbre a Cancelar>"
 # y el puerto que utilizaremos, en este caso 80
 http = Net::HTTP.new("staging.diverza.com", 80)
 
-# Para solicitar el timbrado es necesario enviar una solicitud HTTP usando el verbo DELETE a la
-# URL "/stamp/:uuid"
+# Para solicitar la cancelacion de un timbre es necesario enviar una solicitud HTTP usando el 
+# verbo DELETE a la URL "/stamp/:uuid"
 request = Net::HTTP::Delete.new("/stamp/#{UUID}")
 
 # Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
