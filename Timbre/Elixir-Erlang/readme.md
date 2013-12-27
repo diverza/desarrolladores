@@ -20,5 +20,7 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 $ elixir timbrar.exs
 
 # Cancelar
-$ elixir cancelar.exs
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.exs:3
+
+2) $ elixir cancelar.exs
 ```
