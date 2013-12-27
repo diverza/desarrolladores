@@ -62,9 +62,9 @@ $request->content($cfd);
 # Finalmente ejecutamos la petición al servidor
 my $response = $user_agent->request($request); 
 
-# Obtenemos el codigo de respuesta del servidor y el timbre para nuestro CFD
+# Obtenemos el codigo de respuesta del servidor y el mensaje de respuesta
 my $response_code = $response->status_line;
-my $stamp = $response->decoded_content;
+my $response_message = $response->decoded_content;
 
 print "Codigo HTTP: ${response_code}\n";
-print "Timbre: ${stamp}\n";
+print "Timbre: ${response_message}\n";

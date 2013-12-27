@@ -65,11 +65,11 @@ $stream_context = stream_context_create($request_options);
 # Ejecutamos el request a la URL del servidor de timbrado
 $response = file_get_contents('http://staging.diverza.com/stamp', false, $stream_context);
 
-# Obtenemos el codigo de respuesta del servidor y el timbre para nuestro CFD
+# Obtenemos el codigo de respuesta del servidor y el mensaje de respuesta
 $response_code = $http_response_header[0];
-$stamp = $response;
+$response_message = $response;
 
 echo "Codigo HTTP: $response_code\r\n";
-echo "Timbre: $stamp\r\n";
+echo "Timbre: $response_message\r\n";
 
 ?>

@@ -26,7 +26,7 @@ connection.request("DELETE", "/stamp/" + UUID, '', headers)
 # Extraemos la respuesta del servidor de timbrado
 response = connection.getresponse()
 
-# Obtenemos el codigo de respuesta del servidor y el mensaje
+# Obtenemos el codigo de respuesta del servidor y el mensaje de respuesta
 response_code = str(response.status) + " " + response.reason
 response_message = response.read()
 

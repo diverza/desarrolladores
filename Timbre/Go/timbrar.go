@@ -67,10 +67,10 @@ func main() {
   response, _ := client.Do(request)
   defer response.Body.Close()
 
-  // Obtenemos el codigo de respuesta del servidor y el timbre para nuestro CFD
-  stamp, _ := ioutil.ReadAll(response.Body)
+  // Obtenemos el codigo de respuesta del servidor y el mensaje de respuesta
+  responseMessage, _ := ioutil.ReadAll(response.Body)
   responseCode := response.Status
 
   fmt.Println("Codigo HTTP:", responseCode)
-  fmt.Println("Timbre:", string(stamp))
+  fmt.Println("Timbre:", string(responseMessage))
 }

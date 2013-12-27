@@ -26,7 +26,7 @@ request.add_field('x-auth-token', 'ABCD1234')
 # Finalmente ejecutamos la petición al servidor
 response = http.request(request)
 
-# Obtenemos el codigo de respuesta del servidor y el timbre para nuestro CFD
+# Obtenemos el codigo de respuesta del servidor y el mensaje de respuesta
 response_code = response.code
 response_message = response.body
 
