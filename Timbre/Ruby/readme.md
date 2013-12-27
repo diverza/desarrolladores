@@ -18,7 +18,9 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 C:\> ruby timbrar.rb
 
 # Cancelar
-C:\> ruby cancelar.rb
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.rb:6
+
+2) C:\> ruby cancelar.rb
 ```
 
 ## Unix/Linux/OSX
@@ -29,5 +31,7 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 $ ruby timbrar.rb
 
 # Cancelar
-$ ruby cancelar.rb
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.rb:6
+
+2) $ ruby cancelar.rb
 ```
