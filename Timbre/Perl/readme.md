@@ -18,7 +18,9 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la linea 
 C:\> "C:\Perl64\perl.exe" timbrar.pl
 
 # Cancelar
-C:\> "C:\Perl64\perl.exe" cancelar.pl
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.pl:7
+
+2) C:\> "C:\Perl64\perl.exe" cancelar.pl
 ```
 
 **Nota** Es posible que el archivo perl.exe se encuentre en una ruta distinta dependiendo de la configuración del sistema.
@@ -31,5 +33,7 @@ Para ejecutar un timbrado de prueba unicamente ejecuta el script desde la termin
 $ perl timbrar.pl
 
 # Cancelar
-$ perl cancelar.pl
+1) Agregar el UUID del CFDI a cancelar en el archivo cancelar.pl:7
+
+2) $ perl cancelar.pl
 ```
