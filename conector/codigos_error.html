@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Valida CFDI a timbrar</title>
+  <title>Códigos de respuesta</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -115,8 +115,8 @@
 </div>
 
   <style>
-  #stamp-menu-item { color: #fff !important;
-    background: #2d3235;
+  #conector-menu-item { color: #fff !important;
+    background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -127,126 +127,208 @@
     -o-border-radius: 20px;
     -ms-border-radius: 20px;
     border-radius: 20px;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.20) }
-  </style>
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
 
-  <div id="body">
-    <div class="container">
-      <div id="main" class="row">
-        <div id="content" class="span12">
-          <div id="system-message-container">
-          </div>
-          <div id="component">
-            <div class="item-pagepage-history">
-              <div class="clr"></div>
-              <div class="article-content-text">
-                <h1>Valida CFDI a timbrar<span class="diverza-dot">.</span></h1>
-                <span class="h1-line"></span>
-                <div class="clr">&nbsp;</div>
-                <p>Esta herramienta valida los archivos CFDI contra la espeficación 3.2 de la Secretaria de Administración Tributaria.</p>
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>Códigos de respuesta<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <p>La siguiente lista comprende todos los posibles códigos de respuesta devueltos por conector software</p>
 
-<p><strong>Nota:</strong> Unicamente valida el contenido del CFDI, no la llamada que debe realizarse a la API de Timbre</p>
+<p><strong>0</strong> - 
+Proceso realizado con éxito</p>
 
-                <br />
-                <br />
-                <div class="files_wrapper">
-                  <div class="xmlarea_file" id="xml_file">Arrastra el archivo XML del CFD a validar</div>
-                </div>
-              </div>
-              <br />
-              <a class="btn valBtn" id="fileBtn">Validar</a>
-              <p><h2 class="t-left">Console:</h2><div class="xmllint-info1">xmllint info</div>
-                <textarea class="console1" readonly="readonly" rows="5"></textarea>
-                <br />
+<p><strong>1</strong> - 
+No se pudo leer el archivo</p>
 
-              </div>
+<p><strong>2</strong> - 
+No se pudo borrar el archivo</p>
+
+<p><strong>3</strong> - 
+No se pudo escribir el archivo</p>
+
+<p><strong>4</strong> - 
+Se intentará procesar nuevamente</p>
+
+<p><strong>5</strong> - 
+Error en validación contra esquema</p>
+
+<p><strong>6</strong> - 
+Faltan datos remisión</p>
+
+<p><strong>7</strong> - 
+Faltan datos de emisor</p>
+
+<p><strong>8</strong> - 
+Faltan datos de receptor</p>
+
+<p><strong>9</strong> - 
+Faltan datos de conceptos</p>
+
+<p><strong>10</strong> - 
+No es un receptor válido</p>
+
+<p><strong>11</strong> - 
+No se pudo escribir el archivo</p>
+
+<p><strong>12</strong> - 
+Emisor y receptor son iguales</p>
+
+<p><strong>13</strong> - 
+Error en general</p>
+
+<p><strong>14</strong> - 
+Error en asignación de folio</p>
+
+<p><strong>15</strong> - 
+Error en firmado de CFD</p>
+
+<p><strong>16</strong> - 
+Error en generación de PDF</p>
+
+<p><strong>17</strong> - 
+Reporte SAT no encontrado o no válido</p>
+
+<p><strong>18</strong> - 
+No encontró CFD a cancelar</p>
+
+<p><strong>19</strong> - 
+El CFD ya fue cancelado, previamente</p>
+
+<p><strong>20</strong> - 
+Reporte SAT no encontrado o no válido</p>
+
+<p><strong>21</strong> - 
+No encontró CFD a cancelar</p>
+
+<p><strong>22</strong> - 
+El CFD ya fue cancelado, previamente</p>
+
+<p><strong>23</strong> - 
+No se encontró el folio para ser cancelado</p>
+
+<p><strong>24</strong> - 
+Error de tipo JAXBException</p>
+
+<p><strong>25</strong> - 
+Error de tipo “excepción”</p>
+
+<p><strong>26</strong> - 
+No es una sucursal válida</p>
+
+<p><strong>27</strong> - 
+No es una serie válida</p>
+
+<p><strong>28</strong> - 
+No se pudo obtener el certificado de sello</p>
+
+<p><strong>29</strong> - 
+Certificado de sello inválido</p>
+
+<p><strong>30</strong> - 
+Error al almacenar XML de Comprobante</p>
+
+<p><strong>31</strong> - 
+Error al almacenar comprobante en la BD</p>
+
+<p><strong>32</strong> - 
+XML no valido según el esquema, la estructura del comprobante no corresponde a lo definido por la regulación del SAT</p>
+
+<p><strong>33</strong> - 
+EL RFC no tiene un formato válido</p>
+
+<p><strong>34</strong> - 
+Solo puede existir “Cuenta predial”, “Información Aduanera” o “Partes”</p>
+
+<p><strong>35</strong> - 
+Error al convertir cantidad a letra</p>
+
+<p><strong>36</strong> - 
+Etiqueta obligatoria</p>
+
+<p><strong>37</strong> - 
+Tamaño de nombre de archivo incorrecto</p>
+
+<p><strong>38</strong> - 
+Tipo de documento no es valido</p>
+
+<p><strong>39</strong> - 
+Error al almacenar dato en addenda</p>
+
+<p><strong>40</strong> - 
+Se ha suspendido el servicio</p>
+
+<p><strong>201</strong> - 
+El RfC no está autorizado para realizar una cancelación</p>
+
+<p><strong>202</strong> - 
+RfC  no está autorizado para descargar el Reporte Mensual</p>
+
+<p><strong>203</strong> - 
+Uno de los CFDs ya fue emitido</p>
+
+<p><strong>204</strong> - 
+RFC receptor o RFC emisor no corresponden al comprobante</p>
+
             </div>
           </div>
-        
-      
+        </div>
+      </div>
       <div id="sidebar-right" class="span3 sidebar">
     <div class="sidebar-padding">
         <div class=" ">
             <div class="module">
 
-                <h3>Generar un cfdi<span class="diverza-dot">.</span></h3>
+                <h3>Conector software<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Códigos de error</a></li>
                     </ul>               
                 </div>
-
+<!--
                 <br />
-                <h3>Impleméntalo<span class="diverza-dot">.</span></h3>
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
-                        <li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
-                        <li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
-                        <li class="item-178"><a href="/timbre/go">Go</a></li>
-                        <li class="item-178"><a href="/timbre/java">Java</a></li>
-                        <li class="item-178"><a href="/timbre/php">PHP</a></li>
-                        <li class="item-178"><a href="/timbre/perl">Perl</a></li>
-                        <li class="item-178"><a href="/timbre/python">Python</a></li>
-                        <li class="item-178"><a href="/timbre/ruby">Ruby</a></li>
-                        <li class="item-178"><a href="/timbre/terminal">Terminal</a></li>
-                        <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
                     </ul>               
                 </div>
+                !-->
 
-                <br />
-                <h3>Cancelación<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cancelacion/">Servicio</a></li>
-                        <li class="item-178"><a href="/timbre/cancelacion/respuesta_cancelacion.html">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <!-- <br />
-                <h3>herramientas<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/oficinas/aguascalientes">Prueba el Servicio</a></li>
-                        <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
-                    </ul>               
-                </div> -->
-            </div>
+              </div>
             <div class="clr"></div>
         </div>
     </div>
 </div>
     </div>
-
   </div>
-
 </div>
   <style>
     .hero-unit { }

@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -151,7 +154,7 @@
 
 <p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_26019.html">sitio del SAT</a>.</p>
 
-<h2>Datos del complemento de nómina</h2>
+<h2 id="toc_0">Datos del complemento de nómina</h2>
 
 <p>A continuación una descripción y ejemplo de cada atributo en el  complemento.</p>
 
@@ -356,7 +359,7 @@
 
 <p>* Los campos en <strong>negritas</strong> indican atributos obligatórios</p>
 
-<h3>Ejemplo</h3>
+<h3 id="toc_1">Ejemplo</h3>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"> <span class="nt">&lt;cfdi:Complemento&gt;</span>
     <span class="nt">&lt;nomina:Nomina</span> <span class="na">RegistroPatronal=</span><span class="s">&quot;23232&quot;</span> <span class="na">NumEmpleado=</span><span class="s">&quot;9872&quot;</span> <span class="na">CURP=</span><span class="s">&quot;TARE860821HNLRNL09&quot;</span> <span class="na">TipoRegimen=</span><span class="s">&quot;1&quot;</span> <span class="na">NumSeguridadSocial=</span><span class="s">&quot;98765434&quot;</span> <span class="na">FechaPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">FechaInicialPago=</span><span class="s">&quot;2013-11-1&quot;</span> <span class="na">FechaFinalPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">NumDiasPagados=</span><span class="s">&quot;15&quot;</span> <span class="na">Departamento=</span><span class="s">&quot;Administración&quot;</span> <span class="na">CLABE=</span><span class="s">&quot;123123123123123123&quot;</span> <span class="na">Banco=</span><span class="s">&quot;123&quot;</span> <span class="na">FechaInicioRelLaboral=</span><span class="s">&quot;2009-06-01&quot;</span> <span class="na">Antiguedad=</span><span class="s">&quot;228&quot;</span> <span class="na">Puesto=</span><span class="s">&quot;Administración&quot;</span> <span class="na">TipoContrato=</span><span class="s">&quot;Base&quot;</span> <span class="na">TipoJornada=</span><span class="s">&quot;Diurna&quot;</span> <span class="na">PeriodicidadPago=</span><span class="s">&quot;Quincenal&quot;</span> <span class="na">SalarioBaseCotApor=</span><span class="s">&quot;10000&quot;</span> <span class="na">RiesgoPuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">SalarioDiarioIntegrado=</span><span class="s">&quot;696.8&quot;</span><span class="nt">&gt;</span>
        <span class="nt">&lt;nomina:Percepciones</span> <span class="na">TotalGravado=</span><span class="s">&quot;13000&quot;</span> <span class="na">TotalExento=</span><span class="s">&quot;379&quot;</span><span class="nt">&gt;</span>

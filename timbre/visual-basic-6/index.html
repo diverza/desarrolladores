@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -149,7 +152,7 @@
 
 <hr>
 
-<h2>Generar Timbre</h2>
+<h2 id="toc_0">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
@@ -198,7 +201,7 @@
 
 <hr>
 
-<h3>Inicio</h3>
+<h3 id="toc_1">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo proyecto en Visual Basic 6 de tipo <strong>Standard EXE</strong>, una vez realizado esto necesitamos crear un nuevo archivo con el nombre <strong>cfdi.xml</strong> en la misma carpeta donde se encuentre el proyecto. El contenido de este archivo es el CFDI que deseamos timbrar:</p>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -266,7 +269,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Petición HTTP</h3>
+<h3 id="toc_2">Petición HTTP</h3>
 
 <p>Para realizar una petición HTTP desde Visual Basic 6 es necesario tener una instancia del objeto <strong>xmlhttp</strong> lo cual se realiza de la siguiente manera:</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Set</span> <span class="n">xmlhttp</span> <span class="o">=</span> <span class="no">New</span> <span class="n">xmlhttp</span>
@@ -283,7 +286,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Obtener el timbre</h3>
+<h3 id="toc_3">Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
 <div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">responseCode</span> <span class="o">=</span> <span class="n">xmlhttp</span><span class="o">.</span><span class="n">Status</span>

@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -149,7 +152,7 @@
 
 <hr>
 
-<h2>Servicio</h2>
+<h2 id="toc_0">Servicio</h2>
 
 <p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/
@@ -165,7 +168,7 @@
 
 <hr>
 
-<h3>Petición HTTP</h3>
+<h3 id="toc_1">Petición HTTP</h3>
 
 <p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
@@ -174,7 +177,7 @@
 
 <p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST, agregando como último recurso el UUID del CFDI a cancelar, y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>ABCD1234</strong>.</p>
 
-<h3>Respuesta</h3>
+<h3 id="toc_2">Respuesta</h3>
 
 <p>Una vez ejecutado el comando podremos observar en la respuesta:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">HTTP/1.1 200 OK

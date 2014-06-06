@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -162,7 +165,7 @@
 
 <hr>
 
-<h2>Contenido del CFDI</h2>
+<h2 id="toc_0">Contenido del CFDI</h2>
 
 <ul>
 <li>Información propia del comprobante fiscal, como <a href="#emisor">emisor</a>, receptor, conceptos</li>
@@ -172,7 +175,7 @@
 </ul>
 <div class="highlight"><pre><code class="text language-text" data-lang="text">El servicio de timbre fiscal recibe CFDI completos sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
 </code></pre></div>
-<h3>Ejemplo de un CFDI</h3>
+<h3 id="toc_1">Ejemplo de un CFDI</h3>
 <div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
   <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
@@ -218,13 +221,13 @@
   <span class="nt">&lt;/cfdi:Complemento&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
-<h3>Encabezado</h3>
+<h3 id="toc_2">Encabezado</h3>
 
 <ul>
-<li><em>xsi:schemaLocation</em>=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </li>
-<li><em>xmlns:cfdi</em>=&quot;http://www.sat.gob.mx/cfd/3&quot; </li>
-<li><em>xmlns:xsi</em>=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </li>
-<li><em>xmlns:xs</em>=&quot;http://www.w3.org/2001/XMLSchema&quot;</li>
+<li><em>xsi:schemaLocation</em>=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a> <a href="http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd">http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd</a>&quot; </li>
+<li><em>xmlns:cfdi</em>=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a>&quot; </li>
+<li><em>xmlns:xsi</em>=&quot;<a href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a>&quot; </li>
+<li><em>xmlns:xs</em>=&quot;<a href="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</a>&quot;</li>
 <li><em>LugarExpedicion</em>=&quot;D.F.,MEXICO&quot; </li>
 <li><em>NumCtaPago</em>=&quot;DESCONOCIDO&quot; </li>
 <li><em>formaDePago</em>=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </li>
@@ -239,7 +242,7 @@
 <li><em>version</em>=&quot;3.2&quot;</li>
 </ul>
 
-<h3>Emisor</h3>
+<h3 id="toc_3">Emisor</h3>
 
 <ul>
 <li><em>nombre</em>=&quot;EMPRESA DEMO&quot;</li>
@@ -255,7 +258,7 @@
 </ul></li>
 </ul>
 
-<h3>Receptor</h3>
+<h3 id="toc_4">Receptor</h3>
 
 <ul>
 <li><em>nombre</em>=&quot;PUBLICO EN GENERAL&quot;</li>
@@ -268,7 +271,7 @@
 </ul></li>
 </ul>
 
-<h3>Conceptos</h3>
+<h3 id="toc_5">Conceptos</h3>
 
 <ul>
 <li>Concepto
@@ -282,7 +285,7 @@
 </ul></li>
 </ul>
 
-<h3>Impuestos</h3>
+<h3 id="toc_6">Impuestos</h3>
 
 <ul>
 <li>Trasladados
@@ -301,31 +304,31 @@
 </ul></li>
 </ul>
 
-<h3>Addendas</h3>
+<h3 id="toc_7">Addendas</h3>
 
 <p>Esta sección puede alojar varias addendas con información útil para ti o tu receptor. Si bien no están sujetos a normatividad, te recomendamos usar addendas populares y seguir estándares.</p>
 
-<h3>Complementos</h3>
+<h3 id="toc_8">Complementos</h3>
 
-<h4>Complemento timbre fiscal</h4>
+<h4 id="toc_9">Complemento timbre fiscal</h4>
 
 <p>Esta es la información que responde el SAT cuando recibe un comprobante válido. Es también la respuesta que obtienes de <strong>timbre fiscal</strong></p>
 
 <ul>
-<li>xmlns:ns2=&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot; </li>
-<li>xmlns:ns3=&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot; </li>
-<li>xmlns:ns4=&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot; </li>
-<li>xmlns:ns5=&quot;http://www.sat.gob.mx/cfd/3&quot; </li>
-<li>xmlns:ns6=&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot; </li>
-<li>xmlns:ns7=&quot;http://www.sat.gob.mx/detallista&quot; </li>
-<li>xmlns:ns8=&quot;http://www.sat.gob.mx/terceros&quot; </li>
-<li>xmlns:ns9=&quot;http://www.sat.gob.mx/ecc&quot; </li>
-<li>xmlns:ns10=&quot;http://www.sat.gob.mx/implocal&quot; </li>
-<li>xmlns:ns11=&quot;http://www.sat.gob.mx/ecb&quot; </li>
-<li>xmlns:ns12=&quot;http://www.sat.gob.mx/divisas&quot; </li>
-<li>xmlns:ns13=&quot;http://www.sat.gob.mx/donat&quot; </li>
-<li>xmlns:ns14=&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot; </li>
-<li>xmlns:ns15=&quot;http://new.webservice.namespace&quot; </li>
+<li>xmlns:ns2=&quot;<a href="http://www.sat.gob.mx/TimbreFiscalDigital">http://www.sat.gob.mx/TimbreFiscalDigital</a>&quot; </li>
+<li>xmlns:ns3=&quot;<a href="http://www.buzonfiscal.com/TimbradoCFDI/">http://www.buzonfiscal.com/TimbradoCFDI/</a>&quot; </li>
+<li>xmlns:ns4=&quot;<a href="http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI">http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI</a>&quot; </li>
+<li>xmlns:ns5=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a>&quot; </li>
+<li>xmlns:ns6=&quot;<a href="http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD">http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD</a>&quot; </li>
+<li>xmlns:ns7=&quot;<a href="http://www.sat.gob.mx/detallista">http://www.sat.gob.mx/detallista</a>&quot; </li>
+<li>xmlns:ns8=&quot;<a href="http://www.sat.gob.mx/terceros">http://www.sat.gob.mx/terceros</a>&quot; </li>
+<li>xmlns:ns9=&quot;<a href="http://www.sat.gob.mx/ecc">http://www.sat.gob.mx/ecc</a>&quot; </li>
+<li>xmlns:ns10=&quot;<a href="http://www.sat.gob.mx/implocal">http://www.sat.gob.mx/implocal</a>&quot; </li>
+<li>xmlns:ns11=&quot;<a href="http://www.sat.gob.mx/ecb">http://www.sat.gob.mx/ecb</a>&quot; </li>
+<li>xmlns:ns12=&quot;<a href="http://www.sat.gob.mx/divisas">http://www.sat.gob.mx/divisas</a>&quot; </li>
+<li>xmlns:ns13=&quot;<a href="http://www.sat.gob.mx/donat">http://www.sat.gob.mx/donat</a>&quot; </li>
+<li>xmlns:ns14=&quot;<a href="http://www.buzonfiscal.com/ns/referenceID/v1">http://www.buzonfiscal.com/ns/referenceID/v1</a>&quot; </li>
+<li>xmlns:ns15=&quot;<a href="http://new.webservice.namespace">http://new.webservice.namespace</a>&quot; </li>
 <li><strong>selloSAT</strong> = ...
 
 <ul>
@@ -356,7 +359,7 @@
 
 <p>* Los campos en <strong>negritas</strong> representan a los nodos de información que genera diverza como PAC y es entregada al SAT.</p>
 
-<h4>Complemento nómina</h4>
+<h4 id="toc_10">Complemento nómina</h4>
 
 <ul>
 <li><a href="complementos/nomina.html">Complemento nómina</a></li>

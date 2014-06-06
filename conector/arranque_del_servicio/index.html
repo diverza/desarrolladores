@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Valida CFDI a timbrar</title>
+  <title>Arranque del servicio</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -115,8 +115,8 @@
 </div>
 
   <style>
-  #stamp-menu-item { color: #fff !important;
-    background: #2d3235;
+  #conector-menu-item { color: #fff !important;
+    background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -127,126 +127,83 @@
     -o-border-radius: 20px;
     -ms-border-radius: 20px;
     border-radius: 20px;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.20) }
-  </style>
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
 
-  <div id="body">
-    <div class="container">
-      <div id="main" class="row">
-        <div id="content" class="span12">
-          <div id="system-message-container">
-          </div>
-          <div id="component">
-            <div class="item-pagepage-history">
-              <div class="clr"></div>
-              <div class="article-content-text">
-                <h1>Valida CFDI a timbrar<span class="diverza-dot">.</span></h1>
-                <span class="h1-line"></span>
-                <div class="clr">&nbsp;</div>
-                <p>Esta herramienta valida los archivos CFDI contra la espeficación 3.2 de la Secretaria de Administración Tributaria.</p>
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>Arranque del servicio<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <p>Para iniciar el servicio, debemos accedemos a <strong>panel de control</strong>, en la ruta: Panel De Control/Herramientas Administrativas/Servicios, ubicamos el servicio <em>Buzon Fiscal Conector</em></p>
 
-<p><strong>Nota:</strong> Unicamente valida el contenido del CFDI, no la llamada que debe realizarse a la API de Timbre</p>
+<p><img src="serv_bf.png" alt="Servicio"></p>
 
-                <br />
-                <br />
-                <div class="files_wrapper">
-                  <div class="xmlarea_file" id="xml_file">Arrastra el archivo XML del CFD a validar</div>
-                </div>
-              </div>
-              <br />
-              <a class="btn valBtn" id="fileBtn">Validar</a>
-              <p><h2 class="t-left">Console:</h2><div class="xmllint-info1">xmllint info</div>
-                <textarea class="console1" readonly="readonly" rows="5"></textarea>
-                <br />
+<p>Una vez seleccionado el servicio, contamos con las siguientes 2 opciones para realizar el servicio:
+1.  Ubicar en la parte posterior izquierda la opción reinicio (botón color verde) y dar click en el
+2.  Dar click derecho sobre el servicio y posteriormente nos despliega algunas opciones, de las cuales debemos seleccionar “inicio”</p>
 
-              </div>
+<p><img src="iniciando_servicio.png" alt="Inicializar el servicio"></p>
+
+<p>Una vez concluido el proceso de inicio,  el servicio comenzará su operación.</p>
+
             </div>
           </div>
-        
-      
+        </div>
+      </div>
       <div id="sidebar-right" class="span3 sidebar">
     <div class="sidebar-padding">
         <div class=" ">
             <div class="module">
 
-                <h3>Generar un cfdi<span class="diverza-dot">.</span></h3>
+                <h3>Conector software<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Códigos de error</a></li>
                     </ul>               
                 </div>
-
+<!--
                 <br />
-                <h3>Impleméntalo<span class="diverza-dot">.</span></h3>
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
-                        <li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
-                        <li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
-                        <li class="item-178"><a href="/timbre/go">Go</a></li>
-                        <li class="item-178"><a href="/timbre/java">Java</a></li>
-                        <li class="item-178"><a href="/timbre/php">PHP</a></li>
-                        <li class="item-178"><a href="/timbre/perl">Perl</a></li>
-                        <li class="item-178"><a href="/timbre/python">Python</a></li>
-                        <li class="item-178"><a href="/timbre/ruby">Ruby</a></li>
-                        <li class="item-178"><a href="/timbre/terminal">Terminal</a></li>
-                        <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
                     </ul>               
                 </div>
+                !-->
 
-                <br />
-                <h3>Cancelación<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cancelacion/">Servicio</a></li>
-                        <li class="item-178"><a href="/timbre/cancelacion/respuesta_cancelacion.html">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <!-- <br />
-                <h3>herramientas<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/oficinas/aguascalientes">Prueba el Servicio</a></li>
-                        <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
-                    </ul>               
-                </div> -->
-            </div>
+              </div>
             <div class="clr"></div>
         </div>
     </div>
 </div>
     </div>
-
   </div>
-
 </div>
   <style>
     .hero-unit { }

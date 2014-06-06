@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Valida CFDI a timbrar</title>
+  <title>Estructura de carpetas</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -115,8 +115,8 @@
 </div>
 
   <style>
-  #stamp-menu-item { color: #fff !important;
-    background: #2d3235;
+  #conector-menu-item { color: #fff !important;
+    background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -127,126 +127,127 @@
     -o-border-radius: 20px;
     -ms-border-radius: 20px;
     border-radius: 20px;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.20) }
-  </style>
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
 
-  <div id="body">
-    <div class="container">
-      <div id="main" class="row">
-        <div id="content" class="span12">
-          <div id="system-message-container">
-          </div>
-          <div id="component">
-            <div class="item-pagepage-history">
-              <div class="clr"></div>
-              <div class="article-content-text">
-                <h1>Valida CFDI a timbrar<span class="diverza-dot">.</span></h1>
-                <span class="h1-line"></span>
-                <div class="clr">&nbsp;</div>
-                <p>Esta herramienta valida los archivos CFDI contra la espeficación 3.2 de la Secretaria de Administración Tributaria.</p>
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>Estructura de carpetas<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <h2 id="toc_0">Terminología</h2>
 
-<p><strong>Nota:</strong> Unicamente valida el contenido del CFDI, no la llamada que debe realizarse a la API de Timbre</p>
+<ol>
+<li><p>Versión: Con el fin de contar con un sistema amigable, nuestro conector te permite emitir comprobantes fiscales digítales mediante de un layout, TXT o XML, dependiendo de tus necesidades.</p>
 
-                <br />
-                <br />
-                <div class="files_wrapper">
-                  <div class="xmlarea_file" id="xml_file">Arrastra el archivo XML del CFD a validar</div>
-                </div>
-              </div>
-              <br />
-              <a class="btn valBtn" id="fileBtn">Validar</a>
-              <p><h2 class="t-left">Console:</h2><div class="xmllint-info1">xmllint info</div>
-                <textarea class="console1" readonly="readonly" rows="5"></textarea>
-                <br />
+<ul>
+<li>De acuerdo a la versión seleccionada usted podrá depositar al Conector archivos de entrada en formato TXT o XML.</li>
+</ul></li>
+<li><p>Parser: Periódicamente el Conector estará monitoreando si existen archivos depositados en la carpeta de entrada, tomará los archivos de manera secuencial en función a su nombre y fecha de creación.</p>
 
-              </div>
+<ul>
+<li>El Conector someterá el archivo a un lector o <strong>“parser”</strong>  cuya función es el análisis de la sintaxis del archivo de entrada para validar que se cumpla con cierta estructura y que contenga la información mínima requerida para la emisión o cancelación de un comprobante fiscal digital.</li>
+<li>En caso de que algo esté incorrecto esta acción de validación generará un archivo de error que será colocado en la carpeta de diagnóstico.</li>
+<li>Cuando se trate de un Conector versión TXT, el resultado exitoso de la validación dará como resultado un archivo de remisión en XML el cual será enviado al servicio de Conector Fiscal para su procesamiento mediante un llamado de Web Service.</li>
+</ul></li>
+<li><p>Comunicación: El Conector se comunica hacia Buzón Fiscal mediante llamados de Web Services y utiliza en su configuración un Certificado SSL para asegurar la transmisión de la información que viaja por Internet.</p></li>
+<li><p>Licencias: Parte de la configuración del Conector implica la instalación de la Licencia correspondiente, la licencia de uso definirá la cuenta de Buzón Fiscal con la que se estará interactuando, la versión del Conector (TXT o XML) y si se está operando en ambiente de prueba o producción.</p>
+
+<ul>
+<li>De origen en la instalación inicial el Conector quedará configurado con una Licencia de prueba, concluido el periodo de certificación le será otorgada la Licencia definitiva.</li>
+</ul></li>
+</ol>
+
+<hr>
+
+<h2 id="toc_1">Estructura general</h2>
+
+<p>La estructura general del conector esta formada como se describe a continuación:</p>
+
+<p>La carpeta raíz del wrapper lleva el nombre de <strong>“BuzonFiscalConector”</strong>. Inclye otras carpetas importantes para su funcionamiento.</p>
+
+<p><img src="wrapper.png" alt="Ejecución de wrapper">
+<em>Estructura general del wrapper del conector</em></p>
+
+<h2 id="toc_2">Subcarpetas en data/</h2>
+
+<p>Conector opera por omisión con carpetas o repositorios para extraer remisiones, depositar los comprobantes emitidos y sus representaciones impresas</p>
+
+<p>Dentro de data se encuentran cuatro carpetas, estas son:</p>
+
+<ol>
+<li><p><strong>in/</strong> – Carpeta en la cual se ingresan los remisiones (txt o xml) que serán procesadas por nuestro servicio.</p>
+
+<ul>
+<li>Esta carpeta de entrada será leída por el Conector cada 10 segundos y procesará los archivos encontrados en el momento de la lectura, hasta no concluir con el procesamiento de ese bloque será que el Conector ejecute de nuevo la lectura de dicha carpeta.</li>
+</ul></li>
+<li><p><strong>out/</strong>- El Conector depositará en esta carpeta el comprobante generado una vez concluido el procesamiento de la remisión, si los archivos que fueron colocados en la carpeta de entrada no presentan error, por cada remisión procesada se obtendrán los siguientes archivos:</p>
+
+<p>a. <strong>XML</strong>: Es el comprobante fiscal digital que ha sido entregado  al SAT, el cual fiscalmente hablando es el que se utilizará para realizar las declaraciones. El emisor está obligado a respaldarlo en el domicilio en que fue emitido. </p>
+
+<p>b. <strong>TXT</strong>: Este archivo contiene un extracto de la información del CFDi en formato de texto plano para que sea leído e importado al sistema del propietario. </p>
+
+<p>c.  <strong>PDF</strong>: Es una representación grafica del comprobante que podrá ser leído con Acrobat Reader, esta podrá convertirse en la versión de impresa de su Comprobante Discal Digital. Por omisión Conector tiene configurada una plantilla de visualización genérica pero esta puede ser personalizada a petición del cliente.</p></li>
+<li><p><strong>processed/</strong> – En esta carpeta podrás encontrar un respaldo de las remisiones que procesaron, sin importan que estas tuvieron un error previo.</p></li>
+</ol>
+
             </div>
           </div>
-        
-      
+        </div>
+      </div>
       <div id="sidebar-right" class="span3 sidebar">
     <div class="sidebar-padding">
         <div class=" ">
             <div class="module">
 
-                <h3>Generar un cfdi<span class="diverza-dot">.</span></h3>
+                <h3>Conector software<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Códigos de error</a></li>
                     </ul>               
                 </div>
-
+<!--
                 <br />
-                <h3>Impleméntalo<span class="diverza-dot">.</span></h3>
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
-                        <li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
-                        <li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
-                        <li class="item-178"><a href="/timbre/go">Go</a></li>
-                        <li class="item-178"><a href="/timbre/java">Java</a></li>
-                        <li class="item-178"><a href="/timbre/php">PHP</a></li>
-                        <li class="item-178"><a href="/timbre/perl">Perl</a></li>
-                        <li class="item-178"><a href="/timbre/python">Python</a></li>
-                        <li class="item-178"><a href="/timbre/ruby">Ruby</a></li>
-                        <li class="item-178"><a href="/timbre/terminal">Terminal</a></li>
-                        <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
                     </ul>               
                 </div>
+                !-->
 
-                <br />
-                <h3>Cancelación<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cancelacion/">Servicio</a></li>
-                        <li class="item-178"><a href="/timbre/cancelacion/respuesta_cancelacion.html">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <!-- <br />
-                <h3>herramientas<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/oficinas/aguascalientes">Prueba el Servicio</a></li>
-                        <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
-                    </ul>               
-                </div> -->
-            </div>
+              </div>
             <div class="clr"></div>
         </div>
     </div>
 </div>
     </div>
-
   </div>
-
 </div>
   <style>
     .hero-unit { }

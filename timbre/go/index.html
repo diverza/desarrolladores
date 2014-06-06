@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -149,7 +152,7 @@
 
 <hr>
 
-<h2>Generar Timbre</h2>
+<h2 id="toc_0">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
@@ -198,7 +201,7 @@
 
 <hr>
 
-<h3>Inicio</h3>
+<h3 id="toc_1">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.go</em> y una vez que lo hayamos creado agregar la estructura basica del script: con los importando las librerias necesarias y creando la funcion principal:</p>
 <div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
@@ -253,7 +256,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Petición HTTP</h3>
+<h3 id="toc_2">Petición HTTP</h3>
 
 <p>Para realizar peticiones HTTP desde Go es necesario utilizar una instancia de Http Client, la cual obtendremos de la siguiente manera</p>
 <div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">client</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">http</span><span class="p">.</span><span class="nx">Client</span><span class="p">{}</span>
@@ -270,7 +273,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Obtener el timbre</h3>
+<h3 id="toc_3">Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
 <div class="highlight"><pre><code class="go language-go" data-lang="go"><span class="nx">stamp</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>

@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -149,7 +152,7 @@
 
 <hr>
 
-<h2>Generar Timbre</h2>
+<h2 id="toc_0">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
@@ -198,7 +201,7 @@
 
 <hr>
 
-<h3>Inicio</h3>
+<h3 id="toc_1">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.pl</em> y una vez que lo hayamos creado, es necesario importar las librerias necesarias para este ejercicio, esto se realiza de la siguiente manera:</p>
 <div class="highlight"><pre><code class="perl language-perl" data-lang="perl"><span class="c1">#!/usr/local/bin/perl</span>
@@ -246,7 +249,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Petición HTTP</h3>
+<h3 id="toc_2">Petición HTTP</h3>
 
 <p>Para realizar la petición HTTP es necesario crear un objeto User Agent, el cual se inicializa de la siguiente manera:</p>
 <div class="highlight"><pre><code class="perl language-perl" data-lang="perl"><span class="k">my</span> <span class="nv">$user_agent</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">LWP::</span><span class="n">UserAgent</span><span class="p">;</span>
@@ -259,7 +262,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Obtener el timbre</h3>
+<h3 id="toc_3">Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
 <div class="highlight"><pre><code class="perl language-perl" data-lang="perl"><span class="k">my</span> <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$user_agent</span><span class="o">-&gt;</span><span class="n">request</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>

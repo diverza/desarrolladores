@@ -90,10 +90,13 @@
                   <li class="item-102" id="stamp-menu-item">
                     <a href="/timbre/">Timbre Fiscal</a>
                   </li>
-                  <li class="item-103">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
                   </li>
                   <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
                   </li>
                 </ul>
@@ -149,7 +152,7 @@
 
 <hr>
 
-<h2>Generar Timbre</h2>
+<h2 id="toc_0">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
 <div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de pruebas: http://staging.diverza.com/stamp
@@ -198,7 +201,7 @@
 
 <hr>
 
-<h3>Inicio</h3>
+<h3 id="toc_1">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.exs</em> y una vez que lo hayamos creado, por motivos de facilidad para esta guía es almacenar el CFDI a timbrar en una variable:</p>
 <div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">cfd</span> <span class="o">=</span> <span class="sd">&quot;&quot;&quot;</span>
@@ -241,7 +244,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Petición HTTP</h3>
+<h3 id="toc_2">Petición HTTP</h3>
 
 <p>Para realizar peticiones HTTP desde Elixir es necesario iniciar el actor <em>inets</em>:</p>
 <div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="ss">:inets</span><span class="o">.</span><span class="n">start</span>
@@ -259,7 +262,7 @@
 </code></pre></div>
 <hr>
 
-<h3>Obtener el timbre</h3>
+<h3 id="toc_3">Obtener el timbre</h3>
 
 <p>Una vez realizada la petición podremos tener acceso a los datos de respuesta:</p>
 <div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">http_code</span><span class="si">}</span><span class="s2">&quot;</span>
