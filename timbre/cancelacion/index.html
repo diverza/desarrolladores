@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Timbre Fiscal</title>
+  <title>Servicio de cancelación</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -140,51 +140,59 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>Timbre Fiscal<span class="diverza-dot">.</span></h1>
+              <h1>Servicio de cancelación<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p><strong>Timbre fiscal</strong> es la solución de diverza para certificar los comprobantes que hoy ya haces.</p>
+              <p>El servicio de cancelación consta de un servicio REST para cancelación de CFDIs timbrados ante el SAT, a partir del UUID del comprobante.</p>
 
-<p>Conecta tu software de facturación con nuestro <strong>servicio web REST</strong> y obtén tus comprobantes certificados, solo debes entregarle un CFDI sin el timbre y recibirás el complemento de timbre.</p>
-
-<p><img src="/images/tf-como-funciona.png" alt="Cómo funciona" title="Timbre fiscal"></p>
-
-<p>Si no puedes generar CFDIs </p>
+<p>La siguiente guía explica cómo utilizar el servicio de cancelación, usando como ejemplo la <em>Terminal</em> o <em>Linea de comandos</em> y <em>cURL</em>.</p>
 
 <hr>
 
-<h3>prueba tu integración</h3>
+<h2>Servicio</h2>
 
-<p>Prueba nuestro servicio, usando alguno de los ejemplos de código que te ofrecemos.</p>
+<p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/
+ Servicio: /stamp/cancel/
+ Metodo HTTP: POST
+ Header HTTP: x-auth-token
+ Token de prueba: ABCD1234
+ UUID de prueba: f7da0c0d-2c2e-4753-9d56-b0f080252eda
+</code></pre></div>
+<p><strong>Nota:</strong> Es importante que utilices el mismo token con el que timbraste el comprobante. Con él comprobaremos que tu haces la petición y obtendremos la información necesaria para procesar la cancelación con el SAT.</p>
 
-<p><em>Recuerda verificar que tus XMLs están bien construidos y que la conexión con nuestro sistema es correcta.</em></p>
+<p><strong>Nota:</strong> El UUID es un atributo del complemento <em>TimbreFiscalDigital</em></p>
 
-<p>Cuando estés listo, <a href="tel://018000704000">llámanos</a> o <strong><a href="mailto:soporte@diverza.com?subject=Quiero%20conectarme%20a%20Timbre%20Fiscal">escríbenos</a></strong> para contratar y obtener acceso a un ambiente productivo.</p>
+<hr>
 
-<h3>para conectarte con nosotros</h3>
+<h3>Petición HTTP</h3>
 
-<ol>
-<li><a href="cfd">Construye el CFDI</a>
+<p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
+<div class="highlight"><pre><code class="sh language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+</code></pre></div>
+<p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
-<ul>
-<li><a href="cfd/certificado.html">Agrega tu certificado</a></li>
-<li><a href="cfd/sello.html">Incluye tu sello</a></li>
-</ul></li>
-<li><a href="terminal">Conectate con nuestro webservice</a>
+<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST, agregando como último recurso el UUID del CFDI a cancelar, y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>ABCD1234</strong>.</p>
 
-<ul>
-<li>Usa el lenguaje de tu elección</li>
-</ul></li>
-</ol>
+<h3>Respuesta</h3>
 
-<h3>Recursos y referencias</h3>
+<p>Una vez ejecutado el comando podremos observar en la respuesta:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">HTTP/1.1 200 OK
+Date: Fri, 16 May 2014 13:26:02 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: text/plain; charset=UTF-8
 
-<ul>
-<li><a href="cfd/timbreweb.html">Solicita una cuenta de acceso web</a>, para ver los comprobantes de prueba que ya emitiste</li>
-<li><a href="cfd">Conoce la especificación del CFDI</a></li>
-<li>Comprueba que tu XML tiene la estructura correcta</li>
-<li><a href="codigos">Conoce los códigos de error que podrías recibir</a></li>
-</ul>
+HTTP/1.1 0 Proceso realizado con éxito
+connection: keep-alive
+server: Cowboy
+date: Fri, 16 May 2014 13:26:02 GMT
+content-length: 30
+cache-control: max-age=0, private, must-revalidate
+
+Proceso realizado con éxito
+</code></pre></div>
+<p>El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong> y <strong>0 Proceso realizado con éxito</strong> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="respuestas_cancelaci%C3%B3n.html">Lista de Códigos de Respuesta para cancelación</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
 
             </div>
           </div>

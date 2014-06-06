@@ -21,7 +21,7 @@
 	<!--<script src="scripts/prettify.js"></script>-->
 	<script src="/scripts/xmllint.js"></script>
 	<script src="/scripts/script.js"></script>
-  <title>Timbre Fiscal</title>
+  <title>Códigos de respuesta para el servicio de cancelación</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -140,51 +140,63 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>Timbre Fiscal<span class="diverza-dot">.</span></h1>
+              <h1>Códigos de respuesta para el servicio de cancelación<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p><strong>Timbre fiscal</strong> es la solución de diverza para certificar los comprobantes que hoy ya haces.</p>
+              <p>La siguiente lista comprende todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones:</p>
 
-<p>Conecta tu software de facturación con nuestro <strong>servicio web REST</strong> y obtén tus comprobantes certificados, solo debes entregarle un CFDI sin el timbre y recibirás el complemento de timbre.</p>
+<h3>Éxito</h3>
 
-<p><img src="/images/tf-como-funciona.png" alt="Cómo funciona" title="Timbre fiscal"></p>
+<p><strong>0</strong> - Proceso realizado con éxito<br>
+<em>Comprobante cancelado exitosamente</em></p>
 
-<p>Si no puedes generar CFDIs </p>
+<h3>Errores generales</h3>
 
-<hr>
+<p><strong>13</strong> - Error general<br>
+<em>Necesita ser analizado directamente con el personal de soporte</em></p>
 
-<h3>prueba tu integración</h3>
+<p><strong>17</strong> - Reporte SAT no encontrado o no válido<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
-<p>Prueba nuestro servicio, usando alguno de los ejemplos de código que te ofrecemos.</p>
+<p><strong>18</strong> - No encontró CFD a cancelar<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
-<p><em>Recuerda verificar que tus XMLs están bien construidos y que la conexión con nuestro sistema es correcta.</em></p>
+<p><strong>19</strong> - El CFD ya fue cancelado previamente<br>
+<em>Verificar el estado del comprobante en Buzón Fiscal</em></p>
 
-<p>Cuando estés listo, <a href="tel://018000704000">llámanos</a> o <strong><a href="mailto:soporte@diverza.com?subject=Quiero%20conectarme%20a%20Timbre%20Fiscal">escríbenos</a></strong> para contratar y obtener acceso a un ambiente productivo.</p>
+<p><strong>20</strong> - No se encontró el folio para ser cancelado<br>
+<em>Verificar los datos de la  petición (RFC emisor, RFC receptor, serie, folio, refid)</em></p>
 
-<h3>para conectarte con nosotros</h3>
+<p><strong>22</strong> - Error de tipo “excepción”<br>
+<em>Error general</em></p>
 
-<ol>
-<li><a href="cfd">Construye el CFDI</a>
+<p><strong>892</strong> - Ocurrió un error al cancelar comprobante<br>
+<em>Contacta con un asesor</em></p>
 
-<ul>
-<li><a href="cfd/certificado.html">Agrega tu certificado</a></li>
-<li><a href="cfd/sello.html">Incluye tu sello</a></li>
-</ul></li>
-<li><a href="terminal">Conectate con nuestro webservice</a>
+<p><strong>453</strong> - Estructura de WebService incompleta<br>
+<em>Verificar que la llamada esté escrita de forma correcta</em></p>
 
-<ul>
-<li>Usa el lenguaje de tu elección</li>
-</ul></li>
-</ol>
+<h3>Error de token o autorización</h3>
 
-<h3>Recursos y referencias</h3>
+<p><strong>300</strong> - Token no es válido<br>
+<em>Revisar que el token corresponda al cliente correcto de ser así, contactar al asesor para que genere un nuevo token</em></p>
 
-<ul>
-<li><a href="cfd/timbreweb.html">Solicita una cuenta de acceso web</a>, para ver los comprobantes de prueba que ya emitiste</li>
-<li><a href="cfd">Conoce la especificación del CFDI</a></li>
-<li>Comprueba que tu XML tiene la estructura correcta</li>
-<li><a href="codigos">Conoce los códigos de error que podrías recibir</a></li>
-</ul>
+<p><strong>301</strong> - Token no registrado para esta empresa<br>
+<em>El token no es el correspondiente para la empresa que lo solicita. Contactar con a tu asesor</em></p>
+
+<p><strong>302</strong> - Token ha caducado<br>
+<em>Contacta con tu asesor generar un nuevo token</em></p>
+
+<p><strong>303</strong> - Token deshabilitado  </p>
+
+<p><strong>25</strong> - No se pudo obtener el certificado de sello<br>
+<em>Revisar que esté dado de alta el certificado de sellos en el portal de Buzón Fiscal</em></p>
+
+<p><strong>40</strong> - Se ha suspendido el servicio<br>
+<em>Contactar a un asesor, cuenta no tiene permisos para emitir</em></p>
+
+<p><strong>201</strong> - El RFC {RFC} no está autorizado para realizar una cancelación<br>
+<em>Cancelación sin autorización o permisos</em></p>
 
             </div>
           </div>
