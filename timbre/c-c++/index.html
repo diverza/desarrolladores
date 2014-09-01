@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>C / C++</title>
 </head>
@@ -152,16 +152,16 @@
 
 <hr>
 
-<h2 id="toc_0">Generar Timbre</h2>
+<h2 id="generar-timbre">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
  Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
 <p>Así como también el CFDI de prueba que usaremos en este ejercicio:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
     <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -201,14 +201,14 @@
 
 <hr>
 
-<h3 id="toc_1">Inicio</h3>
+<h3 id="inicio">Inicio</h3>
 
 <p>Primeramente necesitamos crear una nueva carpeta con el nombre <strong>timbrar</strong> y crear dos archivos:</p>
 
 <ul>
 <li><strong>cfdi.xml</strong> - Deberemos guardar el contenido del CFDI a timbrar en el:</li>
 </ul>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
     <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -251,14 +251,14 @@
 <p><strong>Unicamente para Windows:</strong> Se debera descargar el archivo comprimido <a href="">includes.zip</a> y descomprimirlo dentro de la carpeta timbrar </p>
 
 <p>El siguiente paso es incluir las librerias que utilizaremos en el proyecto:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="c1">#include &lt;curl/curl.h&gt;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="c1">#include &lt;curl/curl.h&gt;</span>
 <span class="c1">#include &lt;string.h&gt;</span>
 <span class="c1">#include &lt;stdlib.h&gt;</span>
 </code></pre></div>
 <p>Ahora es necesario agregar algunas funciones de soporte para el resto de nuestro codigo:</p>
 
 <p><strong>Windows</strong></p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Estructura</span> <span class="n">necesaria</span> <span class="n">para</span> <span class="n">la</span> <span class="n">escritura</span> <span class="n">del</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Estructura</span> <span class="n">necesaria</span> <span class="n">para</span> <span class="n">la</span> <span class="n">escritura</span> <span class="n">del</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span>
 <span class="n">struct</span> <span class="no">WriteStructure</span> 
 <span class="p">{</span>
   <span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">readptr</span><span class="p">;</span>
@@ -311,7 +311,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Unix/Linux/OSX</strong></p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Estructura</span> <span class="n">necesaria</span> <span class="n">para</span> <span class="n">la</span> <span class="n">escritura</span> <span class="n">del</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">//</span> <span class="no">Estructura</span> <span class="n">necesaria</span> <span class="n">para</span> <span class="n">la</span> <span class="n">escritura</span> <span class="n">del</span> <span class="n">cuerpo</span> <span class="n">de</span> <span class="n">la</span> <span class="n">petici</span><span class="err">ó</span><span class="n">n</span>
 <span class="n">struct</span> <span class="no">WriteStructure</span> 
 <span class="p">{</span>
   <span class="n">const</span> <span class="n">char</span> <span class="o">*</span><span class="n">readptr</span><span class="p">;</span>
@@ -367,10 +367,10 @@
 
 <hr>
 
-<h3 id="toc_2">Petición HTTP</h3>
+<h3 id="petición-http">Petición HTTP</h3>
 
 <p>Es momento de crear nuestra funcion main y declarar las variables que utilizaremos en ella:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">main</span><span class="p">(</span><span class="n">void</span><span class="p">)</span>
 <span class="p">{</span>
   <span class="n">char</span> <span class="o">*</span><span class="n">cfd</span><span class="p">;</span>
   <span class="n">char</span> <span class="o">*</span><span class="n">stamp</span><span class="p">;</span>
@@ -381,7 +381,7 @@
   <span class="n">struct</span> <span class="no">WriteStructure</span> <span class="n">writeStructure</span><span class="p">;</span>
 </code></pre></div>
 <p>Ahora deberemos inicializar las librerias de CURL:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">result</span> <span class="o">=</span> <span class="n">curl_global_init</span><span class="p">(</span><span class="no">CURL_GLOBAL_DEFAULT</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">result</span> <span class="o">=</span> <span class="n">curl_global_init</span><span class="p">(</span><span class="no">CURL_GLOBAL_DEFAULT</span><span class="p">);</span>
 <span class="k">if</span><span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="no">CURLE_OK</span><span class="p">)</span> 
 <span class="p">{</span>
   <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s2">&quot;Error en curl_global_init(): %s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">curl_easy_strerror</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
@@ -389,28 +389,28 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>El siguiente paso es inicializar una petición de cURL:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">curl</span> <span class="o">=</span> <span class="n">curl_easy_init</span><span class="p">();</span>
 <span class="k">if</span><span class="p">(</span><span class="n">curl</span><span class="p">)</span> 
 <span class="p">{</span>
 </code></pre></div>
 <p>Incluimos el CFDI leyendo el archivo cfdi.xml y lo guardamos en una estructura que utilizaremos posteriormente:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">cfd</span> <span class="o">=</span> <span class="n">read_cfd_file</span><span class="p">();</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cfd</span> <span class="o">=</span> <span class="n">read_cfd_file</span><span class="p">();</span>
 
 <span class="n">writeStructure</span><span class="o">.</span><span class="n">readptr</span> <span class="o">=</span> <span class="n">cfd</span><span class="p">;</span>
 <span class="n">writeStructure</span><span class="o">.</span><span class="n">sizeleft</span> <span class="o">=</span> <span class="p">(</span><span class="n">long</span><span class="p">)</span><span class="n">strlen</span><span class="p">(</span><span class="n">cfd</span><span class="p">);</span>
 </code></pre></div>
 <p>Agregamos a la petición de cURL la URL del servicio de timbrado:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Es necesario que la petición use el metodo HTTP post:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="n">L</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="mi">1</span><span class="n">L</span><span class="p">);</span>
 </code></pre></div>
 <p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">headers</span> <span class="o">=</span> <span class="n">curl_slist_append</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">headers</span> <span class="o">=</span> <span class="n">curl_slist_append</span><span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span><span class="p">);</span>
 <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span><span class="n">headers</span><span class="p">);</span>
 </code></pre></div>
 <p>Es necesario decirle a la petición de cURL que utilizaremos dos funciones una para la escritura del mensaje en el servicio de timbrado y la otra para la escritura:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_READFUNCTION</span><span class="p">,</span> <span class="n">read_callback_function</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_READFUNCTION</span><span class="p">,</span> <span class="n">read_callback_function</span><span class="p">);</span>
 <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_READDATA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">writeStructure</span><span class="p">);</span>
 <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDSIZE</span><span class="p">,</span> <span class="n">writeStructure</span><span class="o">.</span><span class="n">sizeleft</span><span class="p">);</span>
 
@@ -418,14 +418,14 @@
 <span class="n">curl_easy_setopt</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLOPT_WRITEDATA</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">stamp</span><span class="p">);</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">result</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">result</span> <span class="o">=</span> <span class="n">curl_easy_perform</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
 </code></pre></div>
 <hr>
 
-<h3 id="toc_3">Obtener el timbre</h3>
+<h3 id="obtener-el-timbre">Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby">    <span class="n">curl_easy_getinfo</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLINFO_RESPONSE_CODE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">response_code</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby">    <span class="n">curl_easy_getinfo</span><span class="p">(</span><span class="n">curl</span><span class="p">,</span> <span class="no">CURLINFO_RESPONSE_CODE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">response_code</span><span class="p">);</span>
     <span class="n">curl_easy_cleanup</span><span class="p">(</span><span class="n">curl</span><span class="p">);</span>
 
     <span class="nb">printf</span><span class="p">(</span><span class="s2">&quot;Codigo HTTP: %lu</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">response_code</span><span class="p">);</span>
@@ -439,36 +439,26 @@
 <p>Si ejecutamos el código utilizando:</p>
 
 <p><strong>Windows</strong></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">C:\&gt; cl timbrar.c libcurl.lib /I include
+<div class="highlight"><pre><code class="language-text" data-lang="text">C:\&gt; cl timbrar.c libcurl.lib /I include
 C:\&gt; timbrar
 </code></pre></div>
 <p><strong>Nota:</strong> Se debe utilizar la <strong>Developer Command Prompt</strong> que instala Visual Studio.</p>
 
 <p><strong>Unix/Linux/OSX</strong></p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ gcc timbrar.c -o timbrar -lcurl
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ gcc timbrar.c -o timbrar -lcurl
 $ ./timbrar
 </code></pre></div>
 <p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
-  <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
-  <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
-  <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> 
-  <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
-  <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> 
-  <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> 
-  <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> 
-  <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> 
-  <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> 
-  <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> 
-  <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> 
-  <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> 
-  <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> 
-  <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span> 
-  <span class="na">selloSAT=</span><span class="s">&quot;vW6bOQHFS5ne5Z9ADkhqZYvfI9zCbm15BF7CeJKwXZeZnTRwC204gHCHlemecbDfQ4Qv8CGi1+zS8yW5tGwuz2G6TUs3fp3MUe8mj7PV0bxSEybZB0M3aG0xHPHytzq1wE+z6wADo1e1O1fo4Y0C4ik1lvHDxstfJhHaRlmN920=&quot;</span> 
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> 
+
+  <span class="na">selloSAT=</span><span class="s">&quot;Ae0K1DyTpecq8xZAB8SSCccx5Gzrqr+HaD1tEQ/dFNqobiZDfJ2U9eJ9BRxYn1K6Zw4A0W2PbBs3VUFFasuJHkfw5nLxb+M/hu55Gomhw9OjhKsH0ABnOGa3vQHWPHHDFB9zb4/sMxdUTqEubent8Zvb3nfKaxdgX9BkVFYgd+c=&quot;</span> 
   <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
   <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
-  <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-12-09T19:57:34&quot;</span> 
-  <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-27T19:33:42&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;e52d9982-1cd1-4b99-aa3c-0f6172d07412&quot;</span> 
+
   <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>El código de respuesta del servidor que se encuentra en la variable <em>response_code</em> deberá ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
@@ -494,7 +484,7 @@ $ ./timbrar
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -519,6 +509,18 @@ $ ./timbrar
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -532,15 +534,6 @@ $ ./timbrar
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -603,17 +596,14 @@ $ ./timbrar
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

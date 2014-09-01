@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>complemento de nómina</title>
 </head>
@@ -146,15 +146,13 @@
               <h1>complemento de nómina<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesta en el primer nivel del xml.</p>
-
-<p>Para este complemento, como los demás, debe colocarse un complemento de nómina por recibo.</p>
+              <p>Para este complemento, como los demás, debe colocarse un complemento de nómina por recibo.</p>
 
 <p>El complemento contine información laboral del patrón y el empleado. Además del detalle de las percepciones y deducciones realizadas por el periodo de tiempo especificado.</p>
 
-<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_26019.html">sitio del SAT</a>.</p>
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/complemento_nomina.aspx">sitio del SAT</a>.</p>
 
-<h2 id="toc_0">Datos del complemento de nómina</h2>
+<h2 id="datos-del-complemento-de-nómina">Datos del complemento de nómina</h2>
 
 <p>A continuación una descripción y ejemplo de cada atributo en el  complemento.</p>
 
@@ -357,10 +355,10 @@
 </ul></li>
 </ul>
 
-<p>* Los campos en <strong>negritas</strong> indican atributos obligatórios</p>
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
 
-<h3 id="toc_1">Ejemplo</h3>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"> <span class="nt">&lt;cfdi:Complemento&gt;</span>
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;cfdi:Complemento&gt;</span>
     <span class="nt">&lt;nomina:Nomina</span> <span class="na">RegistroPatronal=</span><span class="s">&quot;23232&quot;</span> <span class="na">NumEmpleado=</span><span class="s">&quot;9872&quot;</span> <span class="na">CURP=</span><span class="s">&quot;TARE860821HNLRNL09&quot;</span> <span class="na">TipoRegimen=</span><span class="s">&quot;1&quot;</span> <span class="na">NumSeguridadSocial=</span><span class="s">&quot;98765434&quot;</span> <span class="na">FechaPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">FechaInicialPago=</span><span class="s">&quot;2013-11-1&quot;</span> <span class="na">FechaFinalPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">NumDiasPagados=</span><span class="s">&quot;15&quot;</span> <span class="na">Departamento=</span><span class="s">&quot;Administración&quot;</span> <span class="na">CLABE=</span><span class="s">&quot;123123123123123123&quot;</span> <span class="na">Banco=</span><span class="s">&quot;123&quot;</span> <span class="na">FechaInicioRelLaboral=</span><span class="s">&quot;2009-06-01&quot;</span> <span class="na">Antiguedad=</span><span class="s">&quot;228&quot;</span> <span class="na">Puesto=</span><span class="s">&quot;Administración&quot;</span> <span class="na">TipoContrato=</span><span class="s">&quot;Base&quot;</span> <span class="na">TipoJornada=</span><span class="s">&quot;Diurna&quot;</span> <span class="na">PeriodicidadPago=</span><span class="s">&quot;Quincenal&quot;</span> <span class="na">SalarioBaseCotApor=</span><span class="s">&quot;10000&quot;</span> <span class="na">RiesgoPuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">SalarioDiarioIntegrado=</span><span class="s">&quot;696.8&quot;</span><span class="nt">&gt;</span>
        <span class="nt">&lt;nomina:Percepciones</span> <span class="na">TotalGravado=</span><span class="s">&quot;13000&quot;</span> <span class="na">TotalExento=</span><span class="s">&quot;379&quot;</span><span class="nt">&gt;</span>
           <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">Clave=</span><span class="s">&quot;123&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Sueldos, Salarios Rayas y Jornales&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;10000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
@@ -405,7 +403,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -430,6 +428,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -443,15 +453,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -514,17 +515,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

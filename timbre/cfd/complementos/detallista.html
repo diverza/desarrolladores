@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
+	<script src="/scripts/bootstrap.min.js"></script>
+<!--<script src="scripts/codemirror.js"></script>-->
+    <!--<script src="scripts/searchcursor.js"></script>-->
+    <!--<script src="scripts/match-highlighter.js"></script>-->
+    <!--<script src="scripts/xml.js"></script>-->
+	<!--<script src="scripts/prettify.js"></script>-->
+	<!-- <script src="/scripts/xmllint.js"></script> -->
+	<script src="/scripts/script.js"></script>
+  <title>complemento para sector de ventas al detalle</title>
+</head>
+
+<body class="page-content page-columns-2">
+  <a name="top" id="top"></a>
+<div id="header-bg">
+  <div id="bg-top"><div id="bg-top-left"></div></div>
+  <div id="bg-fix"></div>
+</div>
+<div class="container" id="header">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a id="logo" class="brand icon-logo-off" href="http://diverza.com"></a>
+        <div class="nav-collapse">
+
+          <ul class="menu nav">
+            <li class="item-101">
+              <a href="">Portada</a>
+            </li>
+            <li class="item-102">
+              <a href="http://www.diverza.com/historia" >Historia</a>
+            </li>
+            <li class="item-103 parent">
+              <a href="http://www.diverza.com/oficinas" >Oficinas</a>
+            </li>
+            <li class="item-104">
+              <a href="http://blog.diverza.com" >Blog</a>
+            </li>
+            <li class="item-105">
+              <a href="http://www.diverza.com/ecosistema" id="stamp-navitem-selected">Ecosistema</a>
+            </li>
+            <li class="item-106">
+              <a href="http://www.diverza.com/soporte" >Soporte</a>
+            </li>
+            <li class="item-107">
+            <a href="http://www.diverza.com/acceso" >Acceso</a>
+            </li>
+            <li id="colors-bar">
+              <div class="color-bar color-bar-blue"></div>
+              <div class="color-bar color-bar-yellow"></div>
+              <div class="color-bar color-bar-green"></div>
+              <div class="color-bar color-bar-red"></div>
+            </li></ul>
+          </div>
+          <div class="nav-social">
+            <ul class="menu-social">
+              <li class="item-131"><a class="rss" href="http://feeds.feedburner.com/blog-diverza">RSS</a></li><li class="item-130"><a class="googleplus" href="https://plus.google.com/u/0/100935627964150268592/posts">Google Plus</a></li><li class="item-129"><a class="youtube" href="http://www.youtube.com/user/DiverzaTv?feature=mhee">YouTube</a></li><li class="item-128"><a class="facebook" href="http://www.facebook.com/pages/Diverza/350358341644324">Facebook</a></li><li class="item-127"><a class="twitter" href="http://twitter.com/diverza">Twitter</a></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="header-brand-dummy"></div>
+    <div id="header-brand">
+      <div class="navbar container">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="row">
+
+              <div class="span2 nav-welcome ">
+                <a href="/"><span class="welcome">desarrolladores<span class="diverza-dot">.</span></span></a>
+              </div>
+
+              <div class="nav-collapse-brand" id="menu-sub">
+                <ul class="menu nav">
+                  <li class="item-102" id="stamp-menu-item">
+                    <a href="/timbre/">Timbre Fiscal</a>
+                  </li>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
+                  </li>
+                  <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
+                    <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-account">
+                <div class="module">
+                  <div class="custom">01.800.070.4000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+  #stamp-menu-item { color: #fff !important;
+    background: #ddd;
+    -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -ms-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
+
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>complemento para sector de ventas al detalle<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <p>Este complemento a diferencia del resto, no tiene carácter obligatorio, sino que se trata de una facilidad para que los contribuyentes puedan adoptarlo a efecto de eficientar el procesamiento de la información.</p>
+
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/complemento_detallista.aspx">sitio del SAT</a>.</p>
+
+<h2 id="datos-del-complemento-detallista">Datos del complemento detallista</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:detallista=&quot;<a href="http://www.sat.gob.mx/detallista">http://www.sat.gob.mx/detallista</a>&quot;</p>
+
+<ul>
+<li><p><strong>detallista</strong></p>
+
+<ul>
+<li>type : SimpleInvoiceType<br>
+Tipo de transacción bajo estandar del sector detallista, valor prefijado &quot;SimpleInvoiceType&quot;.</li>
+<li>contentVersion : 1.3.1<br>
+Versión del estandar XML utilizado para la elaboración de la guia del sector detallista, valor prefijado &quot;1.3.1&quot;.</li>
+<li><strong>documentStructureVersion</strong> : ACM8.1<br>
+Versión de la estructura del documento generado AMC8.1.</li>
+<li><strong>documentStatus</strong> : ORIGINAL<br>
+Función del mensaje, los valores pueden ser &quot;ORIGINAL&quot;, &quot;COPY&quot;, &quot;REEMPLAZA&quot;, &quot;DELETE&quot;.<br></li>
+</ul></li>
+<li><p><strong>requestForPaymentIdentification</strong></p>
+
+<ul>
+<li><strong>entityType</strong> : INVOICE<br>
+Especifica el tipo de transacción, valores posibles son: <code>INVOICE</code>, <code>DEBIT_NOTE</code>, <code>CREDIT_NOTE</code>, <code>LEASE_RECEIPT</code>, <code>PARTIAL_INVOICE</code>, <code>TRANSPORT_DOCUMENT</code>, <code>AUTO_INVOICE</code>.<br></li>
+</ul></li>
+<li><p>specialInstruction</p>
+
+<ul>
+<li><strong>code</strong> : ZZZ<br>
+Atributo para especificar el codigo del tipo de instrucciones comerciales que son enviadas, valores permitidos: &quot;AAB&quot;, &quot;DUT&quot;, &quot;PUR&quot;, &quot;ZZZ&quot;.</li>
+<li><strong>text</strong> : TRES MIL CIENTO CINCUENTA Y CINCO PESOS 80/100 M.N.<br>
+Nodo requerido que especifica información de texto que aplica a todo el mensaje de la factura. La información estará en función al código del tema de texto.</li>
+</ul></li>
+<li><p><strong>orderIdentification</strong></p>
+
+<ul>
+<li><strong>referenceIdentification</strong> : 18510599<br>
+Especifica el número de orden de compra (comprador) a la que hace referencia la factura.</li>
+<li><strong>type</strong> : ON<br>
+Atributo que especifica el código para identificar la orden de compra, valor fijo &quot;ON&quot;.</li>
+<li>referenceDate : 2014-07-17<br>
+Especifica la fecha de la orden de compra(comprador) a la que hace referencia la factura.<br></li>
+</ul></li>
+<li><p><strong>AditionalInformation</strong></p>
+
+<ul>
+<li><strong>referenceIdentification</strong> : P00065<br>
+Especifica el número de referencia adicional.</li>
+<li><strong>type</strong> : ACE<br>
+Atributo para especificar el código de referencias adicionales, valors aceptados son: &quot;AAE&quot;, &quot;CK&quot;, &quot;ACE&quot;, &quot;ATZ&quot;, &quot;DQ&quot;, &quot;IV&quot;, &quot;ON&quot;, &quot;AWR&quot;.</li>
+</ul></li>
+<li><p>DeliveryNote</p>
+
+<ul>
+<li><strong>referenceIdentification</strong> : 1111111111<br>
+Número emitido por el comprador cuando recibe la mercancía que es la facturada.</li>
+<li>ReferenceDate : 2014-07-23<br>
+Fecha en la que fue asignado el no. de folio de recibo.</li>
+</ul></li>
+<li><p><strong>buyer</strong></p>
+
+<ul>
+<li><strong>gln</strong> : 7504000107903<br>
+Especifica el número global de localización  (GLN) del comprador.</li>
+<li>contactInformation</li>
+<li><strong>personOrDepartmentName</strong>
+
+<ul>
+<li><strong>text</strong> : 0388<br>
+Contacto de nodo requerido que especifica el contacto de compras.</li>
+</ul></li>
+</ul></li>
+<li><p>seller</p>
+
+<ul>
+<li><strong>gln</strong> : 7504023722008<br>
+Especifica el número global de localización (GLN) del vendedor.</li>
+<li><strong>alternatePartyIdentification</strong> : 130636<br>
+Especifica el código para identificar qué tipo de identificación secundaria se le asignó al proveedor.</li>
+<li><strong>type</strong> : SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY<br>
+Especifica el tipo de identificación secundaria que se le asignaó al proveedor, valores aceptados: <code>IEPS_REFERENCE</code>, <code>SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY</code>.</li>
+</ul></li>
+<li><p>shipTo</p>
+
+<ul>
+<li>gln : 7504023722000<br>
+Especifica el número global de localización (GLN) de la ubicación donde debe de realizarse la entrega de mercancías.</li>
+<li>nameAndAddress</li>
+<li>name : CONTENEDORES INDUSTRIALES DE PRUEBA<br>
+Especifica la razón social de la empresa a donde se va a embarcar en caso de ser diferente al comprador, o el nombre de la bodega o centro de distribución.</li>
+<li>streetAddressOne : Av. República Mexicana 1234<br>
+Especifica el domicilio a donde se embarcara la mercancía: Calle, número exterior, número interior y colonias.</li>
+<li>city : Guaymas<br>
+Especifica  la ciudad donde se encuentra el domicilio a donde se embarcará la mercancía.</li>
+<li>postalCode : 85450<br>
+Especifica el codigo postal del domicilio a donde se embarcara la mercancía.</li>
+</ul></li>
+<li><p>InvoiceCreator</p>
+
+<ul>
+<li>gln : 9199919991999<br>
+Especifica el número global de localización (GLN)de la ubicación del emisor de la factura.</li>
+<li>alternatePartyIdentification : 3271623<br></li>
+<li><strong>type</strong> : VA<br>
+Atributo para especificar el tipo de identificación secundaria que se le asigno al proveedor, valores aceptados: &quot;VA&quot;, &quot;IA&quot;.</li>
+<li>nameAndAddress</li>
+<li>name : RECEPTOR COMP DETALLISTA<br>
+Especifica la razón social de la empresa a donde se emite la factura en caso de ser diferente al identificador del proveedor.</li>
+<li>streetAddressOne : Av. República Mexicana 1234<br>
+Especifica el domicilio del emisor de la factura: Calle, número exterior, número interior y colonias.</li>
+<li>city : Guaymas<br>
+Especifica  la ciudad donde se encuentra el domicilio del emisor de la factura.</li>
+<li>potalCode : 85450<br>
+Especifica el codigo postal del domicilio del emisor de la factura.</li>
+</ul></li>
+<li><p>Customs</p>
+
+<ul>
+<li>gln : 9919999199821<br>
+Especifica el número global de localización (GLN) de la aduana.</li>
+</ul></li>
+<li><p>currency</p>
+
+<ul>
+<li><strong>currencyISOcode</strong> : MXN<br>
+Especifica el codigo de la moneda utilizada para detallar la relación de facturas.Todas las cantidades posteriores seran expresadas en la divisa detallada en esta etiqueta, valores aceptados: &quot;MXN&quot;, &quot;XEU&quot;, &quot;USD&quot;.</li>
+<li><strong>currencyFunction</strong> : BILLING_CURRENCY<br>
+Especifica la función de la divisa, valores aceptados: &quot;BILLING_CURRENCY&quot;, &quot;PRICE_CURRENCY&quot;, &quot;PAYMENT_CURRENCY&quot;.</li>
+<li>ratoOfChange : 13.10<br>
+Especifica la tasa de cambio que se aplica a las monedas. La regla general para calcular la tasa de cambio es la siguiente: Divisa de Referencia multiplicada por la Tasa =  Divisa Objetivo</li>
+</ul></li>
+<li><p>paymentTerms</p>
+
+<ul>
+<li>paymentTermsEvent : DATE_OF_INVOICE<br>
+Especifica la referencia de tiempo de pago, valores permitidos: &quot;DATE_OF_INVOICE&quot;, &quot;EFFECTIVE_DATE&quot;.</li>
+<li>PaymentTermsRelationTime : REFERENCE_AFTER<br>
+Especifica el término de relación del tiempo de pago, valor fijo: &quot;REFERENCE_AFTER&quot;.<br></li>
+<li>netPayment
+
+<ul>
+<li><strong>netPaymentTermsType</strong> : END_OF_MONTH<br>
+Especifica las condiciones de pago, valores aceptados: <code>BASIC_NET</code>, <code>END_OF_MONTH</code>, <code>BASIC_DISCOUNT_OFFERED</code>.<br></li>
+</ul></li>
+<li>paymentTimePeriod
+
+<ul>
+<li><strong>timePeriodDue</strong></li>
+<li><strong>timePeriod</strong> : DAYS<br>
+Especifica el tipo de período, valor permitido: &quot;DAYS&quot;</li>
+<li><strong>value</strong> : 30<br>
+Especifica el número de períodos.</li>
+</ul></li>
+<li>discountPayment
+
+<ul>
+<li><strong>discountType</strong> : ALLOWANCE_BY_PAYMENT_ON_TIME<br>
+Especifica el calificador de porcentajes, valores permitidos: &quot;ALLOWANCE_BY_PAYMENT_ON_TIME&quot;, &quot;SANCTION&quot;</li>
+<li><strong>percentage</strong> : 0.00<br>
+Especifica el valor del porcentaje que serán descontados o cargados si la factura no se paga dentro del término. El porcentaje será en base al valor de la factura.</li>
+</ul></li>
+</ul></li>
+<li><p>shipmentDetail<br>
+Especifica la información pertinente para el embarque de la mercancía.</p></li>
+<li><p>allowanceCharge</p>
+
+<ul>
+<li><strong>allowanceChargeType</strong> : CHARGE_GLOBAL<br>
+Atributo indicador de cargo o descuento, valores permitidos: &quot;ALLOWNCE_GLOBAL&quot;, &quot;CHARGE_GLOBAL&quot;.</li>
+<li><strong>settlementType</strong> : BILL_BACK<br>
+Atributo para especificar la imputación del descuento o cargo, valores permitidos: &quot;BILL_BACK&quot;, &quot;OFF_INVOICE&quot;.</li>
+<li>sequenceNumber : 33421123<br>
+Atributo indicador de secuencia de calculo.</li>
+<li>specialServicesType : DA<br>
+Especifica  el tipo de descuento o cargo. Este atributo sólo se utiliza si el comprador conoce los descuentos, valores permitidos: &quot;AA&quot;, &quot;AJ&quot;, &quot;ADO&quot;, &quot;ADT&quot;, &quot;ADS&quot;, &quot;ABZ&quot;, &quot;DA&quot;, &quot;EAA&quot;, &quot;EAB&quot;, &quot;PI&quot;, &quot;TAE&quot;, &quot;SAB&quot;, &quot;RAA&quot;, &quot;PAD&quot;, &quot;FG&quot;, &quot;FA&quot;, &quot;TD&quot;, &quot;TS&quot;, &quot;TX&quot;, &quot;TZ&quot;, &quot;ZZZ&quot;, &quot;VAB&quot;, &quot;UM&quot;, &quot;DI&quot;, &quot;CAC&quot;, &quot;COD&quot;, &quot;EAB&quot;, &quot;FC&quot;, &quot;FI&quot;, &quot;HD&quot;, &quot;QD&quot;.</li>
+<li>monetaryAmountOrPercentage</li>
+<li>rate<br>
+Nodo opcional que especifica la tarifa.
+
+<ul>
+<li><strong>base</strong> : INVOICE_VALUE<br>
+Atributo para especificar la base del porcentaje que se aplicará, valor fijo: &quot;INVOICE_VALUE&quot;.</li>
+<li><strong>percentage</strong> : 0.00<br>
+Especifica el porcentaje de descuento que se está aplicando según se ha indicado en el campo anterior a toda la factura.</li>
+</ul></li>
+</ul></li>
+<li><p>lineItem</p>
+
+<ul>
+<li>type : SimpleInvoiceLineItemType<br>
+Especifica el tipo de línea de detalle, valor por default: &quot;SimpleInvoiceLineItemType&quot;.</li>
+<li>number : 1<br>
+Especifica el número secuencial que se asigna a cada línea de detalle.</li>
+<li><strong>tradeItemIdentification</strong></li>
+<li><strong>gtin</strong> : FGTSDF<br>
+Especifica el código EAN del artículo solicitado.</li>
+<li>alternateTradeItemIdentification : 2222<br>
+Especifica el número de identificación adicional para el artículo.</li>
+<li><strong>type</strong> : BUYER_ASSIGNED<br>
+Especificar el tipo de identificación adicional, en caso de no utilizar condigo GTIN, valores permitidos: &quot;BUYER_ASSIGNED&quot;, &quot;SUPPLIER_ASSIGNED&quot;, &quot;SERIAL_NUMBER&quot;, &quot;GLOBAL_TRADE_ITEM_IDENTIFICATION&quot;.</li>
+<li>tradeItemDescriptionInformation</li>
+<li>laguage : ES<br>
+Especificar el codigo del idioma en que esta la descripción del articulo, valores permitidos: &quot;ES&quot;, &quot;EN&quot;.</li>
+<li><strong>longText</strong> : DESCRIPCIÓN DEL ARTÍCULO 1<br>
+Especifica la descripción del artículo solicitado.</li>
+<li><strong>invoicedQuantity</strong> : 1<br>
+Especifica la cantidad facturada del producto en la línea del artículo.</li>
+<li><strong>unitOfMeasure</strong> : PZA<br>
+Atributo para especificar la unidad de medida, sólo si el artículo es de unidad variable.</li>
+<li>aditionalQuantity : 0.00<br>
+Especifica la cantidad que se está declarando como adicinonal. 
+
+<ul>
+<li><strong>QuantityType</strong> : FREE_GOODS<br>
+Atributo para especificar el código de tipo de cantidad adicional declarada, valores permitidos: &quot;NUM_CONSUMER_UNITS&quot;, &quot;FREE_GOODS&quot;.</li>
+</ul></li>
+<li>grossPrice</li>
+<li><strong>Amount</strong> : 12.90<br>
+Requerido para especificar el precio Bruto del artículo sin incluir descuento ni cargos.</li>
+<li>netPrice</li>
+<li><strong>Amount</strong> : 13.90<br>
+Especifica el precio neto de cada artículo.</li>
+<li>AdditionalInformation</li>
+<li>referenceIdentification : RFSADC2918<br>
+Especifica la referencia adicional de los productos.
+
+<ul>
+<li><strong>type</strong> : ON<br>
+Atributo para especificar el tipo de referencia, valor prefijado en &quot;ON&quot;.</li>
+</ul></li>
+<li>Customs</li>
+<li>gln : 9999199991999<br>
+Especifica el número global de localización (GLN) de la aduana.</li>
+<li><strong>alternatePartyIdentification</strong> : 64GHY73261<br>
+Especifica la identificación del número de pedimento a nivel detalle.
+
+<ul>
+<li><strong>type</strong> : TN<br>
+Especifica el código de identifiación secundaria, valor prefijado en &quot;TN&quot;</li>
+</ul></li>
+<li><strong>ReferenceDate</strong> : 2014-07-23<br>
+Especifica la fecha del pedimento, YYYYMMDD<br></li>
+<li><strong>nameAndAddress</strong>
+
+<ul>
+<li><strong>name</strong> : NUEVO LAREDO 2<br>
+Especifica el nomnbre de la aduana.</li>
+</ul></li>
+<li>LogisticUnits</li>
+<li><strong>serialShippingContainerCode</strong> : 5732GF832871<br>
+Especifica la información de Rangos de identificación de productos.
+
+<ul>
+<li><strong>type</strong> : SRV<br>
+Especifica el código del número de identidad, valores permitidos: &quot;BJ&quot;, &quot;SRV&quot;.</li>
+</ul></li>
+<li>palettInformation</li>
+<li><strong>palletQuantity</strong> : 1<br>
+Especifica el número de paquetes.</li>
+<li><strong>description</strong> : Empaque con poliuretano 234 alta resistencia.<br>
+Especifica la descripción del empaquetado.
+
+<ul>
+<li><strong>type</strong> : BOX<br>
+Especifica el tipo de empaquetado, valores permitidos: &quot;EXCHANGE_PALLETS&quot;, &quot;RETURN_PALLETS&quot;, &quot;PALLET_80x100&quot;, &quot;CASE&quot;, &quot;BOX&quot;.</li>
+</ul></li>
+<li><strong>transport</strong>
+
+<ul>
+<li><strong>methodOfPayment</strong> : PAID_BY_BUYER<br>
+Especifica el método de pago, valores permitidos: &quot;PREPAID_BY_SELLER&quot;, &quot;PAID_BY_BUYER&quot;.</li>
+</ul></li>
+<li>extendedAttributes</li>
+<li><strong>lotNumber</strong> : 4EFE4<br>
+Especifica el número de lote.
+
+<ul>
+<li>productionDate : 2014-06-10<br>
+Atributo para especificar la fecha de producción.</li>
+</ul></li>
+<li>allowanceCharge</li>
+<li><strong>allowanceChargeType</strong> : CHARGE_GLOBAL<br>
+Atrbuto para especificar el cargo o descuento, valores permitidos: &quot;ALLOWANCE_GLOBAL&quot;, &quot;CHARGE_GLOBAL&quot;.</li>
+<li>settlementType : OFF_INVOICE<br>
+Atributo para especificar la imputación del cargo o descuento, valores permitidos: &quot;OFF_INVOICE&quot;, &quot;CHARGE_TO_BE_PAID_BY_VENDOR&quot;, &quot;CHARGE_TO_BE_PAID_BY_CUSTOMER&quot;.</li>
+<li>sequenceNumber : 1<br>
+Atributo para especificar la secuencia del cálculo.</li>
+<li>specialServicesType : EAB<br>
+Especifica el tipo de descuento o cargo. Este atributo sólo se utiliza si el comprador conoce el tipo de descuento o cargo, valores permitidos: &quot;AA&quot;, &quot;AJ&quot;, &quot;ADO&quot;, &quot;ADT&quot;, &quot;ADS&quot;, &quot;ABZ&quot;, &quot;DA&quot;, &quot;EAA&quot;, &quot;EAB&quot;, &quot;PI&quot;, &quot;TAE&quot;, &quot;SAB&quot;, &quot;RAA&quot;, &quot;PAD&quot;, &quot;FG&quot;, &quot;FA&quot;, &quot;TD&quot;, &quot;TS&quot;, &quot;TX&quot;, &quot;TZ&quot;, &quot;ZZZ&quot;, &quot;VAB&quot;, &quot;UM&quot;, &quot;DI&quot;, &quot;CAC&quot;, &quot;COD&quot;, &quot;EAB&quot;, &quot;FC&quot;, &quot;FI&quot;, &quot;HD&quot;, &quot;QD&quot;.</li>
+<li><strong>monetaryAmountOrPercentage</strong>
+
+<ul>
+<li><strong>percentagePerUnit</strong> : 5%<br>
+Especifica el porcentaje del cargo o descuento.</li>
+<li>ratePerUnit</li>
+<li><strong>amountPerUnit</strong> : 3.00<br>
+Especifica el importe monetario del cargo o descuento por unidad.</li>
+</ul></li>
+<li>tradeItemTaxInformation (hasta 99 iteraciones)</li>
+<li><strong>taxTypeDescription</strong> : OTH<br>
+Especifica el tipo de arancel, impuesto o cuota, valores permitidos: &quot;GST&quot;, &quot;VAT&quot;, &quot;LAC&quot;, &quot;AAA&quot;, &quot;ADD&quot;, &quot;FRE&quot;, &quot;LOC&quot;, &quot;STT&quot;, &quot;OTH&quot;.</li>
+<li>referenceNumber : 883720126<br>
+Especifica el número de identificación del impuesto. Número asignado al comprador por una jurisdicción de impuesto.</li>
+<li>taxCategory : TRANSFERIDO<br>
+Especifica el identificador de impuesto retenido o transferido, valores permitidos: &quot;TRANSFERIDO&quot;, &quot;RETENIDO&quot;.</li>
+<li>tradeItemTaxAmount
+
+<ul>
+<li><strong>taxPercentage</strong> : 5.00<br>
+Especifica el porcentaje del descuento.</li>
+<li><strong>taxAmount</strong> : 3.00<br>
+Especifica el monto del impuesto.</li>
+</ul></li>
+<li><strong>totalLineAmount</strong></li>
+<li>grossAmount
+
+<ul>
+<li><strong>Amount</strong> : 12.90<br>
+Especifica el importe bruto de la línea de artículo.</li>
+</ul></li>
+<li><strong>netAmount</strong>
+
+<ul>
+<li><strong>Amount</strong> : 13.90<br>
+Especifica el importe neto de la línea de artículo.</li>
+</ul></li>
+</ul></li>
+<li><p>totalAmount</p>
+
+<ul>
+<li><strong>Amount</strong> : 13.90<br>
+Especifica el monto.</li>
+</ul></li>
+<li><p>TotalAllowanceCharge</p>
+
+<ul>
+<li><strong>allowanceOrChargeType</strong> : ALLOWANCE<br>
+Atributo para especificar los cargos o descuentos consolidados, valores permitidos: &quot;ALLOWANCE&quot;, &quot;CHARGE&quot;.</li>
+<li>specialServicesType : EAB<br>
+Especifica el tipo de descuento o cargo. Este atributo sólo se utiliza si el comprador conoce el tipo de descuento o cargo, valores permitidos: &quot;AA&quot;, &quot;AJ&quot;, &quot;ADO&quot;, &quot;ADT&quot;, &quot;ADS&quot;, &quot;ABZ&quot;, &quot;DA&quot;, &quot;EAA&quot;, &quot;EAB&quot;, &quot;PI&quot;, &quot;TAE&quot;, &quot;SAB&quot;, &quot;RAA&quot;, &quot;PAD&quot;, &quot;FG&quot;, &quot;FA&quot;, &quot;TD&quot;, &quot;TS&quot;, &quot;TX&quot;, &quot;TZ&quot;, &quot;ZZZ&quot;, &quot;VAB&quot;, &quot;UM&quot;, &quot;DI&quot;, &quot;CAC&quot;, &quot;COD&quot;, &quot;EAB&quot;, &quot;FC&quot;, &quot;FI&quot;, &quot;HD&quot;, &quot;QD&quot;.</li>
+<li>Amount : 3.00<br>
+Especifica el monto total de cargos o descuentos.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;detallista:detallista</span> <span class="na">documentStructureVersion=</span><span class="s">&quot;AMC8.1&quot;</span> <span class="na">documentStatus=</span><span class="s">&quot;ORIGINAL&quot;</span> <span class="na">type=</span><span class="s">&quot;SimpleInvoiceType&quot;</span> <span class="na">contentVersion=</span><span class="s">&quot;1.3.1&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;detallista:requestForPaymentIdentification&gt;</span>
+          <span class="nt">&lt;detallista:entityType&gt;</span>INVOICE<span class="nt">&lt;/detallista:entityType&gt;</span>
+      <span class="nt">&lt;/detallista:requestForPaymentIdentification&gt;</span>
+      <span class="nt">&lt;detallista:specialInstruction</span> <span class="na">code=</span><span class="s">&quot;ZZZ&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:text&gt;</span>TRES MIL CIENTO CINCUENTA Y CINCO PESOS 80/100 M.N.<span class="nt">&lt;/detallista:text&gt;</span>
+      <span class="nt">&lt;/detallista:specialInstruction&gt;</span>
+      <span class="nt">&lt;detallista:orderIdentification&gt;</span>
+          <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ON&quot;</span><span class="nt">&gt;</span>18510599<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+          <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-17<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
+      <span class="nt">&lt;/detallista:orderIdentification&gt;</span>
+      <span class="nt">&lt;detallista:AdditionalInformation&gt;</span>
+          <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ACE&quot;</span><span class="nt">&gt;</span>P00065<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+      <span class="nt">&lt;/detallista:AdditionalInformation&gt;</span>
+      <span class="nt">&lt;detallista:DeliveryNote&gt;</span>
+          <span class="nt">&lt;detallista:referenceIdentification&gt;</span>1111111111<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+          <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-23<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
+      <span class="nt">&lt;/detallista:DeliveryNote&gt;</span>
+      <span class="nt">&lt;detallista:buyer&gt;</span>
+          <span class="nt">&lt;detallista:gln&gt;</span>7504000107903<span class="nt">&lt;/detallista:gln&gt;</span>
+          <span class="nt">&lt;detallista:contactInformation&gt;</span>
+              <span class="nt">&lt;detallista:personOrDepartmentName&gt;</span>
+                  <span class="nt">&lt;detallista:text&gt;</span>0388<span class="nt">&lt;/detallista:text&gt;</span>
+              <span class="nt">&lt;/detallista:personOrDepartmentName&gt;</span>
+          <span class="nt">&lt;/detallista:contactInformation&gt;</span>
+      <span class="nt">&lt;/detallista:buyer&gt;</span>
+      <span class="nt">&lt;detallista:seller&gt;</span>
+          <span class="nt">&lt;detallista:gln&gt;</span>7504023722008<span class="nt">&lt;/detallista:gln&gt;</span>
+          <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY&quot;</span><span class="nt">&gt;</span>130636<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
+      <span class="nt">&lt;/detallista:seller&gt;</span>
+      <span class="nt">&lt;detallista:shipTo&gt;</span>
+          <span class="nt">&lt;detallista:gln&gt;</span>7504023722000<span class="nt">&lt;/detallista:gln&gt;</span>
+          <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
+              <span class="nt">&lt;detallista:name&gt;</span>CONTENEDORES INDUSTRIALES DE PRUEBA<span class="nt">&lt;/detallista:name&gt;</span>
+              <span class="nt">&lt;detallista:streetAddressOne&gt;</span>Av. República Mexicana 1234<span class="nt">&lt;/detallista:streetAddressOne&gt;</span>
+              <span class="nt">&lt;detallista:city&gt;</span>Guaymas<span class="nt">&lt;/detallista:city&gt;</span>
+              <span class="nt">&lt;detallista:postalCode&gt;</span>85450<span class="nt">&lt;/detallista:postalCode&gt;</span>
+          <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
+      <span class="nt">&lt;/detallista:shipTo&gt;</span>
+      <span class="nt">&lt;detallista:InvoiceCreator&gt;</span>
+          <span class="nt">&lt;detallista:gln&gt;</span>9199919991999<span class="nt">&lt;/detallista:gln&gt;</span>
+          <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;VA&quot;</span><span class="nt">&gt;</span>3271623<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
+          <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
+              <span class="nt">&lt;detallista:name&gt;</span>RECEPTOR COMP DETALLISTA<span class="nt">&lt;/detallista:name&gt;</span>
+              <span class="nt">&lt;detallista:streetAddressOne&gt;</span>Av. República Mexicana 1234<span class="nt">&lt;/detallista:streetAddressOne&gt;</span>
+              <span class="nt">&lt;detallista:city&gt;</span>Guaymas<span class="nt">&lt;/detallista:city&gt;</span>
+              <span class="nt">&lt;detallista:postalCode&gt;</span>85450<span class="nt">&lt;/detallista:postalCode&gt;</span>
+          <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
+      <span class="nt">&lt;/detallista:InvoiceCreator&gt;</span>
+      <span class="nt">&lt;detallista:Customs&gt;</span>
+          <span class="nt">&lt;detallista:gln&gt;</span>9919999199821<span class="nt">&lt;/detallista:gln&gt;</span>
+      <span class="nt">&lt;/detallista:Customs&gt;</span>
+      <span class="nt">&lt;detallista:currency</span> <span class="na">currencyISOCode=</span><span class="s">&quot;MXN&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:currencyFunction&gt;</span>BILLING_CURRENCY<span class="nt">&lt;/detallista:currencyFunction&gt;</span>
+          <span class="nt">&lt;detallista:rateOfChange&gt;</span>13.10<span class="nt">&lt;/detallista:rateOfChange&gt;</span>
+      <span class="nt">&lt;/detallista:currency&gt;</span>
+      <span class="nt">&lt;detallista:paymentTerms</span> <span class="na">paymentTermsEvent=</span><span class="s">&quot;DATE_OF_INVOICE&quot;</span> <span class="na">PaymentTermsRelationTime=</span><span class="s">&quot;REFERENCE_AFTER&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:netPayment</span> <span class="na">netPaymentTermsType=</span><span class="s">&quot;END_OF_MONTH&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;detallista:paymentTimePeriod&gt;</span>
+                  <span class="nt">&lt;detallista:timePeriodDue</span> <span class="na">timePeriod=</span><span class="s">&quot;DAYS&quot;</span><span class="nt">&gt;</span>
+                      <span class="nt">&lt;detallista:value&gt;</span>30<span class="nt">&lt;/detallista:value&gt;</span>
+                  <span class="nt">&lt;/detallista:timePeriodDue&gt;</span>
+              <span class="nt">&lt;/detallista:paymentTimePeriod&gt;</span>
+          <span class="nt">&lt;/detallista:netPayment&gt;</span>
+          <span class="nt">&lt;detallista:discountPayment</span> <span class="na">discountType=</span><span class="s">&quot;ALLOWANCE_BY_PAYMENT_ON_TIME&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;detallista:percentage&gt;</span>0.00<span class="nt">&lt;/detallista:percentage&gt;</span>
+          <span class="nt">&lt;/detallista:discountPayment&gt;</span>
+      <span class="nt">&lt;/detallista:paymentTerms&gt;</span>
+      <span class="nt">&lt;detallista:shipmentDetail/&gt;</span>
+      <span class="nt">&lt;detallista:allowanceCharge</span> <span class="na">allowanceChargeType=</span><span class="s">&quot;CHARGE_GLOBAL&quot;</span> <span class="na">settlementType=</span><span class="s">&quot;BILL_BACK&quot;</span> <span class="na">sequenceNumber=</span><span class="s">&quot;33421123&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:monetaryAmountOrPercentage&gt;</span>
+              <span class="nt">&lt;detallista:rate</span> <span class="na">base=</span><span class="s">&quot;INVOICE_VALUE&quot;</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;detallista:percentage&gt;</span>0.00<span class="nt">&lt;/detallista:percentage&gt;</span>
+              <span class="nt">&lt;/detallista:rate&gt;</span>
+          <span class="nt">&lt;/detallista:monetaryAmountOrPercentage&gt;</span>
+      <span class="nt">&lt;/detallista:allowanceCharge&gt;</span>
+      <span class="nt">&lt;detallista:lineItem</span> <span class="na">type=</span><span class="s">&quot;SimpleInvoiceLineItemType&quot;</span> <span class="na">number=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:tradeItemIdentification&gt;</span>
+              <span class="nt">&lt;detallista:gtin&gt;</span>FGTSDF<span class="nt">&lt;/detallista:gtin&gt;</span>
+          <span class="nt">&lt;/detallista:tradeItemIdentification&gt;</span>
+          <span class="nt">&lt;detallista:alternateTradeItemIdentification</span> <span class="na">type=</span><span class="s">&quot;BUYER_ASSIGNED&quot;</span><span class="nt">&gt;</span>2222<span class="nt">&lt;/detallista:alternateTradeItemIdentification&gt;</span>
+          <span class="nt">&lt;detallista:tradeItemDescriptionInformation</span> <span class="na">language=</span><span class="s">&quot;ES&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;detallista:longText&gt;</span>DESCRIPCIÓN DEL ARTÍCULO 1<span class="nt">&lt;/detallista:longText&gt;</span>
+          <span class="nt">&lt;/detallista:tradeItemDescriptionInformation&gt;</span>
+          <span class="nt">&lt;detallista:invoicedQuantity</span> <span class="na">unitOfMeasure=</span><span class="s">&quot;PZA&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/detallista:invoicedQuantity&gt;</span>
+          <span class="nt">&lt;detallista:aditionalQuantity</span> <span class="na">QuantityType=</span><span class="s">&quot;FREE_GOODS&quot;</span><span class="nt">&gt;</span>0.00<span class="nt">&lt;/detallista:aditionalQuantity&gt;</span>
+          <span class="nt">&lt;detallista:grossPrice&gt;</span>
+              <span class="nt">&lt;detallista:Amount&gt;</span>12.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+          <span class="nt">&lt;/detallista:grossPrice&gt;</span>
+          <span class="nt">&lt;detallista:netPrice&gt;</span>
+              <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+          <span class="nt">&lt;/detallista:netPrice&gt;</span>
+          <span class="nt">&lt;detallista:AdditionalInformation&gt;</span>
+              <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ON&quot;</span><span class="nt">&gt;</span>RFSADC2918<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+          <span class="nt">&lt;/detallista:AdditionalInformation&gt;</span>
+          <span class="nt">&lt;detallista:Customs&gt;</span>
+              <span class="nt">&lt;detallista:gln&gt;</span>9999199991999<span class="nt">&lt;/detallista:gln&gt;</span>
+              <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;TN&quot;</span><span class="nt">&gt;</span>64GHY73261<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
+              <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-23<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
+              <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
+                  <span class="nt">&lt;detallista:name&gt;</span>NUEVO LAREDO 2<span class="nt">&lt;/detallista:name&gt;</span>
+              <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
+          <span class="nt">&lt;/detallista:Customs&gt;</span>
+          <span class="nt">&lt;detallista:LogisticUnits&gt;</span>
+              <span class="nt">&lt;detallista:serialShippingContainerCode</span> <span class="na">type=</span><span class="s">&quot;SRV&quot;</span><span class="nt">&gt;</span>5732GF832871<span class="nt">&lt;/detallista:serialShippingContainerCode&gt;</span>
+          <span class="nt">&lt;/detallista:LogisticUnits&gt;</span>
+          <span class="nt">&lt;detallista:palletInformation&gt;</span>
+              <span class="nt">&lt;detallista:palletQuantity&gt;</span>1<span class="nt">&lt;/detallista:palletQuantity&gt;</span>
+              <span class="nt">&lt;detallista:description</span> <span class="na">type=</span><span class="s">&quot;BOX&quot;</span><span class="nt">&gt;</span>Empaque con poliuretano 234 alta resistencia.<span class="nt">&lt;/detallista:description&gt;</span>
+              <span class="nt">&lt;detallista:transport&gt;</span>
+                  <span class="nt">&lt;detallista:methodOfPayment&gt;</span>PAID_BY_BUYER<span class="nt">&lt;/detallista:methodOfPayment&gt;</span>
+              <span class="nt">&lt;/detallista:transport&gt;</span>
+          <span class="nt">&lt;/detallista:palletInformation&gt;</span>
+          <span class="nt">&lt;detallista:extendedAttributes&gt;</span>
+              <span class="nt">&lt;detallista:lotNumber</span> <span class="na">productionDate=</span><span class="s">&quot;2014-06-10&quot;</span><span class="nt">&gt;</span>4EFE4<span class="nt">&lt;/detallista:lotNumber&gt;</span>
+          <span class="nt">&lt;/detallista:extendedAttributes&gt;</span>
+          <span class="nt">&lt;detallista:allowanceCharge</span> <span class="na">allowanceChargeType=</span><span class="s">&quot;CHARGE_GLOBAL&quot;</span> <span class="na">settlementType=</span><span class="s">&quot;OFF_INVOICE&quot;</span> <span class="na">sequenceNumber=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;detallista:specialServicesType&gt;</span>EAB<span class="nt">&lt;/detallista:specialServicesType&gt;</span>
+              <span class="nt">&lt;detallista:monetaryAmountOrPercentage&gt;</span>
+                  <span class="nt">&lt;detallista:percentagePerUnit&gt;</span>5%<span class="nt">&lt;/detallista:percentagePerUnit&gt;</span>
+                  <span class="nt">&lt;detallista:ratePerUnit&gt;</span>
+                      <span class="nt">&lt;detallista:amountPerUnit&gt;</span>3.00<span class="nt">&lt;/detallista:amountPerUnit&gt;</span>
+                  <span class="nt">&lt;/detallista:ratePerUnit&gt;</span>
+              <span class="nt">&lt;/detallista:monetaryAmountOrPercentage&gt;</span>
+          <span class="nt">&lt;/detallista:allowanceCharge&gt;</span>
+          <span class="nt">&lt;detallista:tradeItemTaxInformation&gt;</span>
+              <span class="nt">&lt;detallista:taxTypeDescription&gt;</span>OTH<span class="nt">&lt;/detallista:taxTypeDescription&gt;</span>
+              <span class="nt">&lt;detallista:referenceNumber&gt;</span>883720126<span class="nt">&lt;/detallista:referenceNumber&gt;</span>
+              <span class="nt">&lt;detallista:taxCategory&gt;</span>TRANSFERIDO<span class="nt">&lt;/detallista:taxCategory&gt;</span>
+              <span class="nt">&lt;detallista:tradeItemTaxAmount&gt;</span>
+                  <span class="nt">&lt;detallista:taxPercentage&gt;</span>5.00<span class="nt">&lt;/detallista:taxPercentage&gt;</span>
+                  <span class="nt">&lt;detallista:taxAmount&gt;</span>3.00<span class="nt">&lt;/detallista:taxAmount&gt;</span>
+              <span class="nt">&lt;/detallista:tradeItemTaxAmount&gt;</span>
+          <span class="nt">&lt;/detallista:tradeItemTaxInformation&gt;</span>
+          <span class="nt">&lt;detallista:totalLineAmount&gt;</span>
+              <span class="nt">&lt;detallista:grossAmount&gt;</span>
+                  <span class="nt">&lt;detallista:Amount&gt;</span>12.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+              <span class="nt">&lt;/detallista:grossAmount&gt;</span>
+              <span class="nt">&lt;detallista:netAmount&gt;</span>
+                  <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+              <span class="nt">&lt;/detallista:netAmount&gt;</span>
+          <span class="nt">&lt;/detallista:totalLineAmount&gt;</span>
+      <span class="nt">&lt;/detallista:lineItem&gt;</span>
+      <span class="nt">&lt;detallista:totalAmount&gt;</span>
+          <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+      <span class="nt">&lt;/detallista:totalAmount&gt;</span>
+      <span class="nt">&lt;detallista:TotalAllowanceCharge</span> <span class="na">allowanceOrChargeType=</span><span class="s">&quot;ALLOWANCE&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:specialServicesType&gt;</span>EAB<span class="nt">&lt;/detallista:specialServicesType&gt;</span>
+          <span class="nt">&lt;detallista:Amount&gt;</span>3.00<span class="nt">&lt;/detallista:Amount&gt;</span>
+      <span class="nt">&lt;/detallista:TotalAllowanceCharge&gt;</span>
+  <span class="nt">&lt;/detallista:detallista&gt;</span>
+<span class="nt">&lt;/cfdi:Complemento&gt;</span>
+</code></pre></div>
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-right" class="span3 sidebar">
+    <div class="sidebar-padding">
+        <div class=" ">
+            <div class="module">
+
+                <h3>Generar un cfdi<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+                <h3>Impleméntalo<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
+                        <li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
+                        <li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
+                        <li class="item-178"><a href="/timbre/go">Go</a></li>
+                        <li class="item-178"><a href="/timbre/java">Java</a></li>
+                        <li class="item-178"><a href="/timbre/php">PHP</a></li>
+                        <li class="item-178"><a href="/timbre/perl">Perl</a></li>
+                        <li class="item-178"><a href="/timbre/python">Python</a></li>
+                        <li class="item-178"><a href="/timbre/ruby">Ruby</a></li>
+                        <li class="item-178"><a href="/timbre/terminal">Terminal</a></li>
+                        <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
+                    </ul>               
+                </div>
+
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
+                <br />
+                <h3>Cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cancelacion/">Servicio</a></li>
+                        <li class="item-178"><a href="/timbre/cancelacion/respuesta_cancelacion.html">Códigos de respuesta</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+
+                <!-- <br />
+                <h3>herramientas<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/oficinas/aguascalientes">Prueba el Servicio</a></li>
+                        <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
+                    </ul>               
+                </div> -->
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
+  <style>
+    .hero-unit { }
+    #body { background: #fff url('/images/content-dev.png') no-repeat 50% 0 ; }
+  </style>
+
+  <div id="footer">
+	<div class="container">
+		<footer>
+
+			<ul class="menu">
+				<li class="item-123"><a href="http://www.diverza.com/privacidad">Aviso de privacidad</a></li><li class="item-124"><a href="http://www.diverza.com/terminos">Términos y condiciones</a></li><li class="item-125"><a href="http://www.diverza.com/integrate">Intégrate al equipo</a></li><li class="item-135"><a href="http://www.diverza.com/mi-cuenta">Mi cuenta</a></li></ul>
+
+				<div class="custom">
+
+					<div class="row-fluid">
+						<br>
+						<div class="span3"></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.greatplacetowork.com.mx" title="GPTW" class="footer-logo-gptw" style="margin: -20px 0 0 auto;" target="_blank">GPTW</a></div>
+
+						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+
+						<div class="span2"></div>
+
+						<div class="clr"></div>
+
+						<div style="font-size:10px; margin-top: 5px;">DIVERZA © Copyright.&nbsp;Los nombres y logos de Buzón Fiscal®, Conector Fiscal® y Timbre Fiscal® son marcas registradas de Diverza Información y Análisis, SAPI de CV. Otros nombres y logos son marcas registradas de sus respectivos propietarios. Todo el contenido de este sitio y los documentos para descarga son propiedad intelectual de Diverza Información y Análisis, SAPI de CV.<br> 
+
+							<div class="clr"></div>
+							<div style="font-size:12px;margin-top: 5px;text-align: center;">
+
+								<script type="text/javascript">
+									<!--
+									var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+									var path = 'hr' + 'ef' + '=';
+									var addy64856 = 'c&#111;nt&#97;ct&#111;' + '&#64;';
+									addy64856 = addy64856 + 'd&#105;v&#101;rz&#97;' + '&#46;' + 'c&#111;m';
+									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
+									document.write(addy64856);
+									document.write('<\/a>');
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+<script type="text/javascript">
+	<!--
+	document.write('</');
+	document.write('span>');
+ //-->
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</div></div>
+
+</footer>
+</div>
+</div>
+</body>
+</html>

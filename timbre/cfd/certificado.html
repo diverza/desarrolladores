@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>Certificado</title>
 </head>
@@ -150,7 +150,7 @@
 
 <p>* Para explicar el proceso, los siguientes ejemplos utilizan la herramienta openssl (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.openssl.org/related/binaries.html">aquí</a>).</p>
 
-<h2 id="toc_0">atributo certificado</h2>
+<h2 id="atributo-certificado">atributo certificado</h2>
 
 <p>Este atributo expresa el certificado de sello digital que ampara al comprobante como texto, en formato base 64.</p>
 
@@ -161,12 +161,12 @@
 </ol>
 
 <p>Para obtener una versión imprimible (base64) del certificado, ejecuta:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in CSD/aaa010101aaa.cer  -a -A -out cerB64.txt
+<div class="highlight"><pre><code class="language-text" data-lang="text">openssl enc -in CSD/aaa010101aaa.cer  -a -A -out cerB64.txt
 </code></pre></div>
 <p>Obtendrás un archivo de texto con el certificado codificado en base64.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==
+<div class="highlight"><pre><code class="language-text" data-lang="text">MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==
 </code></pre></div>
-<h2 id="toc_1">Atributo noCertificado</h2>
+<h2 id="atributo-nocertificado">Atributo noCertificado</h2>
 
 <p>Este atributo expresa el número de serie del certificado de sello digital que ampara al comprobante, de acuerdo al acuse correspondiente a 20 posiciones otorgado por el sistema del SAT.</p>
 
@@ -177,10 +177,10 @@
 </ol>
 
 <p>Y ejecutar las instrucciones:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl x509 -inform DER -in aaa010101aaa.cer -serial -noout
+<div class="highlight"><pre><code class="language-text" data-lang="text">openssl x509 -inform DER -in aaa010101aaa.cer -serial -noout
 </code></pre></div>
 <p>Obtendrás el número de serie en ascii hexadecimal. Deberás transformar a texto legible, elimina el primer número (siempre 3) de cada par</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">32 30 30 30 31 30 30 30 30 30 30 31 30 30 30 30 35 38 36 37
+<div class="highlight"><pre><code class="language-text" data-lang="text">32 30 30 30 31 30 30 30 30 30 30 31 30 30 30 30 35 38 36 37
 
 
 20001000000100005867
@@ -204,7 +204,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -229,6 +229,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -242,15 +254,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -313,17 +316,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

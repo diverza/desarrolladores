@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>CFDi</title>
 </head>
@@ -149,7 +149,7 @@
               <p><strong>El CFD</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales</em> generados por medios propios.</p>
 
 <p><strong>El CFDI</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales por Internet</em> certificados por el emisor y sellados por el PAC.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Recuerda que a partir del 2014 todas las facturas electrónicas deberán ser certificadas o timbradas por un PAC.
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Recuerda que a partir del 2014 todas las facturas electrónicas deberán ser certificadas o timbradas por un PAC.
 
  Diverza provee el servicio para convertirlas en un CFDI:
  Comprobantes Fiscales Digitales por Internet.
@@ -165,7 +165,7 @@
 
 <hr>
 
-<h2 id="toc_0">Contenido del CFDI</h2>
+<h2 id="contenido-del-cfdi">Contenido del CFDI</h2>
 
 <ul>
 <li>Información propia del comprobante fiscal, como <a href="#emisor">emisor</a>, receptor, conceptos</li>
@@ -173,10 +173,10 @@
 <li>Metadatos de seguridad, como tu certificado, serie y cadena original</li>
 <li>Complemento con el timbre del SAT</li>
 </ul>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">El servicio de timbre fiscal recibe CFDI completos sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
+<div class="highlight"><pre><code class="language-text" data-lang="text">El servicio de timbre fiscal recibe CFDI completos sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
 </code></pre></div>
-<h3 id="toc_1">Ejemplo de un CFDI</h3>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<h3 id="ejemplo-de-un-cfdi">Ejemplo de un CFDI</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
   <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
   <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -221,7 +221,7 @@
   <span class="nt">&lt;/cfdi:Complemento&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
-<h3 id="toc_2">Encabezado</h3>
+<h3 id="encabezado">Encabezado</h3>
 
 <ul>
 <li><em>xsi:schemaLocation</em>=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a> <a href="http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd">http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd</a>&quot; </li>
@@ -242,7 +242,7 @@
 <li><em>version</em>=&quot;3.2&quot;</li>
 </ul>
 
-<h3 id="toc_3">Emisor</h3>
+<h3 id="emisor">Emisor</h3>
 
 <ul>
 <li><em>nombre</em>=&quot;EMPRESA DEMO&quot;</li>
@@ -258,7 +258,7 @@
 </ul></li>
 </ul>
 
-<h3 id="toc_4">Receptor</h3>
+<h3 id="receptor">Receptor</h3>
 
 <ul>
 <li><em>nombre</em>=&quot;PUBLICO EN GENERAL&quot;</li>
@@ -271,7 +271,7 @@
 </ul></li>
 </ul>
 
-<h3 id="toc_5">Conceptos</h3>
+<h3 id="conceptos">Conceptos</h3>
 
 <ul>
 <li>Concepto
@@ -285,7 +285,7 @@
 </ul></li>
 </ul>
 
-<h3 id="toc_6">Impuestos</h3>
+<h3 id="impuestos">Impuestos</h3>
 
 <ul>
 <li>Trasladados
@@ -304,13 +304,13 @@
 </ul></li>
 </ul>
 
-<h3 id="toc_7">Addendas</h3>
+<h3 id="addendas">Addendas</h3>
 
 <p>Esta sección puede alojar varias addendas con información útil para ti o tu receptor. Si bien no están sujetos a normatividad, te recomendamos usar addendas populares y seguir estándares.</p>
 
-<h3 id="toc_8">Complementos</h3>
+<h3 id="complementos">Complementos</h3>
 
-<h4 id="toc_9">Complemento timbre fiscal</h4>
+<h4 id="complemento-timbre-fiscal">Complemento timbre fiscal</h4>
 
 <p>Esta es la información que responde el SAT cuando recibe un comprobante válido. Es también la respuesta que obtienes de <strong>timbre fiscal</strong></p>
 
@@ -359,7 +359,7 @@
 
 <p>* Los campos en <strong>negritas</strong> representan a los nodos de información que genera diverza como PAC y es entregada al SAT.</p>
 
-<h4 id="toc_10">Complemento nómina</h4>
+<h4 id="complemento-nómina">Complemento nómina</h4>
 
 <ul>
 <li><a href="complementos/nomina.html">Complemento nómina</a></li>
@@ -384,7 +384,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -409,6 +409,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -422,15 +434,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -493,17 +496,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

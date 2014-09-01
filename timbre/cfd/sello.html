@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>Sello</title>
 </head>
@@ -150,7 +150,7 @@
 
 <p>* Para explicar el proceso, los siguientes ejemplos utilizan la herramienta openssl (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.openssl.org/related/binaries.html">aquí</a>).</p>
 
-<h2 id="toc_0">Recursos previos:</h2>
+<h2 id="recursos-previos:">Recursos previos:</h2>
 
 <ol>
 <li><a href="/timbre/cfd/cadena.html">Cadena original</a> (archivo <a href="/timbre/resources/cadena_ejemplo.txt">.txt</a>)</li>
@@ -158,7 +158,7 @@
 <li>Contraseña de la firma</li>
 </ol>
 
-<h2 id="toc_1">Secuencia de pasos:</h2>
+<h2 id="secuencia-de-pasos:">Secuencia de pasos:</h2>
 
 <ol>
 <li>Generar la llave de firmado (archivo .pem)</li>
@@ -169,7 +169,7 @@
 <hr>
 
 <p>Para generar la llave de firmado (archivo .pem), ejecuta:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl pkcs8 -inform DET -in aaa010101aaa.key -passin pass:12345678a -out key.pem
+<div class="highlight"><pre><code class="language-text" data-lang="text">openssl pkcs8 -inform DET -in aaa010101aaa.key -passin pass:12345678a -out key.pem
 </code></pre></div>
 <p>Obtendrás un archivo key.pem que podrás usar en todos los firmados que realices con el mismo certificado.</p>
 
@@ -178,17 +178,17 @@
 <hr>
 
 <p>Para firmar la cadena original, utiliza el archivo .pem (que acabas de generar) sobre la cadena original, aplicando el método de digestión SHA-1:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl dgst -sha1 -out sign.bin -sign key.pem cadena_ejemplo.txt
+<div class="highlight"><pre><code class="language-text" data-lang="text">openssl dgst -sha1 -out sign.bin -sign key.pem cadena_ejemplo.txt
 </code></pre></div>
 <p>Obtendrás un archivo sign.bin de 20 bytes, que contiene la cadena original firmada con tu certificado.</p>
 
 <hr>
 
 <p>Para integrarla al comprobante deberás transformarla a formato base64. Puedes hacerlo con este comando de lectura segura:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">openssl enc -in sign.bin -a -A -out signB64.txt
+<div class="highlight"><pre><code class="language-text" data-lang="text">openssl enc -in sign.bin -a -A -out signB64.txt
 </code></pre></div>
 <p>Obtendrás un archivo signB64.txt que contiene el sello listo para colocarlo en el atributo <em>&quot;sello&quot;</em> del <a href="/timbre/cfd">cfdi</a>.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;
+<div class="highlight"><pre><code class="language-text" data-lang="text">sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;
 </code></pre></div>
             </div>
           </div>
@@ -209,7 +209,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -234,6 +234,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -247,15 +259,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -318,17 +321,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

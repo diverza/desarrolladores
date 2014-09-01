@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>Cadena original</title>
 </head>
@@ -152,7 +152,7 @@
 
 <p>Para generarla puedes utilizar un transformador xslt o construirla manualmente.</p>
 
-<h2 id="toc_0">Construcción automática con xslt</h2>
+<h2 id="construcción-automática-con-xslt">Construcción automática con xslt</h2>
 
 <p>Para la construcción de la cadena original automática, necesitas:</p>
 
@@ -163,14 +163,14 @@
 </ul>
 
 <p>Desde la linea de comando deberás ejecutar:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">&gt;xsltproc cadenaoriginal_3_2.xslt cfd_ejemplo.xml
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;xsltproc cadenaoriginal_3_2.xslt cfd_ejemplo.xml
 </code></pre></div>
 <p>Recibirás la cadena original:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">||3.2|2013-12-02T22:18:24|ingreso|PAGO EN UNA SOLA EXHIBICION|1000.00|1160.00|TRANSFERENCIA ELECTRONICA|D.F.,MEXICO|DESCONOCIDO|AAA010101AAA|EMPRESA DEMO|REFORMA|BENITO JUAREZ|DISTRITO FEDERAL|MEXICO|34343|PERSONA FISCA|XAXX010101000|PUBLICO EN GENERAL|INSURGENTES|MEXICO|1|CANT|PZA|1000.00|1000.00|IVA|160.00|160.00||~
+<div class="highlight"><pre><code class="language-text" data-lang="text">||3.2|2013-12-02T22:18:24|ingreso|PAGO EN UNA SOLA EXHIBICION|1000.00|1160.00|TRANSFERENCIA ELECTRONICA|D.F.,MEXICO|DESCONOCIDO|AAA010101AAA|EMPRESA DEMO|REFORMA|BENITO JUAREZ|DISTRITO FEDERAL|MEXICO|34343|PERSONA FISCA|XAXX010101000|PUBLICO EN GENERAL|INSURGENTES|MEXICO|1|CANT|PZA|1000.00|1000.00|IVA|160.00|160.00||~
 </code></pre></div>
 <hr>
 
-<h2 id="toc_1">Construcción manual</h2>
+<h2 id="construcción-manual">Construcción manual</h2>
 
 <p>Si deseas construirla manualmente, estas son las reglas generales:</p>
 
@@ -193,10 +193,10 @@
 <li>El nodo o nodos adicionales <Complemento> se integraran al final de la cadena original respetando la secuencia de formación para cada complemento y número de orden del Complemento.</li>
 </ol>
 
-<h3 id="toc_2">Secuencia de formación</h3>
+<h3 id="secuencia-de-formación">Secuencia de formación</h3>
 
 <p>La secuencia de formación será siempre en el orden que se expresa a continuación, tomando en cuenta las reglas generales expresadas en el párrafo anterior.</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">**||version|fecha|tipoDeComprobante|formaDePago|condicionesDePago|subTotal|descuento|TipoCambio|Moneda|total|metodoDePago|LugarExpedicion|NumCtaPago|FolioFiscalOrig|SerieFolioFiscalOrig|FechaFolioFiscalOrig|MontoFolioFiscalOrig|Emisor:rfc|Emisor:nombre|Emisor:DomicilioFiscal:calle|Emisor:DomicilioFiscal:noExterior|Emisor:DomicilioFiscal:noInterior|Emisor:DomicilioFiscal:colonia|Emisor:DomicilioFiscal:localidad|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:municipio|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:pais|Emisor:DomicilioFiscal:codigoPostal|Emisor:ExpedidoEn:calle|Emisor:ExpedidoEn:noExterior|Emisor:ExpedidoEn:noInterior|Emisor:ExpedidoEn:colonia|Emisor:ExpedidoEn:localidad|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:municipio|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:pais|Emisor:ExpedidoEn:codigoPostal|Emisor:RegimenFiscal:Regimen|Receptor:rfc|Receptor:nombre|Receptor:DomicilioFiscal:calle|Receptor:DomicilioFiscal:noExterior|Receptor:DomicilioFiscal:noInterior|Receptor:DomicilioFiscal:colonia|Receptor:DomicilioFiscal:localidad|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:municipio|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:pais|Receptor:DomicilioFiscal:codigoPostal|Concepto:cantidad|Concepto:unidad|Concepto:noIdentificacion|Concepto:descripcion|Concepto:valorUnitario|Concepto:importe|Concepto:InformacionAduanera:numero|Concepto:InformacionAduanera:fecha|Concepto:InformacionAduanera:aduana|Concepto:CuentaPredial:numero|ComplementoConcepto|Impuestos:Retencion:impuesto|Impuestos:Retencion:importe|Impuestos:totalImpuestosRetenidos|Impuestos:Traslado:impuesto|Impuestos:Traslado:importe|Impuestos:totalImpuestosTrasladados||
+<div class="highlight"><pre><code class="language-text" data-lang="text">**||version|fecha|tipoDeComprobante|formaDePago|condicionesDePago|subTotal|descuento|TipoCambio|Moneda|total|metodoDePago|LugarExpedicion|NumCtaPago|FolioFiscalOrig|SerieFolioFiscalOrig|FechaFolioFiscalOrig|MontoFolioFiscalOrig|Emisor:rfc|Emisor:nombre|Emisor:DomicilioFiscal:calle|Emisor:DomicilioFiscal:noExterior|Emisor:DomicilioFiscal:noInterior|Emisor:DomicilioFiscal:colonia|Emisor:DomicilioFiscal:localidad|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:municipio|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:pais|Emisor:DomicilioFiscal:codigoPostal|Emisor:ExpedidoEn:calle|Emisor:ExpedidoEn:noExterior|Emisor:ExpedidoEn:noInterior|Emisor:ExpedidoEn:colonia|Emisor:ExpedidoEn:localidad|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:municipio|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:pais|Emisor:ExpedidoEn:codigoPostal|Emisor:RegimenFiscal:Regimen|Receptor:rfc|Receptor:nombre|Receptor:DomicilioFiscal:calle|Receptor:DomicilioFiscal:noExterior|Receptor:DomicilioFiscal:noInterior|Receptor:DomicilioFiscal:colonia|Receptor:DomicilioFiscal:localidad|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:municipio|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:pais|Receptor:DomicilioFiscal:codigoPostal|Concepto:cantidad|Concepto:unidad|Concepto:noIdentificacion|Concepto:descripcion|Concepto:valorUnitario|Concepto:importe|Concepto:InformacionAduanera:numero|Concepto:InformacionAduanera:fecha|Concepto:InformacionAduanera:aduana|Concepto:CuentaPredial:numero|ComplementoConcepto|Impuestos:Retencion:impuesto|Impuestos:Retencion:importe|Impuestos:totalImpuestosRetenidos|Impuestos:Traslado:impuesto|Impuestos:Traslado:importe|Impuestos:totalImpuestosTrasladados||
 </code></pre></div>
 <p>* Los campos no obligatorios en la definición del CFDI, se podrían ignorar en la cadena. Como <strong>Emisor:ExpedidoEn</strong> <strong>Receptor:ExpedidoEn</strong></p>
 
@@ -227,7 +227,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -252,6 +252,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -265,15 +277,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -336,17 +339,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

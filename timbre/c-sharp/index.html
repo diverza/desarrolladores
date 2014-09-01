@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>C# .NET</title>
 </head>
@@ -152,16 +152,16 @@
 
 <hr>
 
-<h2 id="toc_0">Generar Timbre</h2>
+<h2 id="generar-timbre">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
  Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
 <p>Así como también el CFDI de prueba que usaremos en este ejercicio:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
     <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -201,10 +201,10 @@
 
 <hr>
 
-<h3 id="toc_1">Inicio</h3>
+<h3 id="inicio">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo proyecto en Visual Studio 2010 de tipo <strong>C# Console Application</strong>,  una vez realizado esto necesitamos abrir el archivo <strong>Program.cs</strong>, que debe ser algo similar a lo siguiente:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
 <span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
@@ -221,10 +221,10 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>El primer paso es importar una nueva libreria agregando la siguiente linea al inicio del archivo:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">using</span> <span class="nn">System.Net</span><span class="p">;</span>
 </code></pre></div>
 <p>Ahora deberemos editar el metodo Main, agregando por facilidad nuestro CFDI a timbrar en una variable:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">cfd</span> <span class="p">=</span> <span class="s">@&quot;&lt;?xml version=&quot;&quot;1.0&quot;&quot; encoding=&quot;&quot;UTF-8&quot;&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">cfd</span> <span class="p">=</span> <span class="s">@&quot;&lt;?xml version=&quot;&quot;1.0&quot;&quot; encoding=&quot;&quot;UTF-8&quot;&quot;?&gt;</span>
 <span class="s">                           &lt;cfdi:Comprobante </span>
 <span class="s">                                xsi:schemaLocation=&quot;&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;&quot; </span>
 <span class="s">                                xmlns:cfdi=&quot;&quot;http://www.sat.gob.mx/cfd/3&quot;&quot; </span>
@@ -262,25 +262,25 @@
 </code></pre></div>
 <hr>
 
-<h3 id="toc_2">Petición HTTP</h3>
+<h3 id="petición-http">Petición HTTP</h3>
 
 <p>Para realizar una petición HTTP desde .NET es necesario tener una instancia del objeto <strong>Web Client</strong> lo cual se realiza de la siguiente manera:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="k">try</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="k">try</span>
 <span class="p">{</span>
   <span class="n">WebClient</span> <span class="n">webClient</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebClient</span><span class="p">();</span>
 </code></pre></div>
 <p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="n">webClient</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;ABCD1234&quot;</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="n">webClient</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s">&quot;ABCD1234&quot;</span><span class="p">);</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de timbrado indicando la URL del servicio de timbrado, el metodo HTTP POST y el CFDI que deseamos timbrar:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">stamp</span> <span class="p">=</span> <span class="n">webClient</span><span class="p">.</span><span class="n">UploadString</span><span class="p">(</span><span class="s">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="n">cfd</span><span class="p">);</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#"><span class="kt">string</span> <span class="n">stamp</span> <span class="p">=</span> <span class="n">webClient</span><span class="p">.</span><span class="n">UploadString</span><span class="p">(</span><span class="s">&quot;http://staging.diverza.com/stamp&quot;</span><span class="p">,</span> <span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="n">cfd</span><span class="p">);</span>
 </code></pre></div>
 <hr>
 
-<h3 id="toc_3">Obtener el timbre</h3>
+<h3 id="obtener-el-timbre">Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
-<div class="highlight"><pre><code class="c# language-c#" data-lang="c#">  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;Timbre: {0}&quot;</span><span class="p">,</span> <span class="n">stamp</span><span class="p">));</span>
+<div class="highlight"><pre><code class="language-c#" data-lang="c#">  <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;Timbre: {0}&quot;</span><span class="p">,</span> <span class="n">stamp</span><span class="p">));</span>
 <span class="p">}</span>
 <span class="k">catch</span> <span class="p">(</span><span class="n">WebException</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
@@ -294,29 +294,19 @@
 <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
 </code></pre></div>
 <p>Si ejecutamos el código utilizando:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">&quot;Start Debugging&quot; desde el menu Debug o F5
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;Start Debugging&quot; desde el menu Debug o F5
 </code></pre></div>
 <p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
-  <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
-  <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
-  <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> 
-  <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
-  <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> 
-  <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> 
-  <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> 
-  <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> 
-  <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> 
-  <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> 
-  <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> 
-  <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> 
-  <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> 
-  <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span> 
-  <span class="na">selloSAT=</span><span class="s">&quot;vW6bOQHFS5ne5Z9ADkhqZYvfI9zCbm15BF7CeJKwXZeZnTRwC204gHCHlemecbDfQ4Qv8CGi1+zS8yW5tGwuz2G6TUs3fp3MUe8mj7PV0bxSEybZB0M3aG0xHPHytzq1wE+z6wADo1e1O1fo4Y0C4ik1lvHDxstfJhHaRlmN920=&quot;</span> 
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> 
+
+  <span class="na">selloSAT=</span><span class="s">&quot;Ae0K1DyTpecq8xZAB8SSCccx5Gzrqr+HaD1tEQ/dFNqobiZDfJ2U9eJ9BRxYn1K6Zw4A0W2PbBs3VUFFasuJHkfw5nLxb+M/hu55Gomhw9OjhKsH0ABnOGa3vQHWPHHDFB9zb4/sMxdUTqEubent8Zvb3nfKaxdgX9BkVFYgd+c=&quot;</span> 
   <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
   <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
-  <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-12-09T19:57:34&quot;</span> 
-  <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-27T19:33:42&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;e52d9982-1cd1-4b99-aa3c-0f6172d07412&quot;</span> 
+
   <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>En caso de que la petición no sea exitosa podremos obtener el codigo de error del servidor a traves de la excepción, puedes revisar todos los posibles códigos de respuesta y sus posibles soluciones desde la <a href="../codigos">Lista de Códigos de Respuesta</a>.</p>
@@ -342,7 +332,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -367,6 +357,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -380,15 +382,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -451,17 +444,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

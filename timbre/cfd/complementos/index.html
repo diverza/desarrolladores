@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>complementos</title>
 </head>
@@ -146,7 +146,40 @@
               <h1>complementos<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              
+              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesto como contenido del nodo de comprobante, dentro del xml.</p>
+
+<p>Los complementos contienen información específica sobre operaciones específicas requeridas por el SAT.</p>
+
+<h2 id="complementos-del-comprobante">Complementos del comprobante</h2>
+
+<ul>
+<li><a href="aerolineas.html">Aerolíneas</a><br></li>
+<li><a href="consumodecombustibles.html">Consumo de combustibles</a> </li>
+<li><a href="detallista.html">Detallista</a><br></li>
+<li><a href="divisas.html">Divisas</a><br></li>
+<li><a href="donatarias.html">Donatarias</a><br></li>
+<li><a href="ecc.html">Estados de cuenta de combustibles</a><br></li>
+<li><a href="impuestoslocales.html">Impuestos locales</a><br></li>
+<li><a href="leyendasfiscales.html">Leyendas fiscales</a><br></li>
+<li><a href="nomina.html">Nómina</a><br></li>
+<li><a href="notarios.html">Notarios</a><br></li>
+<li><a href="pagoenespecie.html">Pago en especie</a><br></li>
+<li><a href="pfic.html">Persona física integrante de coordinado</a><br></li>
+<li><a href="registrofiscal.html">Registro fiscal</a><br></li>
+<li><a href="spei.html">SPEI</a><br></li>
+<li><a href="tfd.html">Timbre fiscal digital</a><br></li>
+<li><a href="tpe.html">Turista pasajero extranjero</a><br></li>
+<li><a href="valesdedespensa.html">Vales de despensa</a><br></li>
+</ul>
+
+<h2 id="complementos-concepto">Complementos concepto</h2>
+
+<ul>
+<li><a href="cc_iedu.html">Instituciones educativas privadas</a></li>
+<li><a href="cc_terceros.html">Facturación a terceros</a></li>
+<li><a href="cc_ventavehiculos.html">Venta de vehículos nuevos</a></li>
+</ul>
+
             </div>
           </div>
         </div>
@@ -166,7 +199,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -191,6 +224,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -204,15 +249,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -275,17 +311,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

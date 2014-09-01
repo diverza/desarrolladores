@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>Elixir / Erlang</title>
 </head>
@@ -152,16 +152,16 @@
 
 <hr>
 
-<h2 id="toc_0">Generar Timbre</h2>
+<h2 id="generar-timbre">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de pruebas: http://staging.diverza.com/stamp
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de pruebas: http://staging.diverza.com/stamp
  Token de pruebas: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
 <p>Así como también el CFDI de prueba que usaremos en este ejercicio:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
     <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -201,101 +201,91 @@
 
 <hr>
 
-<h3 id="toc_1">Inicio</h3>
+<h3 id="inicio">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.exs</em> y una vez que lo hayamos creado, por motivos de facilidad para esta guía es almacenar el CFDI a timbrar en una variable:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">cfd</span> <span class="o">=</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="sd">&lt;cfdi:Comprobante </span>
-<span class="sd">    xsi:schemaLocation=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </span>
-<span class="sd">    xmlns:cfdi=&quot;http://www.sat.gob.mx/cfd/3&quot; </span>
-<span class="sd">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span>
-<span class="sd">    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
-<span class="sd">    LugarExpedicion=&quot;D.F.,MEXICO&quot; </span>
-<span class="sd">    NumCtaPago=&quot;DESCONOCIDO&quot; </span>
-<span class="sd">    formaDePago=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </span>
-<span class="sd">    metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
-<span class="sd">    subTotal=&quot;1000.00&quot; </span>
-<span class="sd">    total=&quot;1160.00&quot; </span>
-<span class="sd">    fecha=&quot;2013-12-02T22:18:24&quot; </span>
-<span class="sd">    certificado=&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot; </span>
-<span class="sd">    noCertificado=&quot;20001000000100005867&quot; </span>
-<span class="sd">    sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot; </span>
-<span class="sd">    tipoDeComprobante=&quot;ingreso&quot;</span>
-<span class="sd">    version=&quot;3.2&quot; &gt;</span>
-<span class="sd">    &lt;cfdi:Emisor nombre=&quot;EMPRESA DEMO&quot; rfc=&quot;AAA010101AAA&quot;&gt;</span>
-<span class="sd">        &lt;cfdi:DomicilioFiscal codigoPostal=&quot;34343&quot; pais=&quot;MEXICO&quot; estado=&quot;DISTRITO FEDERAL&quot; municipio=&quot;BENITO JUAREZ&quot; calle=&quot;REFORMA&quot;/&gt;</span>
-<span class="sd">        &lt;cfdi:RegimenFiscal Regimen=&quot;PERSONA FISCA&quot;/&gt;</span>
-<span class="sd">    &lt;/cfdi:Emisor&gt;</span>
-<span class="sd">    &lt;cfdi:Receptor nombre=&quot;PUBLICO EN GENERAL&quot; rfc=&quot;XAXX010101000&quot;&gt;</span>
-<span class="sd">        &lt;cfdi:Domicilio pais=&quot;MEXICO&quot; calle=&quot;INSURGENTES&quot;/&gt;</span>
-<span class="sd">    &lt;/cfdi:Receptor&gt;</span>
-<span class="sd">    &lt;cfdi:Conceptos&gt;</span>
-<span class="sd">        &lt;cfdi:Concepto importe=&quot;1000.00&quot; valorUnitario=&quot;1000.00&quot; descripcion=&quot;PZA&quot; unidad=&quot;CANT&quot; cantidad=&quot;1&quot;/&gt;</span>
-<span class="sd">    &lt;/cfdi:Conceptos&gt;</span>
-<span class="sd">    &lt;cfdi:Impuestos&gt;</span>
-<span class="sd">        &lt;cfdi:Traslados&gt;</span>
-<span class="sd">            &lt;cfdi:Traslado importe=&quot;160.00&quot; tasa=&quot;160.00&quot; impuesto=&quot;IVA&quot;/&gt;</span>
-<span class="sd">        &lt;/cfdi:Traslados&gt;</span>
-<span class="sd">    &lt;/cfdi:Impuestos&gt;</span>
-<span class="sd">    &lt;cfdi:Addenda/&gt;</span>
-<span class="sd">&lt;/cfdi:Comprobante&gt;</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">cfd</span> <span class="p">=</span> <span class="sh">&quot;&quot;&quot;</span>
+<span class="sh">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="sh">&lt;cfdi:Comprobante </span>
+<span class="sh">    xsi:schemaLocation=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </span>
+<span class="sh">    xmlns:cfdi=&quot;http://www.sat.gob.mx/cfd/3&quot; </span>
+<span class="sh">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span>
+<span class="sh">    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="sh">    LugarExpedicion=&quot;D.F.,MEXICO&quot; </span>
+<span class="sh">    NumCtaPago=&quot;DESCONOCIDO&quot; </span>
+<span class="sh">    formaDePago=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </span>
+<span class="sh">    metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+<span class="sh">    subTotal=&quot;1000.00&quot; </span>
+<span class="sh">    total=&quot;1160.00&quot; </span>
+<span class="sh">    fecha=&quot;2013-12-02T22:18:24&quot; </span>
+<span class="sh">    certificado=&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot; </span>
+<span class="sh">    noCertificado=&quot;20001000000100005867&quot; </span>
+<span class="sh">    sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot; </span>
+<span class="sh">    tipoDeComprobante=&quot;ingreso&quot;</span>
+<span class="sh">    version=&quot;3.2&quot; &gt;</span>
+<span class="sh">    &lt;cfdi:Emisor nombre=&quot;EMPRESA DEMO&quot; rfc=&quot;AAA010101AAA&quot;&gt;</span>
+<span class="sh">        &lt;cfdi:DomicilioFiscal codigoPostal=&quot;34343&quot; pais=&quot;MEXICO&quot; estado=&quot;DISTRITO FEDERAL&quot; municipio=&quot;BENITO JUAREZ&quot; calle=&quot;REFORMA&quot;/&gt;</span>
+<span class="sh">        &lt;cfdi:RegimenFiscal Regimen=&quot;PERSONA FISCA&quot;/&gt;</span>
+<span class="sh">    &lt;/cfdi:Emisor&gt;</span>
+<span class="sh">    &lt;cfdi:Receptor nombre=&quot;PUBLICO EN GENERAL&quot; rfc=&quot;XAXX010101000&quot;&gt;</span>
+<span class="sh">        &lt;cfdi:Domicilio pais=&quot;MEXICO&quot; calle=&quot;INSURGENTES&quot;/&gt;</span>
+<span class="sh">    &lt;/cfdi:Receptor&gt;</span>
+<span class="sh">    &lt;cfdi:Conceptos&gt;</span>
+<span class="sh">        &lt;cfdi:Concepto importe=&quot;1000.00&quot; valorUnitario=&quot;1000.00&quot; descripcion=&quot;PZA&quot; unidad=&quot;CANT&quot; cantidad=&quot;1&quot;/&gt;</span>
+<span class="sh">    &lt;/cfdi:Conceptos&gt;</span>
+<span class="sh">    &lt;cfdi:Impuestos&gt;</span>
+<span class="sh">        &lt;cfdi:Traslados&gt;</span>
+<span class="sh">            &lt;cfdi:Traslado importe=&quot;160.00&quot; tasa=&quot;160.00&quot; impuesto=&quot;IVA&quot;/&gt;</span>
+<span class="sh">        &lt;/cfdi:Traslados&gt;</span>
+<span class="sh">    &lt;/cfdi:Impuestos&gt;</span>
+<span class="sh">    &lt;cfdi:Addenda/&gt;</span>
+<span class="sh">&lt;/cfdi:Comprobante&gt;</span>
+<span class="sh">&quot;&quot;&quot;</span>
 </code></pre></div>
 <hr>
 
-<h3 id="toc_2">Petición HTTP</h3>
+<h3 id="petición-http">Petición HTTP</h3>
 
 <p>Para realizar peticiones HTTP desde Elixir es necesario iniciar el actor <em>inets</em>:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="ss">:inets</span><span class="o">.</span><span class="n">start</span>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="ss">:inets</span><span class="p">.</span><span class="n">start</span>
 </code></pre></div>
 <p>Creamos una variable para almacenar la dirección HTTP del servicio de timbrado:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://staging.diverza.com/stamp&#39;</span>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">url</span> <span class="p">=</span> <span class="s1">&#39;http://staging.diverza.com/stamp&#39;</span>
 </code></pre></div>
 <p><strong>Nota:</strong> Se agrega la URL completa como viene en el inicio de la guía.</p>
 
 <p>El siguiente paso es crear una lista para los Headers de la petición, estos son necesarios para incluir el token de seguridad:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="n">headers</span> <span class="o">=</span> <span class="p">[{</span> <span class="s1">&#39;x-auth-token&#39;, &#39;ABCD1234&#39;</span> <span class="p">}]</span>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="n">headers</span> <span class="p">=</span> <span class="p">[{</span> <span class="s1">&#39;x-auth-token&#39;</span><span class="p">,</span> <span class="s1">&#39;ABCD1234&#39;</span> <span class="p">}]</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición al servidor indicando que utilizaremos el método <em>POST</em> y como cuerpo del mensaje deberá agregar el CFDI a timbrar:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="p">{</span> <span class="ss">:ok</span><span class="p">,</span> <span class="p">{</span> <span class="p">{</span> <span class="n">_</span><span class="p">,</span> <span class="n">http_code</span><span class="p">,</span> <span class="n">_</span> <span class="p">},</span> <span class="n">_</span><span class="p">,</span> <span class="n">stamp_response</span> <span class="p">}</span> <span class="p">}</span> <span class="o">=</span> <span class="ss">:httpc</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="ss">:post</span><span class="p">,</span> <span class="p">{</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="s1">&#39;application/xml&#39;</span><span class="p">,</span> <span class="n">cfd</span> <span class="p">},</span> <span class="p">[],</span> <span class="p">[])</span>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="p">{</span> <span class="ss">:ok</span><span class="p">,</span> <span class="p">{</span> <span class="p">{</span> <span class="bp">_</span><span class="p">,</span> <span class="n">http_code</span><span class="p">,</span> <span class="bp">_</span> <span class="p">},</span> <span class="bp">_</span><span class="p">,</span> <span class="n">stamp_response</span> <span class="p">}</span> <span class="p">}</span> <span class="p">=</span> <span class="ss">:httpc</span><span class="p">.</span><span class="n">request</span><span class="p">(</span><span class="ss">:post</span><span class="p">,</span> <span class="p">{</span> <span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="s1">&#39;application/xml&#39;</span><span class="p">,</span> <span class="n">cfd</span> <span class="p">},</span> <span class="p">[],</span> <span class="p">[])</span>
 </code></pre></div>
 <hr>
 
-<h3 id="toc_3">Obtener el timbre</h3>
+<h3 id="obtener-el-timbre">Obtener el timbre</h3>
 
 <p>Una vez realizada la petición podremos tener acceso a los datos de respuesta:</p>
-<div class="highlight"><pre><code class="elixir language-elixir" data-lang="elixir"><span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">http_code</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="no">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Timbre: </span><span class="si">#{</span><span class="n">stamp_response</span><span class="si">}</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><code class="language-elixir" data-lang="elixir"><span class="nc">IO</span><span class="p">.</span><span class="n">puts</span> <span class="s2">&quot;Codigo HTTP: </span><span class="si">#{</span><span class="n">http_code</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nc">IO</span><span class="p">.</span><span class="n">puts</span> <span class="s2">&quot;Timbre: </span><span class="si">#{</span><span class="n">stamp_response</span><span class="si">}</span><span class="s2">&quot;</span>
 
-<span class="ss">:inets</span><span class="o">.</span><span class="n">stop</span>
+<span class="ss">:inets</span><span class="p">.</span><span class="n">stop</span>
 </code></pre></div>
 <p>Si ejecutamos el código utilizando:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">$ elixir timbrar.exs
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ elixir timbrar.exs
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>elixir</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
 <p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable <em>stamp_response</em> debe observarse algo similar a lo siguiente:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
-  <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
-  <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
-  <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> 
-  <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
-  <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> 
-  <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> 
-  <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> 
-  <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> 
-  <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> 
-  <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> 
-  <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> 
-  <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> 
-  <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> 
-  <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span> 
-  <span class="na">selloSAT=</span><span class="s">&quot;vW6bOQHFS5ne5Z9ADkhqZYvfI9zCbm15BF7CeJKwXZeZnTRwC204gHCHlemecbDfQ4Qv8CGi1+zS8yW5tGwuz2G6TUs3fp3MUe8mj7PV0bxSEybZB0M3aG0xHPHytzq1wE+z6wADo1e1O1fo4Y0C4ik1lvHDxstfJhHaRlmN920=&quot;</span> 
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> 
+
+  <span class="na">selloSAT=</span><span class="s">&quot;Ae0K1DyTpecq8xZAB8SSCccx5Gzrqr+HaD1tEQ/dFNqobiZDfJ2U9eJ9BRxYn1K6Zw4A0W2PbBs3VUFFasuJHkfw5nLxb+M/hu55Gomhw9OjhKsH0ABnOGa3vQHWPHHDFB9zb4/sMxdUTqEubent8Zvb3nfKaxdgX9BkVFYgd+c=&quot;</span> 
   <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
   <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
-  <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-12-09T19:57:34&quot;</span> 
-  <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-27T19:33:42&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;e52d9982-1cd1-4b99-aa3c-0f6172d07412&quot;</span> 
+
   <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>El código de respuesta del servidor que se encuentra en la variable <em>http_code</em> deberá ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
@@ -321,7 +311,7 @@
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -346,6 +336,18 @@
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -359,15 +361,6 @@
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -430,17 +423,14 @@
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

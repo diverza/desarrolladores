@@ -10,16 +10,16 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/main.css">
   <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script>
-  <script src="scripts/bootstrap.min.js"></script>
+  <script src="/scripts/bootstrap.min.js"></script>
   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="/scripts/jquery-1.7.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
 	<script src="/scripts/bootstrap.min.js"></script>
 <!--<script src="scripts/codemirror.js"></script>-->
     <!--<script src="scripts/searchcursor.js"></script>-->
     <!--<script src="scripts/match-highlighter.js"></script>-->
     <!--<script src="scripts/xml.js"></script>-->
 	<!--<script src="scripts/prettify.js"></script>-->
-	<script src="/scripts/xmllint.js"></script>
+	<!-- <script src="/scripts/xmllint.js"></script> -->
 	<script src="/scripts/script.js"></script>
   <title>Visual Basic 6</title>
 </head>
@@ -152,16 +152,16 @@
 
 <hr>
 
-<h2 id="toc_0">Generar Timbre</h2>
+<h2 id="generar-timbre">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
  Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
 </code></pre></div>
 <p>Así como también el CFDI de prueba que usaremos en este ejercicio:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
     <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -201,10 +201,10 @@
 
 <hr>
 
-<h3 id="toc_1">Inicio</h3>
+<h3 id="inicio">Inicio</h3>
 
 <p>Primeramente necesitamos crear un nuevo proyecto en Visual Basic 6 de tipo <strong>Standard EXE</strong>, una vez realizado esto necesitamos crear un nuevo archivo con el nombre <strong>cfdi.xml</strong> en la misma carpeta donde se encuentre el proyecto. El contenido de este archivo es el CFDI que deseamos timbrar:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> 
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
     <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
@@ -250,76 +250,66 @@
 </ol>
 
 <p>El siguiente paso es utilizando la barra de herramientas crear un nuevo boton en la forma principal del proyecto e ingresar al codigo que ejecuta el mismo (Generalmente es dando doble click al boton recien agregado), se debera observar algo similar a lo siguiente:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Private</span> <span class="no">Sub</span> <span class="n">timbra_Click</span><span class="p">()</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Private</span> <span class="no">Sub</span> <span class="n">timbra_Click</span><span class="p">()</span>
 
 <span class="no">End</span> <span class="no">Sub</span>
 </code></pre></div>
 <p>Deberemos declarar las variables con las cuales trabajaremos de la siguiente manera:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Dim</span> <span class="n">url</span> <span class="no">As</span> <span class="nb">String</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Dim</span> <span class="n">url</span> <span class="no">As</span> <span class="nb">String</span>
 <span class="no">Dim</span> <span class="n">cfd</span> <span class="no">As</span> <span class="nb">String</span>
 <span class="no">Dim</span> <span class="n">responseCode</span> <span class="no">As</span> <span class="nb">Integer</span>
 <span class="no">Dim</span> <span class="n">stamp</span> <span class="no">As</span> <span class="nb">String</span>
 <span class="no">Dim</span> <span class="n">xmlhttp</span> <span class="no">As</span> <span class="no">MSXML2</span><span class="o">.</span><span class="n">xmlhttp</span>
 </code></pre></div>
 <p>Por facilidad de esta guia leeremos el CFDI a timbrar del archivo xml que creamos con anterioridad:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">cfdFile</span> <span class="o">=</span> <span class="no">FreeFile</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">cfdFile</span> <span class="o">=</span> <span class="no">FreeFile</span>
 <span class="no">Open</span> <span class="no">App</span><span class="o">.</span><span class="n">Path</span> <span class="o">+</span> <span class="s2">&quot;\cfdi.xml&quot;</span> <span class="no">For</span> <span class="no">Input</span> <span class="no">As</span> <span class="n">cfdFile</span>
 <span class="n">cfd</span> <span class="o">=</span> <span class="no">Input</span><span class="p">(</span><span class="no">LOF</span><span class="p">(</span><span class="n">cfdFile</span><span class="p">),</span> <span class="n">cfdFile</span><span class="p">)</span>
 <span class="no">Close</span> <span class="n">cfdFile</span>
 </code></pre></div>
 <hr>
 
-<h3 id="toc_2">Petición HTTP</h3>
+<h3 id="petición-http">Petición HTTP</h3>
 
 <p>Para realizar una petición HTTP desde Visual Basic 6 es necesario tener una instancia del objeto <strong>xmlhttp</strong> lo cual se realiza de la siguiente manera:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="no">Set</span> <span class="n">xmlhttp</span> <span class="o">=</span> <span class="no">New</span> <span class="n">xmlhttp</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Set</span> <span class="n">xmlhttp</span> <span class="o">=</span> <span class="no">New</span> <span class="n">xmlhttp</span>
 </code></pre></div>
 <p>Ahora deberemos abrir la conexión con el servicio de timbrado indicando la URL y que utilizaremos el metodo HTTP POST:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://staging.diverza.com/stamp&quot;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://staging.diverza.com/stamp&quot;</span>
 <span class="n">xmlhttp</span><span class="o">.</span><span class="n">Open</span> <span class="s2">&quot;POST&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="no">False</span>
 </code></pre></div>
 <p>Por motivos de seguridad es necesario que agreguemos un token de seguridad a la petición, en esta guía utilizaremos el de prueba <strong>ABCD1234</strong> y este deberá ser cambiado cuando deseemos pasar el código a producción:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">setRequestHeader</span> <span class="s2">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s2">&quot;ABCD1234&quot;</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">setRequestHeader</span> <span class="s2">&quot;x-auth-token&quot;</span><span class="p">,</span> <span class="s2">&quot;ABCD1234&quot;</span>
 </code></pre></div>
 <p>Finalmente ejecutamos la petición de timbrado indicando el CFDI que deseamos timbrar:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">send</span> <span class="n">cfd</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">xmlhttp</span><span class="o">.</span><span class="n">send</span> <span class="n">cfd</span>
 </code></pre></div>
 <hr>
 
-<h3 id="toc_3">Obtener el timbre</h3>
+<h3 id="obtener-el-timbre">Obtener el timbre</h3>
 
 <p>Para obtener los datos de respuesta del servidor simplemente se necesita lo siguiente:</p>
-<div class="highlight"><pre><code class="ruby language-ruby" data-lang="ruby"><span class="n">responseCode</span> <span class="o">=</span> <span class="n">xmlhttp</span><span class="o">.</span><span class="n">Status</span>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">responseCode</span> <span class="o">=</span> <span class="n">xmlhttp</span><span class="o">.</span><span class="n">Status</span>
 <span class="n">stamp</span> <span class="o">=</span> <span class="n">xmlhttp</span><span class="o">.</span><span class="n">responseText</span>
 
 <span class="no">MsgBox</span> <span class="s2">&quot;Codigo HTTP: &quot;</span> <span class="o">+</span> <span class="no">Str</span><span class="p">(</span><span class="n">responseCode</span><span class="p">)</span>
 <span class="no">MsgBox</span> <span class="s2">&quot;Timbre: &quot;</span> <span class="o">+</span> <span class="n">stamp</span>
 </code></pre></div>
 <p>Si ejecutamos el código utilizando:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">&quot;Start&quot; desde el menu Run o presiona F5
+<div class="highlight"><pre><code class="language-text" data-lang="text">&quot;Start&quot; desde el menu Run o presiona F5
 Presiona el botón de la aplicación
 </code></pre></div>
 <p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable stamp debe observarse algo similar a lo siguiente:</p>
-<div class="highlight"><pre><code class="xml language-xml" data-lang="xml"><span class="nt">&lt;ns2:TimbreFiscalDigital</span> 
-  <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
-  <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> 
-  <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> 
-  <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
-  <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> 
-  <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> 
-  <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> 
-  <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> 
-  <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> 
-  <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> 
-  <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> 
-  <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> 
-  <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> 
-  <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span> 
-  <span class="na">selloSAT=</span><span class="s">&quot;vW6bOQHFS5ne5Z9ADkhqZYvfI9zCbm15BF7CeJKwXZeZnTRwC204gHCHlemecbDfQ4Qv8CGi1+zS8yW5tGwuz2G6TUs3fp3MUe8mj7PV0bxSEybZB0M3aG0xHPHytzq1wE+z6wADo1e1O1fo4Y0C4ik1lvHDxstfJhHaRlmN920=&quot;</span> 
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> 
+
+  <span class="na">selloSAT=</span><span class="s">&quot;Ae0K1DyTpecq8xZAB8SSCccx5Gzrqr+HaD1tEQ/dFNqobiZDfJ2U9eJ9BRxYn1K6Zw4A0W2PbBs3VUFFasuJHkfw5nLxb+M/hu55Gomhw9OjhKsH0ABnOGa3vQHWPHHDFB9zb4/sMxdUTqEubent8Zvb3nfKaxdgX9BkVFYgd+c=&quot;</span> 
   <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
   <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
-  <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-12-09T19:57:34&quot;</span> 
-  <span class="na">UUID=</span><span class="s">&quot;f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-27T19:33:42&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;e52d9982-1cd1-4b99-aa3c-0f6172d07412&quot;</span> 
+
   <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p>El código de respuesta del servidor que se encuentra en la variable <em>responseCode</em> deberá ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
@@ -345,7 +335,7 @@ Presiona el botón de la aplicación
                         <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
                         <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
                         <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/nomina.html">Complemento nómina</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos</a></li>
                     </ul>               
                 </div>
 
@@ -370,6 +360,18 @@ Presiona el botón de la aplicación
                     </ul>               
                 </div>
 
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
                 <br />
                 <h3>Cancelación<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -383,15 +385,6 @@ Presiona el botón de la aplicación
                 </div>
 
                 <br />
-                <h3>Ayuda<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -454,17 +447,14 @@ Presiona el botón de la aplicación
 									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
 									document.write(addy64856);
 									document.write('<\/a>');
-									//-->\n </script><a href="mailto:contacto@diverza.com">contacto@diverza.com</a><script type="text/javascript">
-									<!--
-									document.write('<span style=\'display: none;\'>');
- //-->
-</script><span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
 <script type="text/javascript">
 	<!--
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>
