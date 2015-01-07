@@ -27,7 +27,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>CFDi</title>
+  <title>Documento electrónico de retenciones y pagos</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -149,24 +149,23 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>CFDi<span class="diverza-dot">.</span></h1>
+              <h1>Documento electrónico de retenciones y pagos<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p><strong>El CFD</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales</em> generados por medios propios.</p>
+              <p><strong>El CFDI</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales por Internet</em> certificados por el emisor y sellados por el PAC.</p>
 
-<p><strong>El CFDI</strong> es el formato definido por el SAT para los <em>Comprobantes Fiscales Digitales por Internet</em> certificados por el emisor y sellados por el PAC.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> Recuerda que a partir del 2014 todas las facturas electrónicas deberán ser certificadas o timbradas por un PAC.
+<p>El <strong>Documento electrónico de retenciones y pagos</strong> es un nuevo tipo de comprobante fiscal, distinto a una Factura Electrónica en su estructura y contenido.</p>
 
- Diverza provee el servicio para convertirlas en un CFDI:
- Comprobantes Fiscales Digitales por Internet.
-</code></pre></div>
+<p>Contiene la información de las retenciones y pagos efectuados por el contribuyente, se integra por:
+- El conjunto de datos generales del emisor, receptor y desglose de impuestos
+- Un complemento que corresponda al tipo de retención que ampara.</p>
+
 <hr>
 
-<p>El CFDI es un archivo XML con la estructura definida por el SAT</p>
-
 <ul>
-<li>Descarga la <a href="../resources/Anexo20_cfdiv32_30122011.pdf">descripción del esquema</a> versión 3.2 como la documenta el Anexo 20 (30/12/2011)</li>
-<li>Descarga el <a href="../resources/cfdv32.xsd">XSD esquema</a> que puedes usar para validar su estructura.</li>
+<li>Consulta la documentación sobre el <a href="../resources/RET/RetencionPago.pdf">esquema de retenciones e información de pagos</a> (24/11/2014)</li>
+<li>Descarga el <a href="../resources/RET/retencionpagov1.xsd">XSD esquema</a> que puedes usar para validar su estructura.</li>
+<li>Consulta las <a href="ret_sat_faq">preguntas y respuestas importantes</a> publicadas por la autoridad.</li>
 </ul>
 
 <hr>
@@ -174,139 +173,138 @@
 <h2 id="contenido-del-cfdi">Contenido del CFDI</h2>
 
 <ul>
-<li>Información propia del comprobante fiscal, como <a href="#emisor">emisor</a>, receptor, conceptos</li>
-<li>Metadatos sobre el propio documento, como la versión del esquema</li>
-<li>Metadatos de seguridad, como tu certificado, serie y cadena original</li>
-<li>Complemento con el timbre del SAT</li>
+<li>Información propia del comprobante fiscal:
+
+<ul>
+<li><a href="#emisor">Emisor</a></li>
+<li><a href="#receptor">Receptor</a></li>
+<li><a href="#periodo">Periodo</a></li>
+<li><a href="#totales">Totales</a></li>
+</ul></li>
+<li>Metadatos sobre el propio documento
+
+<ul>
+<li>Atributo Version</li>
+<li>Atributo Folio interno (opcional)</li>
+</ul></li>
+<li>Metadatos de seguridad, como tu certificado, serie y cadena original
+
+<ul>
+<li>Atributo Sello</li>
+<li>Atributo Número de certificado</li>
+<li>Atributo Certificado</li>
+<li>Atributo Fecha de expedición</li>
+<li>Atributo Clave de la retención</li>
+<li>Atributo Descripción de la retención (opcional)</li>
+</ul></li>
+<li>Espacio para los <a href="#complementos-propios-del-documento-electr%C3%B3nico-de-retenciones-e-informaci%C3%B3n-de-pagos">complementos particulares de retención</a></li>
+<li>Complemento con el <a href="#complemento-timbre-fiscal">timbre fiscal digital</a></li>
 </ul>
-<div class="highlight"><pre><code class="language-text" data-lang="text">El servicio de timbre fiscal recibe CFDI completos sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
+<div class="highlight"><pre><code class="language-text" data-lang="text">El servicio de timbre fiscal recibe CFDI completo sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
+
+El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin el complemento de &lt;TimbreFiscalDigital&gt;; esta es la información devuelta por el servicio en caso de que la petición sea correcta.
 </code></pre></div>
-<h3 id="ejemplo-de-un-cfdi">Ejemplo de un CFDI</h3>
+<h3 id="ejemplo-de-un-comprobante-de-retenciones">Ejemplo de un comprobante de retenciones</h3>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;cfdi:Comprobante</span> 
-  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
-  <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+<span class="nt">&lt;retenciones:Retenciones</span> 
+  <span class="na">xmlns:retenciones=</span><span class="s">&quot;http://www.sat.gob.mx/esquemas/retencionpago/1&quot;</span> 
   <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
-  <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
-  <span class="na">LugarExpedicion=</span><span class="s">&quot;D.F.,MEXICO&quot;</span> 
-  <span class="na">NumCtaPago=</span><span class="s">&quot;DESCONOCIDO&quot;</span> 
-  <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> 
-  <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
-  <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
-  <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
-  <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
-  <span class="na">certificado=</span><span class="s">&quot;...&quot;</span> 
-  <span class="na">noCertificado=</span><span class="s">&quot;...&quot;</span> 
-  <span class="na">sello=</span><span class="s">&quot;...&quot;</span> 
-  <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
-  <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="nt">&gt;</span>
-  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA DEMO&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;34343&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">estado=</span><span class="s">&quot;DISTRITO FEDERAL&quot;</span> <span class="na">municipio=</span><span class="s">&quot;BENITO JUAREZ&quot;</span> <span class="na">calle=</span><span class="s">&quot;REFORMA&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;PERSONA FISCA&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
-  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;PUBLICO EN GENERAL&quot;</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">calle=</span><span class="s">&quot;INSURGENTES&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
-  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
-      <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;PZA&quot;</span> <span class="na">unidad=</span><span class="s">&quot;CANT&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
-  <span class="nt">&lt;cfdi:Impuestos&gt;</span>
-      <span class="nt">&lt;cfdi:Traslados&gt;</span>
-          <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;160.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;160.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/cfdi:Traslados&gt;</span>
-  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
-  <span class="nt">&lt;cfdi:Addenda/&gt;</span>
-  <span class="nt">&lt;cfdi:Complemento&gt;</span>
-    <span class="nt">&lt;ns2:TimbreFiscalDigital</span> <span class="na">xmlns:ns2=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xmlns:ns3=</span><span class="s">&quot;http://www.buzonfiscal.com/TimbradoCFDI/&quot;</span> <span class="na">xmlns:ns4=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI&quot;</span> <span class="na">xmlns:ns5=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:ns6=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD&quot;</span> <span class="na">xmlns:ns7=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span> <span class="na">xmlns:ns8=</span><span class="s">&quot;http://www.sat.gob.mx/terceros&quot;</span> <span class="na">xmlns:ns9=</span><span class="s">&quot;http://www.sat.gob.mx/ecc&quot;</span> <span class="na">xmlns:ns10=</span><span class="s">&quot;http://www.sat.gob.mx/implocal&quot;</span> <span class="na">xmlns:ns11=</span><span class="s">&quot;http://www.sat.gob.mx/ecb&quot;</span> <span class="na">xmlns:ns12=</span><span class="s">&quot;http://www.sat.gob.mx/divisas&quot;</span> <span class="na">xmlns:ns13=</span><span class="s">&quot;http://www.sat.gob.mx/donat&quot;</span> <span class="na">xmlns:ns14=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/referenceID/v1&quot;</span> <span class="na">xmlns:ns15=</span><span class="s">&quot;http://new.webservice.namespace&quot;</span>
-    <span class="na">selloSAT=</span><span class="s">&quot;...&quot;</span>
-    <span class="na">noCertificadoSAT=</span><span class="s">&quot;...&quot;</span>
-    <span class="na">selloCFD=</span><span class="s">&quot;...&quot;</span>
-    <span class="na">FechaTimbrado=</span><span class="s">&quot;2013-03-28T10:03:34&quot;</span>
-    <span class="na">UUID=</span><span class="s">&quot;...&quot;</span>
-    <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
-<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+  <span class="na">FechaExp=</span><span class="s">&quot;2014-12-29T14:29:16-06:00&quot;</span> 
+  <span class="na">CveRetenc=</span><span class="s">&quot;25&quot;</span> 
+  <span class="na">DescRetenc=</span><span class="s">&quot;Otro tipo de retención&quot;</span> 
+  <span class="na">Cert=</span><span class="s">&quot;...&quot;</span>
+  <span class="na">NumCert=</span><span class="s">&quot;...&quot;</span> 
+  <span class="na">Sello=</span><span class="s">&quot;...&quot;</span> 
+  <span class="na">FolioInt=</span><span class="s">&quot;TEST00001&quot;</span> 
+  <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> 
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;retenciones:Emisor</span> 
+      <span class="na">CURPE=</span><span class="s">&quot;AAAA010101HNLMNLD2&quot;</span> <span class="na">NomDenRazSocE=</span><span class="s">&quot;Empresa DEMO para Rentenciones S de TST&quot;</span> <span class="na">RFCEmisor=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;retenciones:Receptor</span> <span class="na">Nacionalidad=</span><span class="s">&quot;Nacional&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;retenciones:Nacional</span> <span class="na">CURPR=</span><span class="s">&quot;XAXX01010100000000&quot;</span> <span class="na">NomDenRazSocR=</span><span class="s">&quot;PÚBLICO EN GENERAL S DE TST&quot;</span> <span class="na">RFCRecep=</span><span class="s">&quot;XAXX010101000&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/retenciones:Receptor&gt;</span>
+  <span class="nt">&lt;retenciones:Periodo</span> <span class="na">Ejerc=</span><span class="s">&quot;2014&quot;</span> <span class="na">MesFin=</span><span class="s">&quot;6&quot;</span> <span class="na">MesIni=</span><span class="s">&quot;6&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;retenciones:Totales</span> <span class="na">montoTotRet=</span><span class="s">&quot;3500.00&quot;</span> <span class="na">montoTotExent=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">montoTotGrav=</span><span class="s">&quot;13000.00&quot;</span> <span class="na">montoTotOperacion=</span><span class="s">&quot;14000.00&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;retenciones:ImpRetenidos</span> <span class="na">TipoPagoRet=</span><span class="s">&quot;Pago definitivo&quot;</span> <span class="na">montoRet=</span><span class="s">&quot;500.00&quot;</span> <span class="na">Impuesto=</span><span class="s">&quot;01&quot;</span> <span class="na">BaseRet=</span><span class="s">&quot;1000.00&quot;</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;retenciones:ImpRetenidos</span> <span class="na">TipoPagoRet=</span><span class="s">&quot;Pago provisional&quot;</span> <span class="na">montoRet=</span><span class="s">&quot;500.00&quot;</span> <span class="na">Impuesto=</span><span class="s">&quot;02&quot;</span> <span class="na">BaseRet=</span><span class="s">&quot;1000.00&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/retenciones:Totales&gt;</span>
+  <span class="nt">&lt;retenciones:Complemento&gt;</span>
+     <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/timbrefiscaldigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">UUID=</span><span class="s">&quot;02c9d65b-dbe4-4df4-adea-5172f8cbff7c&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-01-05T15:16:54&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;...&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;...&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;...&quot;</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/retenciones:Complemento&gt;</span>
+<span class="nt">&lt;/retenciones:Retenciones&gt;</span>
 </code></pre></div>
 <h3 id="encabezado">Encabezado</h3>
 
 <ul>
-<li><em>xsi:schemaLocation</em>=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a> <a href="http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd">http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd</a>&quot; </li>
-<li><em>xmlns:cfdi</em>=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a>&quot; </li>
+<li><em>xmlns:retenciones</em>=&quot;<a href="http://www.sat.gob.mx/esquemas/retencionpago/1">http://www.sat.gob.mx/esquemas/retencionpago/1</a>&quot; </li>
 <li><em>xmlns:xsi</em>=&quot;<a href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a>&quot; </li>
-<li><em>xmlns:xs</em>=&quot;<a href="http://www.w3.org/2001/XMLSchema">http://www.w3.org/2001/XMLSchema</a>&quot;</li>
-<li><em>LugarExpedicion</em>=&quot;D.F.,MEXICO&quot; </li>
-<li><em>NumCtaPago</em>=&quot;DESCONOCIDO&quot; </li>
-<li><em>formaDePago</em>=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </li>
-<li>*metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</li>
-<li><em>subTotal</em>=&quot;1000.00&quot; </li>
-<li><em>total</em>=&quot;1160.00&quot; </li>
-<li><em>fecha</em>=&quot;2013-12-02T22:18:24&quot; </li>
-<li><em><a href="certificado.html">certificado=...</a></em></li>
-<li><em><a href="certificado.html">noCertificado=...</a></em></li>
-<li><em><a href="sello.html">sello=...</a></em></li>
-<li><em>tipoDeComprobante</em>=&quot;ingreso&quot;</li>
-<li><em>version</em>=&quot;3.2&quot;</li>
+<li><em>FechaExp</em>. Atributo requerido para la expresión de la fecha y hora de expedición del documento de retención e información de pagos. Se expresa en la forma yyyy-mm-ddThh:mm:ssTZD-6, de acuerdo con la especificación ISO 8601</li>
+<li><em>CveRetenc</em>. Atributo requerido para expresar la clave de la retención e información de pagos de acuerdo al catálogo publicado en internet por el SAT</li>
+<li><em>DescRetenc</em>. Atributo opcional que expresa la descripción de la retención e información de pagos en caso de que en el atributo CveRetenc se haya elegido el valor para &#39;otro tipo de retenciones&#39;</li>
+<li><em>Cert</em>. Atributo requerido que sirve para incorporar el certificado de sello digital que ampara el documento de retención e información de pagos como texto, en formato base 64</li>
+<li><em>NumCert</em>. Atributo requerido para expresar el número de serie del certificado de sello digital con el que se selló digitalmente el documento de la retención e información de pagos</li>
+<li><em>Sello</em>. Atributo requerido para contener el sello digital del documento de retención e información de pagos. El sello deberá ser expresado como una cadena de texto en formato base 64 </li>
+<li><em>FolioInt</em>. Atributo opcional para control interno del contribuyente que expresa el folio del documento que ampara la retención e información de pagos. Permite números y/o letras</li>
+<li><em>Version</em>=&quot;1.0&quot; </li>
+<li><em>xsi:schemaLocation</em>=&quot;<a href="http://www.sat.gob.mx/esquemas/retencionpago/1">http://www.sat.gob.mx/esquemas/retencionpago/1</a> <a href="http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd">http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd</a>&quot;</li>
 </ul>
 
 <h3 id="emisor">Emisor</h3>
 
 <ul>
-<li><em>nombre</em>=&quot;EMPRESA DEMO&quot;</li>
-<li><em>rfc</em>=&quot;AAA010101AAA&quot;</li>
-<li>DomicilioFiscal
-
-<ul>
-<li><em>codigoPostal</em>=&quot;34343&quot;</li>
-<li><em>pais</em>=&quot;MEXICO&quot;</li>
-<li><em>estado</em>=&quot;DISTRITO FEDERAL&quot;</li>
-<li><em>municipio</em>=&quot;BENITO JUAREZ&quot;</li>
-<li><em>calle</em>=&quot;REFORMA&quot;</li>
-</ul></li>
+<li>Nodo requerido para expresar la información del contribuyente emisor del documento electrónico de retenciones e información de pagos.</li>
+<li><em>CURPE</em>. Atributo opcional para la Clave Única del Registro Poblacional del contribuyente emisor del documento de retención e información de pagos.</li>
+<li><em>NomDenRazSocE</em>. Atributo opcional para el nombre, denominación o razón social del contribuyente emisor del documento de retención e información de pagos.</li>
+<li><em>RFCEmisor</em>. Atributo requerido para incorporar la clave en el Registro Federal de Contribuyentes correspondiente al contribuyente emisor del documento de retención e información de pagos, sin guiones o espacios.</li>
 </ul>
 
 <h3 id="receptor">Receptor</h3>
 
 <ul>
-<li><em>nombre</em>=&quot;PUBLICO EN GENERAL&quot;</li>
-<li><em>rfc</em>=&quot;XAXX010101000&quot;</li>
-<li>Domicilio
+<li>Nodo requerido para expresar la información del contribuyente receptor del documento electrónico de retenciones e información de pagos.</li>
+<li><em>Nacionalidad</em>. Atributo requerido para expresar la nacionalidad del receptor del documento. Nacional o Extranjero.</li>
+<li><em>Nacional</em>
 
 <ul>
-<li><em>pais</em>=&quot;MEXICO&quot;</li>
-<li><em>calle</em>=&quot;INSURGENTES&quot;</li>
+<li>Nodo requerido para expresar la información del contribuyente receptor en caso de que sea de nacionalidad mexicana</li>
+<li><em>CURPR</em>. Atributo opcional para la Clave Única del Registro Poblacional del contribuyente receptor del documento.</li>
+<li><em>NomDenRazSocR</em>. Atributo opcional para el nombre, denominación o razón social del contribuyente receptor del documento.</li>
+<li><em>RFCRecep</em>. Atributo requerido para la clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del documento.</li>
+</ul></li>
+<li><em>Extranjero</em>
+
+<ul>
+<li>Nodo requerido para expresar la información del contribuyente receptor del documento cuando sea residente en el extranjero</li>
+<li><em>NumRegIdTrib</em>. Atributo opcional para expresar el número de registro de identificación fiscal del receptor del documento cuando sea residente en el extranjero</li>
+<li><em>NomDenRazSocR</em>. Atributo requerido para expresar el nombre, denominación o razón social del receptor del documento cuando sea residente en el extranjero</li>
 </ul></li>
 </ul>
 
-<h3 id="conceptos">Conceptos</h3>
+<h3 id="periodo">Periodo</h3>
 
 <ul>
-<li>Concepto
-
-<ul>
-<li><em>importe</em>=&quot;1000.00&quot;</li>
-<li><em>valorUnitario</em>=&quot;1000.00&quot;</li>
-<li><em>descripcion</em>=&quot;PZA&quot;</li>
-<li><em>unidad</em>=&quot;CANT&quot;</li>
-<li><em>cantidad</em>=&quot;1&quot;</li>
-</ul></li>
+<li>Nodo requerido para expresar el periodo que ampara el documento de retenciones e información de pagos</li>
+<li><em>Ejerc</em>. Atributo requerido para la expresión del ejercicio fiscal (año)</li>
+<li><em>MesIni</em>. Atributo requerido para la expresión del mes inicial del periodo de la retención e información de pagos</li>
+<li><em>MesFin</em>. Atributo requerido para la expresión del mes final del periodo de la retención e información de pagos</li>
 </ul>
 
-<h3 id="impuestos">Impuestos</h3>
+<h3 id="totales">Totales</h3>
 
 <ul>
-<li>Trasladados
+<li>Nodo requerido para expresar el total de las retenciones e información de pagos efectuados en el período que ampara el documento.</li>
+<li><em>montoTotRet</em>. Atributo requerido para expresar el monto total de las retenciones. Sumatoria de los montos de retención del nodo ImpRetenidos</li>
+<li><em>montoTotExent</em>. Atributo requerido para expresar el total del monto exento de la operación que se relaciona en el comprobante</li>
+<li><em>montoTotGrav</em>. Atributo requerido para expresar el total del monto gravado de la operación que se relaciona en el comprobante</li>
+<li><em>montoTotOperacion</em>. Atributo requerido para expresar el total del monto de la operación que se relaciona en el comprobante</li>
+<li><em>ImpRetenidos</em>
 
 <ul>
-<li><em>importe</em>=&quot;160.00&quot;</li>
-<li><em>tasa</em>=&quot;160.00&quot;</li>
-<li><em>impuesto</em>=&quot;IVA&quot;</li>
-</ul></li>
-<li>Retenidos
-
-<ul>
-<li><em>importe</em>=&quot;160.00&quot;</li>
-<li><em>tasa</em>=&quot;160.00&quot;</li>
-<li><em>impuesto</em>=&quot;IVA&quot;</li>
+<li>Nodo opcional para expresar el total de los impuestos retenidos que se desprenden de los conceptos expresados en el documento de retenciones e información de pagos</li>
+<li><em>BaseRet</em>. Atributo opcional para expresar la base del impuesto, que puede ser la diferencia entre los ingresos percibidos y las deducciones autorizadas</li>
+<li><em>TipoPagoRet</em>. Atributo requerido para precisar si el monto de la retención es considerado pago definitivo o pago provisional. Valores: Pago definitivo o Pago provisional</li>
+<li><em>montoRet</em>. Atributo requerido para expresar el importe del impuesto retenido en el periodo o ejercicio</li>
+<li><em>Impuesto</em>. Atributo opcional para señalar el tipo de impuesto retenido del periodo o ejercicio conforme al catálogo.</li>
 </ul></li>
 </ul>
 
@@ -365,10 +363,21 @@
 
 <p>* Los campos en <strong>negritas</strong> representan a los nodos de información que genera diverza como PAC y es entregada al SAT.</p>
 
-<h4 id="complemento-nómina">Complemento nómina</h4>
+<h4 id="complementos-propios-del-documento-electrónico-de-retenciones-e-información-de-pagos">Complementos propios del documento electrónico de retenciones e información de pagos</h4>
 
 <ul>
-<li><a href="complementos/nomina.html">Complemento nómina</a></li>
+<li>Timbre Fiscal Digital.</li>
+<li>Enajenación de acciones.</li>
+<li>Dividendos.</li>
+<li>Intereses.</li>
+<li>Arrendamiento en fideicomiso.</li>
+<li>Pagos a extranjeros.</li>
+<li>Premios.</li>
+<li>Fideicomiso no empresarial.</li>
+<li>Planes de Retiro.</li>
+<li>Intereses Hipotecarios.</li>
+<li>Operaciones con derivados.</li>
+<li>Sector Financiero.</li>
 </ul>
 
             </div>

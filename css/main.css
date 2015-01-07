@@ -1028,11 +1028,18 @@ legend {
     width: 100%;
     padding: 0;
     margin-bottom: 27px;
-    font-size: 19.5px;
-    line-height: 36px;
-    color: #333;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFF;
     border: 0;
-    border-bottom: 1px solid #eee
+    border-bottom: 1px solid #eee;
+    background-color: #50BF83;
+    border-radius: 4px;
+    padding: 10px
+}
+
+legend a {
+    color: #3D464B;
 }
 
 legend small {

@@ -27,7 +27,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>complemento de notarios públicos</title>
+  <title>Cadena original para documento de retenciones</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -149,174 +149,70 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>complemento de notarios públicos<span class="diverza-dot">.</span></h1>
+              <h1>Cadena original para documento de retenciones<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Complemento para el manejo de la enajenación de bienes inmuebles.</p>
+              <p>La cadena original es la secuencia de datos formada con parte de la información contenida dentro del comprobante fiscal digital.</p>
 
-<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/complemento_notarios.aspx">sitio del SAT</a>.</p>
+<p>Con la cadena original y tu <a href="/timbre/cfd/certificado.html">certificado</a>, podrás generar el <a href="/timbre/cfd/sello.html">sello</a> que también debes colocar en el comprobante.</p>
 
-<h2 id="datos-del-complemento-de-notarios-públicos">Datos del complemento de notarios públicos</h2>
+<p>Para generarla puedes utilizar un transformador xslt o construirla manualmente.</p>
 
-<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
-La declaración de nameSpace es a nivel primario en nodo Comprobante.
-xmlns:notariospublicos=&quot;<a href="http://www.sat.gob.mx/notariospublicos">http://www.sat.gob.mx/notariospublicos</a>&quot;</p>
+<h2 id="construcción-automática-con-xslt">Construcción automática con xslt</h2>
 
-<ul>
-<li><p><strong>NotariosPublicos</strong></p>
+<p>Para la construcción de la cadena original automática, necesitas:</p>
 
 <ul>
-<li><strong>version</strong> : 1.0<br>
-Atributo requerido para la expresión de la versión del complmemento, valor fijado en &quot;1.0&quot;.</li>
-<li><strong>DescInmuebles</strong></li>
-<li><strong>DescInmueble</strong>
-
-<ul>
-<li><strong>TipoInmueble</strong> : 04<br>
-Atributo requerido para la expresión del tipo de inmueble enajenado conforme al catálogo publicado en el portal del SAT en internet.</li>
-<li><strong>Calle</strong> : Dr. José María Coss<br>
-Este atributo requerido sirve para precisar la avenida, calle, camino o carretera donde se ubica el inmueble.</li>
-<li>NoExterior : 900<br>
-Este atributo opcional sirve para expresar el número particular en donde se da la ubicación del inmueble en una calle dada.</li>
-<li>NoInterior : 3A<br>
-Este atributo opcional sirve para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación precisa del inmueble..</li>
-<li>Colonia : Centro<br>
-Este atributo opcional sirve para precisar la colonia en donde se da la ubicación del inmueble cuando se desea ser más específico en casos de ubicaciones urbanas.</li>
-<li>Localidad : Monterrey<br>
-Atributo opcional que sirve para precisar la ciudad o población donde se da la ubicación del inmueble.</li>
-<li>Referencia : Entre Matamoros y Zaragoza<br>
-Atributo opcional para expresar una referencia adicional de ubicación del inmueble.</li>
-<li><strong>Municipio</strong> : Monterrey<br>
-Atributo requerido que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación del inmueble.</li>
-<li><strong>Estado</strong> : 05<br>
-Entidad Federativa donde se ubica el inmueble conforme al catálogo publicado en el portal del SAT en internet.</li>
-<li><strong>Pais</strong> : MXN<br>
-Atributo requerido que sirve para precisar el país donde se da la ubicación, conforme al catálogo publicado en el portal del SAT en internet.</li>
-<li><strong>CodigoPostal</strong> : 64000<br>
-Atributo requerido que sirve para asentar el código postal en donde se da la ubicación del inmueble.</li>
-</ul></li>
-<li><strong>DatosOperacion</strong></li>
-<li><strong>NumInstrumentoNotarial</strong> : 456998<br>
-Atributo requerido que indica el número del instrumento Notarial donde consta la operación.</li>
-<li><strong>FechaInsNotarial</strong> : 2014-06-10<br>
-Atributo requerido  que indica la fecha de firma del instrumento Notarial.</li>
-<li><strong>MontoOperacion</strong> : 250000.00<br>
-Atributo requerido para expresar el monto de la contraprestación o valor de la operación.</li>
-<li><strong>Subtotal</strong> : 200000.00<br>
-Atributo requerido para expresar el subtotal de la contraprestación o su valor en la operación.</li>
-<li><strong>IVA</strong> : 0.00<br>
-Atributo requerido para expresar el IVA de la contraprestación o su valor en la operación.</li>
-<li><strong>DatosNotario</strong></li>
-<li><strong>CURP</strong> : PLCE800419HCLJRD02<br>
-Atributo requerido para expresar la CURP del notario.</li>
-<li><strong>NumNotaria</strong> : 321<br>
-Atributo requerido para indicar el número de la Notaria que realizar la operación.</li>
-<li><strong>EntidadFederativa</strong> : 05<br>
-Entidad Federativa donde se ubica la Notaria conforme al catálogo publicado en el portal del SAT en internet.</li>
-<li>Adscripcion : (Adscripción del Notario)<br>
-Atributo opcional que expresa el señalamiento del notario a la plaza a la que se encuentra adscrito.</li>
-<li><strong>DatosEnajenante</strong></li>
-<li><strong>CoproSocConyugalE</strong> : No<br>
-Atributo requerido que expresa si es copropiedad o sociedad conyugal.</li>
-<li>DatosUnEnajenante
-
-<ul>
-<li><strong>Nombre</strong> : José<br>
-Atributo requerido para expresar el nombre del enajenante.</li>
-<li><strong>ApellidoPaterno</strong> : Hernández<br>
-Atributo requerido  para expresar el apellido paterno del enajenante.</li>
-<li>ApellidoMaterno : Hernández<br>
-Atributo requerido  para expresar el apellido materno del enajenante.</li>
-<li><strong>RFC</strong> : AAAA010101AAA<br>
-Atributo requerido para la Clave del Registro Federal de Contribuyentes sin guiones o espacios, del enajenante.</li>
-<li><strong>CURP</strong> : AAAA010101HCLJND07<br>
-Atributo requerido para expresar la CURP del enajenante.</li>
-</ul></li>
-<li>DatosEnajenantesCopSC
-
-<ul>
-<li><strong>DatosEnajenanteCopSC</strong></li>
-<li><strong>Nombre</strong> : ----<br>
-Atributo requerido para expresar el nombre (s) de cada enajenante.</li>
-<li>ApellidoPaterno : ----<br>
-Atributo opcional para expresar el apellido paterno de cada enajenante.</li>
-<li>ApellidoMaterno : ----<br>
-Atributo opcional para expresar el apellido materno de cada enajenante.</li>
-<li><strong>RFC</strong> : ----<br>
-Atributo requerido para la Clave del Registro Federal de Contribuyentes sin guiones o espacios, correspondiente a cada enajenante.</li>
-<li>CURP : ----<br>
-Atributo opcional para expresar la CURP de cada enajenante.</li>
-<li><strong>Porcentaje</strong> : ----<br>
-Porcentaje que le corresponde en la copropiedad a cada enajenante.<br></li>
-</ul></li>
-<li><strong>DatosAdquiriente</strong></li>
-<li><strong>CoproSocConyugalE</strong> : Si<br>
-Atributo requerido que expresa si  es copropiedad o sociedad conyugal</li>
-<li>DatosUnAdquiriente
-
-<ul>
-<li><strong>Nombre</strong> : ----<br>
-Atributo requerido para expresar el nombre, denominación o razón social del adquiriente.</li>
-<li>ApellidoPaterno : ----<br>
-Atributo opcional para expresar el apellido paterno del adquiriente.</li>
-<li>ApellidoMaterno : ----<br>
-Atributo opcional para expresar el apellido materno del adquiriente.</li>
-<li><strong>RFC</strong> : ----<br>
-Atributo requerido para la Clave del Registro Federal de Contribuyentes sin guiones o espacios, del adquiriente.</li>
-<li>CURP : ----<br>
-Atributo opcional para expresar la CURP del adquiriente.</li>
-</ul></li>
-<li>DatosAdquirientesCopSC
-
-<ul>
-<li><strong>DatosAdquirienteCopSC</strong></li>
-<li><strong>Nombre</strong> : Constructora ABC SA de CV<br>
-Atributo requerido para expresar el nombre, denominación o razón social de cada adquiriente.</li>
-<li>ApellidoPaterno : ----<br>
-Atributo opcional para expresar el apellido paterno de cada adquiriente.</li>
-<li>ApellidoMaterno : ----<br>
-Atributo opcional para expresar el apellido materno de cada adquirientes.</li>
-<li><strong>RFC</strong> : AAA010101AAA<br>
-Atributo requerido para la Clave del Registro Federal de Contribuyentes sin guiones o espacios, correspondiente a cada adquiriente.</li>
-<li>CURP : ----<br>
-Atributo opcional para expresar la CURP de cada adquiriente.</li>
-<li><strong>Porcentaje</strong> : 50.00<br>
-Porcentaje que le corresponde en la copropiedad a cada adquiriente.</li>
-</ul></li>
-</ul></li>
+<li>El <a href="/timbre/cfd/retencion.html">documento de retención</a> con toda la información (<a href="/timbre/resources/RET/cfd_ret_ejemplo.xml">ejemplo</a>)</li>
+<li>El <a href="/timbre/resources/RET/retenciones.xslt">xslt</a> de transformación</li>
+<li>Instalar la herramienta <a href="http://xmlsoft.org/XSLT/xsltproc2.html">xsltproc</a> (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.zlatkovic.com/libxml.en.html">aquí</a>).</li>
 </ul>
 
-<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
-
-<h3 id="ejemplo">Ejemplo</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;cfdi:Complemento&gt;</span>
-  <span class="nt">&lt;notariospublicos:NotariosPublicos</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;notariospublicos:DescInmuebles&gt;</span>
-          <span class="nt">&lt;notariospublicos:DescInmueble</span> <span class="na">TipoInmueble=</span><span class="s">&quot;04&quot;</span> <span class="na">Calle=</span><span class="s">&quot;Dr. José María Coss&quot;</span>
-              <span class="na">NoExterior=</span><span class="s">&quot;900&quot;</span> <span class="na">NoInterior=</span><span class="s">&quot;3A&quot;</span> <span class="na">Colonia=</span><span class="s">&quot;Centro&quot;</span> <span class="na">Municipio=</span><span class="s">&quot;Monterrey&quot;</span>
-              <span class="na">Estado=</span><span class="s">&quot;05&quot;</span> <span class="na">Pais=</span><span class="s">&quot;MEX&quot;</span> <span class="na">CodigoPostal=</span><span class="s">&quot;64000&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/notariospublicos:DescInmuebles&gt;</span>
-      <span class="nt">&lt;notariospublicos:DatosOperacion</span> <span class="na">NumInstrumentoNotarial=</span><span class="s">&quot;456998&quot;</span>
-          <span class="na">FechaInstNotarial=</span><span class="s">&quot;2014-06-10&quot;</span> <span class="na">MontoOperacion=</span><span class="s">&quot;250000.00&quot;</span> <span class="na">Subtotal=</span><span class="s">&quot;200000.00&quot;</span>
-          <span class="na">IVA=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;notariospublicos:DatosNotario</span> <span class="na">CURP=</span><span class="s">&quot;TICE700419HCLJND07&quot;</span> <span class="na">NumNotaria=</span><span class="s">&quot;321&quot;</span>
-          <span class="na">EntidadFederativa=</span><span class="s">&quot;05&quot;</span> <span class="na">Adscripcion=</span><span class="s">&quot;(Adscripción del Notario)&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;notariospublicos:DatosEnajenante</span> <span class="na">CoproSocConyugalE=</span><span class="s">&quot;No&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;notariospublicos:DatosUnEnajenante</span> <span class="na">Nombre=</span><span class="s">&quot;José&quot;</span> <span class="na">ApellidoPaterno=</span><span class="s">&quot;Hernández&quot;</span>
-              <span class="na">ApellidoMaterno=</span><span class="s">&quot;Hernández&quot;</span> <span class="na">RFC=</span><span class="s">&quot;AAAA010101AAA&quot;</span> <span class="na">CURP=</span><span class="s">&quot;AAAA010101HCLJND07&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/notariospublicos:DatosEnajenante&gt;</span>
-      <span class="nt">&lt;notariospublicos:DatosAdquiriente</span> <span class="na">CoproSocConyugalE=</span><span class="s">&quot;Si&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;notariospublicos:DatosAdquirientesCopSC&gt;</span>
-              <span class="nt">&lt;notariospublicos:DatosAdquirienteCopSC</span> <span class="na">Nombre=</span><span class="s">&quot;Constructora ABC SA de CV&quot;</span>
-                  <span class="na">RFC=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">Porcentaje=</span><span class="s">&quot;50.00&quot;</span><span class="nt">/&gt;</span>
-              <span class="nt">&lt;notariospublicos:DatosAdquirienteCopSC</span> <span class="na">Nombre=</span><span class="s">&quot;Constructora XYZ SA de CV&quot;</span>
-                  <span class="na">RFC=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">Porcentaje=</span><span class="s">&quot;50.00&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;/notariospublicos:DatosAdquirientesCopSC&gt;</span>
-      <span class="nt">&lt;/notariospublicos:DatosAdquiriente&gt;</span>
-  <span class="nt">&lt;/notariospublicos:NotariosPublicos&gt;</span>
-<span class="nt">&lt;/cfdi:Complemento&gt;</span>
+<p>Desde la linea de comando deberás ejecutar:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;xsltproc retenciones.xslt cfd_ret_ejemplo.xml
 </code></pre></div>
-<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
+<p>Recibirás la cadena original:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">||1.0|20001000000100005867|TEST00001|2015-01-05T10:12:48-06:00|25|Otro tipo de retención|AAA010101AAA|Empresa DEMO para Rentenciones S de TST|AAAA010101HNLMNLD2|Nacional|XAXX010101000|PÚBLICO EN GENERAL S DE TST|VAHE820926HNLLRD02|6|6|2014|14000.00|13000.00|1000.00|3500.00|1000.00|01|500.00|Pago definitivo|1000.00|02|500.00|Pago provisional||~
+</code></pre></div>
+<hr>
+
+<h2 id="construcción-manual">Construcción manual</h2>
+
+<p>Si deseas construirla manualmente, estas son las reglas generales:</p>
+
+<ol>
+<li> Ninguno de los atributos que conforman al comprobante fiscal digital deberá contener el caracter | (“pipe”) debido a que este será utilizado como caracter de control en la formación de la cadena original.</li>
+<li> El inicio de la cadena original se encuentra marcado mediante una secuencia de caracteres || (doble “pipe”).</li>
+<li> Se expresará únicamente la información del dato sin expresar el atributo al que hace referencia. Esto es, si la serie del comprobante es la “A” solo se expresará |A| y nunca |Serie A|.</li>
+<li> Cada dato individual se encontrará separado de su dato subsiguiente, en caso de existir, mediante un carácter | (“pipe” sencillo).</li>
+<li> Los espacios en blanco que se presenten dentro de la cadena original serán tratados de la siguiente manera:
+
+<ul>
+<li>Se deberán remplazar todos los tabuladores, retornos de carro y saltos de línea por espacios en blanco.</li>
+<li>Acto seguido se elimina cualquier caracter en blanco al principio y al final de cada separador | (“pipe” sencillo).</li>
+<li>Finalmente, toda secuencia de caracteres en blanco intermedias se sustituyen por un único caracter en blanco.</li>
+</ul></li>
+<li> Los datos opcionales no expresados, no aparecerán en la cadena original y no tendrán delimitador alguno.</li>
+<li> El final de la cadena original será expresado mediante una cadena de caracteres || (doble “pipe”).</li>
+<li> Toda la cadena original se expresará en el formato de codificación UTF-8.</li>
+<li> El nodo o nodos adicionales <ComplementoConcepto> se integrarán a la cadena original como se indica en la secuencia de formación en su numeral 10, respetando la secuencia de formación y número de orden del ComplemetoConcepto.</li>
+<li>El nodo o nodos adicionales <Complemento> se integraran al final de la cadena original respetando la secuencia de formación para cada complemento y número de orden del Complemento.</li>
+</ol>
+
+<h3 id="secuencia-de-formación">Secuencia de formación</h3>
+
+<p>La secuencia de formación será siempre en el orden que se expresa a continuación, tomando en cuenta las reglas generales expresadas en el párrafo anterior.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">**||version|fecha|tipoDeComprobante|formaDePago|condicionesDePago|subTotal|descuento|TipoCambio|Moneda|total|metodoDePago|LugarExpedicion|NumCtaPago|FolioFiscalOrig|SerieFolioFiscalOrig|FechaFolioFiscalOrig|MontoFolioFiscalOrig|Emisor:rfc|Emisor:nombre|Emisor:DomicilioFiscal:calle|Emisor:DomicilioFiscal:noExterior|Emisor:DomicilioFiscal:noInterior|Emisor:DomicilioFiscal:colonia|Emisor:DomicilioFiscal:localidad|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:municipio|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:pais|Emisor:DomicilioFiscal:codigoPostal|Emisor:ExpedidoEn:calle|Emisor:ExpedidoEn:noExterior|Emisor:ExpedidoEn:noInterior|Emisor:ExpedidoEn:colonia|Emisor:ExpedidoEn:localidad|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:municipio|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:pais|Emisor:ExpedidoEn:codigoPostal|Emisor:RegimenFiscal:Regimen|Receptor:rfc|Receptor:nombre|Receptor:DomicilioFiscal:calle|Receptor:DomicilioFiscal:noExterior|Receptor:DomicilioFiscal:noInterior|Receptor:DomicilioFiscal:colonia|Receptor:DomicilioFiscal:localidad|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:municipio|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:pais|Receptor:DomicilioFiscal:codigoPostal|Concepto:cantidad|Concepto:unidad|Concepto:noIdentificacion|Concepto:descripcion|Concepto:valorUnitario|Concepto:importe|Concepto:InformacionAduanera:numero|Concepto:InformacionAduanera:fecha|Concepto:InformacionAduanera:aduana|Concepto:CuentaPredial:numero|ComplementoConcepto|Impuestos:Retencion:impuesto|Impuestos:Retencion:importe|Impuestos:totalImpuestosRetenidos|Impuestos:Traslado:impuesto|Impuestos:Traslado:importe|Impuestos:totalImpuestosTrasladados||
+</code></pre></div>
+<p>* Los campos no obligatorios en la definición del CFDI, se podrían ignorar en la cadena. Como <strong>Emisor:ExpedidoEn</strong> <strong>Receptor:ExpedidoEn</strong></p>
+
+<p>* Para cada uno de los nodos de <strong>Emisor:RegimenFiscal</strong>, se deberá incluir cada valor <em>Regimen</em></p>
+
+<p>* Para cada uno de los nodos de <strong>Concepto:InformacionAduanera</strong> deberá incluir cada valor <em>numero</em>, <em>fecha</em>, <em>aduana</em></p>
+
+<p>* Para todos los nodos de <strong>Impuestos:Trasladado</strong> y <strong>Impuestos:Retencion</strong> <em>impuesto</em>, <em>importe</em></p>
+
+<p>Puedes consultar el detalle en el <a href="/timbre/resources/Anexo20_cfdiv32_30122011.pdf">Anexo 20</a>, página 48</p>
 
             </div>
           </div>

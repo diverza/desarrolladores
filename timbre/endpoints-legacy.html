@@ -27,7 +27,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>endpoints</title>
+  <title>endpoints timbre</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -149,87 +149,45 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>endpoints<span class="diverza-dot">.</span></h1>
+              <h1>endpoints timbre<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
               <p><legend>
-Si ya implementaste los servicios /stamp o /issue en el 2014 y quieres consultar la documentación, ingresa <a href="endpoints-legacy.html">aquí</a>.
+Esta documentación corresponde a los servicios /stamp o /issue del 2014.
 <br /><br />
-A partir del 2015, te invitamos a utilizar estos los nuevos endpoints con soporte para nuevos documentos y mejores prestaciones.
+A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos endpoints</a> con mayor compatibilidad y mejores prestaciones.
 </legend></p>
 
 <p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar dependiendo del tipo de procesamiento que necesitas:</p>
 
-<p><a href="#timbrar">Timbrado</a> de un comprobante, donde obtienes solo el timbre <br>
-<code>http://staging.diverza.com/v1/timbrar</code></p>
+<p><a href="#stamp">Timbrado</a> de un comprobante, donde obtienes solo el timbre <br>
+<code>http://staging.diverza.com/stamp</code></p>
 
-<p><a href="#timbrar/completo">Timbrado</a> de un comprobante, donde obtienes <a href="#timbrar/completo">todo el comprobante</a> incluyendo su timbre <br>
-<code>http://staging.diverza.com/v1/timbrar/completo</code></p>
+<p><a href="#stamp/complete">Timbrado</a> de un comprobante, donde obtienes <a href="#stamp/complete">todo</a> el comprobante incluyendo su timbre <br>
+<code>http://staging.diverza.com/stamp/complete</code></p>
 
-<p><a href="#emitir">Emisión</a> de un comprobante sin sello, donde obtienes todo el comprobante *disponible para clientes de conector fiscal <br>
-<code>http://staging.diverza.com/v1/emitir</code></p>
+<p><a href="#issue">Emisión</a> de un comprobante sin sello, donde obtienes todo el comprobante *disponible para clientes de conector fiscal <br>
+<code>http://staging.diverza.com/issue</code></p>
 
-<p><a href="#timbrar/cancelar">Cancelación</a> de un comprobante timbrado desde nuestros servicios <br>
-<code>http://staging.diverza.com/v1/timbrar/cancelar</code></p>
-
-<hr>
-
-<h2 id="encabezados">encabezados</h2>
-
-<p>Todas las peticiones requieren los siguientes ecabezados:</p>
-
-<h4 id="x-auth-token">x-auth-token</h4>
-
-<ul>
-<li>Incluirá el token que nosotros te proporcionaremos para que te reconozcamos y podamos brindarte el servicio.</li>
-<li>Para propósitos de pruebas, puedes usar el valor <strong>ABCD1234</strong></li>
-</ul>
-
-<h4 id="content-type">Content-Type</h4>
-
-<ul>
-<li>Indicará el tipo de documento que deseas procesar:
-
-<ul>
-<li><em>application/vnd.sat.cfdi+xml</em> para CFDIs</li>
-<li><em>application/vnd.sat.retencion+xml</em> para constancia de retención</li>
-</ul></li>
-</ul>
-
-<h4 id="content-md5">Content-MD5</h4>
-
-<ul>
-<li>Contendrá el hash del archivo enviado en tu petición, expresado como una cadena de 32 caracteres.</li>
-<li>Te recomendamos ampliamente implementar este valor, ya te que proporciona un mecanismo de certeza adicional</li>
-<li>Para propósito de pruebas, el valor de este atributo no será validado</li>
-</ul>
-
-<h4 id="x-refid">x-refid</h4>
-
-<ul>
-<li>Te permite identificar cada documento que envíes a procesar con nosotros.</li>
-<li>Por cada RefID único que utilices obtendrás el mismo complemento de timbre (y folio fiscal)</li>
-<li>Conoce más sobre esta opción en la <a href="refid">documentación sobre RefID</a>.</li>
-</ul>
+<p><a href="#stamp/cancel">Cancelación</a> de un comprobante timbrado desde nuestros servicios <br>
+<code>http://staging.diverza.com/stamp/cancel</code></p>
 
 <hr>
 
-<h2 id="timbrar">timbrar</h2>
+<h2 id="stamp">stamp</h2>
 
 <p>Al mandar tu petición de timbrado a ésta dirección, como mensaje de respuesta obtendrás solamente el complemento del timbre, tal y como se muestra a continuación.</p>
 
 <p>Recuerda que todos los complementos se encuentran dentro del nodo <code>&lt;cfdi:Comprobante&gt;</code></p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/v1/timbrar
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/stamp
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
-  Header HTTP: Content-MD5
-  Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/stamp -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -244,22 +202,20 @@ A partir del 2015, te invitamos a utilizar estos los nuevos endpoints con soport
 </code></pre></div>
 <hr>
 
-<h2 id="timbrar/completo">timbrar/completo</h2>
+<h2 id="stamp/complete">stamp/complete</h2>
 
 <p>Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo el timbre.</p>
 
 <p>Dependiendo de tu proceso de trabajo, encontrarás más conveniente recuperar el comprobante completo o solo el timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/v1/timbrar/completo
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/stamp/complete
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
-  Header HTTP: Content-MD5
-  Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/v1/timbrar/completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/stamp/complete -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -294,24 +250,22 @@ A partir del 2015, te invitamos a utilizar estos los nuevos endpoints con soport
 </code></pre></div>
 <hr>
 
-<h2 id="emitir">emitir</h2>
+<h2 id="issue">issue</h2>
 
-<p>Ésta dirección es utilizada para el ambiente de pruebas del servicio de Conector Fiscal®, en donde los parámetros de entrada son los mismos que en <a href="#timbrar">/timbrar</a>, con la diferencia que deberás enviar un CFDi que no haya sido sellado.</p>
+<p>Ésta dirección es utilizada para el ambiente de pruebas del servicio de Conector Fiscal®, en donde los parámetros de entrada son los mismos que en <a href="#stamp">stamp</a>, con la diferencia que deberás enviar un CFDi que no haya sido sellado.</p>
 
 <p>Anexo a continuación, se encuentra un ejemplo de CFDi sin el sello del comprobante, <strong>es importante incluir el atributo de <code>certificado</code> y <code>noCertificado</code></strong> ya que son necesarios para que el sistema de <strong>Conector Fiscal</strong> lo reconozca y pueda firmar el comprobante con los certificados que hayas registrado con nosotros. También es importante incluir el atributo de &quot;sello&quot;, pero se deberá de agregar de esta forma: <code>sello=&quot;&quot;</code>, es decir, sin valor, sólo el atributo, de otra manera recibiras un mensaje de error: &quot;No válido según esquema&quot;.</p>
 
 <p>La respuesta exitosa de este servicio envía todo el comprobante con el complemento de timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/v1/emitir
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/issue
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
-  Header HTTP: Content-MD5
-  Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/v1/emitir -X POST --data @CFD_Timbrar_Ret.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/issue -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <h3 id="ejemplo-del-cfdi-sin-sellar">ejemplo del CFDi sin sellar</h3>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -390,9 +344,9 @@ A partir del 2015, te invitamos a utilizar estos los nuevos endpoints con soport
 
 <hr>
 
-<h2 id="timbrar/cancelar">timbrar/cancelar</h2>
+<h2 id="stamp/cancel">stamp/cancel</h2>
 
-<p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="/stamp/cancel/">Servicio de Cancelación</a>.</p>
+<p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="/timbre/cancelacion/">Servicio de Cancelación</a>.</p>
 
 <p>Como referencia la petición de cancelación desde terminal se ejecuta así:</p>
 <div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
