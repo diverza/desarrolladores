@@ -27,7 +27,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>complementos</title>
+  <title>pagos a extranjeros</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -149,62 +149,70 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>complementos<span class="diverza-dot">.</span></h1>
+              <h1>pagos a extranjeros<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesto como contenido del nodo de comprobante, dentro del xml.</p>
+              <p>Complemento para expresar los pagos que se realizan a residentes en el extranjero.</p>
 
-<p>Los complementos contienen información específica sobre operaciones específicas requeridas por el SAT.</p>
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/complemento_pagos_extranjeros.aspx">sitio del SAT</a>.</p>
 
-<h2 id="complementos-del-comprobante">Complementos del comprobante</h2>
+<h2 id="datos-del-complemento">Datos del complemento</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Retenciones.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">xmlns:pagosaextranjeros=&quot;http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros&quot;
+</code></pre></div>
+<ul>
+<li><p><strong>Pagosaextranjeros</strong>.
+Complemento para expresar los pagos que se realizan a residentes en el extranjero.</p>
 
 <ul>
-<li><a href="aerolineas.html">Aerolíneas</a><br></li>
-<li><a href="consumodecombustibles.html">Consumo de combustibles</a> </li>
-<li><a href="detallista.html">Detallista</a><br></li>
-<li><a href="divisas.html">Divisas</a><br></li>
-<li><a href="donatarias.html">Donatarias</a><br></li>
-<li><a href="ecc.html">Estados de cuenta de combustibles</a><br></li>
-<li><a href="impuestoslocales.html">Impuestos locales</a><br></li>
-<li><a href="leyendasfiscales.html">Leyendas fiscales</a><br></li>
-<li><a href="nomina.html">Nómina</a><br></li>
-<li><a href="notarios.html">Notarios</a><br></li>
-<li><a href="pagoenespecie.html">Pago en especie</a><br></li>
-<li><a href="pfic.html">Persona física integrante de coordinado</a><br></li>
-<li><a href="registrofiscal.html">Registro fiscal</a><br></li>
-<li><a href="spei.html">SPEI</a><br></li>
-<li><a href="tfd.html">Timbre fiscal digital</a><br></li>
-<li><a href="tpe.html">Turista pasajero extranjero</a><br></li>
-<li><a href="valesdedespensa.html">Vales de despensa</a><br></li>
-<li><a href="vehiculosusados.html">Vehículos usados</a></li>
-</ul>
-
-<h2 id="complementos-concepto">Complementos concepto</h2>
+<li><strong>Version</strong>
+: Atributo requerido con valor prefijado que indica la versión del complemento de pagos realizados a residentes a residentes en el extranjero.</li>
+<li><strong>EsBenefEfectDelCobro</strong>.
+: Atributo requerido para expresar si el beneficiario del pago es la misma persona que retiene.</li>
+<li>NoBeneficiario
+: Nodo opcional para expresar la información del residente extranjero efectivo del cobro.
 
 <ul>
-<li><a href="cc_iedu.html">Instituciones educativas privadas</a></li>
-<li><a href="cc_terceros.html">Facturación a terceros</a></li>
-<li><a href="cc_ventavehiculos.html">Venta de vehículos nuevos</a></li>
-</ul>
-
-<hr>
-
-<h2 id="complementos-propios-del-documento-electrónico-de-retenciones-e-información-de-pagos">Complementos propios del documento electrónico de retenciones e información de pagos</h2>
+<li><strong>PaisDeResidParaEfecFisc</strong>
+: Atributo requerido para expresar la clave del país de residencia del extranjero, conforme al catálogo de países publicado en el Anexo 10 de la RMF.</li>
+<li><strong>ConceptoPago</strong>
+: Atributo requerido para expresar  el tipo contribuyente sujeto a la retención, conforme al catálogo.</li>
+<li><strong>DescripcionConcepto</strong>
+: Atributo requerido para expresar la descripción de la definición del pago del residente en el extranjero.</li>
+</ul></li>
+<li>Beneficiario
+: Nodo opcional para precisar la información del representante para efectos fiscales en México.
 
 <ul>
-<li><a href="complementos/tfd.html">Timbre Fiscal Digital.</a></li>
-<li><a href="complementos_ret/EnajenaciondeAcciones.html">Enajenación de acciones.</a></li>
-<li><a href="complementos_ret/Dividendos.html">Dividendos.</a></li>
-<li><a href="complementos_ret/Intereses.html">Intereses.</a></li>
-<li><a href="complementos_ret/Arrendamientoenfideicomiso.html">Arrendamiento en fideicomiso.</a></li>
-<li><a href="complementos_ret/Pagosaextranjeros.html">Pagos a extranjeros.</a></li>
-<li><a href="complementos_ret/Premios.html">Premios.</a></li>
-<li><a href="complementos_ret/Fideicomisonoempresarial.html">Fideicomiso no empresarial.</a></li>
-<li><a href="complementos_ret/Planesderetiro.html">Planes de Retiro.</a></li>
-<li><a href="complementos_ret/Intereseshipotecarios.html">Intereses Hipotecarios.</a></li>
-<li><a href="complementos_ret/OperacionesDerivados.html">Operaciones con derivados.</a></li>
-<li><a href="complementos_ret/SectorFinanciero.html">Sector Financiero.</a></li>
+<li><strong>RFC</strong>
+: Atributo requerido para expresar la clave del registro federal de contribuyentes del representante legal en México.</li>
+<li><strong>CURP</strong>
+: Atributo requerido para la expresión de la CURP del representante legal.</li>
+<li><strong>NomDenRazSocB</strong>
+: Atributo requerido para expresar el nombre, denominación o razón social del contribuyente en México.</li>
+<li><strong>ConceptoPago</strong>
+: Atributo requerido para expresar el tipo de contribuyente sujeto a la retención, conforme al catálogo.</li>
+<li><strong>DescripcionConcepto</strong>
+: Atributo requerido para expresar la descripción de la definición del pago del residente en el extranjero.</li>
+</ul></li>
+</ul></li>
 </ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;retenciones:Complemento&gt;</span>
+        <span class="nt">&lt;pagosaextranjeros:Pagosaextranjeros</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">EsBenefEfectDelCobro=</span><span class="s">&quot;NO&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;pagosaextranjeros:NoBeneficiario</span> <span class="na">PaisDeResidParaEfecFisc=</span><span class="s">&quot;UA&quot;</span> <span class="na">ConceptoPago=</span><span class="s">&quot;9&quot;</span> <span class="na">DescripcionConcepto=</span><span class="s">&quot;Componentes químicos para Ingeniería Genética (Aminodesacetoxicefalosporánico)&quot;</span><span class="nt">/&gt;</span>
+            <span class="c">&lt;!-- Nodo de &quot;Beneficiario&quot;, cuando EsBenefEfectDelCobro=&quot;SI&quot;</span>
+<span class="c">            &lt;pagosaextranjeros:Beneficiario RFC=&quot;XAXX010101000&quot; CURP=&quot;XAXX010101HNNLLRD02&quot; NomDenRazSocB=&quot;EMPRESA GENERAL DE PRUEBA BENEFICIARIO&quot; ConceptoPago=&quot;9&quot;</span>
+<span class="c">            DescripcionConcepto=&quot;Componentes químicos para Ingeniería Genética (Aminodesacetoxicefalosporánico)&quot;/&gt;  --&gt;</span>
+        <span class="nt">&lt;/pagosaextranjeros:Pagosaextranjeros&gt;</span>
+<span class="nt">&lt;/retenciones:Complemento&gt;</span>
+</code></pre></div>
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
 
             </div>
           </div>

@@ -27,7 +27,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>complementos</title>
+  <title>intereses hipotecarios</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -149,62 +149,54 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>complementos<span class="diverza-dot">.</span></h1>
+              <h1>intereses hipotecarios<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesto como contenido del nodo de comprobante, dentro del xml.</p>
+              <p>Complemento para expresar la información sobre Intereses reales deducibles por créditos hipotecarios.</p>
 
-<p>Los complementos contienen información específica sobre operaciones específicas requeridas por el SAT.</p>
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/complemento_intereses-hipotecarios.aspx">sitio del SAT</a>.</p>
 
-<h2 id="complementos-del-comprobante">Complementos del comprobante</h2>
+<h2 id="datos-del-complemento">Datos del complemento</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Retenciones.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">xmlns:intereseshipotecarios=&quot;http://www.sat.gob.mx/esquemas/retencionpago/1/intereseshipotecarios&quot;
+</code></pre></div>
+<ul>
+<li><strong>Intereseshipotecarios</strong>.
+Complemento para expresar la información sobre  Intereses reales deducibles por crédito hipotecarios.
 
 <ul>
-<li><a href="aerolineas.html">Aerolíneas</a><br></li>
-<li><a href="consumodecombustibles.html">Consumo de combustibles</a> </li>
-<li><a href="detallista.html">Detallista</a><br></li>
-<li><a href="divisas.html">Divisas</a><br></li>
-<li><a href="donatarias.html">Donatarias</a><br></li>
-<li><a href="ecc.html">Estados de cuenta de combustibles</a><br></li>
-<li><a href="impuestoslocales.html">Impuestos locales</a><br></li>
-<li><a href="leyendasfiscales.html">Leyendas fiscales</a><br></li>
-<li><a href="nomina.html">Nómina</a><br></li>
-<li><a href="notarios.html">Notarios</a><br></li>
-<li><a href="pagoenespecie.html">Pago en especie</a><br></li>
-<li><a href="pfic.html">Persona física integrante de coordinado</a><br></li>
-<li><a href="registrofiscal.html">Registro fiscal</a><br></li>
-<li><a href="spei.html">SPEI</a><br></li>
-<li><a href="tfd.html">Timbre fiscal digital</a><br></li>
-<li><a href="tpe.html">Turista pasajero extranjero</a><br></li>
-<li><a href="valesdedespensa.html">Vales de despensa</a><br></li>
-<li><a href="vehiculosusados.html">Vehículos usados</a></li>
+<li><strong>Version</strong>
+: Atributo requerido con valor prefijado que indica la versión del complemento de intereses reales deducibles por crédito hipotecarios.</li>
+<li><strong>CreditoDeInstFinanc</strong>.
+: Atributo requerido para expresar si el  crédito otorgado fue por institución financiera.</li>
+<li><strong>SaldoInsoluto</strong>
+: Atributo requerido para expresar el  saldo insoluto al 31 de diciembre del ejercicio inmediato anterior o fecha de contratación si se llevo a cabo en el ejercicio en curso.</li>
+<li>PropDeducDelCredit
+: Atributo opcional que expresa la proporción deducible del crédito aplicable sobre los intereses reales devengados y pagados.</li>
+<li>MontTotIntNominalesDev
+: Atributo opcional que expresa el monto total de intereses nominales devengados.</li>
+<li>MontTotIntNominalesDevYPag.
+: Atributo opcional que expresa el monto total de intereses nominales devengados y pagados.</li>
+<li>MontTotIntRealPagDeduc
+: Atributo opcional que expresa el monto total de intereses reales pagados deducibles.</li>
+<li>NumContrato
+: Atributo opcional que expresa el número de contrato del crédito hipotecario.</li>
+</ul></li>
 </ul>
 
-<h2 id="complementos-concepto">Complementos concepto</h2>
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
 
-<ul>
-<li><a href="cc_iedu.html">Instituciones educativas privadas</a></li>
-<li><a href="cc_terceros.html">Facturación a terceros</a></li>
-<li><a href="cc_ventavehiculos.html">Venta de vehículos nuevos</a></li>
-</ul>
-
-<hr>
-
-<h2 id="complementos-propios-del-documento-electrónico-de-retenciones-e-información-de-pagos">Complementos propios del documento electrónico de retenciones e información de pagos</h2>
-
-<ul>
-<li><a href="complementos/tfd.html">Timbre Fiscal Digital.</a></li>
-<li><a href="complementos_ret/EnajenaciondeAcciones.html">Enajenación de acciones.</a></li>
-<li><a href="complementos_ret/Dividendos.html">Dividendos.</a></li>
-<li><a href="complementos_ret/Intereses.html">Intereses.</a></li>
-<li><a href="complementos_ret/Arrendamientoenfideicomiso.html">Arrendamiento en fideicomiso.</a></li>
-<li><a href="complementos_ret/Pagosaextranjeros.html">Pagos a extranjeros.</a></li>
-<li><a href="complementos_ret/Premios.html">Premios.</a></li>
-<li><a href="complementos_ret/Fideicomisonoempresarial.html">Fideicomiso no empresarial.</a></li>
-<li><a href="complementos_ret/Planesderetiro.html">Planes de Retiro.</a></li>
-<li><a href="complementos_ret/Intereseshipotecarios.html">Intereses Hipotecarios.</a></li>
-<li><a href="complementos_ret/OperacionesDerivados.html">Operaciones con derivados.</a></li>
-<li><a href="complementos_ret/SectorFinanciero.html">Sector Financiero.</a></li>
-</ul>
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;retenciones:Complemento&gt;</span>
+    <span class="nt">&lt;intereseshipotecarios:Intereseshipotecarios</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">CreditoDeInstFinanc=</span><span class="s">&quot;SI&quot;</span>
+            <span class="na">SaldoInsoluto=</span><span class="s">&quot;2651.21&quot;</span> <span class="na">PropDeducDelCredit=</span><span class="s">&quot;1.00&quot;</span> <span class="na">MontTotIntNominalesDev=</span><span class="s">&quot;432.12&quot;</span>
+            <span class="na">MontTotIntNominalesDevYPag=</span><span class="s">&quot;651.21&quot;</span> <span class="na">MontTotIntRealPagDeduc=</span><span class="s">&quot;1651.21&quot;</span>
+            <span class="na">NumContrato=</span><span class="s">&quot;RP98312KJ28123L124551&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/retenciones:Complemento&gt;</span>
+</code></pre></div>
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
 
             </div>
           </div>

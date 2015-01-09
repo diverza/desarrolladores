@@ -27,7 +27,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>complementos</title>
+  <title>fideicomiso no empresarial</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -149,62 +149,81 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>complementos<span class="diverza-dot">.</span></h1>
+              <h1>fideicomiso no empresarial<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesto como contenido del nodo de comprobante, dentro del xml.</p>
+              <p>Complemento para expresar la información sobre los fideicomisos que no realizan actividades empresariales.</p>
 
-<p>Los complementos contienen información específica sobre operaciones específicas requeridas por el SAT.</p>
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/complemento_fideicomiso_no_empresarial.aspx">sitio del SAT</a>.</p>
 
-<h2 id="complementos-del-comprobante">Complementos del comprobante</h2>
+<h2 id="datos-del-complemento">Datos del complemento</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Retenciones.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">xmlns:fideicomisonoempresarial=&quot;http://www.sat.gob.mx/esquemas/retencionpago/1/fideicomisonoempresarial&quot;
+</code></pre></div>
+<ul>
+<li><strong>Fideicomisonoempresarial</strong>
+: Complemento para expresar la información sobre los fideicomisos que no realizan actividades empresariales.
 
 <ul>
-<li><a href="aerolineas.html">Aerolíneas</a><br></li>
-<li><a href="consumodecombustibles.html">Consumo de combustibles</a> </li>
-<li><a href="detallista.html">Detallista</a><br></li>
-<li><a href="divisas.html">Divisas</a><br></li>
-<li><a href="donatarias.html">Donatarias</a><br></li>
-<li><a href="ecc.html">Estados de cuenta de combustibles</a><br></li>
-<li><a href="impuestoslocales.html">Impuestos locales</a><br></li>
-<li><a href="leyendasfiscales.html">Leyendas fiscales</a><br></li>
-<li><a href="nomina.html">Nómina</a><br></li>
-<li><a href="notarios.html">Notarios</a><br></li>
-<li><a href="pagoenespecie.html">Pago en especie</a><br></li>
-<li><a href="pfic.html">Persona física integrante de coordinado</a><br></li>
-<li><a href="registrofiscal.html">Registro fiscal</a><br></li>
-<li><a href="spei.html">SPEI</a><br></li>
-<li><a href="tfd.html">Timbre fiscal digital</a><br></li>
-<li><a href="tpe.html">Turista pasajero extranjero</a><br></li>
-<li><a href="valesdedespensa.html">Vales de despensa</a><br></li>
-<li><a href="vehiculosusados.html">Vehículos usados</a></li>
-</ul>
-
-<h2 id="complementos-concepto">Complementos concepto</h2>
+<li><strong>Version</strong>
+: Atributo requerido con valor prefijado que indica la versión del complemento sobre los fideicomisos que no realizan actividades empresariales.</li>
+<li><strong>IngresosOEntradas</strong>
+: Nodo requerido para expresar el importe de los ingresos del periodo de fideicomisos que no realizan actividades empresariales
 
 <ul>
-<li><a href="cc_iedu.html">Instituciones educativas privadas</a></li>
-<li><a href="cc_terceros.html">Facturación a terceros</a></li>
-<li><a href="cc_ventavehiculos.html">Venta de vehículos nuevos</a></li>
-</ul>
-
-<hr>
-
-<h2 id="complementos-propios-del-documento-electrónico-de-retenciones-e-información-de-pagos">Complementos propios del documento electrónico de retenciones e información de pagos</h2>
+<li><strong>MontTotEntradasPeriodo</strong>
+: Atributo requerido para expresar el importe total de los ingresos del periodo de los fideicomisos que no realizan actividades empresariales.</li>
+<li><strong>PartPropAcumDelFideicom</strong>
+: Atributo requerido para expresar la parte proporcional de los ingresos acumulables del periodo que correspondan al  fideicomisario o fideicomitente.</li>
+<li><strong>PropDelMontTot</strong>
+: Atributo requerido para expresar la proporción de participación del fideicomisario o fideicomitente de acuerdo al contrato.</li>
+<li><strong>IntegracIngresos</strong>
+: Nodo requerido para expresar el detalle de la integración de los ingresos obtenidos en el periodo por fideicomisos que no realizan actividades empresariales.
 
 <ul>
-<li><a href="complementos/tfd.html">Timbre Fiscal Digital.</a></li>
-<li><a href="complementos_ret/EnajenaciondeAcciones.html">Enajenación de acciones.</a></li>
-<li><a href="complementos_ret/Dividendos.html">Dividendos.</a></li>
-<li><a href="complementos_ret/Intereses.html">Intereses.</a></li>
-<li><a href="complementos_ret/Arrendamientoenfideicomiso.html">Arrendamiento en fideicomiso.</a></li>
-<li><a href="complementos_ret/Pagosaextranjeros.html">Pagos a extranjeros.</a></li>
-<li><a href="complementos_ret/Premios.html">Premios.</a></li>
-<li><a href="complementos_ret/Fideicomisonoempresarial.html">Fideicomiso no empresarial.</a></li>
-<li><a href="complementos_ret/Planesderetiro.html">Planes de Retiro.</a></li>
-<li><a href="complementos_ret/Intereseshipotecarios.html">Intereses Hipotecarios.</a></li>
-<li><a href="complementos_ret/OperacionesDerivados.html">Operaciones con derivados.</a></li>
-<li><a href="complementos_ret/SectorFinanciero.html">Sector Financiero.</a></li>
+<li><strong>Concepto</strong>
+: Atributo requerido para expresar la descripción del concepto de ingresos de los fideicomisos que no realizan actividades empresariales.</li>
+</ul></li>
+</ul></li>
+<li><strong>DeduccOSalidas</strong>
+: Nodo requerido para expresar el importe de los egresos del periodo de fideicomisos que no realizan actividades empresariales.
+
+<ul>
+<li><strong>MontTotEgresPeriodo</strong>
+: Atributo requerido para expresar el importe total de los egresos del periodo de fideicomiso que no realizan actividades empresariales.</li>
+<li><strong>PartPropDelFideicom</strong>
+: Atributo requerido para expresar la parte proporcional de las deducciones autorizadas del periodo que corresponden al  fideicomisario o fideicomitente.</li>
+<li><strong>PropDelMontTot</strong>
+: Atributo requerido para expresar la proporción de participación del fideicomisario o fideicomitente de acuerdo al contrato.</li>
+<li><strong>IntegracEgresos</strong>
+: Nodo requerido para expresar la integración de las deducciones en los ingresos obtenidos por fideicomisos que no realizan actividades empresariales.
+
+<ul>
+<li><strong>ConceptoS</strong> :
+: Atributo requerido para expresar la descripción del concepto de egresos de los fideicomisos que no realizan actividades empresariales.</li>
+</ul></li>
+</ul></li>
+</ul></li>
 </ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;retenciones:Complemento&gt;</span>
+        <span class="nt">&lt;fideicomisonoempresarial:Fideicomisonoempresarial</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;fideicomisonoempresarial:IngresosOEntradas</span> <span class="na">MontTotEntradasPeriodo=</span><span class="s">&quot;12452.21&quot;</span> <span class="na">PartPropAcumDelFideicom=</span><span class="s">&quot;5.00&quot;</span> <span class="na">PropDelMontTot=</span><span class="s">&quot;622.6105&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;fideicomisonoempresarial:IntegracIngresos</span> <span class="na">Concepto=</span><span class="s">&quot;Arrendamiento espacio publicitario&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/fideicomisonoempresarial:IngresosOEntradas&gt;</span>
+            <span class="nt">&lt;fideicomisonoempresarial:DeduccOSalidas</span> <span class="na">MontTotEgresPeriodo=</span><span class="s">&quot;2543.21&quot;</span> <span class="na">PartPropDelFideicom=</span><span class="s">&quot;2.00&quot;</span> <span class="na">PropDelMontTot=</span><span class="s">&quot;432.11&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;fideicomisonoempresarial:IntegracEgresos</span> <span class="na">ConceptoS=</span><span class="s">&quot;Fideicomiso propiedad&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/fideicomisonoempresarial:DeduccOSalidas&gt;</span>
+            <span class="nt">&lt;fideicomisonoempresarial:RetEfectFideicomiso</span> <span class="na">MontRetRelPagFideic=</span><span class="s">&quot;10652.83&quot;</span> <span class="na">DescRetRelPagFideic=</span><span class="s">&quot;Descripción de las retenciones en relación con fideicomiso&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/fideicomisonoempresarial:Fideicomisonoempresarial&gt;</span>
+<span class="nt">&lt;/retenciones:Complemento&gt;</span>
+</code></pre></div>
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
 
             </div>
           </div>
