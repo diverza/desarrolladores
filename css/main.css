@@ -1032,8 +1032,8 @@ legend {
     line-height: 20px;
     color: #FFF;
     border: 0;
-    border-bottom: 1px solid #eee;
-    background-color: #50BF83;
+    border-bottom: 2px solid #42A570 ;
+    background-color: #52C887;
     border-radius: 4px;
     padding: 10px
 }
