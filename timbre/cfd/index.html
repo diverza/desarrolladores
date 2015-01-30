@@ -162,6 +162,12 @@
  Diverza provee el servicio para convertirlas en un CFDI:
  Comprobantes Fiscales Digitales por Internet.
 </code></pre></div>
+<p><legend>
+A partir del 1 de Febrero de 2015, para el estado de Quintana Roo se establece una nueva zona horaria, para todos aquellos usuarios que tengan domicilio y utilicen el horario de este estado, es necesario que para el proceso de timbrado, en la fecha de generación del CFD, se incluya la zona horaria, de lo contrario por la diferencia de horas hacia el &quot;futuro&quot;, se rechazará la certificación.
+<br /><br />
+Ejemplo:  <code>fecha=&quot;2015-01-26T12:24:41-06:00&quot;</code>
+</legend></p>
+
 <hr>
 
 <p>El CFDI es un archivo XML con la estructura definida por el SAT</p>
@@ -196,7 +202,7 @@
   <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
   <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
   <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
-  <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
+  <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24-06:00&quot;</span> 
   <span class="na">certificado=</span><span class="s">&quot;...&quot;</span> 
   <span class="na">noCertificado=</span><span class="s">&quot;...&quot;</span> 
   <span class="na">sello=</span><span class="s">&quot;...&quot;</span> 

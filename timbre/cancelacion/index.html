@@ -158,17 +158,51 @@
 
 <p>La siguiente guía explica cómo utilizar el servicio de cancelación, usando como ejemplo la <em>Terminal</em> o <em>Linea de comandos</em> y <em>cURL</em>.</p>
 
+<p><legend>
+Si ya implementaste los servicios /stamp/cancel o /issue/cancel en el 2014 y quieres consultar la documentación, ingresa <a href="cancel-legacy.html">aquí</a>.
+<br /><br />
+A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte para nuevos documentos y mejores prestaciones.
+</legend></p>
+
+<hr>
+
+<h2 id="cancelación-masiva">Cancelación masiva</h2>
+
+<p>La siguiente es la estructura de la información contenida en el &quot;body&quot; de la petición, para el caso de uso de &quot;Terminal&quot;, se usará un archivo XML con éste contenido. Es funcional tanto para una sola cancelación, como para cancelaciones masivas.</p>
+
+<p><strong>Cancelación individual</strong></p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Cancelacion&gt;</span>
+    <span class="nt">&lt;rfcEmisor&gt;</span>AAA010101AAA<span class="nt">&lt;/rfcEmisor&gt;</span>
+    <span class="nt">&lt;Folios&gt;</span>
+        <span class="nt">&lt;UUID&gt;</span>2fbac5d4-5814-42c0-b387-171d08f7c58a<span class="nt">&lt;/UUID&gt;</span>
+    <span class="nt">&lt;/Folios&gt;</span>
+<span class="nt">&lt;/Cancelacion&gt;</span>
+</code></pre></div>
+<p><strong>Cancelación grupal</strong></p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Cancelacion&gt;</span>
+    <span class="nt">&lt;rfcEmisor&gt;</span>AAA010101AAA<span class="nt">&lt;/rfcEmisor&gt;</span>
+    <span class="nt">&lt;Folios&gt;</span>
+        <span class="nt">&lt;UUID&gt;</span>0d1bddc9-e393-45e9-95d8-809a0fa08e9a<span class="nt">&lt;/UUID&gt;</span>
+        <span class="nt">&lt;UUID&gt;</span>2fbac5d4-5814-42c0-b387-171d08f7c58a<span class="nt">&lt;/UUID&gt;</span>
+        <span class="nt">&lt;UUID&gt;</span>b796dae2-591a-4209-8e44-57ebc158f8e4<span class="nt">&lt;/UUID&gt;</span>
+    <span class="nt">&lt;/Folios&gt;</span>
+<span class="nt">&lt;/Cancelacion&gt;</span>
+</code></pre></div>
 <hr>
 
 <h2 id="servicio">Servicio</h2>
 
 <p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/
- Servicio: /stamp/cancel/{RFC}
+ Servicio: /v1/cancelar
  Metodo HTTP: POST
  Header HTTP: x-auth-token
+ Header HTTP: Content-Type
+ Header HTTP: Content-MD5
  Token de prueba: ABCD1234
- UUID de prueba: f7da0c0d-2c2e-4753-9d56-b0f080252eda
+ Content-Type: application/vnd.diverza.cancela.retencion+xml; charset=UTF-8
+ Content-MD5: (Es el &quot;hash&quot; del archivo enviado en tu petición, expresado en una cadena de 32 caracteres.)
+ UUID de prueba: 2fbac5d4-5814-42c0-b387-171d08f7c58a
 </code></pre></div>
 <p><strong>Nota:</strong> Es importante que utilices el mismo token con el que timbraste el comprobante. Con él comprobaremos que tu haces la petición y obtendremos la información necesaria para procesar la cancelación con el SAT.</p>
 
@@ -179,31 +213,32 @@
 <h3 id="petición-http">Petición HTTP</h3>
 
 <p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST http://staging.diverza.com/v1/cancelar --data @Cancela2.xml -H <span class="s2">&quot;Content-MD5: HASH/DOC&quot;</span> -H <span class="s2">&quot;Content-type: application/vnd.diverza.cancela.retencion+xml; charset=UTF-8&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
-<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST, agregando como último recurso el UUID del CFDI a cancelar, y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>ABCD1234</strong>.</p>
+<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST; como headers, el token de seguridad, el Content-Type y el Content-MD5, el token que se utiliza para el ambiende de pruebas es <strong>ABCD1234</strong>.</p>
 
 <h3 id="respuesta">Respuesta</h3>
 
 <p>Una vez ejecutado el comando podremos observar en la respuesta:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
-Date: Fri, 16 May 2014 13:26:02 GMT
-Connection: close
-Transfer-Encoding: chunked
-Content-Type: text/plain; charset=UTF-8
+Server: nginx/1.0.15
+Date: Wed, 28 Jan 2015 15:13:30 GMT
+Content-Type: text/xml;charset=UTF-8
+Connection: keep-alive
+Content-Length: 92
 
-HTTP/1.1 0 Proceso realizado con éxito
+HTTP/1.1 0 Proceso realizado con éxito
 connection: keep-alive
 server: Cowboy
-date: Fri, 16 May 2014 13:26:02 GMT
+date: Wed, 28 Jan 2015 15:13:30 GMT
 content-length: 30
 cache-control: max-age=0, private, must-revalidate
 
 Proceso realizado con éxito
 </code></pre></div>
-<p>El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong> y <strong>0 Proceso realizado con éxito</strong> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="respuesta_cancelacion.html">Lista de Códigos de Respuesta para cancelación</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
+<p>El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong> y <strong>0 Proceso realizado con éxito</strong> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="respuesta_cancelacion.html">Lista de Códigos de Respuesta para cancelación</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
 
             </div>
           </div>

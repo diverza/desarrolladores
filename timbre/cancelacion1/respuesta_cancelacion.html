@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>complementos</title>
+  <title>Códigos de respuesta para el servicio de cancelación</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -151,62 +151,63 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>complementos<span class="diverza-dot">.</span></h1>
+              <h1>Códigos de respuesta para el servicio de cancelación<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesto como contenido del nodo de comprobante, dentro del xml.</p>
+              <p>La siguiente lista comprende todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones:</p>
 
-<p>Los complementos contienen información específica sobre operaciones específicas requeridas por el SAT.</p>
+<h3 id="Éxito">Éxito</h3>
 
-<h2 id="complementos-del-comprobante">Complementos del comprobante</h2>
+<p><strong>0</strong> - Proceso realizado con éxito<br>
+<em>Comprobante cancelado exitosamente</em></p>
 
-<ul>
-<li><a href="aerolineas.html">Aerolíneas</a><br></li>
-<li><a href="consumodecombustibles.html">Consumo de combustibles</a> </li>
-<li><a href="detallista.html">Detallista</a><br></li>
-<li><a href="divisas.html">Divisas</a><br></li>
-<li><a href="donatarias.html">Donatarias</a><br></li>
-<li><a href="ecc.html">Estados de cuenta de combustibles</a><br></li>
-<li><a href="impuestoslocales.html">Impuestos locales</a><br></li>
-<li><a href="leyendasfiscales.html">Leyendas fiscales</a><br></li>
-<li><a href="nomina.html">Nómina</a><br></li>
-<li><a href="notarios.html">Notarios</a><br></li>
-<li><a href="pagoenespecie.html">Pago en especie</a><br></li>
-<li><a href="pfic.html">Persona física integrante de coordinado</a><br></li>
-<li><a href="registrofiscal.html">Registro fiscal</a><br></li>
-<li><a href="spei.html">SPEI</a><br></li>
-<li><a href="tfd.html">Timbre fiscal digital</a><br></li>
-<li><a href="tpe.html">Turista pasajero extranjero</a><br></li>
-<li><a href="valesdedespensa.html">Vales de despensa</a><br></li>
-<li><a href="vehiculosusados.html">Vehículos usados</a></li>
-</ul>
+<h3 id="errores-generales">Errores generales</h3>
 
-<h2 id="complementos-concepto">Complementos concepto</h2>
+<p><strong>13</strong> - Error general<br>
+<em>Necesita ser analizado directamente con el personal de soporte</em></p>
 
-<ul>
-<li><a href="cc_iedu.html">Instituciones educativas privadas</a></li>
-<li><a href="cc_terceros.html">Facturación a terceros</a></li>
-<li><a href="cc_ventavehiculos.html">Venta de vehículos nuevos</a></li>
-</ul>
+<p><strong>17</strong> - Reporte SAT no encontrado o no válido<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
-<hr>
+<p><strong>18</strong> - No encontró CFD a cancelar<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
-<h2 id="complementos-propios-del-documento-electrónico-de-retenciones-e-información-de-pagos">Complementos propios del documento electrónico de retenciones e información de pagos</h2>
+<p><strong>19</strong> - El CFD ya fue cancelado previamente<br>
+<em>Verificar el estado del comprobante en Buzón Fiscal</em></p>
 
-<ul>
-<li><a href="complementos/tfd.html">Timbre Fiscal Digital.</a></li>
-<li><a href="../complementos_ret/EnajenaciondeAcciones.html">Enajenación de acciones.</a></li>
-<li><a href="../complementos_ret/Dividendos.html">Dividendos.</a></li>
-<li><a href="../complementos_ret/Intereses.html">Intereses.</a></li>
-<li><a href="../complementos_ret/Arrendamientoenfideicomiso.html">Arrendamiento en fideicomiso.</a></li>
-<li><a href="../complementos_ret/Pagosaextranjeros.html">Pagos a extranjeros.</a></li>
-<li><a href="../complementos_ret/Premios.html">Premios.</a></li>
-<li><a href="../complementos_ret/Fideicomisonoempresarial.html">Fideicomiso no empresarial.</a></li>
-<li><a href="../complementos_ret/Planesderetiro.html">Planes de Retiro.</a></li>
-<li><a href="../complementos_ret/Intereseshipotecarios.html">Intereses Hipotecarios.</a></li>
-<li><a href="../complementos_ret/OperacionesDerivados.html">Operaciones con derivados.</a></li>
-<li><a href="../complementos_ret/SectorFinanciero.html">Sector Financiero.</a></li>
-</ul>
+<p><strong>20</strong> - No se encontró el folio para ser cancelado<br>
+<em>Verificar los datos de la  petición (RFC emisor, RFC receptor, serie, folio, refid)</em></p>
+
+<p><strong>22</strong> - Error de tipo “excepción”<br>
+<em>Error general</em></p>
+
+<p><strong>892</strong> - Ocurrió un error al cancelar comprobante<br>
+<em>Contacta con un asesor</em></p>
+
+<p><strong>453</strong> - Estructura de WebService incompleta<br>
+<em>Verificar que la llamada esté escrita de forma correcta</em></p>
+
+<h3 id="error-de-token-o-autorización">Error de token o autorización</h3>
+
+<p><strong>300</strong> - Token no es válido<br>
+<em>Revisar que el token corresponda al cliente correcto de ser así, contactar al asesor para que genere un nuevo token</em></p>
+
+<p><strong>301</strong> - Token no registrado para esta empresa<br>
+<em>El token no es el correspondiente para la empresa que lo solicita. Contactar con a tu asesor</em></p>
+
+<p><strong>302</strong> - Token ha caducado<br>
+<em>Contacta con tu asesor generar un nuevo token</em></p>
+
+<p><strong>303</strong> - Token deshabilitado  </p>
+
+<p><strong>25</strong> - No se pudo obtener el certificado de sello<br>
+<em>Revisar que esté dado de alta el certificado de sellos en el portal de Buzón Fiscal</em></p>
+
+<p><strong>40</strong> - Se ha suspendido el servicio<br>
+<em>Contactar a un asesor, cuenta no tiene permisos para emitir</em></p>
+
+<p><strong>201</strong> - El RFC {RFC} no está autorizado para realizar una cancelación<br>
+<em>Cancelación sin autorización o permisos</em></p>
 
             </div>
           </div>

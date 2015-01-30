@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>complementos</title>
+  <title>Servicio de cancelación 2014</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -151,62 +151,59 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>complementos<span class="diverza-dot">.</span></h1>
+              <h1>Servicio de cancelación 2014<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Todo complemento es un nodo de la sección <code>&lt;cfdi:Complemento&gt;</code>, que está dispuesto como contenido del nodo de comprobante, dentro del xml.</p>
+              <p>El servicio de cancelación consta de un servicio REST para cancelación de CFDIs timbrados ante el SAT, a partir del UUID del comprobante.</p>
 
-<p>Los complementos contienen información específica sobre operaciones específicas requeridas por el SAT.</p>
-
-<h2 id="complementos-del-comprobante">Complementos del comprobante</h2>
-
-<ul>
-<li><a href="aerolineas.html">Aerolíneas</a><br></li>
-<li><a href="consumodecombustibles.html">Consumo de combustibles</a> </li>
-<li><a href="detallista.html">Detallista</a><br></li>
-<li><a href="divisas.html">Divisas</a><br></li>
-<li><a href="donatarias.html">Donatarias</a><br></li>
-<li><a href="ecc.html">Estados de cuenta de combustibles</a><br></li>
-<li><a href="impuestoslocales.html">Impuestos locales</a><br></li>
-<li><a href="leyendasfiscales.html">Leyendas fiscales</a><br></li>
-<li><a href="nomina.html">Nómina</a><br></li>
-<li><a href="notarios.html">Notarios</a><br></li>
-<li><a href="pagoenespecie.html">Pago en especie</a><br></li>
-<li><a href="pfic.html">Persona física integrante de coordinado</a><br></li>
-<li><a href="registrofiscal.html">Registro fiscal</a><br></li>
-<li><a href="spei.html">SPEI</a><br></li>
-<li><a href="tfd.html">Timbre fiscal digital</a><br></li>
-<li><a href="tpe.html">Turista pasajero extranjero</a><br></li>
-<li><a href="valesdedespensa.html">Vales de despensa</a><br></li>
-<li><a href="vehiculosusados.html">Vehículos usados</a></li>
-</ul>
-
-<h2 id="complementos-concepto">Complementos concepto</h2>
-
-<ul>
-<li><a href="cc_iedu.html">Instituciones educativas privadas</a></li>
-<li><a href="cc_terceros.html">Facturación a terceros</a></li>
-<li><a href="cc_ventavehiculos.html">Venta de vehículos nuevos</a></li>
-</ul>
+<p>La siguiente guía explica cómo utilizar el servicio de cancelación, usando como ejemplo la <em>Terminal</em> o <em>Linea de comandos</em> y <em>cURL</em>.</p>
 
 <hr>
 
-<h2 id="complementos-propios-del-documento-electrónico-de-retenciones-e-información-de-pagos">Complementos propios del documento electrónico de retenciones e información de pagos</h2>
+<h2 id="servicio">Servicio</h2>
 
-<ul>
-<li><a href="complementos/tfd.html">Timbre Fiscal Digital.</a></li>
-<li><a href="../complementos_ret/EnajenaciondeAcciones.html">Enajenación de acciones.</a></li>
-<li><a href="../complementos_ret/Dividendos.html">Dividendos.</a></li>
-<li><a href="../complementos_ret/Intereses.html">Intereses.</a></li>
-<li><a href="../complementos_ret/Arrendamientoenfideicomiso.html">Arrendamiento en fideicomiso.</a></li>
-<li><a href="../complementos_ret/Pagosaextranjeros.html">Pagos a extranjeros.</a></li>
-<li><a href="../complementos_ret/Premios.html">Premios.</a></li>
-<li><a href="../complementos_ret/Fideicomisonoempresarial.html">Fideicomiso no empresarial.</a></li>
-<li><a href="../complementos_ret/Planesderetiro.html">Planes de Retiro.</a></li>
-<li><a href="../complementos_ret/Intereseshipotecarios.html">Intereses Hipotecarios.</a></li>
-<li><a href="../complementos_ret/OperacionesDerivados.html">Operaciones con derivados.</a></li>
-<li><a href="../complementos_ret/SectorFinanciero.html">Sector Financiero.</a></li>
-</ul>
+<p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/
+ Servicio: /stamp/cancel/{RFC}
+ Metodo HTTP: POST
+ Header HTTP: x-auth-token
+ Token de prueba: ABCD1234
+ UUID de prueba: f7da0c0d-2c2e-4753-9d56-b0f080252eda
+</code></pre></div>
+<p><strong>Nota:</strong> Es importante que utilices el mismo token con el que timbraste el comprobante. Con él comprobaremos que tu haces la petición y obtendremos la información necesaria para procesar la cancelación con el SAT.</p>
+
+<p><strong>Nota:</strong> El UUID es un atributo del complemento <em>TimbreFiscalDigital</em></p>
+
+<hr>
+
+<h3 id="petición-http">Petición HTTP</h3>
+
+<p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+</code></pre></div>
+<p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
+
+<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST, agregando como último recurso el UUID del CFDI a cancelar, y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>ABCD1234</strong>.</p>
+
+<h3 id="respuesta">Respuesta</h3>
+
+<p>Una vez ejecutado el comando podremos observar en la respuesta:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
+Date: Fri, 16 May 2014 13:26:02 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: text/plain; charset=UTF-8
+
+HTTP/1.1 0 Proceso realizado con éxito
+connection: keep-alive
+server: Cowboy
+date: Fri, 16 May 2014 13:26:02 GMT
+content-length: 30
+cache-control: max-age=0, private, must-revalidate
+
+Proceso realizado con éxito
+</code></pre></div>
+<p>El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong> y <strong>0 Proceso realizado con éxito</strong> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="respuesta_cancelacion.html">Lista de Códigos de Respuesta para cancelación</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
 
             </div>
           </div>
