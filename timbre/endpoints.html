@@ -163,16 +163,16 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 <p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar dependiendo del tipo de procesamiento que necesitas:</p>
 
 <p><a href="#timbrar">Timbrado</a> de un comprobante, donde obtienes solo el timbre <br>
-<code>http://staging.diverza.com/v1/timbrar</code></p>
+<code>http://staging.diverza.com/api/v1/timbrar</code></p>
 
 <p><a href="#timbrar/completo">Timbrado</a> de un comprobante, donde obtienes <a href="#timbrar/completo">todo el comprobante</a> incluyendo su timbre <br>
-<code>http://staging.diverza.com/v1/timbrar/completo</code></p>
+<code>http://staging.diverza.com/api/v1/timbrar?completo</code></p>
 
 <p><a href="#emitir">Emisión</a> de un comprobante sin sello, donde obtienes todo el comprobante *disponible para clientes de conector fiscal <br>
-<code>http://staging.diverza.com/v1/emitir</code></p>
+<code>http://staging.diverza.com/api/v1/emitir</code></p>
 
 <p><a href="#timbrar/cancelar">Cancelación</a> de un comprobante timbrado desde nuestros servicios <br>
-<code>http://staging.diverza.com/v1/timbrar/cancelar</code></p>
+<code>http://staging.diverza.com/api/v1/cancelar</code></p>
 
 <hr>
 
@@ -223,7 +223,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 <p>Recuerda que todos los complementos se encuentran dentro del nodo <code>&lt;cfdi:Comprobante&gt;</code></p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/v1/timbrar
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/api/v1/timbrar
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
@@ -231,7 +231,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
   Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/api/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -253,7 +253,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 <p>Dependiendo de tu proceso de trabajo, encontrarás más conveniente recuperar el comprobante completo o solo el timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/v1/timbrar/completo
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/api/v1/timbrar?completo
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
@@ -261,7 +261,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
   Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/v1/timbrar/completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/api/v1/timbrar/completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -305,7 +305,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 <p>La respuesta exitosa de este servicio envía todo el comprobante con el complemento de timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/v1/emitir
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/api/v1/emitir
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
@@ -313,7 +313,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
   Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/v1/emitir -X POST --data @CFD_Timbrar_Ret.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/api/v1/emitir -X POST --data @CFD_Timbrar_Ret.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="ejemplo-del-cfdi-sin-sellar">ejemplo del CFDi sin sellar</h3>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -392,7 +392,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 
 <hr>
 
-<h2 id="timbrar/cancelar">timbrar/cancelar</h2>
+<h2 id="cancelar">cancelar</h2>
 
 <p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="/stamp/cancel/">Servicio de Cancelación</a>.</p>
 

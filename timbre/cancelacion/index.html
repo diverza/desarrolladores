@@ -194,7 +194,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 
 <p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/
- Servicio: /v1/cancelar
+ Servicio: /api/v1/cancelar
  Metodo HTTP: POST
  Header HTTP: x-auth-token
  Header HTTP: Content-Type
@@ -213,7 +213,7 @@ A partir del 2015, te invitamos a utilizar los siguientes endpoints con soporte 
 <h3 id="petición-http">Petición HTTP</h3>
 
 <p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST http://staging.diverza.com/v1/cancelar --data @Cancela2.xml -H <span class="s2">&quot;Content-MD5: HASH/DOC&quot;</span> -H <span class="s2">&quot;Content-type: application/vnd.diverza.cancela.retencion+xml; charset=UTF-8&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST http://staging.diverza.com/api/v1/cancelar --data @Cancela2.xml -H <span class="s2">&quot;Content-MD5: HASH/DOC&quot;</span> -H <span class="s2">&quot;Content-type: application/vnd.diverza.cancela.retencion+xml; charset=UTF-8&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
