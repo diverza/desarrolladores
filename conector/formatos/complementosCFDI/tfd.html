@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- // <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script> -->
+  <!-- // <script src="/scripts/bootstrap.min.js"></script> -->
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
+	<script src="/scripts/bootstrap.min.js"></script>
+<!--<script src="scripts/codemirror.js"></script>-->
+    <!--<script src="scripts/searchcursor.js"></script>-->
+    <!--<script src="scripts/match-highlighter.js"></script>-->
+    <!--<script src="scripts/xml.js"></script>-->
+	<!--<script src="scripts/prettify.js"></script>-->
+	<!-- <script src="/scripts/xmllint.js"></script> -->
+	<!-- // <script src="/scripts/script.js"></script> -->
+
+  <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-286386-31', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <title>complemento del timbre fiscal digital</title>
+</head>
+
+<body class="page-content page-columns-2">
+  <a name="top" id="top"></a>
+<div id="header-bg">
+  <div id="bg-top"><div id="bg-top-left"></div></div>
+  <div id="bg-fix"></div>
+</div>
+<div class="container" id="header">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a id="logo" class="brand icon-logo-off" href="http://diverza.com"></a>
+        <div class="nav-collapse">
+
+          <ul class="menu nav">
+            <li class="item-101">
+              <a href="">Portada</a>
+            </li>
+            <li class="item-102">
+              <a href="http://www.diverza.com/historia" >Historia</a>
+            </li>
+            <li class="item-103 parent">
+              <a href="http://www.diverza.com/oficinas" >Oficinas</a>
+            </li>
+            <li class="item-104">
+              <a href="http://blog.diverza.com" >Blog</a>
+            </li>
+            <li class="item-105">
+              <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">Ecosistema</a>
+            </li>
+            <li class="item-106">
+              <a href="http://www.diverza.com/soporte" >Soporte</a>
+            </li>
+            <li class="item-107">
+            <a href="http://www.diverza.com/acceso" >Acceso</a>
+            </li>
+            <li id="colors-bar">
+              <div class="color-bar color-bar-blue"></div>
+              <div class="color-bar color-bar-yellow"></div>
+              <div class="color-bar color-bar-green"></div>
+              <div class="color-bar color-bar-red"></div>
+            </li></ul>
+          </div>
+          <div class="nav-social">
+            <ul class="menu-social">
+              <li class="item-131"><a class="rss" href="http://feeds.feedburner.com/blog-diverza">RSS</a></li><li class="item-130"><a class="googleplus" href="https://plus.google.com/u/0/100935627964150268592/posts">Google Plus</a></li><li class="item-129"><a class="youtube" href="http://www.youtube.com/user/DiverzaTv?feature=mhee">YouTube</a></li><li class="item-128"><a class="facebook" href="http://www.facebook.com/pages/Diverza/350358341644324">Facebook</a></li><li class="item-127"><a class="twitter" href="http://twitter.com/diverza">Twitter</a></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="header-brand-dummy"></div>
+    <div id="header-brand">
+      <div class="navbar container">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="row">
+
+              <div class="span2 nav-welcome ">
+                <a href="/"><span class="welcome">desarrolladores<span class="diverza-dot">.</span></span></a>
+              </div>
+
+              <div class="nav-collapse-brand" id="menu-sub">
+                <ul class="menu nav">
+                  <li class="item-102" id="stamp-menu-item">
+                    <a href="/timbre/">Timbre Fiscal</a>
+                  </li>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
+                  </li>
+                  <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
+                    <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-account">
+                <div class="module">
+                  <div class="custom">01.800.070.4000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+  #conector-menu-item { color: #fff !important;
+    background: #ddd;
+    -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -ms-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
+
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>complemento del timbre fiscal digital<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <p>En este complemento acredita la validez de un comprobante fiscal digital por internet, generado por el PAC una vez timbrado el documento.</p>
+
+<p>Puedes descargar la documentación y definición del complemento en el <a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/timbre_fiscal.aspx">sitio del SAT</a>.</p>
+
+<h2 id="datos-del-complemento-del-timbre-fiscal-digital">Datos del complemento del timbre fiscal digital</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace puede ser a nivel del nodo Complemento.
+<code>xmlns:tfd=&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</code></p>
+
+<p><strong>IMPORTANTE:</strong>  El schemaLocation para este complemento debe de ser declarado a nivel <strong>&lt;cfdi:Complemento&gt;</strong><br></p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">xsi:schemaLocation<span class="o">=</span><span class="s2">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span>
+</code></pre></div>
+<p>Descripción de los campos, lo puedes localizar en el siguiente documento:<br>
+<a href="../recursos/DVZ_Informacion_CFDI-CFDIRET.pdf">DVZ_Informacion_CFDI-CFDIRET.pdf</a>
+<br></p>
+
+<ul>
+<li><strong>TimbreFiscalDigital</strong>
+
+<ul>
+<li><strong>version</strong> : 1.0<br>
+Atributo requerido para la expresión de la versión del estándar del Timbre Fiscal Digital.</li>
+<li><strong>UUID</strong> : A9E925AA-27B9-E341-8D81-BA575A54CEFA<br>
+Atributo requerido para expresar los 36 caracteres del UUID de la transacción de timbrado.</li>
+<li><strong>FechaTimbrado</strong> : 2014-03-31T22:56:16<br>
+Atributo requerido para expresar la fecha y hora de la generación del timbre.</li>
+<li><strong>selloCFD</strong> : NjJVo5KxQEzGqfToe7ukQCVJrNY9lyciTmVB2wqlFm.....<br>
+Atributo requerido para contener el sello digital del comprobante fiscal, que será timbrado. El sello deberá ser expresado cómo una cadena de texto en formato Base 64.</li>
+<li><strong>noCertificadoSAT</strong> : 00001000000100021984<br>
+Atributo requerido para expresar el número de serie del certificado del SAT usado para el Timbre.</li>
+<li><strong>selloSAT</strong> : LUnBY6D1ssdF+eGPdxzYTvytYgFG2mPJcT06UtWtXG.....<br>
+Atributo requerido para contener el sello digital del Timbre Fiscal Digital, al que hacen referencia las reglas de resolución miscelánea aplicable. El sello deberá ser expresado cómo una cadena de texto en formato Base 64.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;tfd:TimbreFiscalDigital</span> 
+      <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">UUID=</span><span class="s">&quot;A9E925AA-27B9-E341-8D81-BA575A54CEFA&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-03-31T22:56:16&quot;</span>
+      <span class="na">selloCFD=</span><span class="s">&quot;NjJVo5KxQEzGqfToe7ukQCVJrNY9lyciTmVB2wqlFmr/KZh+hsdb3S/95JlqrHS4DCFYKJuBcsdu7eeuaKu9fMBlGytiONOU5yNQkHX17MqAb62ChuoYuT+A/NiE4DWSConxK76blDVPwHg8PJ6mW2fyvSiwJzadZU3pCNpnOPM=&quot;</span>
+      <span class="na">noCertificadoSAT=</span><span class="s">&quot;00001000000200011997&quot;</span>
+      <span class="na">selloSAT=</span><span class="s">&quot;LUnBY6D1ssdF+eGPdxzYTvytYgFG2mPJcT06UtWtXG4kdLo0hyW2QXvDYDLskPgAc9SMpLqg94bxueW7z/IZPFaINtLOk6RRs8r7aLPatfPdBgoy0Ijx/l8CDgbkumwdm6e1nw6aWNLCh0MA+wuBwGaDbtQ9LqCcCvK4rZBhQSs=&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/cfdi:Complemento&gt;</span>
+</code></pre></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-right" class="span3 sidebar">
+    <div class="sidebar-padding">
+        <div class=" ">
+            <div class="module">
+
+                <h3>Conector software<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos.html">Códigos de respuesta</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-xml.html">cfdi - xml</a></li> -->
+                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-yaml.html">cfdi - txt</a></li> -->
+                        <!-- <li class="item-178"><a href="/conector/formatos/ret-xml.html">retenciones - xml</a></li> -->
+                        <li class="item-178"><a href="/conector/formatos/CFDI/">cfdi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosCFDI/">complementos de cfdi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/RET/">retenciones</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosRET/">complementos de retenciones</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-xml.html">cfdi - xml</a></li> -->
+                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-yaml.html">cfdi - txt</a></li> -->
+                        <!-- <li class="item-178"><a href="/conector/formatos/ret-xml.html">retenciones - xml</a></li> -->
+                        <li class="item-178"><a href="/conector/formatos/recursos/">ejemplos</a></li>
+                    </ul>               
+                </div>
+<!--
+                <br />
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
+                    </ul>               
+                </div>
+                !-->
+
+              </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
+  <style>
+    .hero-unit { }
+    #body { background: #fff url('/images/content-dev.png') no-repeat 50% 0 ; }
+  </style>
+
+  <div id="footer">
+	<div class="container">
+		<footer>
+
+			<ul class="menu">
+				<li class="item-123"><a href="http://www.diverza.com/privacidad">Aviso de privacidad</a></li><li class="item-124"><a href="http://www.diverza.com/terminos">Términos y condiciones</a></li><li class="item-125"><a href="http://www.diverza.com/integrate">Intégrate al equipo</a></li><li class="item-135"><a href="http://www.diverza.com/mi-cuenta">Mi cuenta</a></li></ul>
+
+				<div class="custom">
+
+					<div class="row-fluid">
+						<br>
+						<div class="span3"></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.greatplacetowork.com.mx" title="GPTW" class="footer-logo-gptw" style="margin: -20px 0 0 auto;" target="_blank">GPTW</a></div>
+
+						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+
+						<div class="span2"></div>
+
+						<div class="clr"></div>
+
+						<div style="font-size:10px; margin-top: 5px;">DIVERZA © Copyright.&nbsp;Los nombres y logos de Buzón Fiscal®, Conector Fiscal® y Timbre Fiscal® son marcas registradas de Diverza Información y Análisis, SAPI de CV. Otros nombres y logos son marcas registradas de sus respectivos propietarios. Todo el contenido de este sitio y los documentos para descarga son propiedad intelectual de Diverza Información y Análisis, SAPI de CV.<br> 
+
+							<div class="clr"></div>
+							<div style="font-size:12px;margin-top: 5px;text-align: center;">
+
+								<script type="text/javascript">
+									<!--
+									var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+									var path = 'hr' + 'ef' + '=';
+									var addy64856 = 'c&#111;nt&#97;ct&#111;' + '&#64;';
+									addy64856 = addy64856 + 'd&#105;v&#101;rz&#97;' + '&#46;' + 'c&#111;m';
+									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
+									document.write(addy64856);
+									document.write('<\/a>');
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+<script type="text/javascript">
+	<!--
+	document.write('</');
+	document.write('span>');
+ //-->
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</div></div>
+
+</footer>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1"
+    xmlns:c_retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1/catalogos"
+    xmlns:pagosaextranjeros="http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros/pagosaextranjeros.xsd"
+    Version="1.0" FolioInt="TEST00009"
+    Sello=""
+    NumCert="20001000000100005867"
+    Cert=""
+    FechaExp="2014-11-28T10:13:51-06:00" CveRetenc="18">
+    <!-- DescRetenc="18" Pagos realizados a favor de residentes en el extranjero -->
+    <retenciones:Emisor RFCEmisor="AAA010101AAA"
+        NomDenRazSocE="Empresa DEMO para Rentenciones S de TST" CURPE="AAAA010101HNLMNLD2"/>
+    <retenciones:Receptor Nacionalidad="Nacional">
+        <!-- nodo "Extranjero" sólo cuando Nacionalidad="Extranjero" 
+        <retenciones:Extranjero NumRegIdTrib="NumRegIdTrib0" NomDenRazSocR="NomDenRazSocR0"/>
+        -->
+        <retenciones:Nacional RFCRecep="XAXX010101000" CURPR="VAHE820926HNLLRD02"
+            NomDenRazSocR="PÚBLICO EN GENERAL S DE TST"/>
+    </retenciones:Receptor>
+    <retenciones:Periodo MesIni="6" MesFin="6" Ejerc="2014"/>
+    <retenciones:Totales montoTotOperacion="14000.00" montoTotGrav="13000.00"
+        montoTotExent="1000.00" montoTotRet="3500.00">
+        <retenciones:ImpRetenidos BaseRet="1000.00" Impuesto="01" montoRet="500.00"
+            TipoPagoRet="Pago definitivo"/>
+        <retenciones:ImpRetenidos BaseRet="1000.00" Impuesto="02" montoRet="500.00"
+            TipoPagoRet="Pago provisional"/>
+    </retenciones:Totales>
+    <retenciones:Complemento>
+        <pagosaextranjeros:Pagosaextranjeros Version="1.0" EsBenefEfectDelCobro="NO">
+            <pagosaextranjeros:NoBeneficiario PaisDeResidParaEfecFisc="UA" ConceptoPago="9" DescripcionConcepto="Componentes químicos para Ingeniería Genética (Aminodesacetoxicefalosporánico)"/>
+            <!-- Nodo de "Beneficiario", cuando EsBenefEfectDelCobro="SI"
+            <pagosaextranjeros:Beneficiario RFC="XAXX010101000" CURP="XAXX010101HNNLLRD02" NomDenRazSocB="EMPRESA GENERAL DE PRUEBA BENEFICIARIO" ConceptoPago="9"
+            DescripcionConcepto="Componentes químicos para Ingeniería Genética (Aminodesacetoxicefalosporánico)"/>  -->
+        </pagosaextranjeros:Pagosaextranjeros>
+    </retenciones:Complemento>
+    <retenciones:Addenda> </retenciones:Addenda>
+</retenciones:Retenciones>
