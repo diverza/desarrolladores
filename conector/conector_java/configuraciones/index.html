@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- // <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script> -->
+  <!-- // <script src="/scripts/bootstrap.min.js"></script> -->
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
+	<script src="/scripts/bootstrap.min.js"></script>
+<!--<script src="scripts/codemirror.js"></script>-->
+    <!--<script src="scripts/searchcursor.js"></script>-->
+    <!--<script src="scripts/match-highlighter.js"></script>-->
+    <!--<script src="scripts/xml.js"></script>-->
+	<!--<script src="scripts/prettify.js"></script>-->
+	<!-- <script src="/scripts/xmllint.js"></script> -->
+	<!-- // <script src="/scripts/script.js"></script> -->
+
+  <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-286386-31', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <title>Opciones de configuración</title>
+</head>
+
+<body class="page-content page-columns-2">
+  <a name="top" id="top"></a>
+<div id="header-bg">
+  <div id="bg-top"><div id="bg-top-left"></div></div>
+  <div id="bg-fix"></div>
+</div>
+<div class="container" id="header">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a id="logo" class="brand icon-logo-off" href="http://diverza.com"></a>
+        <div class="nav-collapse">
+
+          <ul class="menu nav">
+            <li class="item-101">
+              <a href="">Portada</a>
+            </li>
+            <li class="item-102">
+              <a href="http://www.diverza.com/historia" >Historia</a>
+            </li>
+            <li class="item-103 parent">
+              <a href="http://www.diverza.com/oficinas" >Oficinas</a>
+            </li>
+            <li class="item-104">
+              <a href="http://blog.diverza.com" >Blog</a>
+            </li>
+            <li class="item-105">
+              <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">Ecosistema</a>
+            </li>
+            <li class="item-106">
+              <a href="http://www.diverza.com/soporte" >Soporte</a>
+            </li>
+            <li class="item-107">
+            <a href="http://www.diverza.com/acceso" >Acceso</a>
+            </li>
+            <li id="colors-bar">
+              <div class="color-bar color-bar-blue"></div>
+              <div class="color-bar color-bar-yellow"></div>
+              <div class="color-bar color-bar-green"></div>
+              <div class="color-bar color-bar-red"></div>
+            </li></ul>
+          </div>
+          <div class="nav-social">
+            <ul class="menu-social">
+              <li class="item-131"><a class="rss" href="http://feeds.feedburner.com/blog-diverza">RSS</a></li><li class="item-130"><a class="googleplus" href="https://plus.google.com/u/0/100935627964150268592/posts">Google Plus</a></li><li class="item-129"><a class="youtube" href="http://www.youtube.com/user/DiverzaTv?feature=mhee">YouTube</a></li><li class="item-128"><a class="facebook" href="http://www.facebook.com/pages/Diverza/350358341644324">Facebook</a></li><li class="item-127"><a class="twitter" href="http://twitter.com/diverza">Twitter</a></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="header-brand-dummy"></div>
+    <div id="header-brand">
+      <div class="navbar container">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="row">
+
+              <div class="span2 nav-welcome ">
+                <a href="/"><span class="welcome">desarrolladores<span class="diverza-dot">.</span></span></a>
+              </div>
+
+              <div class="nav-collapse-brand" id="menu-sub">
+                <ul class="menu nav">
+                  <li class="item-102" id="stamp-menu-item">
+                    <a href="/timbre/">Timbre Fiscal</a>
+                  </li>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
+                  </li>
+                  <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
+                    <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-account">
+                <div class="module">
+                  <div class="custom">01.800.070.4000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+  #conector-menu-item { color: #fff !important;
+    background: #ddd;
+    -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -ms-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
+
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>Opciones de configuración<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <p>Conector software permite modificar:
+- Ubicación de carpetas
+- Orden de lectura de archivos
+- Proxy de conexión
+- Nomenclatura de archivos</p>
+
+<p>Este archivo llamado <strong>osgi-framework</strong>  está localizando en:
+<code>
+...BuzonFiscalConector/BuzonFiscalConector/config/osgi-framework
+</code></p>
+
+<hr>
+
+<h2 id="cambio-de-ubicación-de-repositorios">Cambio de ubicación de repositorios</h2>
+
+<p>Se refiere a la ubicación de los cuatro directorios necesarios para el funcionamiento del Conector. Al momento de realizarse la instalación son generados los cuatro directorios predefinidos en el archivo, estos pueden ser cambiados a una ruta distinta pero existente, ya que de no existir esa ruta la aplicación no podrá iniciar.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;com.diverza.bfc.fileDir.default.in&quot;</span><span class="nt">&gt;</span>..\data\in<span class="nt">&lt;/property&gt;</span> 
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;com.diverza.bfc.fileDir.default.out&quot;</span><span class="nt">&gt;</span>..\data\out<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;com.diverza.bfc.fileDir.default.processed&quot;</span><span class="nt">&gt;</span>..\data\processed<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;com.diverza.bfc.fileDir.default.diagnostic&quot;</span><span class="nt">&gt;</span>..\data\diagnostic<span class="nt">&lt;/property&gt;</span>
+</code></pre></div>
+<hr>
+
+<h2 id="orden-de-lectura-de-los-archivos-de-entrada">Orden de lectura de los archivos de entrada</h2>
+
+<p>El Conector tiene la capacidad de tomar más de un archivo para ser procesados, la prioridad para leerlos puede ser definida por el usuario en el siguiente parámetro:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;com.diverza.bfc.fileRead.order&quot;</span><span class="nt">&gt;</span>ByDate<span class="nt">&lt;/property&gt;</span>
+</code></pre></div>
+<p>Los parámetros validos son:</p>
+
+<ul>
+<li>ByDate: que toma los archivos de acuerdo a su última fecha de modificación, tomando primero el que tenga la fecha más antigua.</li>
+<li>ByName: que ordena de forma ascendente mediante el nombre del archivo.</li>
+</ul>
+
+<hr>
+
+<h2 id="proxy">Proxy</h2>
+
+<p>Configuración necesaria para los clientes que no tienen salida directa a internet debido a la configuración en su infraestructura.</p>
+
+<p><strong>Ejemplo</strong></p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;https.proxyHost&quot;</span><span class="nt">&gt;</span>localhost<span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;https.proxyPort&quot;</span><span class="nt">&gt;</span>3128<span class="nt">&lt;/property&gt;</span>
+</code></pre></div>
+<hr>
+
+<hr>
+
+<h2 id="nomenclatura">Nomenclatura</h2>
+
+<p>Los archivos que la aplicación nos da de salida (CFDis y PDFs) tienen un nombre especifico y diferente al nombre del archivo de entrada, está formado de las siguientes partes:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">RFC_TIPODOCUMENTO_SERIE+FOLIO_FECHA.xml
+RFC_TIPODOCUMENTO_SERIE+FOLIO_FECHA.pdf
+</code></pre></div>
+<p>El archivo de configuración nos permite definir de cuatro diferentes formas la nomenclatura del archivo de salida, así como especificar subdirectorios en los cuales ira contenido cada archivo, se definen a continuación.</p>
+
+<hr>
+
+<h3 id="opción-1">Opción 1</h3>
+
+<p>Carpetas opcionales + nombre default + RefID</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/property&gt;</span> 
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivoParametro&quot;</span><span class="nt">&gt;</span>NA<span class="nt">&lt;/property&gt;</span>
+</code></pre></div>
+<p>Se escribe el nombre de archivo definido por <strong>Diverza</strong> <code>RFC_TIPODOCUMENTO_SERIE+FOLIO_FECHA.xml</code> abierto a la posibilidad de incluirse en subcarpetas indicando en el nombre del archivo de entrada con la terminación <code>[C]</code>, además la posibilidad de anexar alguna palabra indicándolo con la terminación <code>[NF]</code> al final o <code>[NI]</code> al inicio, cada parámetro va separado por un guion bajo (“_”).</p>
+
+<p><strong>Ejemplo opción 1</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Entrada = Archivo22.xml 
+Salida = ../out/AAA010101AAA_FAC_A92_20090630.xml
+</code></pre></div>
+<p><img src="config_opcion1.1.png" alt="Configuración opcion 1.1"></p>
+
+<p><strong>Ejemplo opción 1: Subcarpeta</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Entrada = SucursalX[C]_Archivo22.xml
+Salida = ../out/SucursalX/AAA010101AAA_FAC_A92_20090630.xml
+</code></pre></div>
+<p><img src="config_opcion1.2.png" alt="Configuración opcion 1.2"></p>
+
+<p><strong>Ejemplo opción 1: Subcarpeta y sufijo</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Entrada = SucursalX[C]_Archivo_22[NF].xml
+Salida = ../out/SucursalX/AAA010101AAA_FAC_A92_20090630_22.xml
+</code></pre></div>
+<p><img src="config_opcion1.3.png" alt="Configuración opcion 1.3"></p>
+
+<p><strong>Consideraciones</strong></p>
+
+<p>Los parámetros entre corchetes cuadrados <code>[ ]</code> deberán ir en mayúscula.
+Sólo son reconocidas las opciones <code>[C]</code> carpeta, <code>[NI]</code> nombre al inicio y <code>[NF]</code> nombre al final.</p>
+
+<p><strong>Nota</strong></p>
+
+<p>El orden de las carpetas se leen de izquierda a derecha.</p>
+
+<hr>
+
+<h3 id="opción-2">Opción 2</h3>
+
+<p>Carpetas opcionales + parte nombre default + RefId</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>Default <span class="nt">&lt;/property&gt;</span> 
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivoParametro&quot;</span><span class="nt">&gt;</span> [-RFC][-SF][-TIPODOCTO][-FECHA]<span class="nt">&lt;/property&gt;</span>
+</code></pre></div>
+<p>Funciona básicamente igual que la <strong>Opción 1</strong>, pero en esta opción nos permite eliminar uno o más segmentos del nombre default.</p>
+
+<p>Es importante considerar que puede resultar riesgoso usar el parámetro <code>[-SF]</code> para eliminar la serie mas el folio, ya que es el identificador único que se maneja en el nombre default, se recomienda eliminarlo sólo en caso que el cliente use un RefId único el cual no exponga la perdida de algún archivo por sobre escritura.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Eliminando [-RFC] 
+Entrada = Archivo22.xml
+Salida = ../out/FAC_A92_20090630.xml
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Eliminando [-RFC]
+Entrada = SucursalX[C]_Archivo22.xml
+Salida = ../out/SucursalX/FAC_A92_20090630.xml
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">Eliminando [-RFC][-FECHA] 
+Entrada = archivo1.xml
+Salida = ../out/SP_PABF41.xml
+</code></pre></div>
+<p><strong>Consideraciones</strong></p>
+
+<ul>
+<li>Los parámetros entre corchetes cuadrados <code>[ ]</code> deberán ir en mayúscula. </li>
+<li>Sólo son reconocidas las opciones <code>[C]</code> carpeta, <code>[NI]</code> nombre al inicio y <code>[NF]</code> nombre al final. </li>
+<li>El orden de las carpetas se leen de izquierda a derecha. </li>
+<li>Los parámetros en el archivo de configuración reconocido son <code>[-RFC]</code> para  eliminar el RFC, <code>[-TIPODOCTO]</code> para eliminar el tipo de documento, <code>[-SF]</code> para eliminar la serie y folio, <code>[-FECHA]</code> para eliminar la fecha. </li>
+<li>Si requieres eliminar los datos anteriores, y asignar un nombre especifico, se recomienda usar la opción de “NombreEspecial”.
+ - Si se va a usar el parámetro <code>[-SF]</code> para eliminar la serie y folio es importante considerar que los archivos podrías sobrescribirse ya que es nuestra referencia para tener un nombre único en un archivo.</li>
+<li>Cuando se ingres aun archivo formato <strong>txt</strong>, y este cuenta con más de una remisión dentro, no se tomara en cuenta la eliminación de la serie y el folio, ya que será necesario escribir más de un archivo de salida. </li>
+</ul>
+
+<hr>
+
+<h3 id="opción-3">Opción 3</h3>
+
+<p>Nombre salida = Nombre de entrada </p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>NombreEspecial<span class="nt">&lt;/property&gt;</span> 
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivoParametro&quot;</span><span class="nt">&gt;</span>NA<span class="nt">&lt;/property&gt;</span> 
+</code></pre></div>
+<p>Se escribe el nombre de archivo definido por el nombre de archivo de entrada con la posibilidad de incluirse en subcarpetas indicando en el nombre de entrada con la terminación <code>[C]</code>, y para anexar el nombre se toma el resto del nombre del archivo. </p>
+
+<p><strong>Ejemplo Opción 3: Subcarpetas</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Entrada = 5582[C]_2009[C]_Junio[C]_0018820ArchivoAFacturar45.xml 
+Salida = ../out/5582/2009/Junio/0018820ArchivoAFacturar45.xml
+</code></pre></div>
+<p><img src="config_opcion3.1.png" alt="Configuración opcion 3.1"></p>
+
+<p><strong>Ejemplo Opción 3: Prefijo</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Entrada = 0018820ArchivoAFacturar45.xml 
+Salida = ../out/0018820ArchivoAFacturar45.xml
+</code></pre></div>
+<p><img src="config_opcion3.2.png" alt="Configuración opcion 3.2"></p>
+
+<p><strong>Consideraciones</strong></p>
+
+<ul>
+<li>Los parámetros entre los <code>[ ]</code> deberán ir en mayúscula. </li>
+<li>Solo son reconocidas las opciones <code>[C]</code> crear carpeta. </li>
+<li>Todo el nombre excepto el o los segmentos que contengan <code>[C]</code>, se anexaran  para formar parte del nombre. </li>
+<li>Es importante considerar que el identificador único deberá ser proporcionado  por el cliente de lo contrario existe el riesgo de que se sobrescriba algún  archivo. </li>
+<li>En el caso de un archivo TXT con más de una remisión es agregado al final  del archivo la serie y el folio de cada Cfd de salida. </li>
+</ul>
+
+<hr>
+
+<h3 id="opción-4">Opción 4</h3>
+
+<p>Especificación de carpetas y nombre por posición.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>Posicion<span class="nt">&lt;/entry&gt;</span> 
+<span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;nombreArchivoParametro&quot;</span><span class="nt">&gt;</span>7[C]_8[C]_10[NF] <span class="nt">&lt;/entry&gt;</span>
+</code></pre></div>
+<p>Para esta opción las especificaciones se indican de acuerdo a las longitudes de los datos, respetando igual las opciones de que la <code>[C]</code> hará que se cree una carpeta y la <code>[NF]</code> o <code>[NI]</code> nos indica que será parte del nombre del archivo.</p>
+
+<p><strong>Ejemplo opción 4: Posiciones</strong></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Entrada = 0018820ArchivoAFacturar45.xml
+Se aplica la lógica que se pasa como parámetro: 
+
+Carpeta 1: 0018820 Carpeta 2: ArchivoA Nombre: Facturar45
+ Salida = ../out/0018820/ArchivoA/Facturar45.xml 
+</code></pre></div>
+<p><strong>Consideraciones</strong></p>
+
+<ul>
+<li>No reconoce ningún parámetro entre corchetes [ ]. </li>
+<li>La longitud del nombre del archivo de entrada deberá ser igual a la suma de  los caracteres que se especifican en el archivo de configuración <code>7[C]_2[C]_5[NF]</code>, por ejemplo en este caso el archivo de entrada deberá tener la longitud de <code>7 + 2 + 5 = 14</code>.</li>
+<li>Para el cálculo de la longitud del nombre del archivo de entrada no se considera la extensión del archivo (.XML o .TXT). </li>
+<li>En caso de que no sea igual la longitud del nombre del archivo de entrada a lo especificado en el archivo de configuración se escribirá el archivo de diagnostico con el mismo nombre de entrada conteniendo el siguiente mensaje: <em>&quot;El archivo no tiene la longitud correcta para formar el nombre/directorios de Salida: archivo1.xml&quot;</em>.</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-right" class="span3 sidebar">
+    <div class="sidebar-padding">
+        <div class=" ">
+            <div class="module">
+
+
+<!--                 <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/conector_java/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/conector_java/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/codigos.html">Códigos de respuesta</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>documentos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/formatos/CFDI/">CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosCFDI/">complementos de CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/RET/">retenciones</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosRET/">complementos de retenciones</a></li>
+                        <li class="item-178"><a href="/conector/index-contabilidad.html">contabilidad electrónica</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/formatos/recursos/">ejemplos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/guia_conector_java.html">guia conector java</a></li>
+                    </ul>               
+                </div>
+<!--
+                <br />
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
+                    </ul>               
+                </div>
+                !-->
+
+              </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
+  <style>
+    .hero-unit { }
+    #body { background: #fff url('/images/content-dev.png') no-repeat 50% 0 ; }
+  </style>
+
+  <div id="footer">
+	<div class="container">
+		<footer>
+
+			<ul class="menu">
+				<li class="item-123"><a href="http://www.diverza.com/privacidad">Aviso de privacidad</a></li><li class="item-124"><a href="http://www.diverza.com/terminos">Términos y condiciones</a></li><li class="item-125"><a href="http://www.diverza.com/integrate">Intégrate al equipo</a></li><li class="item-135"><a href="http://www.diverza.com/mi-cuenta">Mi cuenta</a></li></ul>
+
+				<div class="custom">
+
+					<div class="row-fluid">
+						<br>
+						<div class="span3"></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.greatplacetowork.com.mx" title="GPTW" class="footer-logo-gptw" style="margin: -20px 0 0 auto;" target="_blank">GPTW</a></div>
+
+						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+
+						<div class="span2"></div>
+
+						<div class="clr"></div>
+
+						<div style="font-size:10px; margin-top: 5px;">DIVERZA © Copyright.&nbsp;Los nombres y logos de Buzón Fiscal®, Conector Fiscal® y Timbre Fiscal® son marcas registradas de Diverza Información y Análisis, SAPI de CV. Otros nombres y logos son marcas registradas de sus respectivos propietarios. Todo el contenido de este sitio y los documentos para descarga son propiedad intelectual de Diverza Información y Análisis, SAPI de CV.<br> 
+
+							<div class="clr"></div>
+							<div style="font-size:12px;margin-top: 5px;text-align: center;">
+
+								<script type="text/javascript">
+									<!--
+									var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+									var path = 'hr' + 'ef' + '=';
+									var addy64856 = 'c&#111;nt&#97;ct&#111;' + '&#64;';
+									addy64856 = addy64856 + 'd&#105;v&#101;rz&#97;' + '&#46;' + 'c&#111;m';
+									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
+									document.write(addy64856);
+									document.write('<\/a>');
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+<script type="text/javascript">
+	<!--
+	document.write('</');
+	document.write('span>');
+ //-->
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</div></div>
+
+</footer>
+</div>
+</div>
+</body>
+</html>

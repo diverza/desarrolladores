@@ -163,6 +163,112 @@
 <li><a href="../recursos/XSD/Contabilidad/CatalogoCuentas_1_1.xslt">Documento xslt para generar cadena original</a></li>
 </ul>
 
+<hr>
+
+<h2 id="descripción-de-campos">Descripción de campos</h2>
+
+<ul>
+<li><strong>Ctas</strong>
+
+<ul>
+<li>Nodo obligatorio para expresar el detalle de cada cuenta o subcuenta de la balanza de comprobación</li>
+<li><strong>CodAgrup</strong>
+
+<ul>
+<li>Atributo requerido para expresar el código asociador de cuentas y subcuentas conforme al catálogo publicado en la página de internet del SAT. Se debe asociar cada cuenta y subcuenta que sea más apropiado de acuerdo con la naturaleza y preponderancia de la cuenta o subcuenta</li>
+<li><em>Tipo string, proveniente del catálogo de cuentas</em> <a href="http://www.sat.gob.mx/fichas_tematicas/buzon_tributario/Documents/codigo_agrupador.pdf">Códigos agrupadores del SAT</a></li>
+</ul></li>
+<li><strong>NumCta</strong>
+
+<ul>
+<li>Atributo requerido, es la clave con que se distingue la cuenta o subcuenta en la contabilidad</li>
+<li><em>Tipo string, de entre 1 y 100 caracteres</em></li>
+</ul></li>
+<li><strong>Desc</strong>
+
+<ul>
+<li>Atributo requerido para expresar el nombre de la cuenta o subcuenta</li>
+<li><em>Tipo string, de entre 1 y 400 caracteres</em></li>
+</ul></li>
+<li><strong>SubCtaDe</strong>
+
+<ul>
+<li>Atributo opcional en el caso de subcuentas. Sirve para expresar la clave de la cuenta a la que pertenece dicha subcuenta. Se convierte en requerido cuando se cuente con la información</li>
+<li><em>Tipo string, de entre 1 y 400 caracteres</em></li>
+</ul></li>
+<li><strong>Nivel</strong>
+
+<ul>
+<li>Atributo requerido para expresar el nivel en el que se encuentra la cuenta o subcuenta en el catálogo</li>
+<li><em>Tipo entero, mayor a 1</em></li>
+</ul></li>
+<li><strong>Natur</strong>
+
+<ul>
+<li>Atributo requerido para expresar la naturaleza de la cuenta o subcuenta. (D - Deudora, A - Acreedora). ( Activo = D ) ( Pasivo = A ) ( Capital = A ) ( Ingreso = A ) ( Costo = D ) ( Gasto = D ) ( Resultado Integral de Financiamiento = D y/o A ) ( Cuentas de orden = D y/o A )</li>
+<li><em>Tipo string, que puede contener un caracter A o D</em></li>
+</ul></li>
+</ul></li>
+<li><strong>Version</strong>
+
+<ul>
+<li>Atributo requerido para expresar la versión del formato</li>
+<li><em>Tipo cadena, fijo a *</em>1.1***</li>
+</ul></li>
+<li><strong>RFC</strong>
+
+<ul>
+<li>Atributo requerido para expresar el RFC del contribuyente que envía los datos</li>
+<li>*Tipo cadena, que cumpla con la expresión regular <code>[A-ZÑ&amp;]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z0-9]?[A-Z0-9]?[0-9A-Z]?</code></li>
+</ul></li>
+<li><strong>Mes</strong>
+
+<ul>
+<li>Atributo requerido para expresar el mes al que corresponde la balanza de comprobación</li>
+<li><em>Tipo cadena, que puede contener los valores 01, 02, 03 ... hasta 13</em></li>
+</ul></li>
+<li><strong>Anio</strong>
+
+<ul>
+<li>Atributo requerido para expresar el año al que corresponde la balanza</li>
+<li><em>Tipo entero, que puede contener los valores 2015 al 2099</em></li>
+</ul></li>
+<li><strong>TipoEnvio</strong>
+
+<ul>
+<li>Atributo requerido para expresar el tipo de envío de la balanza (N - Normal; C - Complementaria)</li>
+<li><em>Tipo cadena que puede contener el valor C o N</em></li>
+</ul></li>
+<li><strong>FechaModBal</strong>
+
+<ul>
+<li>Atributo opcional para expresar la fecha de la última modificación contable de la balanza de comprobación. Es requerido cuando el atributo TipoEnvio = C. Se convierte en requerido cuando se cuente con la información</li>
+<li><em>Tipo fecha, con formato 2006-05-04</em></li>
+</ul></li>
+<li><strong>Sello</strong>
+
+<ul>
+<li>Atributo opcional para contener el sello digital del archivo de contabilidad electrónica. El sello deberá ser expresado cómo una cadena de texto en formato Base 64</li>
+<li><em>Tipo cadena</em></li>
+</ul></li>
+<li><strong>noCertificado</strong>
+
+<ul>
+<li>Atributo opcional para expresar el número de serie del certificado de sello digital que ampara el archivo de contabilidad electrónica, de acuerdo al acuse correspondiente a 20 posiciones otorgado por el sistema del SAT</li>
+<li><em>Tipo cadena, con no más de 20 caracteres</em></li>
+</ul></li>
+<li><strong>Certificado</strong>
+
+<ul>
+<li>Atributo opcional que sirve para expresar el certificado de sello digital que ampara al archivo de contabilidad electrónica como texto, en formato base 64</li>
+<li><em>Tipo cadena, que no puede contener espacios en blanco</em></li>
+</ul></li>
+</ul>
+
+<h2 id="códigos-agrupadores">Códigos agrupadores</h2>
+
+<p><a href="http://www.sat.gob.mx/fichas_tematicas/buzon_tributario/Documents/codigo_agrupador.pdf">Códigos agrupadores del SAT</a></p>
+
             </div>
           </div>
         </div>
@@ -172,34 +278,28 @@
         <div class=" ">
             <div class="module">
 
-                <h3>Conector software<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
 
-                <div class="module-content">
+<!--                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
-                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
-                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
-                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
-                        <li class="item-178"><a href="/conector/codigos.html">Códigos de respuesta</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/conector_java/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/codigos.html">Códigos de respuesta</a></li>
                     </ul>               
-                </div>
+                </div> -->
 
-                <br />
-                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <h3>documentos<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-xml.html">cfdi - xml</a></li> -->
-                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-yaml.html">cfdi - txt</a></li> -->
-                        <!-- <li class="item-178"><a href="/conector/formatos/ret-xml.html">retenciones - xml</a></li> -->
-                        <li class="item-178"><a href="/conector/formatos/CFDI/">cfdi</a></li>
-                        <li class="item-178"><a href="/conector/formatos/complementosCFDI/">complementos de cfdi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/CFDI/">CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosCFDI/">complementos de CFDi</a></li>
                         <li class="item-178"><a href="/conector/formatos/RET/">retenciones</a></li>
                         <li class="item-178"><a href="/conector/formatos/complementosRET/">complementos de retenciones</a></li>
+                        <li class="item-178"><a href="/conector/index-contabilidad.html">contabilidad electrónica</a></li>
                     </ul>               
                 </div>
 
@@ -210,10 +310,8 @@
 
                 <div class="module-content">
                     <ul class="menu">
-                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-xml.html">cfdi - xml</a></li> -->
-                        <!-- <li class="item-178"><a href="/conector/formatos/cfdi-yaml.html">cfdi - txt</a></li> -->
-                        <!-- <li class="item-178"><a href="/conector/formatos/ret-xml.html">retenciones - xml</a></li> -->
                         <li class="item-178"><a href="/conector/formatos/recursos/">ejemplos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/guia_conector_java.html">guia conector java</a></li>
                     </ul>               
                 </div>
 <!--

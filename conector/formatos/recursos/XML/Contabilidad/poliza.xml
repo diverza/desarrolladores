@@ -2,7 +2,7 @@
 <PLZ:Polizas xmlns:PLZ="www.sat.gob.mx/esquemas/ContabilidadE/1_1/PolizasPeriodo"
  xmlns:contelec_td="www.sat.gob.mx/esquemas/ContabilidadE/1_1/CatalogosParaEsqContE"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="www.sat.gob.mx/esquemas/ContabilidadE/1_1/PolizasPeriodo file:/Users/alonsotrevino/Google%20Drive/diverza-producto/Contabilidad%20Electr%C3%B3nica/Formatos/Poliza/PolizasPeriodo_1_1.xsd" Version="1.1" RFC="&amp;&amp;&amp;000000000" Mes="01" Anio="2057" TipoSolicitud="AF" NumOrden="AAA0000000/00"
+ xsi:schemaLocation="www.sat.gob.mx/esquemas/ContabilidadE/1_1/PolizasPeriodo" Version="1.1" RFC="&amp;&amp;&amp;000000000" Mes="01" Anio="2057" TipoSolicitud="AF" NumOrden="AAA0000000/00"
      NumTramite="0000000000" Sello="Sello0" noCertificado="noCertificado1111111" Certificado="Certificado0">
     <PLZ:Poliza NumUnIdenPol="NumUnIdenPol0" Fecha="2006-05-04" Concepto="Concepto0">
         <PLZ:Transaccion NumCta="NumCta0" DesCta="DesCta0" Concepto="Concepto1" Debe="-1073741773.00" Haber="-1073741773.00">
