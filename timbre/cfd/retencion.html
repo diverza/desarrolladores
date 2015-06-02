@@ -165,9 +165,9 @@
 <hr>
 
 <ul>
-<li>Consulta la documentación sobre el <a href="../resources/RET/RetencionPago.pdf">esquema de retenciones e información de pagos</a> (24/11/2014)</li>
-<li>Descarga el <a href="../resources/RET/retencionpagov1.xsd">XSD esquema</a> que puedes usar para validar su estructura.</li>
-<li>Consulta las <a href="../resources/RET/PyRDocRetInforPago.pdf">preguntas y respuestas importantes</a> publicadas por la autoridad.</li>
+<li>Consulta la documentación sobre el <a href="../recursos/xsd-ret/RetencionPago.pdf">esquema de retenciones e información de pagos</a> (24/11/2014)</li>
+<li>Descarga el <a href="../recursos/xsd-ret/retencionpagov1.xsd">XSD esquema</a> que puedes usar para validar su estructura.</li>
+<li>Consulta las <a href="../recursos/xsd-ret/PyRDocRetInforPago.pdf">preguntas y respuestas importantes</a> publicadas por la autoridad.</li>
 </ul>
 
 <hr>
@@ -178,10 +178,10 @@
 <li>Información propia del comprobante fiscal:
 
 <ul>
-<li><a href="#emisor">Emisor</a></li>
-<li><a href="#receptor">Receptor</a></li>
-<li><a href="#periodo">Periodo</a></li>
-<li><a href="#totales">Totales</a></li>
+<li>Emisor</li>
+<li>Receptor</li>
+<li>Periodo</li>
+<li>Totales</li>
 </ul></li>
 <li>Metadatos sobre el propio documento
 
@@ -214,9 +214,9 @@ El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin e
   <span class="na">FechaExp=</span><span class="s">&quot;2014-12-29T14:29:16-06:00&quot;</span> 
   <span class="na">CveRetenc=</span><span class="s">&quot;25&quot;</span> 
   <span class="na">DescRetenc=</span><span class="s">&quot;Otro tipo de retención&quot;</span> 
-  <span class="na">Cert=</span><span class="s">&quot;...&quot;</span>
-  <span class="na">NumCert=</span><span class="s">&quot;...&quot;</span> 
-  <span class="na">Sello=</span><span class="s">&quot;...&quot;</span> 
+  <span class="na">Cert=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
+  <span class="na">NumCert=</span><span class="s">&quot;20001000000100005867&quot;</span> 
+  <span class="na">Sello=</span><span class="s">&quot;sj1iwg4x6HWgtWsJgpEhaBDKt8lN94sBihy3wpQoKeZTgLzIwjvUw7C413nmJFVALrA9usdUql3/fr6o+LzELRx5LT9AIZ2SnVIWDLbDWNrzJcH8IFZeEcmIL6VrbOB7dwqapFuNX8jeF7wIcoH/J3zxyfhpzxHDekYIBq2BR58=&quot;</span> 
   <span class="na">FolioInt=</span><span class="s">&quot;TEST00001&quot;</span> 
   <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> 
   <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd&quot;</span><span class="nt">&gt;</span>
@@ -231,124 +231,33 @@ El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin e
       <span class="nt">&lt;retenciones:ImpRetenidos</span> <span class="na">TipoPagoRet=</span><span class="s">&quot;Pago provisional&quot;</span> <span class="na">montoRet=</span><span class="s">&quot;500.00&quot;</span> <span class="na">Impuesto=</span><span class="s">&quot;02&quot;</span> <span class="na">BaseRet=</span><span class="s">&quot;1000.00&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/retenciones:Totales&gt;</span>
   <span class="nt">&lt;retenciones:Complemento&gt;</span>
-     <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/timbrefiscaldigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">UUID=</span><span class="s">&quot;02c9d65b-dbe4-4df4-adea-5172f8cbff7c&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-01-05T15:16:54&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;...&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;...&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;...&quot;</span> <span class="nt">/&gt;</span>
+     <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/timbrefiscaldigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">UUID=</span><span class="s">&quot;02c9d65b-dbe4-4df4-adea-5172f8cbff7c&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-01-05T15:16:54&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;ClK1oSakUmptUIKVKwctcCm42YO5MaT1819I+Oh/gbV7UJS3Ko89ftfMbDbDvLa7diw7GSRwiXoyL49BBp3amS48Gjl+baRpCWC3diOgPBreuSH6IXxZ1bgsbEMvXxBLBINmzBdXOVMNYsDY1SmWpaF+D5j3UtCWE6SNpH/kP00=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005867&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;...&quot;</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/retenciones:Complemento&gt;</span>
 <span class="nt">&lt;/retenciones:Retenciones&gt;</span>
 </code></pre></div>
-<h3 id="encabezado">Encabezado</h3>
-
-<ul>
-<li><em>xmlns:retenciones</em>=&quot;<a href="http://www.sat.gob.mx/esquemas/retencionpago/1">http://www.sat.gob.mx/esquemas/retencionpago/1</a>&quot; </li>
-<li><em>xmlns:xsi</em>=&quot;<a href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a>&quot; </li>
-<li><em>FechaExp</em>. Atributo requerido para la expresión de la fecha y hora de expedición del documento de retención e información de pagos. Se expresa en la forma yyyy-mm-ddThh:mm:ssTZD-6, de acuerdo con la especificación ISO 8601</li>
-<li><em>CveRetenc</em>. Atributo requerido para expresar la clave de la retención e información de pagos de acuerdo al catálogo publicado en internet por el SAT</li>
-<li><em>DescRetenc</em>. Atributo opcional que expresa la descripción de la retención e información de pagos en caso de que en el atributo CveRetenc se haya elegido el valor para &#39;otro tipo de retenciones&#39;</li>
-<li><em>Cert</em>. Atributo requerido que sirve para incorporar el certificado de sello digital que ampara el documento de retención e información de pagos como texto, en formato base 64</li>
-<li><em>NumCert</em>. Atributo requerido para expresar el número de serie del certificado de sello digital con el que se selló digitalmente el documento de la retención e información de pagos</li>
-<li><em>Sello</em>. Atributo requerido para contener el sello digital del documento de retención e información de pagos. El sello deberá ser expresado como una cadena de texto en formato base 64 </li>
-<li><em>FolioInt</em>. Atributo opcional para control interno del contribuyente que expresa el folio del documento que ampara la retención e información de pagos. Permite números y/o letras</li>
-<li><em>Version</em>=&quot;1.0&quot; </li>
-<li><em>xsi:schemaLocation</em>=&quot;<a href="http://www.sat.gob.mx/esquemas/retencionpago/1">http://www.sat.gob.mx/esquemas/retencionpago/1</a> <a href="http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd">http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd</a>&quot;</li>
-</ul>
-
-<h3 id="emisor">Emisor</h3>
-
-<ul>
-<li>Nodo requerido para expresar la información del contribuyente emisor del documento electrónico de retenciones e información de pagos.</li>
-<li><em>CURPE</em>. Atributo opcional para la Clave Única del Registro Poblacional del contribuyente emisor del documento de retención e información de pagos.</li>
-<li><em>NomDenRazSocE</em>. Atributo opcional para el nombre, denominación o razón social del contribuyente emisor del documento de retención e información de pagos.</li>
-<li><em>RFCEmisor</em>. Atributo requerido para incorporar la clave en el Registro Federal de Contribuyentes correspondiente al contribuyente emisor del documento de retención e información de pagos, sin guiones o espacios.</li>
-</ul>
-
-<h3 id="receptor">Receptor</h3>
-
-<ul>
-<li>Nodo requerido para expresar la información del contribuyente receptor del documento electrónico de retenciones e información de pagos.</li>
-<li><em>Nacionalidad</em>. Atributo requerido para expresar la nacionalidad del receptor del documento. Nacional o Extranjero.</li>
-<li><em>Nacional</em>
-
-<ul>
-<li>Nodo requerido para expresar la información del contribuyente receptor en caso de que sea de nacionalidad mexicana</li>
-<li><em>CURPR</em>. Atributo opcional para la Clave Única del Registro Poblacional del contribuyente receptor del documento.</li>
-<li><em>NomDenRazSocR</em>. Atributo opcional para el nombre, denominación o razón social del contribuyente receptor del documento.</li>
-<li><em>RFCRecep</em>. Atributo requerido para la clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del documento.</li>
-</ul></li>
-<li><em>Extranjero</em>
-
-<ul>
-<li>Nodo requerido para expresar la información del contribuyente receptor del documento cuando sea residente en el extranjero</li>
-<li><em>NumRegIdTrib</em>. Atributo opcional para expresar el número de registro de identificación fiscal del receptor del documento cuando sea residente en el extranjero</li>
-<li><em>NomDenRazSocR</em>. Atributo requerido para expresar el nombre, denominación o razón social del receptor del documento cuando sea residente en el extranjero</li>
-</ul></li>
-</ul>
-
-<h3 id="periodo">Periodo</h3>
-
-<ul>
-<li>Nodo requerido para expresar el periodo que ampara el documento de retenciones e información de pagos</li>
-<li><em>Ejerc</em>. Atributo requerido para la expresión del ejercicio fiscal (año)</li>
-<li><em>MesIni</em>. Atributo requerido para la expresión del mes inicial del periodo de la retención e información de pagos</li>
-<li><em>MesFin</em>. Atributo requerido para la expresión del mes final del periodo de la retención e información de pagos</li>
-</ul>
-
-<h3 id="totales">Totales</h3>
-
-<ul>
-<li>Nodo requerido para expresar el total de las retenciones e información de pagos efectuados en el período que ampara el documento.</li>
-<li><em>montoTotRet</em>. Atributo requerido para expresar el monto total de las retenciones. Sumatoria de los montos de retención del nodo ImpRetenidos</li>
-<li><em>montoTotExent</em>. Atributo requerido para expresar el total del monto exento de la operación que se relaciona en el comprobante</li>
-<li><em>montoTotGrav</em>. Atributo requerido para expresar el total del monto gravado de la operación que se relaciona en el comprobante</li>
-<li><em>montoTotOperacion</em>. Atributo requerido para expresar el total del monto de la operación que se relaciona en el comprobante</li>
-<li><em>ImpRetenidos</em>
-
-<ul>
-<li>Nodo opcional para expresar el total de los impuestos retenidos que se desprenden de los conceptos expresados en el documento de retenciones e información de pagos</li>
-<li><em>BaseRet</em>. Atributo opcional para expresar la base del impuesto, que puede ser la diferencia entre los ingresos percibidos y las deducciones autorizadas</li>
-<li><em>TipoPagoRet</em>. Atributo requerido para precisar si el monto de la retención es considerado pago definitivo o pago provisional. Valores: Pago definitivo o Pago provisional</li>
-<li><em>montoRet</em>. Atributo requerido para expresar el importe del impuesto retenido en el periodo o ejercicio</li>
-<li><em>Impuesto</em>. Atributo opcional para señalar el tipo de impuesto retenido del periodo o ejercicio conforme al catálogo.</li>
-</ul></li>
-</ul>
-
-<h3 id="addendas">Addendas</h3>
-
-<p>Esta sección puede alojar varias addendas con información útil para ti o tu receptor. Si bien no están sujetos a normatividad, te recomendamos usar addendas populares y seguir estándares.</p>
-
 <h3 id="complementos">Complementos</h3>
 
 <h4 id="complemento-timbre-fiscal">Complemento timbre fiscal</h4>
 
-<p>Esta es la información que responde el SAT cuando recibe un comprobante válido. Es también la respuesta que obtienes de <strong>timbre fiscal</strong></p>
+<p>Esta es la información que responde el servicio de <strong>timbre fiscal</strong> cuando recibimos un comprobante válido.</p>
 
 <ul>
-<li>xmlns:ns2=&quot;<a href="http://www.sat.gob.mx/TimbreFiscalDigital">http://www.sat.gob.mx/TimbreFiscalDigital</a>&quot; </li>
-<li>xmlns:ns3=&quot;<a href="http://www.buzonfiscal.com/TimbradoCFDI/">http://www.buzonfiscal.com/TimbradoCFDI/</a>&quot; </li>
-<li>xmlns:ns4=&quot;<a href="http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI">http://www.buzonfiscal.com/ns/xsd/bf/RequestTimbraCFDI</a>&quot; </li>
-<li>xmlns:ns5=&quot;<a href="http://www.sat.gob.mx/cfd/3">http://www.sat.gob.mx/cfd/3</a>&quot; </li>
-<li>xmlns:ns6=&quot;<a href="http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD">http://www.buzonfiscal.com/ns/xsd/bf/TimbradoCFD</a>&quot; </li>
-<li>xmlns:ns7=&quot;<a href="http://www.sat.gob.mx/detallista">http://www.sat.gob.mx/detallista</a>&quot; </li>
-<li>xmlns:ns8=&quot;<a href="http://www.sat.gob.mx/terceros">http://www.sat.gob.mx/terceros</a>&quot; </li>
-<li>xmlns:ns9=&quot;<a href="http://www.sat.gob.mx/ecc">http://www.sat.gob.mx/ecc</a>&quot; </li>
-<li>xmlns:ns10=&quot;<a href="http://www.sat.gob.mx/implocal">http://www.sat.gob.mx/implocal</a>&quot; </li>
-<li>xmlns:ns11=&quot;<a href="http://www.sat.gob.mx/ecb">http://www.sat.gob.mx/ecb</a>&quot; </li>
-<li>xmlns:ns12=&quot;<a href="http://www.sat.gob.mx/divisas">http://www.sat.gob.mx/divisas</a>&quot; </li>
-<li>xmlns:ns13=&quot;<a href="http://www.sat.gob.mx/donat">http://www.sat.gob.mx/donat</a>&quot; </li>
-<li>xmlns:ns14=&quot;<a href="http://www.buzonfiscal.com/ns/referenceID/v1">http://www.buzonfiscal.com/ns/referenceID/v1</a>&quot; </li>
-<li>xmlns:ns15=&quot;<a href="http://new.webservice.namespace">http://new.webservice.namespace</a>&quot; </li>
+<li>xmlns:tfd=&quot;<a href="http://www.sat.gob.mx/TimbreFiscalDigital">http://www.sat.gob.mx/TimbreFiscalDigital</a>&quot; </li>
+<li>version=&quot;1.0&quot;</li>
 <li><strong>selloSAT</strong> = ...
 
 <ul>
-<li>Sello de recepción</li>
+<li>Sello de certificación</li>
 </ul></li>
 <li><strong>noCertificadoSAT</strong>
 
 <ul>
-<li>Número de certificado de la recepción</li>
+<li>Número de certificado de la certificación</li>
 </ul></li>
 <li>selloCFD = ...
 
 <ul>
-<li>Mismo sello con que fue enviado el documento</li>
+<li>Mismo sello de CFDI con que fue enviado el documento</li>
 </ul></li>
 <li><strong>FechaTimbrado</strong>=&quot;2013-12-09T19:57:34&quot;
 
@@ -360,7 +269,6 @@ El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin e
 <ul>
 <li>Identificador del comprobante ante el SAT</li>
 </ul></li>
-<li>version=&quot;1.0&quot;</li>
 </ul>
 
 <p>* Los campos en <strong>negritas</strong> representan a los nodos de información que genera diverza como PAC y es entregada al SAT.</p>
@@ -391,6 +299,69 @@ El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin e
         <div class=" ">
             <div class="module">
 
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
                 <h3>CFDI<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -460,6 +431,7 @@ El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin e
                         <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
                     </ul>               
                 </div>
+                -->
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -472,6 +444,15 @@ El servicio de conector fiscal recibe un CFDI sin sello, sin certificado y sin e
                         <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
                     </ul>               
                 </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
             </div>
             <div class="clr"></div>
         </div>

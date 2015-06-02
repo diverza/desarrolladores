@@ -235,6 +235,106 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:terceros=&quot;<a href="http://www.sat.gob.mx/terceros">http://www.sat.gob.mx/terceros</a>&quot;</p>
+
+<ul>
+<li><p><strong>PorCuentadeTerceros</strong></p>
+
+<ul>
+<li><strong>version</strong> : 1.1<br>
+Atributo requerido con valor prefijado a 1.1 que indica la versión del estandar bajo el que se encuentra expresado el complemento.</li>
+<li><strong>rfc</strong> : AAA010101AAA<br>
+Atributo requerido para la Clave del Registro Federal de Contribuyentes correspondiente al contribuyente emisor del comprobante sin guiones o espacios.</li>
+<li>nombre  : EMPRESA DE PRUEBA S.A. DE C.V.<br>
+Atributo opcional para el nombre o razón social del contribuyente emisor del comprobante.<br></li>
+<li>InformacionFiscalTercero</li>
+<li><strong>calle</strong> : Finisterra<br>
+Este atributo requerido sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.</li>
+<li>noExterior  : 750<br>
+Este atributo opcional sirve para expresar el número particular en donde se da la ubicación sobre una calle dada.</li>
+<li>noInterior  : 5-B<br>
+Este atributo opcional sirve para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación de forma precisa.</li>
+<li>colonia : Centro<br>
+Este atributo opcional sirve para precisar la colonia en donde se da la ubicación cuando se desea ser más específico en casos de ubicaciones urbanas.</li>
+<li>localidad : San Luisito<br>
+Atributo opcional que sirve para precisar la ciudad o población donde se da la ubicación.</li>
+<li>referencia  : Esquina con Insurgentes<br>
+Atributo opcional para expresar una referencia de ubicación adicional.</li>
+<li><strong>municipio</strong> : Monterrey<br>
+Atributo requerido que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.</li>
+<li><strong>estado</strong>  : Nuevo León<br>
+Atributo requerido que sirve para precisar el estado o entidad federativa donde se da la ubicación.</li>
+<li><strong>pais</strong>  : México<br>
+Atributo requerido que sirve para precisar el país donde se da la ubicación.</li>
+<li><strong>codigoPostal</strong>  : 64000<br>
+Atributo requerido que sirve para asentar el código postal en donde se da la ubicación.<br></li>
+<li>InformacionAduanera</li>
+<li><strong>numero</strong>  : ----<br>
+Atributo requerido para expresar el número del documento aduanero que ampara la importación del bien.</li>
+<li><strong>fecha</strong> : ----<br>
+Atributo requerido para expresar la fecha de expedición del documento aduanero que ampara la importación del bien.</li>
+<li>aduana  : ----<br>
+Atributo opcional para precisar la aduana por la que se efectuó la importación del bien.<br></li>
+<li>Parte</li>
+<li><strong>cantidad</strong>  : ----<br>
+Atributo requerido para precisar la cantidad de bienes o servicios del tipo particular definido por la presente parte.</li>
+<li>unidad  : ----<br>
+Atributo opcional para precisar la unidad de medida aplicable para la cantidad expresada en la parte.</li>
+<li>noIdentificacion  : ----<br>
+Atributo opcional para expresar el número de serie del bien o identificador del servicio amparado por la presente parte.</li>
+<li><strong>descripcion</strong> : ----<br>
+Atributo requerido para precisar la descripción del bien o servicio cubierto por la presente parte.</li>
+<li>valorUnitario : ----<br>
+Atributo opcional para precisar el valor o precio unitario del bien o servicio cubierto por la presente parte.</li>
+<li>importe : ----<br>
+Atributo opcional para precisar el importe total de los bienes o servicios de la presente parte. Debe ser equivalente al resultado de multiplicar la cantidad por el valor unitario expresado en la parte.<br></li>
+<li>InformacionAduanera
+
+<ul>
+<li><strong>numero</strong>  : ----<br>
+Atributo requerido para expresar el número del documento aduanero que ampara la importación del bien.</li>
+<li><strong>fecha</strong> : ----<br>
+Atributo requerido para expresar la fecha de expedición del documento aduanero que ampara la importación del bien.</li>
+<li>aduana  : ----<br>
+Atributo opcional para precisar la aduana por la que se efectuó la importación del bien.<br></li>
+</ul></li>
+<li>CuentaPredial</li>
+<li><strong>numero</strong>  : 738212032FD271<br>
+Atributo requerido para precisar el número de la cuenta predial del inmueble cubierto por el presente concepto en caso de recibos de arrendamiento.</li>
+<li><strong>Impuestos</strong></li>
+<li>Retenciones
+
+<ul>
+<li><strong>Retencion</strong></li>
+<li><strong>impuesto</strong>  : IVA<br>
+Atributo requerido para señalar el tipo de impuesto retenido, valores aceptados: &quot;ISR&quot;, &quot;IVA&quot;.</li>
+<li><strong>importe</strong> : 0.00<br>
+Atributo requerido para señalar el importe o monto del impuesto retenido. </li>
+</ul></li>
+<li>Traslados
+
+<ul>
+<li><strong>Traslado</strong></li>
+<li><strong>impuesto</strong>  : IVA<br>
+Atributo requerido para señalar el tipo de impuesto trasladado, valores aceptados: &quot;ISR&quot;, &quot;IVA&quot;.</li>
+<li><strong>tasa</strong>  : 16.00<br>
+Atributo requerido para señalar la tasa del impuesto que se traslada por cada concepto amparado en el comprobante.</li>
+<li><strong>importe</strong> : 0.00<br>
+Atributo requerido para señalar el importe del impuesto trasladado.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

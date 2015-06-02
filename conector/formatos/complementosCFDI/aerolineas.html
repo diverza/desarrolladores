@@ -228,6 +228,43 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:aerolineas=&quot;<a href="http://www.sat.gob.mx/aerolineas">http://www.sat.gob.mx/aerolineas</a>&quot;</p>
+
+<ul>
+<li><p>Aerolineas</p>
+
+<ul>
+<li><strong>Version</strong> : 1.0<br>
+Expresa la versión del complemento, el valor deberá estar fijado en 1.0.</li>
+<li><strong>TUA</strong> : 1500.00<br>
+Importe de &quot;Tarifa de Uso de Aeropuerto&quot;, aplicable al boleto de viaje.</li>
+</ul></li>
+<li><p>OtrosCargos</p>
+
+<ul>
+<li><strong>TotalCargos</strong> : 150.00<br>
+Expresa dentro del nodo opcional, el total de cargos adicionales que se estén aplicando.</li>
+</ul></li>
+<li><p>Cargo</p>
+
+<ul>
+<li><strong>CodigoCargo</strong> : NW<br>
+Código según el catálogo de la IATA.</li>
+<li><strong>Importe</strong> : 150.00<br>
+Valor monetario del cargo al que se está aplicando.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

@@ -254,6 +254,69 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:consumodecombustibles=&quot;<a href="http://www.sat.gob.mx/Consumodecombustibles">http://www.sat.gob.mx/Consumodecombustibles</a>&quot;</p>
+
+<ul>
+<li><p><strong>ConsumoDeCombustibles</strong></p>
+
+<ul>
+<li><strong>version</strong> : 1.0<br>
+Expresión de la versión del complemento, fijado en 1.0.</li>
+<li><strong>tipoOperacion</strong> : monedero electrónico<br>
+Es el tipo de operación de acuerdo con el medio de pago, el valor prefijado es &quot;monedero electrónico&quot;.</li>
+<li><strong>numeroDeCuenta</strong> : B52192-124<br>
+Número de cuenta del adquirente del monedero electrónico.</li>
+<li>subTotal : 5976.00<br>
+Suma de todos los importes tipo CoceptoConsumoDeCombustibles.</li>
+<li><strong>total</strong> : 6932.16.00<br>
+Total de consumo de combustibles.</li>
+</ul></li>
+<li><p><strong>Conceptos</strong></p>
+
+<ul>
+<li><strong>ConceptoConsumoDeCombustibles</strong></li>
+<li><strong>identificador</strong> : 13847<br>
+Se refiere al número del monedero electrónico.</li>
+<li><strong>fecha</strong> : 2014-08-08T01:40:15<br>
+Fecha y hora de la expedición de la operación reportada, en el formato AAAA-MM-DDTHH:MM:SS según la especificación ISO 8601.</li>
+<li><strong>rfc</strong> : AAA010101AAA<br>
+RFC del enajenante del combustible.</li>
+<li><strong>claveEstacion</strong> : 555<br>
+Clave de ciente de la estación de servicio, a 10 caracteres cuando sea requerido.</li>
+<li><strong>cantidad</strong> : 450.00<br>
+Cantidad del combustible adquirido.</li>
+<li><strong>nombreCombustible</strong> : Premium<br>
+Nombre del combustible adquirido.</li>
+<li><strong>folioOperacion</strong> : 2351<br>
+Folio de cada operación realizada por cada uno de los monederos electrónicos.</li>
+<li><strong>valorUnitario</strong> : 13.28<br>
+Precio unitario del combustible adquirido, se expresa el precio por litro.</li>
+<li><strong>importe</strong> : 5976.00<br>
+Monto total del consumo de combustible, debe de ser equivalente al resultado de multiplicarla cantidad por el valor unitario.</li>
+</ul></li>
+<li><p><strong>Determinados</strong></p>
+
+<ul>
+<li><strong>Determinado</strong></li>
+<li><strong>impuesto</strong> : IVA<br>
+Define el tipo de impuesto que aplicará.</li>
+<li><strong>tasa</strong> : 16.00<br>
+Señala la tasa del impuesto por cada concepto amparado en el comprobante.</li>
+<li><strong>importe</strong> : 956.16<br>
+Define el importe o monto total del impuesto.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

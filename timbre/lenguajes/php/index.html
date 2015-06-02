@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <!-- syntax highlighting CSS -->
+  <link rel="stylesheet" href="/css/syntax.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/main.css">
+  <!-- // <script src="http://syssgx.github.io/xml.js/js/xmllint.js"></script> -->
+  <!-- // <script src="/scripts/bootstrap.min.js"></script> -->
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="/scripts/jquery.min.js"><\/script>')</script>
+	<script src="/scripts/bootstrap.min.js"></script>
+<!--<script src="scripts/codemirror.js"></script>-->
+    <!--<script src="scripts/searchcursor.js"></script>-->
+    <!--<script src="scripts/match-highlighter.js"></script>-->
+    <!--<script src="scripts/xml.js"></script>-->
+	<!--<script src="scripts/prettify.js"></script>-->
+	<!-- <script src="/scripts/xmllint.js"></script> -->
+	<!-- // <script src="/scripts/script.js"></script> -->
+
+  <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-286386-31', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <title>PHP</title>
+</head>
+
+<body class="page-content page-columns-2">
+  <a name="top" id="top"></a>
+<div id="header-bg">
+  <div id="bg-top"><div id="bg-top-left"></div></div>
+  <div id="bg-fix"></div>
+</div>
+<div class="container" id="header">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <a id="logo" class="brand icon-logo-off" href="http://diverza.com"></a>
+        <div class="nav-collapse">
+
+          <ul class="menu nav">
+            <li class="item-101">
+              <a href="">Portada</a>
+            </li>
+            <li class="item-102">
+              <a href="http://www.diverza.com/historia" >Historia</a>
+            </li>
+            <li class="item-103 parent">
+              <a href="http://www.diverza.com/oficinas" >Oficinas</a>
+            </li>
+            <li class="item-104">
+              <a href="http://blog.diverza.com" >Blog</a>
+            </li>
+            <li class="item-105">
+              <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">Ecosistema</a>
+            </li>
+            <li class="item-106">
+              <a href="http://www.diverza.com/soporte" >Soporte</a>
+            </li>
+            <li class="item-107">
+            <a href="http://www.diverza.com/acceso" >Acceso</a>
+            </li>
+            <li id="colors-bar">
+              <div class="color-bar color-bar-blue"></div>
+              <div class="color-bar color-bar-yellow"></div>
+              <div class="color-bar color-bar-green"></div>
+              <div class="color-bar color-bar-red"></div>
+            </li></ul>
+          </div>
+          <div class="nav-social">
+            <ul class="menu-social">
+              <li class="item-131"><a class="rss" href="http://feeds.feedburner.com/blog-diverza">RSS</a></li><li class="item-130"><a class="googleplus" href="https://plus.google.com/u/0/100935627964150268592/posts">Google Plus</a></li><li class="item-129"><a class="youtube" href="http://www.youtube.com/user/DiverzaTv?feature=mhee">YouTube</a></li><li class="item-128"><a class="facebook" href="http://www.facebook.com/pages/Diverza/350358341644324">Facebook</a></li><li class="item-127"><a class="twitter" href="http://twitter.com/diverza">Twitter</a></li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" id="header-brand-dummy"></div>
+    <div id="header-brand">
+      <div class="navbar container">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="row">
+
+              <div class="span2 nav-welcome ">
+                <a href="/"><span class="welcome">desarrolladores<span class="diverza-dot">.</span></span></a>
+              </div>
+
+              <div class="nav-collapse-brand" id="menu-sub">
+                <ul class="menu nav">
+                  <li class="item-102" id="stamp-menu-item">
+                    <a href="/timbre/">Timbre Fiscal</a>
+                  </li>
+                  <li class="item-103" id="conector-menu-item">
+                    <a href="/conector/">Conector Fiscal</a>
+                  </li>
+                  <li class="item-104">
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  </li>
+                  <li class="item-105">
+                    <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="nav-account">
+                <div class="module">
+                  <div class="custom">01.800.070.4000</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <style>
+  #stamp-menu-item { color: #fff !important;
+    background: #ddd;
+    -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -ms-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.20);
+    height: 35px;
+    margin-top: 2px;
+  }
+</style>
+
+<div id="body">
+  <div class="container">
+    <div id="main" class="row">
+      <div id="content" class="span12">
+        <div id="system-message-container">
+        </div>
+        <div id="component">
+          <div class="item-pagepage-history">
+            <div class="clr"></div>
+            <div class="article-content-text">
+              <h1>PHP<span class="diverza-dot">.</span></h1>
+              <span class="h1-line"></span>
+              <div class="clr">&nbsp;</div>
+              <p>La siguiente guía comprende la conexión con el servicio de timbrado utilizando PHP 4.0.4 o superior.</p>
+
+<p>El código de esta guía se encuentra disponible para su descarga en el <a href="https://github.com/diverza/desarrolladores/tree/master/Timbre/PHP">repositorio de ejemplos para Timbre Fiscal.</a></p>
+
+<hr>
+
+<h2 id="generar-timbre">Generar Timbre</h2>
+
+<p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
+ Token de prueba: ABCD1234
+ Metodo HTTP: POST
+ Header HTTP: x-auth-token
+</code></pre></div>
+<p>Así como también el CFDI de prueba que usaremos en este ejercicio:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span> 
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot;</span> 
+    <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> 
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> 
+    <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+    <span class="na">LugarExpedicion=</span><span class="s">&quot;D.F.,MEXICO&quot;</span> 
+    <span class="na">NumCtaPago=</span><span class="s">&quot;DESCONOCIDO&quot;</span> 
+    <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> 
+    <span class="na">metodoDePago=</span><span class="s">&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+    <span class="na">subTotal=</span><span class="s">&quot;1000.00&quot;</span> 
+    <span class="na">total=</span><span class="s">&quot;1160.00&quot;</span> 
+    <span class="na">fecha=</span><span class="s">&quot;2013-12-02T22:18:24&quot;</span> 
+    <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span> 
+    <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> 
+    <span class="na">sello=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+    <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
+    <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA DEMO&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;34343&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">estado=</span><span class="s">&quot;DISTRITO FEDERAL&quot;</span> <span class="na">municipio=</span><span class="s">&quot;BENITO JUAREZ&quot;</span> <span class="na">calle=</span><span class="s">&quot;REFORMA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;PERSONA FISCA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;PUBLICO EN GENERAL&quot;</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span> <span class="na">calle=</span><span class="s">&quot;INSURGENTES&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;PZA&quot;</span> <span class="na">unidad=</span><span class="s">&quot;CANT&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Impuestos&gt;</span>
+        <span class="nt">&lt;cfdi:Traslados&gt;</span>
+            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;160.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;160.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+    <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<p><strong>Nota:</strong> Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd/">Como generar un CFDI.</a></p>
+
+<hr>
+
+<h3 id="inicio">Inicio</h3>
+
+<p>Primeramente necesitamos crear un nuevo archivo con el nombre <em>timbrar.php</em> y una vez que lo hayamos creado, por motivos de facilidad para esta guía es almacenar el CFDI a timbrar en una variable:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$cfd</span> <span class="o">=</span> <span class="o">&lt;&lt;&lt;</span><span class="nx">EOF</span>
+<span class="o">&lt;?</span><span class="nx">xml</span> <span class="nx">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nx">encoding</span><span class="o">=</span><span class="s2">&quot;UTF-8&quot;</span><span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;cfdi:Comprobante </span>
+<span class="x">    xsi:schemaLocation=&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd&quot; </span>
+<span class="x">    xmlns:cfdi=&quot;http://www.sat.gob.mx/cfd/3&quot; </span>
+<span class="x">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; </span>
+<span class="x">    xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+<span class="x">    LugarExpedicion=&quot;D.F.,MEXICO&quot; </span>
+<span class="x">    NumCtaPago=&quot;DESCONOCIDO&quot; </span>
+<span class="x">    formaDePago=&quot;PAGO EN UNA SOLA EXHIBICION&quot; </span>
+<span class="x">    metodoDePago=&quot;TRANSFERENCIA ELECTRONICA&quot;</span>
+<span class="x">    subTotal=&quot;1000.00&quot; </span>
+<span class="x">    total=&quot;1160.00&quot; </span>
+<span class="x">    fecha=&quot;2013-12-02T22:18:24&quot; </span>
+<span class="x">    certificado=&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot; </span>
+<span class="x">    noCertificado=&quot;20001000000100005867&quot; </span>
+<span class="x">    sello=&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot; </span>
+<span class="x">    tipoDeComprobante=&quot;ingreso&quot;</span>
+<span class="x">    version=&quot;3.2&quot; &gt;</span>
+<span class="x">    &lt;cfdi:Emisor nombre=&quot;EMPRESA DEMO&quot; rfc=&quot;AAA010101AAA&quot;&gt;</span>
+<span class="x">        &lt;cfdi:DomicilioFiscal codigoPostal=&quot;34343&quot; pais=&quot;MEXICO&quot; estado=&quot;DISTRITO FEDERAL&quot; municipio=&quot;BENITO JUAREZ&quot; calle=&quot;REFORMA&quot;/&gt;</span>
+<span class="x">        &lt;cfdi:RegimenFiscal Regimen=&quot;PERSONA FISCA&quot;/&gt;</span>
+<span class="x">    &lt;/cfdi:Emisor&gt;</span>
+<span class="x">    &lt;cfdi:Receptor nombre=&quot;PUBLICO EN GENERAL&quot; rfc=&quot;XAXX010101000&quot;&gt;</span>
+<span class="x">        &lt;cfdi:Domicilio pais=&quot;MEXICO&quot; calle=&quot;INSURGENTES&quot;/&gt;</span>
+<span class="x">    &lt;/cfdi:Receptor&gt;</span>
+<span class="x">    &lt;cfdi:Conceptos&gt;</span>
+<span class="x">        &lt;cfdi:Concepto importe=&quot;1000.00&quot; valorUnitario=&quot;1000.00&quot; descripcion=&quot;PZA&quot; unidad=&quot;CANT&quot; cantidad=&quot;1&quot;/&gt;</span>
+<span class="x">    &lt;/cfdi:Conceptos&gt;</span>
+<span class="x">    &lt;cfdi:Impuestos&gt;</span>
+<span class="x">        &lt;cfdi:Traslados&gt;</span>
+<span class="x">            &lt;cfdi:Traslado importe=&quot;160.00&quot; tasa=&quot;160.00&quot; impuesto=&quot;IVA&quot;/&gt;</span>
+<span class="x">        &lt;/cfdi:Traslados&gt;</span>
+<span class="x">    &lt;/cfdi:Impuestos&gt;</span>
+<span class="x">    &lt;cfdi:Addenda/&gt;</span>
+<span class="x">&lt;/cfdi:Comprobante&gt;</span>
+<span class="x">EOF</span>
+</code></pre></div>
+<hr>
+
+<h3 id="petición-http">Petición HTTP</h3>
+
+<p>Para realizar peticiones HTTP desde PHP es necesario crear una variable donde almacenaremos la configuración: el método <em>POST</em>, el token de seguridad en el header <em>x-auth-token</em> y como contenido el CFDI a timbrar:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$request_options = array(</span>
+<span class="x">  &#39;http&#39; =&gt; array(</span>
+<span class="x">    &#39;method&#39; =&gt; &quot;POST&quot;,</span>
+<span class="x">    &#39;header&#39; =&gt; &quot;x-auth-token: ABCD1234\r\n&quot;,</span>
+<span class="x">    &#39;content&#39; =&gt; $cfd,</span>
+<span class="x">    &#39;ignore_errors&#39; =&gt; true</span>
+<span class="x">));</span>
+</code></pre></div>
+<p>El token de seguridad que se utilizara para la guía sera el de prueba <strong>ABCD1234</strong>, sin embargo una vez que se desee pasar a ambiente productivo este deberá ser cambiado. </p>
+
+<p>Para realizar la petición es necesario crear una instancia de <em>stream context</em> utilizando el siguiente método pasándole como parámetro las opciones anteriormente creadas:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$stream_context = stream_context_create($request_options);</span>
+</code></pre></div>
+<p>Finalmente ejecutamos la petición de la siguiente manera:</p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">$response = file_get_contents(&#39;http://staging.diverza.com/stamp&#39;, false, $stream_context);</span>
+</code></pre></div>
+<p><strong>Nota:</strong> Se agrego la URL tal cual como se muestra al inicio de la guía.</p>
+
+<hr>
+
+<h3 id="obtener-el-timbre">Obtener el timbre</h3>
+
+<p>Para obtener los datos de respuesta del servicio de timbre simplemente se necesita lo siguiente:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="vg">$response_code</span> <span class="o">=</span> <span class="vg">$http_response_header</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">;</span>
+<span class="vg">$stamp</span> <span class="o">=</span> <span class="vg">$response</span><span class="p">;</span>
+
+<span class="n">echo</span> <span class="s2">&quot;Codigo HTTP: $response_code</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="n">echo</span> <span class="s2">&quot;Timbre: $stamp</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="sc">?&gt;</span>
+</code></pre></div>
+<p>Si ejecutamos el código utilizando:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ php timbrar.php
+</code></pre></div>
+<p><strong>Nota:</strong> La dirección del ejecutable <em>php</em> puede variar entre sistemas operativos y procesos de instalación.</p>
+
+<p>Podremos observar que el timbre es devuelto por el servicio en el cuerpo de la respuesta, y al imprimir la variable <em>stamp</em> debe observarse algo similar a lo siguiente:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> 
+  <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> 
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> 
+
+  <span class="na">selloSAT=</span><span class="s">&quot;Ae0K1DyTpecq8xZAB8SSCccx5Gzrqr+HaD1tEQ/dFNqobiZDfJ2U9eJ9BRxYn1K6Zw4A0W2PbBs3VUFFasuJHkfw5nLxb+M/hu55Gomhw9OjhKsH0ABnOGa3vQHWPHHDFB9zb4/sMxdUTqEubent8Zvb3nfKaxdgX9BkVFYgd+c=&quot;</span> 
+  <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> 
+  <span class="na">selloCFD=</span><span class="s">&quot;qTzEwNUDvk/WpeFstpf/FLNmiHMxiL8pDTXGNb+DCFO0Z7SXMZJCim3JAlBw8Astvr0/jiVfo3WdWbaX88cC1l1+iipOLdedbFNHZUmsW86nC1YQHWw0S6mEiGH0ZxGa5KOl/1mrvPlDweeCiyYavNQeEuO1r0/ELobMi07w6ps=&quot;</span> 
+  <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-27T19:33:42&quot;</span> 
+  <span class="na">UUID=</span><span class="s">&quot;e52d9982-1cd1-4b99-aa3c-0f6172d07412&quot;</span> 
+
+  <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>El código de respuesta del servidor almacenado en la variable <em>response_code</em> deberá ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
+
+<hr>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar-right" class="span3 sidebar">
+    <div class="sidebar-padding">
+        <div class=" ">
+            <div class="module">
+
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
+                <h3>CFDI<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos del CFDi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/retencion.html">CFDi de retenciones</a></li>
+                    </ul>
+                </div>
+
+                <h3>Sello<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/cadena-retenciones.html">La cadena original para el documento de retenciones</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+                <h3>Servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
+                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
+                    </ul>
+                </div>
+
+                <h3>Cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cancelacion/">Servicio</a></li>
+                        <li class="item-178"><a href="/timbre/cancelacion/respuesta_cancelacion.html">Códigos de respuesta</a></li>
+                    </ul>               
+                </div>
+
+                <br />
+                <h3>Ejemplos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
+                        <li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
+                        <li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
+                        <li class="item-178"><a href="/timbre/go">Go</a></li>
+                        <li class="item-178"><a href="/timbre/java">Java</a></li>
+                        <li class="item-178"><a href="/timbre/php">PHP</a></li>
+                        <li class="item-178"><a href="/timbre/perl">Perl</a></li>
+                        <li class="item-178"><a href="/timbre/python">Python</a></li>
+                        <li class="item-178"><a href="/timbre/ruby">Ruby</a></li>
+                        <li class="item-178"><a href="/timbre/terminal">Terminal</a></li>
+                        <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
+                    </ul>               
+                </div>
+                -->
+
+                <!-- <br />
+                <h3>herramientas<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/oficinas/aguascalientes">Prueba el Servicio</a></li>
+                        <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
+                    </ul>               
+                </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
+            </div>
+            <div class="clr"></div>
+        </div>
+    </div>
+</div>
+    </div>
+  </div>
+</div>
+  <style>
+    .hero-unit { }
+    #body { background: #fff url('/images/content-dev.png') no-repeat 50% 0 ; }
+  </style>
+
+  <div id="footer">
+	<div class="container">
+		<footer>
+
+			<ul class="menu">
+				<li class="item-123"><a href="http://www.diverza.com/privacidad">Aviso de privacidad</a></li><li class="item-124"><a href="http://www.diverza.com/terminos">Términos y condiciones</a></li><li class="item-125"><a href="http://www.diverza.com/integrate">Intégrate al equipo</a></li><li class="item-135"><a href="http://www.diverza.com/mi-cuenta">Mi cuenta</a></li></ul>
+
+				<div class="custom">
+
+					<div class="row-fluid">
+						<br>
+						<div class="span3"></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.greatplacetowork.com.mx" title="GPTW" class="footer-logo-gptw" style="margin: -20px 0 0 auto;" target="_blank">GPTW</a></div>
+
+						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
+
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+
+						<div class="span2"></div>
+
+						<div class="clr"></div>
+
+						<div style="font-size:10px; margin-top: 5px;">DIVERZA © Copyright.&nbsp;Los nombres y logos de Buzón Fiscal®, Conector Fiscal® y Timbre Fiscal® son marcas registradas de Diverza Información y Análisis, SAPI de CV. Otros nombres y logos son marcas registradas de sus respectivos propietarios. Todo el contenido de este sitio y los documentos para descarga son propiedad intelectual de Diverza Información y Análisis, SAPI de CV.<br> 
+
+							<div class="clr"></div>
+							<div style="font-size:12px;margin-top: 5px;text-align: center;">
+
+								<script type="text/javascript">
+									<!--
+									var prefix = '&#109;a' + 'i&#108;' + '&#116;o';
+									var path = 'hr' + 'ef' + '=';
+									var addy64856 = 'c&#111;nt&#97;ct&#111;' + '&#64;';
+									addy64856 = addy64856 + 'd&#105;v&#101;rz&#97;' + '&#46;' + 'c&#111;m';
+									document.write('<a ' + path + '\'' + prefix + ':' + addy64856 + '\'>');
+									document.write(addy64856);
+									document.write('<\/a>');
+									//-->\n </script>
+									<span style="display: none;">This email address is being protected from spambots. You need JavaScript enabled to view it.
+<script type="text/javascript">
+	<!--
+	document.write('</');
+	document.write('span>');
+ //-->
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
+</div></div>
+
+</footer>
+</div>
+</div>
+</body>
+</html>

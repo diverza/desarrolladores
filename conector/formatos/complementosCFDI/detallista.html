@@ -372,6 +372,357 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:detallista=&quot;<a href="http://www.sat.gob.mx/detallista">http://www.sat.gob.mx/detallista</a>&quot;</p>
+
+<ul>
+<li><p><strong>detallista</strong></p>
+
+<ul>
+<li>type : SimpleInvoiceType<br>
+Tipo de transacción bajo estandar del sector detallista, valor prefijado &quot;SimpleInvoiceType&quot;.</li>
+<li>contentVersion : 1.3.1<br>
+Versión del estandar XML utilizado para la elaboración de la guia del sector detallista, valor prefijado &quot;1.3.1&quot;.</li>
+<li><strong>documentStructureVersion</strong> : ACM8.1<br>
+Versión de la estructura del documento generado AMC8.1.</li>
+<li><strong>documentStatus</strong> : ORIGINAL<br>
+Función del mensaje, los valores pueden ser &quot;ORIGINAL&quot;, &quot;COPY&quot;, &quot;REEMPLAZA&quot;, &quot;DELETE&quot;.<br></li>
+</ul></li>
+<li><p><strong>requestForPaymentIdentification</strong></p>
+
+<ul>
+<li><strong>entityType</strong> : INVOICE<br>
+Especifica el tipo de transacción, valores posibles son: <code>INVOICE</code>, <code>DEBIT_NOTE</code>, <code>CREDIT_NOTE</code>, <code>LEASE_RECEIPT</code>, <code>PARTIAL_INVOICE</code>, <code>TRANSPORT_DOCUMENT</code>, <code>AUTO_INVOICE</code>.<br></li>
+</ul></li>
+<li><p>specialInstruction</p>
+
+<ul>
+<li><strong>code</strong> : ZZZ<br>
+Atributo para especificar el codigo del tipo de instrucciones comerciales que son enviadas, valores permitidos: &quot;AAB&quot;, &quot;DUT&quot;, &quot;PUR&quot;, &quot;ZZZ&quot;.</li>
+<li><strong>text</strong> : TRES MIL CIENTO CINCUENTA Y CINCO PESOS 80/100 M.N.<br>
+Nodo requerido que especifica información de texto que aplica a todo el mensaje de la factura. La información estará en función al código del tema de texto.</li>
+</ul></li>
+<li><p><strong>orderIdentification</strong></p>
+
+<ul>
+<li><strong>referenceIdentification</strong> : 18510599<br>
+Especifica el número de orden de compra (comprador) a la que hace referencia la factura.</li>
+<li><strong>type</strong> : ON<br>
+Atributo que especifica el código para identificar la orden de compra, valor fijo &quot;ON&quot;.</li>
+<li>referenceDate : 2014-07-17<br>
+Especifica la fecha de la orden de compra(comprador) a la que hace referencia la factura.<br></li>
+</ul></li>
+<li><p><strong>AditionalInformation</strong></p>
+
+<ul>
+<li><strong>referenceIdentification</strong> : P00065<br>
+Especifica el número de referencia adicional.</li>
+<li><strong>type</strong> : ACE<br>
+Atributo para especificar el código de referencias adicionales, valors aceptados son: &quot;AAE&quot;, &quot;CK&quot;, &quot;ACE&quot;, &quot;ATZ&quot;, &quot;DQ&quot;, &quot;IV&quot;, &quot;ON&quot;, &quot;AWR&quot;.</li>
+</ul></li>
+<li><p>DeliveryNote</p>
+
+<ul>
+<li><strong>referenceIdentification</strong> : 1111111111<br>
+Número emitido por el comprador cuando recibe la mercancía que es la facturada.</li>
+<li>ReferenceDate : 2014-07-23<br>
+Fecha en la que fue asignado el no. de folio de recibo.</li>
+</ul></li>
+<li><p><strong>buyer</strong></p>
+
+<ul>
+<li><strong>gln</strong> : 7504000107903<br>
+Especifica el número global de localización  (GLN) del comprador.</li>
+<li>contactInformation</li>
+<li><strong>personOrDepartmentName</strong>
+
+<ul>
+<li><strong>text</strong> : 0388<br>
+Contacto de nodo requerido que especifica el contacto de compras.</li>
+</ul></li>
+</ul></li>
+<li><p>seller</p>
+
+<ul>
+<li><strong>gln</strong> : 7504023722008<br>
+Especifica el número global de localización (GLN) del vendedor.</li>
+<li><strong>alternatePartyIdentification</strong> : 130636<br>
+Especifica el código para identificar qué tipo de identificación secundaria se le asignó al proveedor.</li>
+<li><strong>type</strong> : SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY<br>
+Especifica el tipo de identificación secundaria que se le asignaó al proveedor, valores aceptados: <code>IEPS_REFERENCE</code>, <code>SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY</code>.</li>
+</ul></li>
+<li><p>shipTo</p>
+
+<ul>
+<li>gln : 7504023722000<br>
+Especifica el número global de localización (GLN) de la ubicación donde debe de realizarse la entrega de mercancías.</li>
+<li>nameAndAddress</li>
+<li>name : CONTENEDORES INDUSTRIALES DE PRUEBA<br>
+Especifica la razón social de la empresa a donde se va a embarcar en caso de ser diferente al comprador, o el nombre de la bodega o centro de distribución.</li>
+<li>streetAddressOne : Av. República Mexicana 1234<br>
+Especifica el domicilio a donde se embarcara la mercancía: Calle, número exterior, número interior y colonias.</li>
+<li>city : Guaymas<br>
+Especifica  la ciudad donde se encuentra el domicilio a donde se embarcará la mercancía.</li>
+<li>postalCode : 85450<br>
+Especifica el codigo postal del domicilio a donde se embarcara la mercancía.</li>
+</ul></li>
+<li><p>InvoiceCreator</p>
+
+<ul>
+<li>gln : 9199919991999<br>
+Especifica el número global de localización (GLN)de la ubicación del emisor de la factura.</li>
+<li>alternatePartyIdentification : 3271623<br></li>
+<li><strong>type</strong> : VA<br>
+Atributo para especificar el tipo de identificación secundaria que se le asigno al proveedor, valores aceptados: &quot;VA&quot;, &quot;IA&quot;.</li>
+<li>nameAndAddress</li>
+<li>name : RECEPTOR COMP DETALLISTA<br>
+Especifica la razón social de la empresa a donde se emite la factura en caso de ser diferente al identificador del proveedor.</li>
+<li>streetAddressOne : Av. República Mexicana 1234<br>
+Especifica el domicilio del emisor de la factura: Calle, número exterior, número interior y colonias.</li>
+<li>city : Guaymas<br>
+Especifica  la ciudad donde se encuentra el domicilio del emisor de la factura.</li>
+<li>potalCode : 85450<br>
+Especifica el codigo postal del domicilio del emisor de la factura.</li>
+</ul></li>
+<li><p>Customs</p>
+
+<ul>
+<li>gln : 9919999199821<br>
+Especifica el número global de localización (GLN) de la aduana.</li>
+</ul></li>
+<li><p>currency</p>
+
+<ul>
+<li><strong>currencyISOcode</strong> : MXN<br>
+Especifica el codigo de la moneda utilizada para detallar la relación de facturas.Todas las cantidades posteriores seran expresadas en la divisa detallada en esta etiqueta, valores aceptados: &quot;MXN&quot;, &quot;XEU&quot;, &quot;USD&quot;.</li>
+<li><strong>currencyFunction</strong> : BILLING_CURRENCY<br>
+Especifica la función de la divisa, valores aceptados: &quot;BILLING_CURRENCY&quot;, &quot;PRICE_CURRENCY&quot;, &quot;PAYMENT_CURRENCY&quot;.</li>
+<li>ratoOfChange : 13.10<br>
+Especifica la tasa de cambio que se aplica a las monedas. La regla general para calcular la tasa de cambio es la siguiente: Divisa de Referencia multiplicada por la Tasa =  Divisa Objetivo</li>
+</ul></li>
+<li><p>paymentTerms</p>
+
+<ul>
+<li>paymentTermsEvent : DATE_OF_INVOICE<br>
+Especifica la referencia de tiempo de pago, valores permitidos: &quot;DATE_OF_INVOICE&quot;, &quot;EFFECTIVE_DATE&quot;.</li>
+<li>PaymentTermsRelationTime : REFERENCE_AFTER<br>
+Especifica el término de relación del tiempo de pago, valor fijo: &quot;REFERENCE_AFTER&quot;.<br></li>
+<li>netPayment
+
+<ul>
+<li><strong>netPaymentTermsType</strong> : END_OF_MONTH<br>
+Especifica las condiciones de pago, valores aceptados: <code>BASIC_NET</code>, <code>END_OF_MONTH</code>, <code>BASIC_DISCOUNT_OFFERED</code>.<br></li>
+</ul></li>
+<li>paymentTimePeriod
+
+<ul>
+<li><strong>timePeriodDue</strong></li>
+<li><strong>timePeriod</strong> : DAYS<br>
+Especifica el tipo de período, valor permitido: &quot;DAYS&quot;</li>
+<li><strong>value</strong> : 30<br>
+Especifica el número de períodos.</li>
+</ul></li>
+<li>discountPayment
+
+<ul>
+<li><strong>discountType</strong> : ALLOWANCE_BY_PAYMENT_ON_TIME<br>
+Especifica el calificador de porcentajes, valores permitidos: &quot;ALLOWANCE_BY_PAYMENT_ON_TIME&quot;, &quot;SANCTION&quot;</li>
+<li><strong>percentage</strong> : 0.00<br>
+Especifica el valor del porcentaje que serán descontados o cargados si la factura no se paga dentro del término. El porcentaje será en base al valor de la factura.</li>
+</ul></li>
+</ul></li>
+<li><p>shipmentDetail<br>
+Especifica la información pertinente para el embarque de la mercancía.</p></li>
+<li><p>allowanceCharge</p>
+
+<ul>
+<li><strong>allowanceChargeType</strong> : CHARGE_GLOBAL<br>
+Atributo indicador de cargo o descuento, valores permitidos: &quot;ALLOWNCE_GLOBAL&quot;, &quot;CHARGE_GLOBAL&quot;.</li>
+<li><strong>settlementType</strong> : BILL_BACK<br>
+Atributo para especificar la imputación del descuento o cargo, valores permitidos: &quot;BILL_BACK&quot;, &quot;OFF_INVOICE&quot;.</li>
+<li>sequenceNumber : 33421123<br>
+Atributo indicador de secuencia de calculo.</li>
+<li>specialServicesType : DA<br>
+Especifica  el tipo de descuento o cargo. Este atributo sólo se utiliza si el comprador conoce los descuentos, valores permitidos: &quot;AA&quot;, &quot;AJ&quot;, &quot;ADO&quot;, &quot;ADT&quot;, &quot;ADS&quot;, &quot;ABZ&quot;, &quot;DA&quot;, &quot;EAA&quot;, &quot;EAB&quot;, &quot;PI&quot;, &quot;TAE&quot;, &quot;SAB&quot;, &quot;RAA&quot;, &quot;PAD&quot;, &quot;FG&quot;, &quot;FA&quot;, &quot;TD&quot;, &quot;TS&quot;, &quot;TX&quot;, &quot;TZ&quot;, &quot;ZZZ&quot;, &quot;VAB&quot;, &quot;UM&quot;, &quot;DI&quot;, &quot;CAC&quot;, &quot;COD&quot;, &quot;EAB&quot;, &quot;FC&quot;, &quot;FI&quot;, &quot;HD&quot;, &quot;QD&quot;.</li>
+<li>monetaryAmountOrPercentage</li>
+<li>rate<br>
+Nodo opcional que especifica la tarifa.
+
+<ul>
+<li><strong>base</strong> : INVOICE_VALUE<br>
+Atributo para especificar la base del porcentaje que se aplicará, valor fijo: &quot;INVOICE_VALUE&quot;.</li>
+<li><strong>percentage</strong> : 0.00<br>
+Especifica el porcentaje de descuento que se está aplicando según se ha indicado en el campo anterior a toda la factura.</li>
+</ul></li>
+</ul></li>
+<li><p>lineItem</p>
+
+<ul>
+<li>type : SimpleInvoiceLineItemType<br>
+Especifica el tipo de línea de detalle, valor por default: &quot;SimpleInvoiceLineItemType&quot;.</li>
+<li>number : 1<br>
+Especifica el número secuencial que se asigna a cada línea de detalle.</li>
+<li><strong>tradeItemIdentification</strong></li>
+<li><strong>gtin</strong> : FGTSDF<br>
+Especifica el código EAN del artículo solicitado.</li>
+<li>alternateTradeItemIdentification : 2222<br>
+Especifica el número de identificación adicional para el artículo.</li>
+<li><strong>type</strong> : BUYER_ASSIGNED<br>
+Especificar el tipo de identificación adicional, en caso de no utilizar condigo GTIN, valores permitidos: &quot;BUYER_ASSIGNED&quot;, &quot;SUPPLIER_ASSIGNED&quot;, &quot;SERIAL_NUMBER&quot;, &quot;GLOBAL_TRADE_ITEM_IDENTIFICATION&quot;.</li>
+<li>tradeItemDescriptionInformation</li>
+<li>laguage : ES<br>
+Especificar el codigo del idioma en que esta la descripción del articulo, valores permitidos: &quot;ES&quot;, &quot;EN&quot;.</li>
+<li><strong>longText</strong> : DESCRIPCIÓN DEL ARTÍCULO 1<br>
+Especifica la descripción del artículo solicitado.</li>
+<li><strong>invoicedQuantity</strong> : 1<br>
+Especifica la cantidad facturada del producto en la línea del artículo.</li>
+<li><strong>unitOfMeasure</strong> : PZA<br>
+Atributo para especificar la unidad de medida, sólo si el artículo es de unidad variable.</li>
+<li>aditionalQuantity : 0.00<br>
+Especifica la cantidad que se está declarando como adicinonal. 
+
+<ul>
+<li><strong>QuantityType</strong> : FREE_GOODS<br>
+Atributo para especificar el código de tipo de cantidad adicional declarada, valores permitidos: &quot;NUM_CONSUMER_UNITS&quot;, &quot;FREE_GOODS&quot;.</li>
+</ul></li>
+<li>grossPrice</li>
+<li><strong>Amount</strong> : 12.90<br>
+Requerido para especificar el precio Bruto del artículo sin incluir descuento ni cargos.</li>
+<li>netPrice</li>
+<li><strong>Amount</strong> : 13.90<br>
+Especifica el precio neto de cada artículo.</li>
+<li>AdditionalInformation</li>
+<li>referenceIdentification : RFSADC2918<br>
+Especifica la referencia adicional de los productos.
+
+<ul>
+<li><strong>type</strong> : ON<br>
+Atributo para especificar el tipo de referencia, valor prefijado en &quot;ON&quot;.</li>
+</ul></li>
+<li>Customs</li>
+<li>gln : 9999199991999<br>
+Especifica el número global de localización (GLN) de la aduana.</li>
+<li><strong>alternatePartyIdentification</strong> : 64GHY73261<br>
+Especifica la identificación del número de pedimento a nivel detalle.
+
+<ul>
+<li><strong>type</strong> : TN<br>
+Especifica el código de identifiación secundaria, valor prefijado en &quot;TN&quot;</li>
+</ul></li>
+<li><strong>ReferenceDate</strong> : 2014-07-23<br>
+Especifica la fecha del pedimento, YYYYMMDD<br></li>
+<li><strong>nameAndAddress</strong>
+
+<ul>
+<li><strong>name</strong> : NUEVO LAREDO 2<br>
+Especifica el nomnbre de la aduana.</li>
+</ul></li>
+<li>LogisticUnits</li>
+<li><strong>serialShippingContainerCode</strong> : 5732GF832871<br>
+Especifica la información de Rangos de identificación de productos.
+
+<ul>
+<li><strong>type</strong> : SRV<br>
+Especifica el código del número de identidad, valores permitidos: &quot;BJ&quot;, &quot;SRV&quot;.</li>
+</ul></li>
+<li>palettInformation</li>
+<li><strong>palletQuantity</strong> : 1<br>
+Especifica el número de paquetes.</li>
+<li><strong>description</strong> : Empaque con poliuretano 234 alta resistencia.<br>
+Especifica la descripción del empaquetado.
+
+<ul>
+<li><strong>type</strong> : BOX<br>
+Especifica el tipo de empaquetado, valores permitidos: &quot;EXCHANGE_PALLETS&quot;, &quot;RETURN_PALLETS&quot;, &quot;PALLET_80x100&quot;, &quot;CASE&quot;, &quot;BOX&quot;.</li>
+</ul></li>
+<li><strong>transport</strong>
+
+<ul>
+<li><strong>methodOfPayment</strong> : PAID_BY_BUYER<br>
+Especifica el método de pago, valores permitidos: &quot;PREPAID_BY_SELLER&quot;, &quot;PAID_BY_BUYER&quot;.</li>
+</ul></li>
+<li>extendedAttributes</li>
+<li><strong>lotNumber</strong> : 4EFE4<br>
+Especifica el número de lote.
+
+<ul>
+<li>productionDate : 2014-06-10<br>
+Atributo para especificar la fecha de producción.</li>
+</ul></li>
+<li>allowanceCharge</li>
+<li><strong>allowanceChargeType</strong> : CHARGE_GLOBAL<br>
+Atrbuto para especificar el cargo o descuento, valores permitidos: &quot;ALLOWANCE_GLOBAL&quot;, &quot;CHARGE_GLOBAL&quot;.</li>
+<li>settlementType : OFF_INVOICE<br>
+Atributo para especificar la imputación del cargo o descuento, valores permitidos: &quot;OFF_INVOICE&quot;, &quot;CHARGE_TO_BE_PAID_BY_VENDOR&quot;, &quot;CHARGE_TO_BE_PAID_BY_CUSTOMER&quot;.</li>
+<li>sequenceNumber : 1<br>
+Atributo para especificar la secuencia del cálculo.</li>
+<li>specialServicesType : EAB<br>
+Especifica el tipo de descuento o cargo. Este atributo sólo se utiliza si el comprador conoce el tipo de descuento o cargo, valores permitidos: &quot;AA&quot;, &quot;AJ&quot;, &quot;ADO&quot;, &quot;ADT&quot;, &quot;ADS&quot;, &quot;ABZ&quot;, &quot;DA&quot;, &quot;EAA&quot;, &quot;EAB&quot;, &quot;PI&quot;, &quot;TAE&quot;, &quot;SAB&quot;, &quot;RAA&quot;, &quot;PAD&quot;, &quot;FG&quot;, &quot;FA&quot;, &quot;TD&quot;, &quot;TS&quot;, &quot;TX&quot;, &quot;TZ&quot;, &quot;ZZZ&quot;, &quot;VAB&quot;, &quot;UM&quot;, &quot;DI&quot;, &quot;CAC&quot;, &quot;COD&quot;, &quot;EAB&quot;, &quot;FC&quot;, &quot;FI&quot;, &quot;HD&quot;, &quot;QD&quot;.</li>
+<li><strong>monetaryAmountOrPercentage</strong>
+
+<ul>
+<li><strong>percentagePerUnit</strong> : 5%<br>
+Especifica el porcentaje del cargo o descuento.</li>
+<li>ratePerUnit</li>
+<li><strong>amountPerUnit</strong> : 3.00<br>
+Especifica el importe monetario del cargo o descuento por unidad.</li>
+</ul></li>
+<li>tradeItemTaxInformation (hasta 99 iteraciones)</li>
+<li><strong>taxTypeDescription</strong> : OTH<br>
+Especifica el tipo de arancel, impuesto o cuota, valores permitidos: &quot;GST&quot;, &quot;VAT&quot;, &quot;LAC&quot;, &quot;AAA&quot;, &quot;ADD&quot;, &quot;FRE&quot;, &quot;LOC&quot;, &quot;STT&quot;, &quot;OTH&quot;.</li>
+<li>referenceNumber : 883720126<br>
+Especifica el número de identificación del impuesto. Número asignado al comprador por una jurisdicción de impuesto.</li>
+<li>taxCategory : TRANSFERIDO<br>
+Especifica el identificador de impuesto retenido o transferido, valores permitidos: &quot;TRANSFERIDO&quot;, &quot;RETENIDO&quot;.</li>
+<li>tradeItemTaxAmount
+
+<ul>
+<li><strong>taxPercentage</strong> : 5.00<br>
+Especifica el porcentaje del descuento.</li>
+<li><strong>taxAmount</strong> : 3.00<br>
+Especifica el monto del impuesto.</li>
+</ul></li>
+<li><strong>totalLineAmount</strong></li>
+<li>grossAmount
+
+<ul>
+<li><strong>Amount</strong> : 12.90<br>
+Especifica el importe bruto de la línea de artículo.</li>
+</ul></li>
+<li><strong>netAmount</strong>
+
+<ul>
+<li><strong>Amount</strong> : 13.90<br>
+Especifica el importe neto de la línea de artículo.</li>
+</ul></li>
+</ul></li>
+<li><p>totalAmount</p>
+
+<ul>
+<li><strong>Amount</strong> : 13.90<br>
+Especifica el monto.</li>
+</ul></li>
+<li><p>TotalAllowanceCharge</p>
+
+<ul>
+<li><strong>allowanceOrChargeType</strong> : ALLOWANCE<br>
+Atributo para especificar los cargos o descuentos consolidados, valores permitidos: &quot;ALLOWANCE&quot;, &quot;CHARGE&quot;.</li>
+<li>specialServicesType : EAB<br>
+Especifica el tipo de descuento o cargo. Este atributo sólo se utiliza si el comprador conoce el tipo de descuento o cargo, valores permitidos: &quot;AA&quot;, &quot;AJ&quot;, &quot;ADO&quot;, &quot;ADT&quot;, &quot;ADS&quot;, &quot;ABZ&quot;, &quot;DA&quot;, &quot;EAA&quot;, &quot;EAB&quot;, &quot;PI&quot;, &quot;TAE&quot;, &quot;SAB&quot;, &quot;RAA&quot;, &quot;PAD&quot;, &quot;FG&quot;, &quot;FA&quot;, &quot;TD&quot;, &quot;TS&quot;, &quot;TX&quot;, &quot;TZ&quot;, &quot;ZZZ&quot;, &quot;VAB&quot;, &quot;UM&quot;, &quot;DI&quot;, &quot;CAC&quot;, &quot;COD&quot;, &quot;EAB&quot;, &quot;FC&quot;, &quot;FI&quot;, &quot;HD&quot;, &quot;QD&quot;.</li>
+<li>Amount : 3.00<br>
+Especifica el monto total de cargos o descuentos.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

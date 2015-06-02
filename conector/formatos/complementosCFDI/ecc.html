@@ -234,6 +234,67 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+<code>xmlns:ecc=&quot;http://www.sat.gob.mx/ecc&quot;</code></p>
+
+<ul>
+<li><p><strong>EstadoDeCuentaCombustible</strong></p>
+
+<ul>
+<li><strong>tipoOperacion</strong> : Tarjeta<br>
+Atributo requerido para expresar el tipo de operación de acuerdo con el medio de pago, valor fijado en &quot;Tarjeta&quot;.</li>
+<li><strong>numeroDeCuenta</strong> : 78738912<br>
+Requerido para expresar el número de cuenta del adquirente del monedero electrónico.</li>
+<li>subTotal : 1200.00<br>
+Atributo opcional para presentar la suma de todos los importes tipo ConceptoEstadoDeCuentaCombustible.</li>
+<li><strong>total</strong> : 1392<br>
+Atributo requerido para expresar el monto total de consumo de combustible.<br></li>
+</ul></li>
+<li><p><strong>Conceptos</strong></p>
+
+<ul>
+<li><strong>ConceptoEstadoDeCuentaCombustible</strong></li>
+<li><strong>identificador</strong> : 893827162<br>
+Atributo requerido para la expresión del identificador o número del monedero electrónico.</li>
+<li><strong>fecha</strong> : 2014-07-28T14:30:00<br>
+Atributo requerido para la expresión de la Fecha y hora de expedición  de la operación reportada. Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.</li>
+<li><strong>rfc</strong> : AAA010101AAA<br>
+Atributo requerido del RFC del enajenante del combustible.</li>
+<li><strong>claveEstacion</strong> : 6732<br>
+Atributo requerido  para expresar la clave de cliente de la estación de servicio, a 10 caracteres, cuando sea requerido.</li>
+<li><strong>cantidad</strong> : 120.00<br>
+Atributo requerido para definir el volumen de combustible adquirido.</li>
+<li><strong>nombreCombustible</strong> : Magna<br>
+Atributo requerido para expresar el nombre del combustible adquirido.</li>
+<li><strong>folioOperacion</strong> : 82191<br>
+Atributo requerido para referir el número de folio de cada operación realizada por cada monedero electrónico.</li>
+<li><strong>valorUnitario</strong> : 10.00<br>
+Atributo requerido para definir el precio unitario del combustible adquirido.</li>
+<li><strong>importe</strong> : 1200.00<br>
+Atributo requerido para definir el monto  total de consumo de combustible. Debe ser equivalente al resultado de multiplicar la cantidad por el valor unitario.</li>
+<li><strong>Traslados</strong>
+
+<ul>
+<li><strong>Traslado</strong></li>
+<li><strong>impuesto</strong> : IVA<br>
+Atributo requerido para definir el tipo de impuesto trasladado, valores aceptados &quot;IVA&quot;, &quot;IEPS&quot;.</li>
+<li><strong>tasa</strong> : 16.00<br>
+Atributo requerido para señalar la tasa del impuesto que se traslada por cada concepto amparado en el comprobante.</li>
+<li><strong>importe</strong> : 192.00<br>
+Atributo requerido para definir el importe o monto del impuesto trasladado.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

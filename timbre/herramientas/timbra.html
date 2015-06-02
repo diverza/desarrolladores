@@ -124,7 +124,7 @@
 
   <style>
   #stamp-menu-item { color: #fff !important;
-    background: #2d3235;
+    background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -o-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -137,6 +137,7 @@
     border-radius: 20px;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.20) }
 </style>
+    
     <script>
 function checkscript() {
     try
@@ -149,7 +150,7 @@ function checkscript() {
       $('#error').empty();
 
 
-    var url = "http://213.239.207.18:4444/stamp";
+    var url = "http://staging.diverza.com/issue";
     var method = "POST";
     var postData = document.getElementById('cfd').value;
 
@@ -200,14 +201,14 @@ function checkscript() {
     $('#info').append($('<br />'));
     $('#info').append($('<strong></strong>', { text: 'Headers:' }));
     $('#info').append($('<br />'));
-    $('#info').append('<em>x-auth-token:</em> abc');
+    $('#info').append('<em>x-auth-token:</em> ABCD1234');
     $('#info').append($('<br />'));
     $('#info').append($('<strong></strong>', { text: 'Cuerpo de la petición:' }));
     $('#info').append($('<div></div>', { text: postData.substring(0, 250) + ' ...' }));
 
 request.open(method, url, async);
 
-request.setRequestHeader("x-auth-token", "abc");
+request.setRequestHeader("x-auth-token", "ABCD1234");
 // Or... request.setRequestHeader("Content-Type", "text/plain;charset=UTF-8");
 // Or... whatever
 
@@ -234,17 +235,16 @@ catch(ex)
               <h1>Timbra<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>Esta herramienta enviara el CFD al servicío de timbrado de prueba usando los siguientes parametros:</p>
+              <p>Esta herramienta enviara el CFDI al servicío de emisión de prueba usando los siguientes parametros:</p>
               <ul>
-         <li><strong>URL:</strong> http://lol.com</li>
-         <li><strong>Token de Seguridad:</strong> AAAA</li>
+         <li><strong>URL:</strong> http://staging.diverza.com/issue</li>
+         <li><strong>Token de Seguridad:</strong> ABCD1234</li>
         </ul>
 
-              <textarea class="form-control" placeholder="Ingrese el CFDI a timbrar" required autofocus style="height:200px;width:100%;" id="cfd" ></textarea>
+              <textarea class="form-control" placeholder="Ingrese el CFDI a emitir" required autofocus style="height:200px;width:100%;" id="cfd" ></textarea>
         <br />
         
-        <p>Si ya se encuentra registrado con nosotros puede usar su RFC como emisor, en caso contrario utilize <strong>AASSBCC</strong> y genere el sello usando el <a>certificados de prueba</a></p>
-        <button class="btn btn-lg btn-block btn-danger" onClick="checkscript()">Timbrar</button>
+        <button class="btn btn-lg btn-block btn-danger" onClick="checkscript()">Emitir</button>
             </div>
           </div>
         </div>
@@ -254,6 +254,69 @@ catch(ex)
         <div class=" ">
             <div class="module">
 
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
                 <h3>CFDI<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -323,6 +386,7 @@ catch(ex)
                         <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
                     </ul>               
                 </div>
+                -->
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -335,6 +399,15 @@ catch(ex)
                         <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
                     </ul>               
                 </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
             </div>
             <div class="clr"></div>
         </div>

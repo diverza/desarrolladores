@@ -238,6 +238,72 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
     <span class="nt">&lt;/cfdi:Addenda&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:spei=&quot;<a href="http://www.sat.gob.mx/spei">http://www.sat.gob.mx/spei</a>&quot;</p>
+
+<ul>
+<li><p><strong>Complemento_SPEI</strong></p>
+
+<ul>
+<li><strong>SPEI_Tercero</strong></li>
+<li><strong>FechaOperacion</strong> : 2014-08-11<br>
+Fecha de operación con formato. Debe ser la misma que la fecha de operación del sistema.</li>
+<li><strong>Hora</strong> : 09:45:17.635<br>
+Hora del acreditamiento.</li>
+<li><strong>ClaveSPEI</strong> : 87265<br>
+Clave SPEI del Participante Emisor.</li>
+<li><strong>sello</strong> : NjJVo5KxQEzGqfToe7ukQCVJrNY9lyciTmVB2wqlFmr/KZh+hsdb3S/95JlqrHS4DCFYKJuBcsdu7eeuaKu9fMBlGytiONOU5yNQkHX17MqAb62ChuoYuT+A/NiE=<br>
+Atributo requerido para contener el sello digital del comprobante de pago. El sello deberá ser expresado cómo una cadena de texto en formato Base 64.</li>
+<li><strong>numeroCertificado</strong> : 00001000000482505796<br>
+Atributo requerido para la identificación del certificado de seguridad utilizado para el sello digital.</li>
+<li><strong>cadenaCDA</strong> : cadenaCDA1<br>
+Atributo que contiene la información del CDA fidedigna que la institución ha enviado a Banco de México.<br></li>
+<li><strong>Ordenante</strong>
+
+<ul>
+<li><strong>BancoEmisor</strong> : Banco del Norte S.A.<br>
+Atributo requerido para expresar el nombre del Banco o Institución Financiera emisora del SPEI.</li>
+<li><strong>Nombre</strong> : Gustavo Fernández Sánchez<br>
+Nombre de la persona física o moral que ordena el envío del pago.</li>
+<li><strong>TipoCuenta</strong> : 06<br>
+Categoría de la Cuenta a la que se efectuará el cargo por la transferencia electrónica de fondos.</li>
+<li><strong>Cuenta</strong> : 83927635620125364729<br>
+Cuenta que deberá estar ligada al Tipo de Cuenta del Ordenante, donde serán cargados los fondos.</li>
+<li><strong>RFC</strong> : AAA010101AAA<br>
+Corresponde al registro federal de contribuyentes o clave única de registro de población del ordenante. Se pondrá ND en caso de no tenerlo disponible.</li>
+</ul></li>
+<li><strong>Beneficiario</strong>
+
+<ul>
+<li><strong>BancoReceptor</strong> : Banco del Sur S.A.<br>
+Atributo requerido para expresar el nombre del Banco o Institución Financiera Receptora del SPEI.</li>
+<li><strong>Nombre</strong> : Jesús Guzmán Lara<br>
+Nombre de la persona física o moral receptora del pago.</li>
+<li><strong>TipoCuenta</strong> : 05<br>
+Categoría de la cuenta a la que se efectuará el abono por la transferencia electrónica de fondos. Consultar Catálogo de Tipos de Cuenta.</li>
+<li><strong>Cuenta</strong> : 019236383749552321713<br>
+Esta cuenta deberá estar ligada al campo Tipo de Cuenta del Beneficiario, donde son abonados los fondos.</li>
+<li><strong>RFC</strong> : BBB010101BBB<br>
+Atributo requerido para la expresión del registro federal de contribuyentes del beneficiario. Se pondrá ND en caso de no estar disponible.</li>
+<li><strong>Concepto</strong> : Servicios de Minería<br>
+Descripción del motivo por el que el ordenante hace el pago al beneficiario.</li>
+<li><strong>IVA</strong> : 0.00<br>
+Importes de IVA correspondientes al pago. El monto debe ser mayor a cero y menor o igual a 9,999,999,999,999,999.99.</li>
+<li><strong>MontoPago</strong> : 2450973.87<br>
+Atributo obligatorio para la expresión del monto de la operación. Se trata de un entero positivo.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

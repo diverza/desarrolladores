@@ -233,6 +233,61 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:ventavehiculos=&quot;<a href="http://www.sat.gob.mx/ventavehiculos">http://www.sat.gob.mx/ventavehiculos</a>&quot;</p>
+
+<ul>
+<li><p><strong>VentaVehiculos</strong></p>
+
+<ul>
+<li><strong>version</strong> : 1.1<br>
+Atributo requerido con valor prefijado a 1.1 que indica la versión del estándar bajo el que se encuentra expresado el complemento.</li>
+<li><strong>ClaveVehicular</strong>  : KLS829129990200032712<br>
+Atributo requerido para precisar Clave vehicular que corresponda a la versión del vehículo enajenado.</li>
+<li><strong>Niv</strong> : NIVEH287212<br>
+Atributo requerido para precisar el número de identificación vehicular que corresponda al vehículo enajenado.<br></li>
+<li>InformacionAduanera</li>
+<li><strong>numero</strong>  : -----<br>
+Atributo requerido para expresar el número del documento aduanero que ampara la importación del bien.</li>
+<li><strong>fecha</strong> : -----<br>
+Atributo requerido para expresar la fecha de expedición del documento aduanero que ampara la importación del bien.</li>
+<li>aduana  : -----<br>
+Atributo opcional para precisar la aduana por la que se efectuó la importación del bien.<br></li>
+<li>Parte</li>
+<li><strong>cantidad</strong>  : 1<br>
+Atributo requerido para precisar la cantidad de bienes o servicios del tipo particular definido por la presente parte.</li>
+<li>unidad  : PZA<br>
+Atributo opcional para precisar la unidad de medida aplicable para la cantidad expresada en la parte.</li>
+<li>noIdentificacion  : CHA2819<br>
+Atributo opcional para expresar el número de serie del bien o identificador del servicio amparado por la presente parte.</li>
+<li><strong>descripcion</strong> : CHASIS JEEP WRANGLES &apos;94<br>
+Atributo requerido para precisar la descripción del bien o servicio cubierto por la presente parte.</li>
+<li>valorUnitario : 15000.00<br>
+Atributo opcional para precisar el valor o precio unitario del bien o servicio cubierto por la presente parte.</li>
+<li>importe   : 15000.00<br>
+Atributo opcional para precisar el importe total de los bienes o servicios de la presente parte. Debe ser equivalente al resultado de multiplicar la cantidad por el valor unitario expresado en la parte.</li>
+<li>InformacionAduanera
+
+<ul>
+<li><strong>numero</strong>  : NLT938212<br>
+Atributo requerido para expresar el número del documento aduanero que ampara la importación del bien.</li>
+<li><strong>fecha</strong> : 2014-08-10<br>
+Atributo requerido para expresar la fecha de expedición del documento aduanero que ampara la importación del bien.</li>
+<li>aduana  : Nuevo Laredo<br>
+Atributo opcional para precisar la aduana por la que se efectuó la importación del bien.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

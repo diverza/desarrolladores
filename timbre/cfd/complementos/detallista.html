@@ -162,6 +162,222 @@
 
 <p>A continuación una descripción y ejemplo de cada atributo en el  complemento.
 La declaración de nameSpace es a nivel primario en nodo Comprobante.
+<code>xmlns:detallista=&quot;http://www.sat.gob.mx/detallista&quot;</code></p>
+
+<p><strong>IMPORTANTE:</strong>  El schemaLocation para este complemento debe de ser declarado a nivel <strong>&lt;cfdi:Comprobante&gt;</strong><br></p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">xsi:schemaLocation<span class="o">=</span><span class="s2">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/detallista http://www.sat.gob.mx/sitio_internet/cfd/detallista/detallista.xsd&quot;</span>
+</code></pre></div>
+<p>Descripción de los campos, lo puedes localizar en el siguiente documento:<br>
+<a href="../recursos/DVZ_Informacion_CFDI-CFDIRET.pdf">DVZ_Informacion_CFDI-CFDIRET.pdf</a>
+<br></p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/detallista http://www.sat.gob.mx/sitio_internet/cfd/detallista/detallista.xsd&quot;</span>
+  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:detallista=</span><span class="s">&quot;http://www.sat.gob.mx/detallista&quot;</span>
+  <span class="na">fecha=</span><span class="s">&quot;2015-03-05T10:33:52&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span> <span class="na">serie=</span><span class="s">&quot;C&quot;</span> <span class="na">folio=</span><span class="s">&quot;38&quot;</span>
+  <span class="na">LugarExpedicion=</span><span class="s">&quot;Monterrey, Nuevo León&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;No Identificado&quot;</span>
+  <span class="na">NumCtaPago=</span><span class="s">&quot;No Identificado&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> <span class="na">total=</span><span class="s">&quot;40600.00&quot;</span>
+  <span class="na">descuento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;35000.00&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;Pesos&quot;</span>
+  <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
+  <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span>
+  <span class="na">sello=</span><span class="s">&quot;PBPYqw1CnEmQh8Yfv3+0MQGWHEgErx6xLaYyDoNhn4GRpuKq7hUTK+2WGRauETGCdee/WMNW870lN9MrMCILAPHWQVR/bqRy6uyf4u3mvPSWx/WiM3Ywk8mB+L2ZIZupxu2i4PQUIkMPgwONVvMbEs7NfKwdE+TGyNLn5Es5JOo=&quot;</span>
+  <span class="na">version=</span><span class="s">&quot;3.2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Empresa de Pruebas SA&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">colonia=</span><span class="s">&quot;Fracc. San Pedro&quot;</span> <span class="na">calle=</span><span class="s">&quot;Encinos&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1452&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales de Prueba&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">rfc=</span><span class="s">&quot;XAXX010101000&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Exportadora de Ganado HOLSTEIN S.A.&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">colonia=</span><span class="s">&quot;Ejido La Siembra&quot;</span> <span class="na">calle=</span><span class="s">&quot;Av. Principal&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;102&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">estado=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;99170&quot;</span>
+      <span class="na">localidad=</span><span class="s">&quot;Ejido La Siembra&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;Módulo de embarque&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;35000.00&quot;</span>
+      <span class="na">unidad=</span><span class="s">&quot;LTE&quot;</span> <span class="na">importe=</span><span class="s">&quot;35000.00&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;cfdi:InformacionAduanera</span> <span class="na">numero=</span><span class="s">&quot;32441223&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2015-02-10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Concepto&gt;</span>
+  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+  <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosRetenidos=</span><span class="s">&quot;0.00&quot;</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;5600.00&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Retenciones&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;ISR&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Retenciones&gt;</span>
+    <span class="nt">&lt;cfdi:Traslados&gt;</span>
+      <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;5600.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+  <span class="nt">&lt;cfdi:Complemento&gt;</span>
+    <span class="nt">&lt;detallista:detallista</span> <span class="na">documentStructureVersion=</span><span class="s">&quot;AMC8.1&quot;</span> <span class="na">documentStatus=</span><span class="s">&quot;ORIGINAL&quot;</span> <span class="na">type=</span><span class="s">&quot;SimpleInvoiceType&quot;</span> <span class="na">contentVersion=</span><span class="s">&quot;1.3.1&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;detallista:requestForPaymentIdentification&gt;</span>
+        <span class="nt">&lt;detallista:entityType&gt;</span>INVOICE<span class="nt">&lt;/detallista:entityType&gt;</span>
+      <span class="nt">&lt;/detallista:requestForPaymentIdentification&gt;</span>
+      <span class="nt">&lt;detallista:specialInstruction</span> <span class="na">code=</span><span class="s">&quot;ZZZ&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;detallista:text&gt;</span>TRES MIL CIENTO CINCUENTA Y CINCO PESOS 80/100 M.N.<span class="nt">&lt;/detallista:text&gt;</span>
+      <span class="nt">&lt;/detallista:specialInstruction&gt;</span>
+      <span class="nt">&lt;detallista:orderIdentification&gt;</span>
+        <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ON&quot;</span><span class="nt">&gt;</span>18510599<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+        <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-17<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
+      <span class="nt">&lt;/detallista:orderIdentification&gt;</span>
+      <span class="nt">&lt;detallista:AdditionalInformation&gt;</span>
+        <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ACE&quot;</span><span class="nt">&gt;</span>P00065<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+      <span class="nt">&lt;/detallista:AdditionalInformation&gt;</span>
+      <span class="nt">&lt;detallista:DeliveryNote&gt;</span>
+        <span class="nt">&lt;detallista:referenceIdentification&gt;</span>1111111111<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+        <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-23<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
+      <span class="nt">&lt;/detallista:DeliveryNote&gt;</span>
+      <span class="nt">&lt;detallista:buyer&gt;</span>
+        <span class="nt">&lt;detallista:gln&gt;</span>7504000107903<span class="nt">&lt;/detallista:gln&gt;</span>
+        <span class="nt">&lt;detallista:contactInformation&gt;</span>
+          <span class="nt">&lt;detallista:personOrDepartmentName&gt;</span>
+            <span class="nt">&lt;detallista:text&gt;</span>0388<span class="nt">&lt;/detallista:text&gt;</span>
+          <span class="nt">&lt;/detallista:personOrDepartmentName&gt;</span>
+        <span class="nt">&lt;/detallista:contactInformation&gt;</span>
+      <span class="nt">&lt;/detallista:buyer&gt;</span>
+      <span class="nt">&lt;detallista:seller&gt;</span>
+        <span class="nt">&lt;detallista:gln&gt;</span>7504023722008<span class="nt">&lt;/detallista:gln&gt;</span>
+        <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY&quot;</span><span class="nt">&gt;</span>130636<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
+      <span class="nt">&lt;/detallista:seller&gt;</span>
+      <span class="nt">&lt;detallista:shipTo&gt;</span>
+        <span class="nt">&lt;detallista:gln&gt;</span>7504023722000<span class="nt">&lt;/detallista:gln&gt;</span>
+        <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
+          <span class="nt">&lt;detallista:name&gt;</span>CONTENEDORES INDUSTRIALES DE PRUEBA<span class="nt">&lt;/detallista:name&gt;</span>
+          <span class="nt">&lt;detallista:streetAddressOne&gt;</span>Av. República Mexicana 1234<span class="nt">&lt;/detallista:streetAddressOne&gt;</span>
+          <span class="nt">&lt;detallista:city&gt;</span>Guaymas<span class="nt">&lt;/detallista:city&gt;</span>
+          <span class="nt">&lt;detallista:postalCode&gt;</span>85450<span class="nt">&lt;/detallista:postalCode&gt;</span>
+        <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
+      <span class="nt">&lt;/detallista:shipTo&gt;</span>
+      <span class="nt">&lt;detallista:InvoiceCreator&gt;</span>
+        <span class="nt">&lt;detallista:gln&gt;</span>9199919991999<span class="nt">&lt;/detallista:gln&gt;</span>
+        <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;VA&quot;</span><span class="nt">&gt;</span>3271623<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
+        <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
+          <span class="nt">&lt;detallista:name&gt;</span>RECEPTOR COMP DETALLISTA<span class="nt">&lt;/detallista:name&gt;</span>
+          <span class="nt">&lt;detallista:streetAddressOne&gt;</span>Av. República Mexicana 1234<span class="nt">&lt;/detallista:streetAddressOne&gt;</span>
+          <span class="nt">&lt;detallista:city&gt;</span>Guaymas<span class="nt">&lt;/detallista:city&gt;</span>
+          <span class="nt">&lt;detallista:postalCode&gt;</span>85450<span class="nt">&lt;/detallista:postalCode&gt;</span>
+        <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
+      <span class="nt">&lt;/detallista:InvoiceCreator&gt;</span>
+      <span class="nt">&lt;detallista:Customs&gt;</span>
+        <span class="nt">&lt;detallista:gln&gt;</span>9919999199821<span class="nt">&lt;/detallista:gln&gt;</span>
+      <span class="nt">&lt;/detallista:Customs&gt;</span>
+      <span class="nt">&lt;detallista:currency</span> <span class="na">currencyISOCode=</span><span class="s">&quot;MXN&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;detallista:currencyFunction&gt;</span>BILLING_CURRENCY<span class="nt">&lt;/detallista:currencyFunction&gt;</span>
+        <span class="nt">&lt;detallista:rateOfChange&gt;</span>13.10<span class="nt">&lt;/detallista:rateOfChange&gt;</span>
+      <span class="nt">&lt;/detallista:currency&gt;</span>
+      <span class="nt">&lt;detallista:paymentTerms</span> <span class="na">paymentTermsEvent=</span><span class="s">&quot;DATE_OF_INVOICE&quot;</span> <span class="na">PaymentTermsRelationTime=</span><span class="s">&quot;REFERENCE_AFTER&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;detallista:netPayment</span> <span class="na">netPaymentTermsType=</span><span class="s">&quot;END_OF_MONTH&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:paymentTimePeriod&gt;</span>
+            <span class="nt">&lt;detallista:timePeriodDue</span> <span class="na">timePeriod=</span><span class="s">&quot;DAYS&quot;</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;detallista:value&gt;</span>30<span class="nt">&lt;/detallista:value&gt;</span>
+            <span class="nt">&lt;/detallista:timePeriodDue&gt;</span>
+          <span class="nt">&lt;/detallista:paymentTimePeriod&gt;</span>
+        <span class="nt">&lt;/detallista:netPayment&gt;</span>
+        <span class="nt">&lt;detallista:discountPayment</span> <span class="na">discountType=</span><span class="s">&quot;ALLOWANCE_BY_PAYMENT_ON_TIME&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:percentage&gt;</span>0.00<span class="nt">&lt;/detallista:percentage&gt;</span>
+        <span class="nt">&lt;/detallista:discountPayment&gt;</span>
+      <span class="nt">&lt;/detallista:paymentTerms&gt;</span>
+      <span class="nt">&lt;detallista:shipmentDetail/&gt;</span>
+      <span class="nt">&lt;detallista:allowanceCharge</span> <span class="na">allowanceChargeType=</span><span class="s">&quot;CHARGE_GLOBAL&quot;</span> <span class="na">settlementType=</span><span class="s">&quot;BILL_BACK&quot;</span> <span class="na">sequenceNumber=</span><span class="s">&quot;33421123&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;detallista:monetaryAmountOrPercentage&gt;</span>
+          <span class="nt">&lt;detallista:rate</span> <span class="na">base=</span><span class="s">&quot;INVOICE_VALUE&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;detallista:percentage&gt;</span>0.00<span class="nt">&lt;/detallista:percentage&gt;</span>
+          <span class="nt">&lt;/detallista:rate&gt;</span>
+        <span class="nt">&lt;/detallista:monetaryAmountOrPercentage&gt;</span>
+      <span class="nt">&lt;/detallista:allowanceCharge&gt;</span>
+      <span class="nt">&lt;detallista:lineItem</span> <span class="na">type=</span><span class="s">&quot;SimpleInvoiceLineItemType&quot;</span> <span class="na">number=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;detallista:tradeItemIdentification&gt;</span>
+          <span class="nt">&lt;detallista:gtin&gt;</span>FGTSDF<span class="nt">&lt;/detallista:gtin&gt;</span>
+        <span class="nt">&lt;/detallista:tradeItemIdentification&gt;</span>
+        <span class="nt">&lt;detallista:alternateTradeItemIdentification</span> <span class="na">type=</span><span class="s">&quot;BUYER_ASSIGNED&quot;</span><span class="nt">&gt;</span>2222<span class="nt">&lt;/detallista:alternateTradeItemIdentification&gt;</span>
+        <span class="nt">&lt;detallista:tradeItemDescriptionInformation</span> <span class="na">language=</span><span class="s">&quot;ES&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:longText&gt;</span>DESCRIPCIÓN DEL ARTÍCULO 1<span class="nt">&lt;/detallista:longText&gt;</span>
+        <span class="nt">&lt;/detallista:tradeItemDescriptionInformation&gt;</span>
+        <span class="nt">&lt;detallista:invoicedQuantity</span> <span class="na">unitOfMeasure=</span><span class="s">&quot;PZA&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/detallista:invoicedQuantity&gt;</span>
+        <span class="nt">&lt;detallista:aditionalQuantity</span> <span class="na">QuantityType=</span><span class="s">&quot;FREE_GOODS&quot;</span><span class="nt">&gt;</span>0.00<span class="nt">&lt;/detallista:aditionalQuantity&gt;</span>
+        <span class="nt">&lt;detallista:grossPrice&gt;</span>
+          <span class="nt">&lt;detallista:Amount&gt;</span>12.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+        <span class="nt">&lt;/detallista:grossPrice&gt;</span>
+        <span class="nt">&lt;detallista:netPrice&gt;</span>
+          <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+        <span class="nt">&lt;/detallista:netPrice&gt;</span>
+        <span class="nt">&lt;detallista:AdditionalInformation&gt;</span>
+          <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ON&quot;</span><span class="nt">&gt;</span>RFSADC2918<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
+        <span class="nt">&lt;/detallista:AdditionalInformation&gt;</span>
+        <span class="nt">&lt;detallista:Customs&gt;</span>
+          <span class="nt">&lt;detallista:gln&gt;</span>9999199991999<span class="nt">&lt;/detallista:gln&gt;</span>
+          <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;TN&quot;</span><span class="nt">&gt;</span>64GHY73261<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
+          <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-23<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
+          <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
+            <span class="nt">&lt;detallista:name&gt;</span>NUEVO LAREDO 2<span class="nt">&lt;/detallista:name&gt;</span>
+          <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
+        <span class="nt">&lt;/detallista:Customs&gt;</span>
+        <span class="nt">&lt;detallista:LogisticUnits&gt;</span>
+          <span class="nt">&lt;detallista:serialShippingContainerCode</span> <span class="na">type=</span><span class="s">&quot;SRV&quot;</span><span class="nt">&gt;</span>5732GF832871<span class="nt">&lt;/detallista:serialShippingContainerCode&gt;</span>
+        <span class="nt">&lt;/detallista:LogisticUnits&gt;</span>
+        <span class="nt">&lt;detallista:palletInformation&gt;</span>
+          <span class="nt">&lt;detallista:palletQuantity&gt;</span>1<span class="nt">&lt;/detallista:palletQuantity&gt;</span>
+          <span class="nt">&lt;detallista:description</span> <span class="na">type=</span><span class="s">&quot;BOX&quot;</span><span class="nt">&gt;</span>Empaque con poliuretano 234 alta resistencia.<span class="nt">&lt;/detallista:description&gt;</span>
+          <span class="nt">&lt;detallista:transport&gt;</span>
+            <span class="nt">&lt;detallista:methodOfPayment&gt;</span>PAID_BY_BUYER<span class="nt">&lt;/detallista:methodOfPayment&gt;</span>
+          <span class="nt">&lt;/detallista:transport&gt;</span>
+        <span class="nt">&lt;/detallista:palletInformation&gt;</span>
+        <span class="nt">&lt;detallista:extendedAttributes&gt;</span>
+          <span class="nt">&lt;detallista:lotNumber</span> <span class="na">productionDate=</span><span class="s">&quot;2014-06-10&quot;</span><span class="nt">&gt;</span>4EFE4<span class="nt">&lt;/detallista:lotNumber&gt;</span>
+        <span class="nt">&lt;/detallista:extendedAttributes&gt;</span>
+        <span class="nt">&lt;detallista:allowanceCharge</span> <span class="na">allowanceChargeType=</span><span class="s">&quot;CHARGE_GLOBAL&quot;</span> <span class="na">settlementType=</span><span class="s">&quot;OFF_INVOICE&quot;</span> <span class="na">sequenceNumber=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;detallista:specialServicesType&gt;</span>EAB<span class="nt">&lt;/detallista:specialServicesType&gt;</span>
+          <span class="nt">&lt;detallista:monetaryAmountOrPercentage&gt;</span>
+            <span class="nt">&lt;detallista:percentagePerUnit&gt;</span>5%<span class="nt">&lt;/detallista:percentagePerUnit&gt;</span>
+            <span class="nt">&lt;detallista:ratePerUnit&gt;</span>
+              <span class="nt">&lt;detallista:amountPerUnit&gt;</span>3.00<span class="nt">&lt;/detallista:amountPerUnit&gt;</span>
+            <span class="nt">&lt;/detallista:ratePerUnit&gt;</span>
+          <span class="nt">&lt;/detallista:monetaryAmountOrPercentage&gt;</span>
+        <span class="nt">&lt;/detallista:allowanceCharge&gt;</span>
+        <span class="nt">&lt;detallista:tradeItemTaxInformation&gt;</span>
+          <span class="nt">&lt;detallista:taxTypeDescription&gt;</span>OTH<span class="nt">&lt;/detallista:taxTypeDescription&gt;</span>
+          <span class="nt">&lt;detallista:referenceNumber&gt;</span>883720126<span class="nt">&lt;/detallista:referenceNumber&gt;</span>
+          <span class="nt">&lt;detallista:taxCategory&gt;</span>TRANSFERIDO<span class="nt">&lt;/detallista:taxCategory&gt;</span>
+          <span class="nt">&lt;detallista:tradeItemTaxAmount&gt;</span>
+            <span class="nt">&lt;detallista:taxPercentage&gt;</span>5.00<span class="nt">&lt;/detallista:taxPercentage&gt;</span>
+            <span class="nt">&lt;detallista:taxAmount&gt;</span>3.00<span class="nt">&lt;/detallista:taxAmount&gt;</span>
+          <span class="nt">&lt;/detallista:tradeItemTaxAmount&gt;</span>
+        <span class="nt">&lt;/detallista:tradeItemTaxInformation&gt;</span>
+        <span class="nt">&lt;detallista:totalLineAmount&gt;</span>
+          <span class="nt">&lt;detallista:grossAmount&gt;</span>
+            <span class="nt">&lt;detallista:Amount&gt;</span>12.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+          <span class="nt">&lt;/detallista:grossAmount&gt;</span>
+          <span class="nt">&lt;detallista:netAmount&gt;</span>
+            <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+          <span class="nt">&lt;/detallista:netAmount&gt;</span>
+        <span class="nt">&lt;/detallista:totalLineAmount&gt;</span>
+      <span class="nt">&lt;/detallista:lineItem&gt;</span>
+      <span class="nt">&lt;detallista:totalAmount&gt;</span>
+        <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
+      <span class="nt">&lt;/detallista:totalAmount&gt;</span>
+      <span class="nt">&lt;detallista:TotalAllowanceCharge</span> <span class="na">allowanceOrChargeType=</span><span class="s">&quot;ALLOWANCE&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;detallista:specialServicesType&gt;</span>EAB<span class="nt">&lt;/detallista:specialServicesType&gt;</span>
+        <span class="nt">&lt;detallista:Amount&gt;</span>3.00<span class="nt">&lt;/detallista:Amount&gt;</span>
+      <span class="nt">&lt;/detallista:TotalAllowanceCharge&gt;</span>
+    <span class="nt">&lt;/detallista:detallista&gt;</span>
+    <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span>
+      <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span>
+      <span class="na">selloSAT=</span><span class="s">&quot;FtRoK4ZoBUaH0CPtku4fu5F3FQCevfzDmX+/ZVqzg8pjzf9GmEJgTY9H7BE0g5B4XV5moz30P9OaCVr9keB4lhdxW56JcObXCuOgU67HENVWZlxjRhX5RkLe+RQ4n5OHcbfyUm3ITtAtIZX+JJR0uvPc4jDuKioYRZjJoR4OuVk=&quot;</span>
+      <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span>
+      <span class="na">selloCFD=</span><span class="s">&quot;PBPYqw1CnEmQh8Yfv3+0MQGWHEgErx6xLaYyDoNhn4GRpuKq7hUTK+2WGRauETGCdee/WMNW870lN9MrMCILAPHWQVR/bqRy6uyf4u3mvPSWx/WiM3Ywk8mB+L2ZIZupxu2i4PQUIkMPgwONVvMbEs7NfKwdE+TGyNLn5Es5JOo=&quot;</span>
+      <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-03-05T10:33:52&quot;</span> <span class="na">UUID=</span><span class="s">&quot;ec3c1c62-6526-4d0b-98f8-eee7c743e9a5&quot;</span>
+      <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
 xmlns:detallista=&quot;<a href="http://www.sat.gob.mx/detallista">http://www.sat.gob.mx/detallista</a>&quot;</p>
 
 <ul>
@@ -505,162 +721,9 @@ Especifica el monto total de cargos o descuentos.</li>
 
 <p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
 
-<h3 id="ejemplo">Ejemplo</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;cfdi:Complemento&gt;</span>
-  <span class="nt">&lt;detallista:detallista</span> <span class="na">documentStructureVersion=</span><span class="s">&quot;AMC8.1&quot;</span> <span class="na">documentStatus=</span><span class="s">&quot;ORIGINAL&quot;</span> <span class="na">type=</span><span class="s">&quot;SimpleInvoiceType&quot;</span> <span class="na">contentVersion=</span><span class="s">&quot;1.3.1&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;detallista:requestForPaymentIdentification&gt;</span>
-          <span class="nt">&lt;detallista:entityType&gt;</span>INVOICE<span class="nt">&lt;/detallista:entityType&gt;</span>
-      <span class="nt">&lt;/detallista:requestForPaymentIdentification&gt;</span>
-      <span class="nt">&lt;detallista:specialInstruction</span> <span class="na">code=</span><span class="s">&quot;ZZZ&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;detallista:text&gt;</span>TRES MIL CIENTO CINCUENTA Y CINCO PESOS 80/100 M.N.<span class="nt">&lt;/detallista:text&gt;</span>
-      <span class="nt">&lt;/detallista:specialInstruction&gt;</span>
-      <span class="nt">&lt;detallista:orderIdentification&gt;</span>
-          <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ON&quot;</span><span class="nt">&gt;</span>18510599<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
-          <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-17<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
-      <span class="nt">&lt;/detallista:orderIdentification&gt;</span>
-      <span class="nt">&lt;detallista:AdditionalInformation&gt;</span>
-          <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ACE&quot;</span><span class="nt">&gt;</span>P00065<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
-      <span class="nt">&lt;/detallista:AdditionalInformation&gt;</span>
-      <span class="nt">&lt;detallista:DeliveryNote&gt;</span>
-          <span class="nt">&lt;detallista:referenceIdentification&gt;</span>1111111111<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
-          <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-23<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
-      <span class="nt">&lt;/detallista:DeliveryNote&gt;</span>
-      <span class="nt">&lt;detallista:buyer&gt;</span>
-          <span class="nt">&lt;detallista:gln&gt;</span>7504000107903<span class="nt">&lt;/detallista:gln&gt;</span>
-          <span class="nt">&lt;detallista:contactInformation&gt;</span>
-              <span class="nt">&lt;detallista:personOrDepartmentName&gt;</span>
-                  <span class="nt">&lt;detallista:text&gt;</span>0388<span class="nt">&lt;/detallista:text&gt;</span>
-              <span class="nt">&lt;/detallista:personOrDepartmentName&gt;</span>
-          <span class="nt">&lt;/detallista:contactInformation&gt;</span>
-      <span class="nt">&lt;/detallista:buyer&gt;</span>
-      <span class="nt">&lt;detallista:seller&gt;</span>
-          <span class="nt">&lt;detallista:gln&gt;</span>7504023722008<span class="nt">&lt;/detallista:gln&gt;</span>
-          <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY&quot;</span><span class="nt">&gt;</span>130636<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
-      <span class="nt">&lt;/detallista:seller&gt;</span>
-      <span class="nt">&lt;detallista:shipTo&gt;</span>
-          <span class="nt">&lt;detallista:gln&gt;</span>7504023722000<span class="nt">&lt;/detallista:gln&gt;</span>
-          <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
-              <span class="nt">&lt;detallista:name&gt;</span>CONTENEDORES INDUSTRIALES DE PRUEBA<span class="nt">&lt;/detallista:name&gt;</span>
-              <span class="nt">&lt;detallista:streetAddressOne&gt;</span>Av. República Mexicana 1234<span class="nt">&lt;/detallista:streetAddressOne&gt;</span>
-              <span class="nt">&lt;detallista:city&gt;</span>Guaymas<span class="nt">&lt;/detallista:city&gt;</span>
-              <span class="nt">&lt;detallista:postalCode&gt;</span>85450<span class="nt">&lt;/detallista:postalCode&gt;</span>
-          <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
-      <span class="nt">&lt;/detallista:shipTo&gt;</span>
-      <span class="nt">&lt;detallista:InvoiceCreator&gt;</span>
-          <span class="nt">&lt;detallista:gln&gt;</span>9199919991999<span class="nt">&lt;/detallista:gln&gt;</span>
-          <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;VA&quot;</span><span class="nt">&gt;</span>3271623<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
-          <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
-              <span class="nt">&lt;detallista:name&gt;</span>RECEPTOR COMP DETALLISTA<span class="nt">&lt;/detallista:name&gt;</span>
-              <span class="nt">&lt;detallista:streetAddressOne&gt;</span>Av. República Mexicana 1234<span class="nt">&lt;/detallista:streetAddressOne&gt;</span>
-              <span class="nt">&lt;detallista:city&gt;</span>Guaymas<span class="nt">&lt;/detallista:city&gt;</span>
-              <span class="nt">&lt;detallista:postalCode&gt;</span>85450<span class="nt">&lt;/detallista:postalCode&gt;</span>
-          <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
-      <span class="nt">&lt;/detallista:InvoiceCreator&gt;</span>
-      <span class="nt">&lt;detallista:Customs&gt;</span>
-          <span class="nt">&lt;detallista:gln&gt;</span>9919999199821<span class="nt">&lt;/detallista:gln&gt;</span>
-      <span class="nt">&lt;/detallista:Customs&gt;</span>
-      <span class="nt">&lt;detallista:currency</span> <span class="na">currencyISOCode=</span><span class="s">&quot;MXN&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;detallista:currencyFunction&gt;</span>BILLING_CURRENCY<span class="nt">&lt;/detallista:currencyFunction&gt;</span>
-          <span class="nt">&lt;detallista:rateOfChange&gt;</span>13.10<span class="nt">&lt;/detallista:rateOfChange&gt;</span>
-      <span class="nt">&lt;/detallista:currency&gt;</span>
-      <span class="nt">&lt;detallista:paymentTerms</span> <span class="na">paymentTermsEvent=</span><span class="s">&quot;DATE_OF_INVOICE&quot;</span> <span class="na">PaymentTermsRelationTime=</span><span class="s">&quot;REFERENCE_AFTER&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;detallista:netPayment</span> <span class="na">netPaymentTermsType=</span><span class="s">&quot;END_OF_MONTH&quot;</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;detallista:paymentTimePeriod&gt;</span>
-                  <span class="nt">&lt;detallista:timePeriodDue</span> <span class="na">timePeriod=</span><span class="s">&quot;DAYS&quot;</span><span class="nt">&gt;</span>
-                      <span class="nt">&lt;detallista:value&gt;</span>30<span class="nt">&lt;/detallista:value&gt;</span>
-                  <span class="nt">&lt;/detallista:timePeriodDue&gt;</span>
-              <span class="nt">&lt;/detallista:paymentTimePeriod&gt;</span>
-          <span class="nt">&lt;/detallista:netPayment&gt;</span>
-          <span class="nt">&lt;detallista:discountPayment</span> <span class="na">discountType=</span><span class="s">&quot;ALLOWANCE_BY_PAYMENT_ON_TIME&quot;</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;detallista:percentage&gt;</span>0.00<span class="nt">&lt;/detallista:percentage&gt;</span>
-          <span class="nt">&lt;/detallista:discountPayment&gt;</span>
-      <span class="nt">&lt;/detallista:paymentTerms&gt;</span>
-      <span class="nt">&lt;detallista:shipmentDetail/&gt;</span>
-      <span class="nt">&lt;detallista:allowanceCharge</span> <span class="na">allowanceChargeType=</span><span class="s">&quot;CHARGE_GLOBAL&quot;</span> <span class="na">settlementType=</span><span class="s">&quot;BILL_BACK&quot;</span> <span class="na">sequenceNumber=</span><span class="s">&quot;33421123&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;detallista:monetaryAmountOrPercentage&gt;</span>
-              <span class="nt">&lt;detallista:rate</span> <span class="na">base=</span><span class="s">&quot;INVOICE_VALUE&quot;</span><span class="nt">&gt;</span>
-                  <span class="nt">&lt;detallista:percentage&gt;</span>0.00<span class="nt">&lt;/detallista:percentage&gt;</span>
-              <span class="nt">&lt;/detallista:rate&gt;</span>
-          <span class="nt">&lt;/detallista:monetaryAmountOrPercentage&gt;</span>
-      <span class="nt">&lt;/detallista:allowanceCharge&gt;</span>
-      <span class="nt">&lt;detallista:lineItem</span> <span class="na">type=</span><span class="s">&quot;SimpleInvoiceLineItemType&quot;</span> <span class="na">number=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;detallista:tradeItemIdentification&gt;</span>
-              <span class="nt">&lt;detallista:gtin&gt;</span>FGTSDF<span class="nt">&lt;/detallista:gtin&gt;</span>
-          <span class="nt">&lt;/detallista:tradeItemIdentification&gt;</span>
-          <span class="nt">&lt;detallista:alternateTradeItemIdentification</span> <span class="na">type=</span><span class="s">&quot;BUYER_ASSIGNED&quot;</span><span class="nt">&gt;</span>2222<span class="nt">&lt;/detallista:alternateTradeItemIdentification&gt;</span>
-          <span class="nt">&lt;detallista:tradeItemDescriptionInformation</span> <span class="na">language=</span><span class="s">&quot;ES&quot;</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;detallista:longText&gt;</span>DESCRIPCIÓN DEL ARTÍCULO 1<span class="nt">&lt;/detallista:longText&gt;</span>
-          <span class="nt">&lt;/detallista:tradeItemDescriptionInformation&gt;</span>
-          <span class="nt">&lt;detallista:invoicedQuantity</span> <span class="na">unitOfMeasure=</span><span class="s">&quot;PZA&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/detallista:invoicedQuantity&gt;</span>
-          <span class="nt">&lt;detallista:aditionalQuantity</span> <span class="na">QuantityType=</span><span class="s">&quot;FREE_GOODS&quot;</span><span class="nt">&gt;</span>0.00<span class="nt">&lt;/detallista:aditionalQuantity&gt;</span>
-          <span class="nt">&lt;detallista:grossPrice&gt;</span>
-              <span class="nt">&lt;detallista:Amount&gt;</span>12.90<span class="nt">&lt;/detallista:Amount&gt;</span>
-          <span class="nt">&lt;/detallista:grossPrice&gt;</span>
-          <span class="nt">&lt;detallista:netPrice&gt;</span>
-              <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
-          <span class="nt">&lt;/detallista:netPrice&gt;</span>
-          <span class="nt">&lt;detallista:AdditionalInformation&gt;</span>
-              <span class="nt">&lt;detallista:referenceIdentification</span> <span class="na">type=</span><span class="s">&quot;ON&quot;</span><span class="nt">&gt;</span>RFSADC2918<span class="nt">&lt;/detallista:referenceIdentification&gt;</span>
-          <span class="nt">&lt;/detallista:AdditionalInformation&gt;</span>
-          <span class="nt">&lt;detallista:Customs&gt;</span>
-              <span class="nt">&lt;detallista:gln&gt;</span>9999199991999<span class="nt">&lt;/detallista:gln&gt;</span>
-              <span class="nt">&lt;detallista:alternatePartyIdentification</span> <span class="na">type=</span><span class="s">&quot;TN&quot;</span><span class="nt">&gt;</span>64GHY73261<span class="nt">&lt;/detallista:alternatePartyIdentification&gt;</span>
-              <span class="nt">&lt;detallista:ReferenceDate&gt;</span>2014-07-23<span class="nt">&lt;/detallista:ReferenceDate&gt;</span>
-              <span class="nt">&lt;detallista:nameAndAddress&gt;</span>
-                  <span class="nt">&lt;detallista:name&gt;</span>NUEVO LAREDO 2<span class="nt">&lt;/detallista:name&gt;</span>
-              <span class="nt">&lt;/detallista:nameAndAddress&gt;</span>
-          <span class="nt">&lt;/detallista:Customs&gt;</span>
-          <span class="nt">&lt;detallista:LogisticUnits&gt;</span>
-              <span class="nt">&lt;detallista:serialShippingContainerCode</span> <span class="na">type=</span><span class="s">&quot;SRV&quot;</span><span class="nt">&gt;</span>5732GF832871<span class="nt">&lt;/detallista:serialShippingContainerCode&gt;</span>
-          <span class="nt">&lt;/detallista:LogisticUnits&gt;</span>
-          <span class="nt">&lt;detallista:palletInformation&gt;</span>
-              <span class="nt">&lt;detallista:palletQuantity&gt;</span>1<span class="nt">&lt;/detallista:palletQuantity&gt;</span>
-              <span class="nt">&lt;detallista:description</span> <span class="na">type=</span><span class="s">&quot;BOX&quot;</span><span class="nt">&gt;</span>Empaque con poliuretano 234 alta resistencia.<span class="nt">&lt;/detallista:description&gt;</span>
-              <span class="nt">&lt;detallista:transport&gt;</span>
-                  <span class="nt">&lt;detallista:methodOfPayment&gt;</span>PAID_BY_BUYER<span class="nt">&lt;/detallista:methodOfPayment&gt;</span>
-              <span class="nt">&lt;/detallista:transport&gt;</span>
-          <span class="nt">&lt;/detallista:palletInformation&gt;</span>
-          <span class="nt">&lt;detallista:extendedAttributes&gt;</span>
-              <span class="nt">&lt;detallista:lotNumber</span> <span class="na">productionDate=</span><span class="s">&quot;2014-06-10&quot;</span><span class="nt">&gt;</span>4EFE4<span class="nt">&lt;/detallista:lotNumber&gt;</span>
-          <span class="nt">&lt;/detallista:extendedAttributes&gt;</span>
-          <span class="nt">&lt;detallista:allowanceCharge</span> <span class="na">allowanceChargeType=</span><span class="s">&quot;CHARGE_GLOBAL&quot;</span> <span class="na">settlementType=</span><span class="s">&quot;OFF_INVOICE&quot;</span> <span class="na">sequenceNumber=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
-              <span class="nt">&lt;detallista:specialServicesType&gt;</span>EAB<span class="nt">&lt;/detallista:specialServicesType&gt;</span>
-              <span class="nt">&lt;detallista:monetaryAmountOrPercentage&gt;</span>
-                  <span class="nt">&lt;detallista:percentagePerUnit&gt;</span>5%<span class="nt">&lt;/detallista:percentagePerUnit&gt;</span>
-                  <span class="nt">&lt;detallista:ratePerUnit&gt;</span>
-                      <span class="nt">&lt;detallista:amountPerUnit&gt;</span>3.00<span class="nt">&lt;/detallista:amountPerUnit&gt;</span>
-                  <span class="nt">&lt;/detallista:ratePerUnit&gt;</span>
-              <span class="nt">&lt;/detallista:monetaryAmountOrPercentage&gt;</span>
-          <span class="nt">&lt;/detallista:allowanceCharge&gt;</span>
-          <span class="nt">&lt;detallista:tradeItemTaxInformation&gt;</span>
-              <span class="nt">&lt;detallista:taxTypeDescription&gt;</span>OTH<span class="nt">&lt;/detallista:taxTypeDescription&gt;</span>
-              <span class="nt">&lt;detallista:referenceNumber&gt;</span>883720126<span class="nt">&lt;/detallista:referenceNumber&gt;</span>
-              <span class="nt">&lt;detallista:taxCategory&gt;</span>TRANSFERIDO<span class="nt">&lt;/detallista:taxCategory&gt;</span>
-              <span class="nt">&lt;detallista:tradeItemTaxAmount&gt;</span>
-                  <span class="nt">&lt;detallista:taxPercentage&gt;</span>5.00<span class="nt">&lt;/detallista:taxPercentage&gt;</span>
-                  <span class="nt">&lt;detallista:taxAmount&gt;</span>3.00<span class="nt">&lt;/detallista:taxAmount&gt;</span>
-              <span class="nt">&lt;/detallista:tradeItemTaxAmount&gt;</span>
-          <span class="nt">&lt;/detallista:tradeItemTaxInformation&gt;</span>
-          <span class="nt">&lt;detallista:totalLineAmount&gt;</span>
-              <span class="nt">&lt;detallista:grossAmount&gt;</span>
-                  <span class="nt">&lt;detallista:Amount&gt;</span>12.90<span class="nt">&lt;/detallista:Amount&gt;</span>
-              <span class="nt">&lt;/detallista:grossAmount&gt;</span>
-              <span class="nt">&lt;detallista:netAmount&gt;</span>
-                  <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
-              <span class="nt">&lt;/detallista:netAmount&gt;</span>
-          <span class="nt">&lt;/detallista:totalLineAmount&gt;</span>
-      <span class="nt">&lt;/detallista:lineItem&gt;</span>
-      <span class="nt">&lt;detallista:totalAmount&gt;</span>
-          <span class="nt">&lt;detallista:Amount&gt;</span>13.90<span class="nt">&lt;/detallista:Amount&gt;</span>
-      <span class="nt">&lt;/detallista:totalAmount&gt;</span>
-      <span class="nt">&lt;detallista:TotalAllowanceCharge</span> <span class="na">allowanceOrChargeType=</span><span class="s">&quot;ALLOWANCE&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;detallista:specialServicesType&gt;</span>EAB<span class="nt">&lt;/detallista:specialServicesType&gt;</span>
-          <span class="nt">&lt;detallista:Amount&gt;</span>3.00<span class="nt">&lt;/detallista:Amount&gt;</span>
-      <span class="nt">&lt;/detallista:TotalAllowanceCharge&gt;</span>
-  <span class="nt">&lt;/detallista:detallista&gt;</span>
-<span class="nt">&lt;/cfdi:Complemento&gt;</span>
-</code></pre></div>
-<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
+<hr>
+
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd/comoGenerarCFDI.html">Como generar un CFDI</a>.</p>
 
             </div>
           </div>
@@ -671,6 +734,69 @@ Especifica el monto total de cargos o descuentos.</li>
         <div class=" ">
             <div class="module">
 
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
                 <h3>CFDI<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -740,6 +866,7 @@ Especifica el monto total de cargos o descuentos.</li>
                         <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
                     </ul>               
                 </div>
+                -->
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -752,6 +879,15 @@ Especifica el monto total de cargos o descuentos.</li>
                         <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
                     </ul>               
                 </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
             </div>
             <div class="clr"></div>
         </div>

@@ -162,6 +162,77 @@
 
 <p>A continuación una descripción y ejemplo de cada atributo en el complemento.
 La declaración de nameSpace es a nivel primario en nodo Comprobante.
+<code>xmlns:valesdedespensa=&quot;http://www.sat.gob.mx/valesdedespensa&quot;</code></p>
+
+<p><strong>IMPORTANTE:</strong>  El schemaLocation para este complemento debe de ser declarado a nivel <strong>&lt;cfdi:Comprobante&gt;</strong><br></p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">xsi:schemaLocation<span class="o">=</span><span class="s2">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/valesdedespensa http://www.sat.gob.mx/sitio_internet/cfd/valesdedespensa/valesdedespensa.xsd&quot;</span>
+</code></pre></div>
+<p>Descripción de los campos, lo puedes localizar en el siguiente documento:<br>
+<a href="../recursos/DVZ_Informacion_CFDI-CFDIRET.pdf">DVZ_Informacion_CFDI-CFDIRET.pdf</a>
+<br></p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/valesdedespensa http://www.sat.gob.mx/sitio_internet/cfd/valesdedespensa/valesdedespensa.xsd&quot;</span>
+  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:valesdedespensa=</span><span class="s">&quot;http://www.sat.gob.mx/valesdedespensa&quot;</span>
+  <span class="na">fecha=</span><span class="s">&quot;2015-03-05T10:33:52&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span> <span class="na">serie=</span><span class="s">&quot;C&quot;</span> <span class="na">folio=</span><span class="s">&quot;38&quot;</span>
+  <span class="na">LugarExpedicion=</span><span class="s">&quot;Monterrey, Nuevo León&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;No Identificado&quot;</span>
+  <span class="na">NumCtaPago=</span><span class="s">&quot;No Identificado&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> <span class="na">total=</span><span class="s">&quot;40600.00&quot;</span>
+  <span class="na">descuento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;35000.00&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;Pesos&quot;</span>
+  <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
+  <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span>
+  <span class="na">sello=</span><span class="s">&quot;E7jP8+lIdr7RLZWVz1tHZ1yLJsuILS+pSX+JkReNOVqW7SaaOZbtMXAFSmcUazdkdcSIAq41aZCxk0UaX0Eet9kSDvkZo46n76zFOkl5khnvYqZfmoKW77FCsJvTtUfUGnf/f4EbuQZT64Kr4EdZJXRimFStneoQFwxjbcQMiNc=&quot;</span>
+  <span class="na">version=</span><span class="s">&quot;3.2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Empresa de Pruebas SA&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">colonia=</span><span class="s">&quot;Fracc. San Pedro&quot;</span> <span class="na">calle=</span><span class="s">&quot;Encinos&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1452&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales de Prueba&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">rfc=</span><span class="s">&quot;E&amp;amp;Ñ831019M53&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Exportadora de Ganado HOLSTEIN S.A.&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">colonia=</span><span class="s">&quot;Ejido La Siembra&quot;</span> <span class="na">calle=</span><span class="s">&quot;Av. Principal&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;102&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">estado=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;99170&quot;</span>
+      <span class="na">localidad=</span><span class="s">&quot;Ejido La Siembra&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;Módulo de embarque serie A-6743-Ñ&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;35000.00&quot;</span>
+      <span class="na">unidad=</span><span class="s">&quot;LTE&quot;</span> <span class="na">importe=</span><span class="s">&quot;35000.00&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;cfdi:InformacionAduanera</span> <span class="na">numero=</span><span class="s">&quot;32441223&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2015-02-10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Concepto&gt;</span>
+  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+  <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosRetenidos=</span><span class="s">&quot;0.00&quot;</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;5600.00&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Retenciones&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;ISR&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Retenciones&gt;</span>
+    <span class="nt">&lt;cfdi:Traslados&gt;</span>
+      <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;5600.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+  <span class="nt">&lt;cfdi:Complemento&gt;</span>
+    <span class="nt">&lt;valesdedespensa:ValesDeDespensa</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">tipoOperacion=</span><span class="s">&quot;monedero electrónico&quot;</span> <span class="na">numeroDeCuenta=</span><span class="s">&quot;03800949426&quot;</span> <span class="na">total=</span><span class="s">&quot;360.00&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;valesdedespensa:Conceptos&gt;</span>
+        <span class="nt">&lt;valesdedespensa:Concepto</span> <span class="na">identificador=</span><span class="s">&quot;3054003000160212&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2014-08-08T17:02:57&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAAA010101AAA&quot;</span> <span class="na">curp=</span><span class="s">&quot;AAAA010101HCLJND07&quot;</span> <span class="na">nombre=</span><span class="s">&quot;JORGE VIGIL ESCANDÓN&quot;</span> <span class="na">numSeguridadSocial=</span><span class="s">&quot;91234567890&quot;</span> <span class="na">importe=</span><span class="s">&quot;180.00&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;valesdedespensa:Concepto</span> <span class="na">identificador=</span><span class="s">&quot;4068010004070241&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2014-08-08T18:01:47&quot;</span> <span class="na">rfc=</span><span class="s">&quot;BABB010101BBB&quot;</span> <span class="na">curp=</span><span class="s">&quot;BABB010101HCLJND07&quot;</span> <span class="na">nombre=</span><span class="s">&quot;ISRAEL RAMÍREZ CUELLAR&quot;</span> <span class="na">numSeguridadSocial=</span><span class="s">&quot;91234567890&quot;</span> <span class="na">importe=</span><span class="s">&quot;180.00&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/valesdedespensa:Conceptos&gt;</span>
+    <span class="nt">&lt;/valesdedespensa:ValesDeDespensa&gt;</span>
+    <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span>
+      <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span>
+      <span class="na">selloSAT=</span><span class="s">&quot;FtRoK4ZoBUaH0CPtku4fu5F3FQCevfzDmX+/ZVqzg8pjzf9GmEJgTY9H7BE0g5B4XV5moz30P9OaCVr9keB4lhdxW56JcObXCuOgU67HENVWZlxjRhX5RkLe+RQ4n5OHcbfyUm3ITtAtIZX+JJR0uvPc4jDuKioYRZjJoR4OuVk=&quot;</span>
+      <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span>
+      <span class="na">selloCFD=</span><span class="s">&quot;E7jP8+lIdr7RLZWVz1tHZ1yLJsuILS+pSX+JkReNOVqW7SaaOZbtMXAFSmcUazdkdcSIAq41aZCxk0UaX0Eet9kSDvkZo46n76zFOkl5khnvYqZfmoKW77FCsJvTtUfUGnf/f4EbuQZT64Kr4EdZJXRimFStneoQFwxjbcQMiNc=&quot;</span>
+      <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-03-05T10:33:52&quot;</span> <span class="na">UUID=</span><span class="s">&quot;1de696a2-bb8b-4b19-b80a-8310075452c1&quot;</span>
+      <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
 xmlns:valesdedespensa=&quot;<a href="http://www.sat.gob.mx/valesdedespensa">http://www.sat.gob.mx/valesdedespensa</a>&quot;</p>
 
 <ul>
@@ -202,17 +273,9 @@ Atributo requerido para expresar el  importe del depósito efectuado al trabajad
 
 <p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
 
-<h3 id="ejemplo">Ejemplo</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;cfdi:Complemento&gt;</span>
-  <span class="nt">&lt;valesdedespensa:ValesDeDespensa</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">tipoOperacion=</span><span class="s">&quot;monedero electrónico&quot;</span> <span class="na">numeroDeCuenta=</span><span class="s">&quot;03800949426&quot;</span> <span class="na">total=</span><span class="s">&quot;360.00&quot;</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;valesdedespensa:Conceptos&gt;</span>
-          <span class="nt">&lt;valesdedespensa:Concepto</span> <span class="na">identificador=</span><span class="s">&quot;3054003000160212&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2014-08-08T17:02:57&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAAA010101AAA&quot;</span> <span class="na">curp=</span><span class="s">&quot;AAAA010101HCLJND07&quot;</span> <span class="na">nombre=</span><span class="s">&quot;JORGE VIGIL ESCANDÓN&quot;</span> <span class="na">numSeguridadSocial=</span><span class="s">&quot;91234567890&quot;</span> <span class="na">importe=</span><span class="s">&quot;180.00&quot;</span><span class="nt">/&gt;</span>
-          <span class="nt">&lt;valesdedespensa:Concepto</span> <span class="na">identificador=</span><span class="s">&quot;4068010004070241&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2014-08-08T18:01:47&quot;</span> <span class="na">rfc=</span><span class="s">&quot;BABB010101BBB&quot;</span> <span class="na">curp=</span><span class="s">&quot;BABB010101HCLJND07&quot;</span> <span class="na">nombre=</span><span class="s">&quot;ISRAEL RAMÍREZ CUELLAR&quot;</span> <span class="na">numSeguridadSocial=</span><span class="s">&quot;91234567890&quot;</span> <span class="na">importe=</span><span class="s">&quot;180.00&quot;</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/valesdedespensa:Conceptos&gt;</span>
-  <span class="nt">&lt;/valesdedespensa:ValesDeDespensa&gt;</span>
-<span class="nt">&lt;/cfdi:Complemento&gt;</span>
-</code></pre></div>
-<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
+<hr>
+
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd/comoGenerarCFDI.html">Como generar un CFDI</a>.</p>
 
             </div>
           </div>
@@ -223,6 +286,69 @@ Atributo requerido para expresar el  importe del depósito efectuado al trabajad
         <div class=" ">
             <div class="module">
 
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
                 <h3>CFDI<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -292,6 +418,7 @@ Atributo requerido para expresar el  importe del depósito efectuado al trabajad
                         <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
                     </ul>               
                 </div>
+                -->
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -304,6 +431,15 @@ Atributo requerido para expresar el  importe del depósito efectuado al trabajad
                         <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
                     </ul>               
                 </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
             </div>
             <div class="clr"></div>
         </div>

@@ -207,6 +207,56 @@ La declaración de nameSpace es a nivel primario en nodo Retenciones.</p>
     <span class="nt">&lt;retenciones:Addenda/&gt;</span>
 <span class="nt">&lt;/retenciones:Retenciones&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Retenciones.</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">xmlns:pagosaextranjeros=&quot;http://www.sat.gob.mx/esquemas/retencionpago/1/pagosaextranjeros&quot;
+</code></pre></div>
+<ul>
+<li><p><strong>Pagosaextranjeros</strong>.
+Complemento para expresar los pagos que se realizan a residentes en el extranjero.</p>
+
+<ul>
+<li><strong>Version</strong>
+: Atributo requerido con valor prefijado que indica la versión del complemento de pagos realizados a residentes a residentes en el extranjero.</li>
+<li><strong>EsBenefEfectDelCobro</strong>.
+: Atributo requerido para expresar si el beneficiario del pago es la misma persona que retiene.</li>
+<li>NoBeneficiario
+: Nodo opcional para expresar la información del residente extranjero efectivo del cobro.
+
+<ul>
+<li><strong>PaisDeResidParaEfecFisc</strong>
+: Atributo requerido para expresar la clave del país de residencia del extranjero, conforme al catálogo de países publicado en el Anexo 10 de la RMF.</li>
+<li><strong>ConceptoPago</strong>
+: Atributo requerido para expresar  el tipo contribuyente sujeto a la retención, conforme al catálogo.</li>
+<li><strong>DescripcionConcepto</strong>
+: Atributo requerido para expresar la descripción de la definición del pago del residente en el extranjero.</li>
+</ul></li>
+<li>Beneficiario
+: Nodo opcional para precisar la información del representante para efectos fiscales en México.
+
+<ul>
+<li><strong>RFC</strong>
+: Atributo requerido para expresar la clave del registro federal de contribuyentes del representante legal en México.</li>
+<li><strong>CURP</strong>
+: Atributo requerido para la expresión de la CURP del representante legal.</li>
+<li><strong>NomDenRazSocB</strong>
+: Atributo requerido para expresar el nombre, denominación o razón social del contribuyente en México.</li>
+<li><strong>ConceptoPago</strong>
+: Atributo requerido para expresar el tipo de contribuyente sujeto a la retención, conforme al catálogo.</li>
+<li><strong>DescripcionConcepto</strong>
+: Atributo requerido para expresar la descripción de la definición del pago del residente en el extranjero.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

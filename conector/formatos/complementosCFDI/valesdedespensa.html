@@ -227,6 +227,54 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:valesdedespensa=&quot;<a href="http://www.sat.gob.mx/valesdedespensa">http://www.sat.gob.mx/valesdedespensa</a>&quot;</p>
+
+<ul>
+<li><p><strong>ValesDeDespensa</strong></p>
+
+<ul>
+<li><strong>version</strong> : 1.0<br>
+Atributo requerido con valor prefijado a 1.0 que indica la versión del estándar bajo el que se encuentra expresado el comprobante, valor fijado en &quot;1.0&quot;.</li>
+<li><strong>tipoOperacion</strong> : monedero electrónico<br>
+Atributo requerido para expresar el tipo de operación de acuerdo con el medio de pago, valor fijado en &quot;monedero electrónico&quot;.</li>
+<li>registroPatronal : 23232<br>
+Atributo opcional para expresar el registro patronal del adquirente del monedero electrónico.</li>
+<li><strong>numeroDeCuenta</strong> : 03800949426<br>
+Atributo requerido para expresar el numero de cuenta del adquiriente del monedero electrónico.</li>
+<li><strong>total</strong> : 360.00<br>
+Atributo requerido para expresar el monto total de vales de despensa otorgados.<br></li>
+<li><strong>Conceptos</strong></li>
+<li><strong>Concepto</strong>
+
+<ul>
+<li><strong>identificador</strong> : 3054003000160212<br>
+Atributo requerido para expresar el identificador o numero del  monedero electrónico.</li>
+<li><strong>fecha</strong> : 2014-08-08T17:02:57<br>
+Atributo requerido para la expresión de la Fecha y hora de expedición de la operación reportada.  Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.</li>
+<li><strong>rfc</strong> : AAAA010101AAA<br>
+Atributo requerido para la expresión del Registro Federal de Contribuyentes del trabajador al que se le otorgó el monedero electrónico sin guiones o espacios.</li>
+<li><strong>curp</strong> : AAAA010101HCLJND07<br>
+Atributo requerido para la expresión de la CURP del trabajador al que se le otorgó el monedero electrónico.</li>
+<li><strong>nombre</strong> : JORGE VIGIL ESCANDÓN<br>
+Atributo requerido para la expresión del Nombre del trabajador al que se le otorgó el monedero electrónico sin guiones o espacios.</li>
+<li>numSeguridadSocial : 91234567890<br>
+Atributo opcional para la expresión del numero de seguridad social aplicable al trabajador.</li>
+<li><strong>importe</strong> : 180.00<br>
+Atributo requerido para expresar el  importe del depósito efectuado al trabajador en el monedero electrónico.</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

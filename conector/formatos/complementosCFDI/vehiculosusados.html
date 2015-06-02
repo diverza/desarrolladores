@@ -250,6 +250,57 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:vehiculousado=&quot;<a href="http://www.sat.gob.mx/vehiculousado">http://www.sat.gob.mx/vehiculousado</a>&quot;</p>
+
+<ul>
+<li><p>VehiculoUsado</p>
+
+<ul>
+<li><strong>Version</strong> : 1.0<br>
+Expresa la versión del complemento, el valor deberá estar fijado en 1.0.</li>
+<li><strong>montoAdquisicion</strong> : 480000.00<br>
+Es el monto de la adquisición del vehículo usado según la factura original de la primer venta.</li>
+<li><strong>montoEnajenacion</strong> : 230000.00<br>
+Expresa el monto de enajenación del vehículo usado.</li>
+<li><strong>claveVehicular</strong> : 8372323<br>
+Clave vehicular del vehículo usado.</li>
+<li><strong>marca</strong> : CHEVROLET<br>
+Expresa la marca del vehículo usado</li>
+<li><strong>tipo</strong> : SILVERADO 4X4 EXT CREW<br>
+Tipo de vehículo usado</li>
+<li><strong>modelo</strong> : 2011<br>
+Requerido para expresar el año modelo del vehículo usado</li>
+<li>numeroMotor : 38261267381232132<br>
+Número del motoro de vehículo usado (en caso de contar con dicho número, se deberá ingresar)</li>
+<li>numeroSerie : KS82817DS214<br>
+Número de serie de la carrocería del vehículo usado (en caso de contar con dicho número, se deberá ingresar)</li>
+<li>NIV : CHS23812321232<br>
+Número de identificación vehicular del vehículo usado (Cuando exista el NIV, deberá incluirse éste, invariablemente)</li>
+<li><strong>valor</strong> : 250000.00<br>
+Expresa el valor del vehículo, establecido en la Guía EBC o Libro Azul (Guía de Información a Comerciantes de Automóviles y Camiones y Aseguradores de la República Mexicana) vigente, emitida por la Asociación Nacional de Comerciantes en Automóviles y Camiones  nuevos y usados A.C.</li>
+</ul></li>
+<li><p>InformacionAduanera</p>
+
+<ul>
+<li><strong>numero</strong> : 882I49E20123<br>
+Número del documento aduanero que ampara la importación del bien.</li>
+<li><strong>fecha</strong> : 2014-03-10<br>
+Fecha de expedición del documento aduanero que ampara la importación del bien.</li>
+<li>aduana : McAllen - Reynosa Anzalduas<br>
+Usado para precisar la aduana por donde se efectuó la importación del bien.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

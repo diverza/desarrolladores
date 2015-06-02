@@ -224,6 +224,45 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:implocal=&quot;<a href="http://www.sat.gob.mx/implocal">http://www.sat.gob.mx/implocal</a>&quot;</p>
+
+<ul>
+<li><p><strong>ImpuestosLocales</strong></p>
+
+<ul>
+<li><strong>version</strong> : 1.0<br>
+Atributo requerido para expresar la versión del complemento, valor fijado en &quot;1.0&quot;.</li>
+<li><strong>TotaldeRetenciones</strong> : 500.00<br>
+Atributo requerido para expresar la suma total de Retenciones aplicables.</li>
+<li><strong>TotaldeTraslados</strong> : 500.00<br>
+Atributo requerido para expresar la suma total de traslados aplicables.<br></li>
+<li>RetencionesLocales</li>
+<li><strong>ImpLocalRetenido</strong> : Retención 5 % al millar<br>
+Nombre del impuesto local retenido.</li>
+<li><strong>TasadeRetencion</strong> : 5.00<br>
+Porcentaje de retención del impuesto local.</li>
+<li><strong>Importe</strong> : 500.00<br>
+Monto del impuesto local retenido.</li>
+<li>TrasladosLocales</li>
+<li><strong>ImpLocalTrasladado</strong> : 5 % al millar<br>
+Nombre del impuesto local trasladado.</li>
+<li><strong>TasadeTraslado</strong> : 5.00<br>
+Porcentaje de traslado del impuesto local</li>
+<li><strong>Importe</strong> : 500.00<br>
+Monto del impuesto local trasladado</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

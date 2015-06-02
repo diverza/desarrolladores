@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante
+  xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/consumodecombustibles http://www.sat.gob.mx/sitio_internet/cfd/consumodecombustibles/consumodecombustibles.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+  xmlns:consumodecombustibles="http://www.sat.gob.mx/consumodecombustibles"
+  fecha="2015-03-05T10:33:50" tipoDeComprobante="ingreso" serie="C" folio="38"
+  LugarExpedicion="Monterrey, Nuevo León" metodoDePago="No Identificado"
+  NumCtaPago="No Identificado" formaDePago="PAGO EN UNA SOLA EXHIBICION" total="40600.00"
+  descuento="0.00" subTotal="35000.00" Moneda="Pesos"
+  certificado="MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww=="
+  noCertificado="20001000000100005867"
+  sello="NqQSJ4E9s4juTccCQ30+f3C/m9dqDcCp464/YGAVYnEtMcS9EDKJcPXRHpf4dSB4zHyv3b1z/91DV9ZBkzZL0MNuCrcrBDqW/rLZrvVj19gQgt7cG15gbzcnpVmPJI8peKm0ulJtWy4PRCjsyh1mkmaHO0wNEwP/x10FZLr3dRI="
+  version="3.2">
+  <cfdi:Emisor rfc="AAA010101AAA" nombre="Empresa de Pruebas SA">
+    <cfdi:DomicilioFiscal colonia="Fracc. San Pedro" calle="Encinos" noExterior="1452"
+      municipio="Monterrey" estado="Nuevo León" pais="México" codigoPostal="64000"/>
+    <cfdi:RegimenFiscal Regimen="Regimen General de Ley Personas Morales de Prueba"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="E&amp;Ñ831019M53" nombre="Exportadora de Ganado HOLSTEIN S.A.">
+    <cfdi:Domicilio colonia="Ejido La Siembra" calle="Av. Principal" noExterior="102"
+      municipio="Zacatecas" estado="Zacatecas" pais="México" codigoPostal="99170"
+      localidad="Ejido La Siembra"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" descripcion="Módulo de embarque serie A-6743-Ñ"
+      valorUnitario="35000.00" unidad="LTE" importe="35000.00">
+      <cfdi:InformacionAduanera numero="32441223" fecha="2015-02-10"/>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosRetenidos="0.00" totalImpuestosTrasladados="5600.00">
+    <cfdi:Retenciones>
+      <cfdi:Retencion impuesto="ISR" importe="0.00"/>
+      <cfdi:Retencion impuesto="IVA" importe="0.00"/>
+    </cfdi:Retenciones>
+    <cfdi:Traslados>
+      <cfdi:Traslado importe="5600.00" tasa="16.00" impuesto="IVA"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <consumodecombustibles:ConsumoDeCombustibles version="1.0" tipoOperacion="monedero electrónico"
+      numeroDeCuenta="A001385-1" total="158581.25">
+      <consumodecombustibles:Conceptos>
+        <consumodecombustibles:ConceptoConsumoDeCombustibles identificador="13847"
+          fecha="2014-07-01T03:08:22" rfc="SMP620426HT0" claveEstacion="555" cantidad="120.48"
+          nombreCombustible="Diesel" folioOperacion="1477" valorUnitario="13.28" importe="1600.00">
+          <consumodecombustibles:Determinados>
+            <consumodecombustibles:Determinado impuesto="IVA" tasa="16" importe="220.69"/>
+          </consumodecombustibles:Determinados>
+        </consumodecombustibles:ConceptoConsumoDeCombustibles>
+        <consumodecombustibles:ConceptoConsumoDeCombustibles identificador="198846"
+          fecha="2014-07-01T03:09:18" rfc="SMO920826HB0" claveEstacion="208" cantidad="112.95"
+          nombreCombustible="Diesel" folioOperacion="1478" valorUnitario="13.28" importe="1500.00">
+          <consumodecombustibles:Determinados>
+            <consumodecombustibles:Determinado impuesto="IVA" tasa="16" importe="206.90"/>
+          </consumodecombustibles:Determinados>
+        </consumodecombustibles:ConceptoConsumoDeCombustibles>
+        <consumodecombustibles:ConceptoConsumoDeCombustibles identificador="235248"
+          fecha="2014-07-01T03:13:33" rfc="SMO920826HB0" claveEstacion="208" cantidad="47.78"
+          nombreCombustible="Magna" folioOperacion="1479" valorUnitario="12.77" importe="610.15">
+          <consumodecombustibles:Determinados>
+            <consumodecombustibles:Determinado impuesto="IVA" tasa="16" importe="84.16"/>
+          </consumodecombustibles:Determinados>
+        </consumodecombustibles:ConceptoConsumoDeCombustibles>
+        <consumodecombustibles:ConceptoConsumoDeCombustibles identificador="264229"
+          fecha="2014-07-08T08:59:00" rfc="SMO920826HB0" claveEstacion="208" cantidad="15.55"
+          nombreCombustible="Magna" folioOperacion="1569" valorUnitario="12.86" importe="200.00">
+          <consumodecombustibles:Determinados>
+            <consumodecombustibles:Determinado impuesto="IVA" tasa="16" importe="27.59"/>
+          </consumodecombustibles:Determinados>
+        </consumodecombustibles:ConceptoConsumoDeCombustibles>
+      </consumodecombustibles:Conceptos>
+    </consumodecombustibles:ConsumoDeCombustibles>
+  </cfdi:Complemento>
+  <cfdi:Addenda/>
+</cfdi:Comprobante>

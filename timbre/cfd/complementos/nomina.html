@@ -162,6 +162,112 @@
 
 <h2 id="datos-del-complemento-de-nómina">Datos del complemento de nómina</h2>
 
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+<code>xmlns:nomina=&quot;http://www.sat.gob.mx/nomina&quot;</code></p>
+
+<p><strong>IMPORTANTE:</strong>  El schemaLocation para este complemento debe de ser declarado a nivel <strong>&lt;cfdi:Comprobante&gt;</strong><br></p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">xsi:schemaLocation<span class="o">=</span><span class="s2">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina11.xsd&quot;</span>
+</code></pre></div>
+<p>Descripción de los campos, lo puedes localizar en el siguiente documento:<br>
+<a href="../recursos/DVZ_Informacion_CFDI-CFDIRET.pdf">DVZ_Informacion_CFDI-CFDIRET.pdf</a>
+<br></p>
+
+<h3 id="ejemplo">Ejemplo</h3>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span> <span class="na">NumCtaPago=</span><span class="s">&quot;No Identificado&quot;</span> <span class="na">LugarExpedicion=</span><span class="s">&quot;Monterrey, Nuevo León&quot;</span>
+    <span class="na">metodoDePago=</span><span class="s">&quot;No Identificado&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;egreso&quot;</span> <span class="na">total=</span><span class="s">&quot;40600.00&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;Pesos&quot;</span>
+    <span class="na">descuento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;35000.00&quot;</span>
+    <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
+    <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span>
+    <span class="na">sello=</span><span class="s">&quot;kxtE1pJDWsq0jClJTHrpG/D43AojnJDKncwMEk6p88uzR3vcz20/8Fa4n+An1A7Q6dZysZ0E2Y0TY3q0vF7jRw9pXvKp2Dm0YXNCxYZD7hBqojjgueZTsR2eWjjzKvy+Ca4SRjW8ShsNUkeyXe4TCxoDhZEO136+6Uu3hcDuDn0=&quot;</span>
+    <span class="na">fecha=</span><span class="s">&quot;2015-03-05T10:33:48&quot;</span> <span class="na">folio=</span><span class="s">&quot;38&quot;</span> <span class="na">serie=</span><span class="s">&quot;C&quot;</span> <span class="na">version=</span><span class="s">&quot;3.2&quot;</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina11.xsd &quot;</span>
+    <span class="na">xmlns:bfa2=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2&quot;</span>
+    <span class="na">xmlns:nomina=</span><span class="s">&quot;http://www.sat.gob.mx/nomina&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;Empresa de Pruebas SA&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span>
+            <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Fracc. San Pedro&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1452&quot;</span> <span class="na">calle=</span><span class="s">&quot;Encinos&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales de Prueba&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;Exportadora de Ganado HOLSTEIN S.A.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;E&amp;amp;Ñ831019M53&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">codigoPostal=</span><span class="s">&quot;99170&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">municipio=</span><span class="s">&quot;Zacatecas&quot;</span>
+            <span class="na">localidad=</span><span class="s">&quot;Ejido La Siembra&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Ejido La Siembra&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;102&quot;</span>
+            <span class="na">calle=</span><span class="s">&quot;Av. Principal&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;35000.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;35000.00&quot;</span>
+            <span class="na">descripcion=</span><span class="s">&quot;Nómina&quot;</span> <span class="na">unidad=</span><span class="s">&quot;LTE&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;5600.00&quot;</span> <span class="na">totalImpuestosRetenidos=</span><span class="s">&quot;0.00&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;cfdi:Retenciones&gt;</span>
+            <span class="nt">&lt;cfdi:Retencion</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;ISR&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;cfdi:Retencion</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Retenciones&gt;</span>
+        <span class="nt">&lt;cfdi:Traslados&gt;</span>
+            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;5600.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+    <span class="nt">&lt;cfdi:Complemento&gt;</span>
+        <span class="nt">&lt;nomina:Nomina</span> <span class="na">SalarioDiarioIntegrado=</span><span class="s">&quot;696.80&quot;</span> <span class="na">RiesgoPuesto=</span><span class="s">&quot;1&quot;</span>
+            <span class="na">SalarioBaseCotApor=</span><span class="s">&quot;10000.00&quot;</span> <span class="na">PeriodicidadPago=</span><span class="s">&quot;Quincenal&quot;</span> <span class="na">TipoJornada=</span><span class="s">&quot;Diurna&quot;</span>
+            <span class="na">TipoContrato=</span><span class="s">&quot;Base&quot;</span> <span class="na">Puesto=</span><span class="s">&quot;Administración&quot;</span> <span class="na">Antiguedad=</span><span class="s">&quot;228&quot;</span>
+            <span class="na">FechaInicioRelLaboral=</span><span class="s">&quot;2009-06-01&quot;</span> <span class="na">Banco=</span><span class="s">&quot;113&quot;</span> <span class="na">CLABE=</span><span class="s">&quot;028991272912821233&quot;</span>
+            <span class="na">Departamento=</span><span class="s">&quot;Administración&quot;</span> <span class="na">NumDiasPagados=</span><span class="s">&quot;15&quot;</span> <span class="na">FechaFinalPago=</span><span class="s">&quot;2014-11-15&quot;</span>
+            <span class="na">FechaInicialPago=</span><span class="s">&quot;2014-11-01&quot;</span> <span class="na">FechaPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">NumSeguridadSocial=</span><span class="s">&quot;98765434&quot;</span>
+            <span class="na">TipoRegimen=</span><span class="s">&quot;1&quot;</span> <span class="na">CURP=</span><span class="s">&quot;TARE860821HNLRNL09&quot;</span> <span class="na">NumEmpleado=</span><span class="s">&quot;9872&quot;</span>
+            <span class="na">RegistroPatronal=</span><span class="s">&quot;1288192331&quot;</span> <span class="na">Version=</span><span class="s">&quot;1.1&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;nomina:Percepciones</span> <span class="na">TotalExento=</span><span class="s">&quot;379.00&quot;</span> <span class="na">TotalGravado=</span><span class="s">&quot;13000.00&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;nomina:Percepcion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;10000.00&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Sueldos, Salarios Rayas y Jornales&quot;</span> <span class="na">Clave=</span><span class="s">&quot;139&quot;</span> <span class="na">TipoPercepcion=</span><span class="s">&quot;001&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Percepcion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000.00&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Gratificación Anual (Aguinaldo)&quot;</span> <span class="na">Clave=</span><span class="s">&quot;164&quot;</span> <span class="na">TipoPercepcion=</span><span class="s">&quot;002&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Percepcion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000.00&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Reembolso gastos médicos dentales&quot;</span> <span class="na">Clave=</span><span class="s">&quot;112&quot;</span> <span class="na">TipoPercepcion=</span><span class="s">&quot;004&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Percepcion</span> <span class="na">ImporteExento=</span><span class="s">&quot;379.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;0.00&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Bonos de Despensa&quot;</span> <span class="na">Clave=</span><span class="s">&quot;563&quot;</span> <span class="na">TipoPercepcion=</span><span class="s">&quot;029&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Percepcion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000.00&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Horas Extra&quot;</span> <span class="na">Clave=</span><span class="s">&quot;545&quot;</span> <span class="na">TipoPercepcion=</span><span class="s">&quot;019&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/nomina:Percepciones&gt;</span>
+            <span class="nt">&lt;nomina:Deducciones</span> <span class="na">TotalExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">TotalGravado=</span><span class="s">&quot;3332.1&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;nomina:Deduccion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;278.39&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Seguro Social&quot;</span> <span class="na">Clave=</span><span class="s">&quot;223&quot;</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;001&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Deduccion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;2053.71&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;ISR&quot;</span>
+                    <span class="na">Clave=</span><span class="s">&quot;231&quot;</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;002&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Deduccion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Ausencia&quot;</span>
+                    <span class="na">Clave=</span><span class="s">&quot;653&quot;</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;020&quot;</span><span class="nt">/&gt;</span>
+                <span class="nt">&lt;nomina:Deduccion</span> <span class="na">ImporteExento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;0.00&quot;</span>
+                    <span class="na">Concepto=</span><span class="s">&quot;Pensión alimenticia&quot;</span> <span class="na">Clave=</span><span class="s">&quot;262&quot;</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;007&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/nomina:Deducciones&gt;</span>
+            <span class="nt">&lt;nomina:Incapacidades&gt;</span>
+                <span class="nt">&lt;nomina:Incapacidad</span> <span class="na">Descuento=</span><span class="s">&quot;300.00&quot;</span> <span class="na">TipoIncapacidad=</span><span class="s">&quot;1&quot;</span> <span class="na">DiasIncapacidad=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/nomina:Incapacidades&gt;</span>
+            <span class="nt">&lt;nomina:HorasExtras&gt;</span>
+                <span class="nt">&lt;nomina:HorasExtra</span> <span class="na">ImportePagado=</span><span class="s">&quot;2653.42&quot;</span> <span class="na">HorasExtra=</span><span class="s">&quot;3&quot;</span> <span class="na">TipoHoras=</span><span class="s">&quot;Dobles&quot;</span>
+                    <span class="na">Dias=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/nomina:HorasExtras&gt;</span>
+        <span class="nt">&lt;/nomina:Nomina&gt;</span>
+        <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span>
+            <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span>
+            <span class="na">selloSAT=</span><span class="s">&quot;32SBJUk+V4O5Xq08GKXBQBzSH/KDAeu5EFofLCAIBDh7n6ECjzUWNJVvTe8/Q5A8z+m0THPXdOpCDcBfRof5IyDCrIwXOar/Sek8FR7RCDRL/M7UiU2WwRbDEgYIFIyBC04zJI58jU7iqgosNrOm2V7nt3raVoIWFcxuflRQQZ8=&quot;</span>
+            <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span>
+            <span class="na">selloCFD=</span><span class="s">&quot;kxtE1pJDWsq0jClJTHrpG/D43AojnJDKncwMEk6p88uzR3vcz20/8Fa4n+An1A7Q6dZysZ0E2Y0TY3q0vF7jRw9pXvKp2Dm0YXNCxYZD7hBqojjgueZTsR2eWjjzKvy+Ca4SRjW8ShsNUkeyXe4TCxoDhZEO136+6Uu3hcDuDn0=&quot;</span>
+            <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-03-05T10:33:48&quot;</span> <span class="na">UUID=</span><span class="s">&quot;dff73a95-2667-465d-aea7-5cfc59d39c79&quot;</span>
+            <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Complemento&gt;</span>
+    <span class="nt">&lt;cfdi:Addenda&gt;</span>
+        <span class="nt">&lt;bfa2:AddendaBuzonFiscal</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;bfa2:TipoDocumento</span> <span class="na">descripcion=</span><span class="s">&quot;Factura&quot;</span> <span class="na">nombreCorto=</span><span class="s">&quot;FAC&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;bfa2:CFD</span> <span class="na">totalConLetra=</span><span class="s">&quot;Cuarenta  mil seiscientos pesos 00/100 M.N.&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/bfa2:AddendaBuzonFiscal&gt;</span>
+    <span class="nt">&lt;/cfdi:Addenda&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+</code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
 <p>A continuación una descripción y ejemplo de cada atributo en el  complemento.</p>
 
 <ul>
@@ -365,32 +471,9 @@
 
 <p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
 
-<h3 id="ejemplo">Ejemplo</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"> <span class="nt">&lt;cfdi:Complemento&gt;</span>
-    <span class="nt">&lt;nomina:Nomina</span> <span class="na">RegistroPatronal=</span><span class="s">&quot;23232&quot;</span> <span class="na">NumEmpleado=</span><span class="s">&quot;9872&quot;</span> <span class="na">CURP=</span><span class="s">&quot;TARE860821HNLRNL09&quot;</span> <span class="na">TipoRegimen=</span><span class="s">&quot;1&quot;</span> <span class="na">NumSeguridadSocial=</span><span class="s">&quot;98765434&quot;</span> <span class="na">FechaPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">FechaInicialPago=</span><span class="s">&quot;2013-11-1&quot;</span> <span class="na">FechaFinalPago=</span><span class="s">&quot;2013-11-15&quot;</span> <span class="na">NumDiasPagados=</span><span class="s">&quot;15&quot;</span> <span class="na">Departamento=</span><span class="s">&quot;Administración&quot;</span> <span class="na">CLABE=</span><span class="s">&quot;123123123123123123&quot;</span> <span class="na">Banco=</span><span class="s">&quot;123&quot;</span> <span class="na">FechaInicioRelLaboral=</span><span class="s">&quot;2009-06-01&quot;</span> <span class="na">Antiguedad=</span><span class="s">&quot;228&quot;</span> <span class="na">Puesto=</span><span class="s">&quot;Administración&quot;</span> <span class="na">TipoContrato=</span><span class="s">&quot;Base&quot;</span> <span class="na">TipoJornada=</span><span class="s">&quot;Diurna&quot;</span> <span class="na">PeriodicidadPago=</span><span class="s">&quot;Quincenal&quot;</span> <span class="na">SalarioBaseCotApor=</span><span class="s">&quot;10000&quot;</span> <span class="na">RiesgoPuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">SalarioDiarioIntegrado=</span><span class="s">&quot;696.8&quot;</span><span class="nt">&gt;</span>
-       <span class="nt">&lt;nomina:Percepciones</span> <span class="na">TotalGravado=</span><span class="s">&quot;13000&quot;</span> <span class="na">TotalExento=</span><span class="s">&quot;379&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;1&quot;</span> <span class="na">Clave=</span><span class="s">&quot;123&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Sueldos, Salarios Rayas y Jornales&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;10000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
-          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;2&quot;</span> <span class="na">Clave=</span><span class="s">&quot;124&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Premios por puntualidad&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
-          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;3&quot;</span> <span class="na">Clave=</span><span class="s">&quot;125&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Premios por Asistencia&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
-          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;455&quot;</span> <span class="na">Clave=</span><span class="s">&quot;56d&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Bonos de Despensa&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;0&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;379&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
-          <span class="nt">&lt;nomina:Percepcion</span> <span class="na">impuesto=</span><span class="s">&quot;432&quot;</span> <span class="na">Clave=</span><span class="s">&quot;5445&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Horas Extra&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Percepcion&gt;</span>
-       <span class="nt">&lt;/nomina:Percepciones&gt;</span>
-       <span class="nt">&lt;nomina:Deducciones</span> <span class="na">TotalGravado=</span><span class="s">&quot;3332.1&quot;</span> <span class="na">TotalExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;345&quot;</span> <span class="na">Clave=</span><span class="s">&quot;2323&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Seguro Social&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;278.39&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
-          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;&quot;</span> <span class="na">Clave=</span><span class="s">&quot;231&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;ISPT&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;2053.71&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
-          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;&quot;</span> <span class="na">Clave=</span><span class="s">&quot;653&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;incapacidad&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;1000&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
-          <span class="nt">&lt;nomina:Deduccion</span> <span class="na">TipoDeduccion=</span><span class="s">&quot;&quot;</span> <span class="na">Clave=</span><span class="s">&quot;223&quot;</span> <span class="na">Concepto=</span><span class="s">&quot;Comedor&quot;</span> <span class="na">ImporteGravado=</span><span class="s">&quot;0&quot;</span> <span class="na">ImporteExento=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;&lt;/nomina:Deduccion&gt;</span>
-       <span class="nt">&lt;/nomina:Deducciones&gt;</span>
-       <span class="nt">&lt;nomina:Incapacidades&gt;</span>
-          <span class="nt">&lt;nomina:Incapacidad</span> <span class="na">DiasIncapacidad=</span><span class="s">&quot;2&quot;</span> <span class="na">TipoIncapacidad=</span><span class="s">&quot;1&quot;</span> <span class="na">Descuento=</span><span class="s">&quot;1000&quot;</span><span class="nt">&gt;&lt;/nomina:Incapacidad&gt;</span>
-       <span class="nt">&lt;/nomina:Incapacidades&gt;</span>
-       <span class="nt">&lt;nomina:HorasExtras&gt;</span>
-          <span class="nt">&lt;nomina:HorasExtra</span> <span class="na">Dias=</span><span class="s">&quot;2&quot;</span> <span class="na">TipoHoras=</span><span class="s">&quot;Dobles&quot;</span> <span class="na">HorasExtra=</span><span class="s">&quot;3&quot;</span> <span class="na">ImportePagado=</span><span class="s">&quot;1000&quot;</span><span class="nt">&gt;&lt;/nomina:HorasExtra&gt;</span>
-       <span class="nt">&lt;/nomina:HorasExtras&gt;</span>
-    <span class="nt">&lt;/nomina:Nomina&gt;</span>
- <span class="nt">&lt;/cfdi:Complemento&gt;</span>
-</code></pre></div>
-<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd">Como generar un CFDI</a>.</p>
+<hr>
+
+<p>Para conocer más acerca de como construir un CFDI, te recomendamos visitar la siguiente guía: <a href="/timbre/cfd/comoGenerarCFDI.html">Como generar un CFDI</a>.</p>
 
             </div>
           </div>
@@ -401,6 +484,69 @@
         <div class=" ">
             <div class="module">
 
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
                 <h3>CFDI<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -470,6 +616,7 @@
                         <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
                     </ul>               
                 </div>
+                -->
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -482,6 +629,15 @@
                         <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
                     </ul>               
                 </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
             </div>
             <div class="clr"></div>
         </div>

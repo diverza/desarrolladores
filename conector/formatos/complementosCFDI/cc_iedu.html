@@ -223,6 +223,37 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:iedu=&quot;<a href="http://www.sat.gob.mx/iedu">http://www.sat.gob.mx/iedu</a>&quot;</p>
+
+<ul>
+<li><strong>instEducativas</strong>
+
+<ul>
+<li><strong>version</strong> : 1.0<br>
+Atributo requerido con valor prefijado a 1.0 que indica la versión del estándar bajo el que se encuentra expresado el complemento concepto al comprobante.</li>
+<li><strong>nombreAlumno</strong>  : Jaime García Sanchez<br>
+Atributo requerido para indicar el nombre del Alumno.</li>
+<li><strong>CURP</strong>  : AAAA010101HNLRNL09<br>
+Atributo requerido para indicar la CURP del alumno de la institución educativa.</li>
+<li><strong>nivelEducativo</strong>  : Secundaria<br>
+Atributo requerido para indicar el nivel educativo que cursa el alumno, valores aceptados: &quot;Preescolar&quot;, &quot;Primaria&quot;, &quot;Secundaria&quot;, &quot;Profesional técnico&quot;, &quot;Bachillerato o su equivalente&quot;.</li>
+<li><strong>autRVOE</strong> : PEFHS821923KSDJ823<br>
+Atributo requerido para especificar la clave del centro de trabajo o el reconocimiento de validez oficial de estudios en los términos de la Ley General de Educación que tenga la institución educativa privada donde se realiza el pago.</li>
+<li>rfcPago : BBB010101AAA<br>
+Atributo opcional para indicar el RFC de quien realiza el pago cuando sea diferente a quien recibe el servicio.</li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

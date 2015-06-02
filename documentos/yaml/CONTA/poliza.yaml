@@ -1,0 +1,89 @@
+--- !diverza.com/v2.0   # Todo documento debe empezar con esta marca y la indicación de la versión
+
+# Datos generales
+# Debe haber al menos un espacio después de los dos puntos.
+Rfc               : "RFC"
+Mes               : "Mes"
+Anio              : "Anio"
+TipoSolicitud     : "TipoSolicitud"
+NumeroDeOrden     : "NumOrden"
+NumeroDeTramite   : "NumTramite"
+NoCertificado     : "noCertificado"
+
+
+Poliza:
+  # Informacion relacionada a las transacciones de la poliza
+  - IdentificacionDePoliza  : "NumUnIdenPol"
+    Fecha                   : "Fecha"
+    Concepto                : "Concepto"
+    Transaccion:
+    - Numero                : "NumCta"
+      Nombre                : "DesCta"
+      Concepto              : "Concepto"
+      MontoDeCargo          : "Debe"
+      MontoDeAbono          : "Haber"
+
+      # Informacion opcional del comprobantes relacionados de origen nacional
+      ComprobanteNacionalRelacionado:
+      - Uuid                    : "UUID_CFDI"
+        Rfc                     : "RFC"
+        MontoTotal              : "MontoTotal"
+        Moneda                  : "Moneda"
+        TipoDeCambio            : "TipCamb"
+
+      # Informacion opcional del comprobantes relacionados de origen nacional a la transacción (CFD o CBB)
+      ComprobanteNacionalRelacionadoAlternativo:
+      - Serie                   : "CFD_CBB_Serie"
+        Folio                   : "CFD_CBB_NumFol"
+        Rfc                     : "RFC"
+        MontoTotal              : "MontoTotal"
+        Moneda                  : "Moneda"
+        TipoDeCambio            : "TipCamb"
+
+      # Informacion opcional del comprobantes relacionados de origen extranjero
+      ComprobanteExtranjeroRelacionado:
+      - ClaveComprobante        : "NumFactExt"
+        TaxId                   : "TaxID"
+        MontoTotal              : "MontoTotal"
+        Moneda                  : "Moneda"
+        TipoDeCambio            : "TipCamb"
+
+      # Detalle de los cheques
+      Cheque:
+      - Numero                  : "Num"
+        BancoEmisorNacional     : "BanEmisNal"
+        BancoEmisorExtranjero   : "BanEmisExt"
+        CuentaOrigen            : "CtaOri"
+        Fecha                   : "Fecha"
+        Beneficiario            : "Benef"
+        Rfc                     : "RFC"
+        Monto                   : "Monto"
+        Moneda                  : "Moneda"
+        TipoDeCambio            : "TipCamb"
+
+      # Detalle de las transferencias bancarias
+      Transferencia:
+      - CuentaOrigen            : "CtaOri"
+        BancoNacionalDeOrigen   : "BancoOriNal"
+        BancoExtranjeroDeOrigen : "BancoOriExt"
+        CuentaDestino           : "CtaDest"
+        BancoNacionalDeDestino  : "BancoDestNal"
+        BancoExtranjeroDeDestino: "BancoDestExt"
+        Fecha                   : "Fecha"
+        Beneficiario            : "Benef"
+        Rfc                     : "RFC"
+        Monto                   : "Monto"
+        Moneda                  : "Moneda"
+        TipoDeCambio            : "TipCamb"
+
+      # Detalle de los metodos de pago alternativos
+      OtroMetodoDePago:
+      - MetodoDePago            : "MetPagoPol"
+        Fecha                   : "Fecha"
+        Beneficiario            : "Benef"
+        Rfc                     : "RFC"
+        Monto                   : "Monto"
+        Moneda                  : "Moneda"
+        TipoDeCambio            : "TipCamb"
+
+  ---

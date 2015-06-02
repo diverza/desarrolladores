@@ -165,13 +165,13 @@
 <p>Para la construcción de la cadena original automática, necesitas:</p>
 
 <ul>
-<li>El <a href="/timbre/cfd/retencion.html">documento de retención</a> con toda la información (<a href="/timbre/resources/RET/cfd_ret_ejemplo.xml">ejemplo</a>)</li>
-<li>El <a href="/timbre/resources/RET/retenciones.xslt">xslt</a> de transformación</li>
+<li>El <a href="/timbre/cfd/retencion.html">documento de retención</a> con toda la información (<a href="/timbre/recursos/xsd-ret/Retenciones.xml">ejemplo</a>)</li>
+<li>El <a href="/timbre/recursos/xsd-ret/retenciones.xslt">xslt</a> de transformación</li>
 <li>Instalar la herramienta <a href="http://xmlsoft.org/XSLT/xsltproc2.html">xsltproc</a> (Incluida en Linux y OS X. Para windows descargarla <a href="http://www.zlatkovic.com/libxml.en.html">aquí</a>).</li>
 </ul>
 
 <p>Desde la linea de comando deberás ejecutar:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;xsltproc retenciones.xslt cfd_ret_ejemplo.xml
+<div class="highlight"><pre><code class="language-text" data-lang="text">&gt;xsltproc retenciones.xslt Retenciones.xml
 </code></pre></div>
 <p>Recibirás la cadena original:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">||1.0|20001000000100005867|TEST00001|2015-01-05T10:12:48-06:00|25|Otro tipo de retención|AAA010101AAA|Empresa DEMO para Rentenciones S de TST|AAAA010101HNLMNLD2|Nacional|XAXX010101000|PÚBLICO EN GENERAL S DE TST|VAHE820926HNLLRD02|6|6|2014|14000.00|13000.00|1000.00|3500.00|1000.00|01|500.00|Pago definitivo|1000.00|02|500.00|Pago provisional||~
@@ -204,7 +204,7 @@
 <h3 id="secuencia-de-formación">Secuencia de formación</h3>
 
 <p>La secuencia de formación será siempre en el orden que se expresa a continuación, tomando en cuenta las reglas generales expresadas en el párrafo anterior.</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">**||version|fecha|tipoDeComprobante|formaDePago|condicionesDePago|subTotal|descuento|TipoCambio|Moneda|total|metodoDePago|LugarExpedicion|NumCtaPago|FolioFiscalOrig|SerieFolioFiscalOrig|FechaFolioFiscalOrig|MontoFolioFiscalOrig|Emisor:rfc|Emisor:nombre|Emisor:DomicilioFiscal:calle|Emisor:DomicilioFiscal:noExterior|Emisor:DomicilioFiscal:noInterior|Emisor:DomicilioFiscal:colonia|Emisor:DomicilioFiscal:localidad|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:municipio|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:referencia|Emisor:DomicilioFiscal:estado|Emisor:DomicilioFiscal:pais|Emisor:DomicilioFiscal:codigoPostal|Emisor:ExpedidoEn:calle|Emisor:ExpedidoEn:noExterior|Emisor:ExpedidoEn:noInterior|Emisor:ExpedidoEn:colonia|Emisor:ExpedidoEn:localidad|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:municipio|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:referencia|Emisor:ExpedidoEn:estado|Emisor:ExpedidoEn:pais|Emisor:ExpedidoEn:codigoPostal|Emisor:RegimenFiscal:Regimen|Receptor:rfc|Receptor:nombre|Receptor:DomicilioFiscal:calle|Receptor:DomicilioFiscal:noExterior|Receptor:DomicilioFiscal:noInterior|Receptor:DomicilioFiscal:colonia|Receptor:DomicilioFiscal:localidad|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:municipio|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:referencia|Receptor:DomicilioFiscal:estado|Receptor:DomicilioFiscal:pais|Receptor:DomicilioFiscal:codigoPostal|Concepto:cantidad|Concepto:unidad|Concepto:noIdentificacion|Concepto:descripcion|Concepto:valorUnitario|Concepto:importe|Concepto:InformacionAduanera:numero|Concepto:InformacionAduanera:fecha|Concepto:InformacionAduanera:aduana|Concepto:CuentaPredial:numero|ComplementoConcepto|Impuestos:Retencion:impuesto|Impuestos:Retencion:importe|Impuestos:totalImpuestosRetenidos|Impuestos:Traslado:impuesto|Impuestos:Traslado:importe|Impuestos:totalImpuestosTrasladados||
+<div class="highlight"><pre><code class="language-text" data-lang="text">||Version|NumCert|FolioInt|FechaExp|CveRetenc|DescRetenc|Emisor:RFCEmisor|Emisor:NomDenRazSocE|Emisor:CURPE|Receptor:Nacionalidad|Receptor:Nacional:RFCRecep|Receptor:Nacional:NomDenRazSocR|Receptor:Nacional:CURPR|Receptor:Extranjero:NumRegIdTrib|Receptor:Extranjero:NomDenRazSocR|Periodo:MesIni|Periodo:MesFin|Periodo:Ejerc|Totales:montoTotOperacion|Totales:montoTotGrav|Totales:montoTotExent|Totales:montoTotRet|Totales:ImpRetenidos:BaseRet|Totales:ImpRetenidos:Impuesto|Totales:ImpRetenidos:montoRet|Totales:ImpRetenidos:TipoPagoRet||
 </code></pre></div>
 <p>* Los campos no obligatorios en la definición del CFDI, se podrían ignorar en la cadena. Como <strong>Emisor:ExpedidoEn</strong> <strong>Receptor:ExpedidoEn</strong></p>
 
@@ -214,7 +214,7 @@
 
 <p>* Para todos los nodos de <strong>Impuestos:Trasladado</strong> y <strong>Impuestos:Retencion</strong> <em>impuesto</em>, <em>importe</em></p>
 
-<p>Puedes consultar el detalle en el <a href="/timbre/resources/Anexo20_cfdiv32_30122011.pdf">Anexo 20</a>, página 48</p>
+<p>Puedes consultar el detalle en el siguiente <strong><a href="/timbre/recursos/xsd-ret/RetencionPago.pdf">documento</a></strong>.</p>
 
             </div>
           </div>
@@ -225,6 +225,69 @@
         <div class=" ">
             <div class="module">
 
+                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
+                <div class="clr"></div>
+                <div class="module-content"></div>
+
+                <h3>servicio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
+                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
+                    </ul>
+                </div>
+
+                <h3>recursos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
+                    </ul>
+                </div>
+
+
+<!--
+                <h3>complementos<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
+                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
+                    </ul>               
+                </div>
+-->
+
+<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu menu-lines">
+                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
+                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
+                    </ul>
+                </div>
+                <!--
                 <h3>CFDI<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -294,6 +357,7 @@
                         <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
                     </ul>               
                 </div>
+                -->
 
                 <!-- <br />
                 <h3>herramientas<span class="diverza-dot">.</span></h3>
@@ -306,6 +370,15 @@
                         <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
                     </ul>               
                 </div> -->
+                <h3>FAQ's<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
+                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                    </ul>               
+                </div>
             </div>
             <div class="clr"></div>
         </div>

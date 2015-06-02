@@ -225,6 +225,44 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
   <span class="nt">&lt;cfdi:Addenda/&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el complemento.
+La declaración de nameSpace es a nivel primario en nodo Comprobante.
+xmlns:tpe=&quot;<a href="http://www.sat.gob.mx/TuristaPasajeroExtranjero">http://www.sat.gob.mx/TuristaPasajeroExtranjero</a>&quot;</p>
+
+<ul>
+<li><p><strong>TuristaPasajeroExtranjero</strong></p>
+
+<ul>
+<li><strong>version</strong> : 1.0<br>
+Versión del complemento para TuristaPasajeroExtranjero, fijado el valor en &quot;1.0&quot;.</li>
+<li><strong>fechadeTransito</strong> : 2014-08-10T17:20:45<br>
+Atributo requerido para expresar la fecha y hora del Arribo o Salida del medio de transporte utilizado. Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.</li>
+<li><strong>tipoTransito</strong> : Salida<br>
+Atributo requerido para incorporar la operación realizada: Arribo ó Salida.<br></li>
+<li><strong>datosTransito</strong></li>
+<li><strong>Via</strong> : Aérea<br>
+Atributo requerido para expresar si es vía “Aérea”, “Marítima” o &quot;Terrestre&quot;.</li>
+<li><strong>TipoId</strong> : 832912830-E2341<br>
+Atributo requerido para la expresión del número de pasaporte.</li>
+<li><strong>NumeroId</strong> : EGA93812273-PLM3821<br>
+Atributo requerido para expresar el número de identificación (pasaporte, visa, etc.).</li>
+<li><strong>Nacionalidad</strong> : GRECIA<br>
+Atributo requerido para expresar la nacionalidad del turista.</li>
+<li><strong>EmpresaTransporte</strong> : IBERIA<br>
+Atributo requerido para señalar la empresa de transporte que lo ingresa a territorio nacional o lo traslada de salida.</li>
+<li>IdTransporte : MX8321/GC9328<br>
+Atributo opcional para expresar el identificador del medio de transporte usado, ejemplo: número de vuelo.<br></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

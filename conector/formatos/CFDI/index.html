@@ -230,6 +230,548 @@
     <span class="nt">&lt;/cfdi:Addenda&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h3 id="descripción-de-campos">Descripción de campos</h3>
+
+<p><br></p>
+
+<table><thead>
+<tr>
+<th>Nodo</th>
+<th style="text-align: center">Atributo</th>
+<th style="text-align: center">Descripción</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Comprobante</code></td>
+<td style="text-align: center"><em>(nodo principal)</em></td>
+<td style="text-align: center">Estándar de Comprobante fiscal digital a través de Internet.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">versión </td>
+<td style="text-align: center">Atributo requerido con valor prefijado a 3.2 que indica la versión del estándar bajo el que se encuentra expresado el comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">serie</td>
+<td style="text-align: center">Atributo opcional para precisar la serie para control interno del contribuyente. Este atributo acepta una cadena de caracteres alfabéticos de 1 a 25 caracteres sin incluir caracteres acentuados.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">folio</td>
+<td style="text-align: center">Atributo opcional para control interno del contribuyente que acepta un valor numérico entero superior a 0 que expresa el folio del comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">fecha</td>
+<td style="text-align: center">Atributo requerido para la expresión de la fecha y hora de expedición del comprobante fiscal. Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">sello </td>
+<td style="text-align: center">Atributo requerido para contener el sello digital del comprobante fiscal, al que hacen referencia las reglas de resolución miscelánea aplicable. El sello deberá ser expresado cómo una cadena de texto en formato Base 64.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">formaDePago</td>
+<td style="text-align: center">Atributo requerido para precisar la forma de pago que aplica para este comprobante fiscal digital a través de Internet. Se utiliza para expresar Pago en una sola exhibición o número de parcialidad pagada contra el total de parcialidades, Parcialidad 1 de X.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noCertificado</td>
+<td style="text-align: center">Atributo requerido para expresar el número de serie del certificado de sello digital que ampara al comprobante, de acuerdo al acuse correspondiente a 20 posiciones otorgado por el sistema del SAT.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">certificado</td>
+<td style="text-align: center">Atributo requerido que sirve para expresar el certificado de sello digital que ampara al comprobante como texto, en formato base 64. </td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">condicionesDePago</td>
+<td style="text-align: center">Atributo opcional para expresar las condiciones comerciales aplicables para el pago del comprobante fiscal digital a través de Internet.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">subTotal</td>
+<td style="text-align: center">Atributo requerido para representar la suma de los importes antes de descuentos e impuestos.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">descuento </td>
+<td style="text-align: center">Atributo opcional para representar el importe total de los descuentos aplicables antes de impuestos.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">motivoDescuento</td>
+<td style="text-align: center">Atributo opcional para expresar el motivo del descuento aplicable.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">TipoCambio</td>
+<td style="text-align: center">Atributo opcional para representar el tipo de cambio conforme a la moneda usada.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">Moneda</td>
+<td style="text-align: center">Atributo opcional para expresar la moneda utilizada para expresar los montos. </td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">total</td>
+<td style="text-align: center">Atributo requerido para representar la suma del subtotal, menos los descuentos aplicables, más los impuestos trasladados, menos los impuestos retenidos. </td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">tipoDeComprobante</td>
+<td style="text-align: center">Atributo requerido para expresar el efecto del comprobante fiscal para el contribuyente emisor.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">metodoDePago</td>
+<td style="text-align: center">Atributo requerido de texto libre para expresar el método de pago de los bienes o servicios amparados por el comprobante. Se entiende como método de pago leyendas tales como: cheque, tarjeta de crédito o debito, depósito en cuenta, etc.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">LugarExpedicion</td>
+<td style="text-align: center">Atributo requerido para incorporar el lugar de expedición del comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">NumCtaPago</td>
+<td style="text-align: center">Atributo Opcional para incorporar al menos los cuatro últimos dígitos del número de cuenta con la que se realizó el pago.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">FolioFiscalOrig</td>
+<td style="text-align: center">Atributo opcional para señalar el número de folio fiscal del comprobante que se hubiese expedido por el valor total del comprobante, tratándose del pago en parcialidades. </td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">SerieFolioFiscalOrig</td>
+<td style="text-align: center">Atributo opcional para señalar la serie del folio del comprobante que se hubiese expedido por el valor total del comprobante, tratándose del pago en parcialidades.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">FechaFolioFiscalOrig</td>
+<td style="text-align: center">Atributo opcional para señalar la fecha de expedición del comprobante que se hubiese emitido por el valor total del comprobante, tratándose del pago en parcialidades. Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">MontoFolioFiscalOrig </td>
+<td style="text-align: center">Atributo opcional para señalar el total del comprobante que se hubiese expedido por el valor total de la operación, tratándose del pago en parcialidades.</td>
+</tr>
+<tr>
+<td><code>Emisor</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Comprobante&quot;)</em></td>
+<td style="text-align: center">Nodo requerido para expresar la información del contribuyente emisor del comprobante. </td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">rfc</td>
+<td style="text-align: center">Atributo requerido para la Clave del Registro Federal de Contribuyentes correspondiente al contribuyente emisor del comprobante sin guiones o espacios.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">nombre</td>
+<td style="text-align: center">Atributo opcional para el nombre, denominación o razón social del contribuyente emisor del comprobante.</td>
+</tr>
+<tr>
+<td><code>DomicilioFiscal</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Emisor&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para precisar la información de ubicación del domicilio fiscal del contribuyente emisor.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">calle</td>
+<td style="text-align: center">Este atributo requerido sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noExterior</td>
+<td style="text-align: center">Este atributo opcional sirve para expresar el número particular en donde se da la ubicación sobre una calle dada.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noInterior</td>
+<td style="text-align: center">Este atributo opcional sirve para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación de forma precisa.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">colonia</td>
+<td style="text-align: center">Este atributo opcional sirve para precisar la colonia en donde se da la ubicación cuando se desea ser más específico en casos de ubicaciones urbanas.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">localidad</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar la ciudad o población donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">referencia</td>
+<td style="text-align: center">Atributo opcional para expresar una referencia de ubicación adicional.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">municipio</td>
+<td style="text-align: center">Atributo requerido que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">estado</td>
+<td style="text-align: center">Atributo requerido que sirve para precisar el estado o entidad federativa donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">país</td>
+<td style="text-align: center"> Atributo requerido que sirve para precisar el país donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">codigoPostal</td>
+<td style="text-align: center">Atributo requerido que sirve para asentar el código postal en donde se da la ubicación.</td>
+</tr>
+<tr>
+<td><code>ExpedidoEn</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Emisor&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para precisar la información de ubicación del domicilio en donde es emitido el comprobante fiscal en caso de que sea distinto del domicilio fiscal del contribuyente emisor.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">calle</td>
+<td style="text-align: center">Este atributo opcional sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noExterior</td>
+<td style="text-align: center">Este atributo opcional sirve para expresar el número particular en donde se da la ubicación sobre una calle dada.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noInterior</td>
+<td style="text-align: center">Este atributo opcional sirve para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación de forma precisa.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">colonia</td>
+<td style="text-align: center">Este atributo opcional sirve para precisar la colonia en donde se da la ubicación cuando se desea ser más específico en casos de ubicaciones urbanas.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">localidad</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar la ciudad o población donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">referencia</td>
+<td style="text-align: center">Atributo opcional para expresar una referencia de ubicación adicional.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">municipio</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">estado</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar el estado o entidad federativa donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">pais</td>
+<td style="text-align: center">Atributo requerido que sirve para precisar el país donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">codigoPostal </td>
+<td style="text-align: center">Atributo opcional que sirve para asentar el código postal en donde se da la ubicación.</td>
+</tr>
+<tr>
+<td><code>RegimenFiscal</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Emisor&quot;)</em></td>
+<td style="text-align: center">Nodo requerido para incorporar los regímenes en los que tributa el contribuyente emisor. Puede contener más de un régimen.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">Regimen</td>
+<td style="text-align: center">Atributo requerido para incorporar el nombre del régimen en el que tributa el contribuyente emisor.</td>
+</tr>
+<tr>
+<td><code>Receptor</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Comprobante&quot;)</em></td>
+<td style="text-align: center">Nodo requerido para precisar la información del contribuyente receptor del comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">rfc</td>
+<td style="text-align: center">Atributo requerido para precisar la Clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">nombre</td>
+<td style="text-align: center">Atributo opcional para el nombre, denominación o razón social del contribuyente receptor del comprobante.</td>
+</tr>
+<tr>
+<td><code>Domicilio</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Receptor&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para la definición de la ubicación donde se da el domicilio del receptor del comprobante fiscal.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">calle</td>
+<td style="text-align: center">Este atributo opcional sirve para precisar la avenida, calle, camino o carretera donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noExterior</td>
+<td style="text-align: center">Este atributo opcional sirve para expresar el número particular en donde se da la ubicación sobre una calle dada.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noInterior</td>
+<td style="text-align: center">Este atributo opcional sirve para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación de forma precisa.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">colonia</td>
+<td style="text-align: center">Este atributo opcional sirve para precisar la colonia en donde se da la ubicación cuando se desea ser más específico en casos de ubicaciones urbanas.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">localidad</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar la ciudad o población donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">referencia</td>
+<td style="text-align: center">Atributo opcional para expresar una referencia de ubicación adicional.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">municipio</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">estado</td>
+<td style="text-align: center">Atributo opcional que sirve para precisar el estado o entidad federativa donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">país</td>
+<td style="text-align: center">Atributo requerido que sirve para precisar el país donde se da la ubicación.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">codigoPostal</td>
+<td style="text-align: center">Atributo opcional que sirve para asentar el código postal en donde se da la ubicación.</td>
+</tr>
+<tr>
+<td><code>Conceptos</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Comprobante&quot;)</em></td>
+<td style="text-align: center">Nodo requerido para enlistar los conceptos cubiertos por el comprobante.</td>
+</tr>
+<tr>
+<td><code>Concepto</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Conceptos&quot;)</em></td>
+<td style="text-align: center">Nodo para introducir la información detallada de un bien o servicio amparado en el comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">cantidad</td>
+<td style="text-align: center">Atributo requerido para precisar la cantidad de bienes o servicios del tipo particular definido por el presente concepto.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">unidad</td>
+<td style="text-align: center">Atributo requerido para precisar la unidad de medida aplicable para la cantidad expresada en el concepto.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noIdentificacion</td>
+<td style="text-align: center">Atributo opcional para expresar el número de serie del bien o identificador del servicio amparado por el presente concepto.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">descripción</td>
+<td style="text-align: center">Atributo requerido para precisar la descripción del bien o servicio cubierto por el presente concepto.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">valorUnitario</td>
+<td style="text-align: center">Atributo requerido para precisar el valor o precio unitario del bien o servicio cubierto por el presente concepto.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">importe</td>
+<td style="text-align: center">Atributo requerido para precisar el importe total de los bienes o servicios del presente concepto. Debe ser equivalente al resultado de multiplicar la cantidad por el valor unitario expresado en el concepto.</td>
+</tr>
+<tr>
+<td><code>InformacionAduanera</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Concepto&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para introducir la información aduanera aplicable cuando se trate de ventas de primera mano de mercancías importadas.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">numero</td>
+<td style="text-align: center">Atributo requerido para expresar el número del documento aduanero que ampara la importación del bien.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">fecha</td>
+<td style="text-align: center">Atributo requerido para expresar la fecha de expedición del documento aduanero que ampara la importación del bien. Se expresa en el formato aaaa-mm-dd.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">aduana</td>
+<td style="text-align: center">Atributo opcional para precisar el nombre de la aduana por la que se efectuó la importación del bien.</td>
+</tr>
+<tr>
+<td><code>CuentaPredial</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Concepto&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para asentar el número de cuenta predial con el que fue registrado el inmueble, en el sistema catastral de la entidad federativa de que trate, o bien para incorporar los datos de identificación del certificado de participación inmobiliaria no amortizable.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">numero</td>
+<td style="text-align: center">Atributo requerido para precisar el número de la cuenta predial del inmueble cubierto por el presente concepto, o bien para incorporar los datos de identificación del certificado de participación inmobiliaria no amortizable, tratándose de arrendamiento.</td>
+</tr>
+<tr>
+<td><code>ComplementoConcepto</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Concepto&quot;)</em></td>
+<td style="text-align: center">Nodo opcional donde se incluirán los nodos complementarios de extensión al concepto, definidos por el SAT, de acuerdo a disposiciones particulares a un sector o actividad especifica.</td>
+</tr>
+<tr>
+<td><code>Parte</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Concepto&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para expresar las partes o componentes que integran la totalidad del concepto expresado en el comprobante fiscal digital a través de Internet.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">cantidad</td>
+<td style="text-align: center">Atributo requerido para precisar la cantidad de bienes o servicios del tipo particular definido por la presente parte.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">unidad</td>
+<td style="text-align: center">Atributo opcional para precisar la unidad de medida aplicable para la cantidad expresada en la parte.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">noIdentificacion</td>
+<td style="text-align: center"> Atributo opcional para expresar el número de serie del bien o identificador del servicio amparado por la presente parte.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">descripcion </td>
+<td style="text-align: center"> Atributo requerido para precisar la descripción del bien o servicio cubierto por la presente parte.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">valorUnitario</td>
+<td style="text-align: center">Atributo opcional para precisar el valor o precio unitario del bien o servicio cubierto por la presente parte.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">importe</td>
+<td style="text-align: center">Atributo opcional para precisar el importe total de los bienes o servicios de la presente parte. Debe ser equivalente al resultado de multiplicar la cantidad por el valor unitario expresado en la parte.</td>
+</tr>
+<tr>
+<td><code>InformacionAduanera</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Parte&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para introducir la información aduanera aplicable cuando se trate de partes o componentes importados vendidos de primera mano.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">numero</td>
+<td style="text-align: center">Atributo requerido para expresar el número del documento aduanero que ampara la importación del bien.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">fecha</td>
+<td style="text-align: center">Atributo requerido para expresar la fecha de expedición del documento aduanero que ampara la importación del bien. Se expresa en el formato aaaa-mm-dd.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">aduana</td>
+<td style="text-align: center">Atributo opcional para precisar el nombre de la aduana por la que se efectuó la importación del bien.</td>
+</tr>
+<tr>
+<td> <code>Impuestos</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Comprobante&quot;)</em></td>
+<td style="text-align: center">Nodo requerido para capturar los impuestos aplicables.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">totalImpuestosRetenidos</td>
+<td style="text-align: center">Atributo opcional para expresar el total de los impuestos retenidos que se desprenden de los conceptos expresados en el comprobante fiscal digital a través de Internet.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">totalImpuestosTrasladados</td>
+<td style="text-align: center">Atributo opcional para expresar el total de los impuestos trasladados que se desprenden de los conceptos  expresados en el comprobante fiscal digital a través de Internet.</td>
+</tr>
+<tr>
+<td><code>Retenciones</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Impuestos&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para capturar los impuestos retenidos aplicables.</td>
+</tr>
+<tr>
+<td> <code>Retencion</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Retenciones&quot;)</em></td>
+<td style="text-align: center">Nodo para la información detallada de una retención de impuesto específico.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">impuesto</td>
+<td style="text-align: center">Atributo requerido para señalar el tipo de impuesto retenido.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">importe</td>
+<td style="text-align: center">Atributo requerido para señalar el importe o monto del impuesto retenido.</td>
+</tr>
+<tr>
+<td><code>Traslados</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Impuestos&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para asentar o referir los impuestos trasladados aplicables.</td>
+</tr>
+<tr>
+<td><code>Traslado</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Traslados&quot;)</em></td>
+<td style="text-align: center">Nodo para la información detallada de un traslado de impuesto específico.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">impuesto</td>
+<td style="text-align: center">Atributo requerido para señalar el tipo de impuesto trasladado.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">tasa</td>
+<td style="text-align: center">Atributo requerido para señalar la tasa del impuesto que se traslada por cada concepto amparado en el comprobante.</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: center">importe</td>
+<td style="text-align: center">Atributo requerido para señalar el importe del impuesto trasladado.</td>
+</tr>
+<tr>
+<td><code>Complemento</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Comprobante&quot;)</em></td>
+<td style="text-align: center">Nodo opcional donde se incluirá el complemento Timbre Fiscal Digital de manera obligatoria y los nodos complementarios determinados por el SAT, de acuerdo a las disposiciones particulares a un sector o actividad específica.</td>
+</tr>
+<tr>
+<td><code>Addenda</code></td>
+<td style="text-align: center"><em>(nodo hijo de &quot;Comprobante&quot;)</em></td>
+<td style="text-align: center">Nodo opcional para recibir las extensiones al presente formato que sean de utilidad al contribuyente. Para las reglas de uso del mismo, referirse al formato de origen.</td>
+</tr>
+</tbody></table>
+
+<hr>
+
 <h3 id="complementos">Complementos</h3>
 
 <h4 id="complemento-timbre-fiscal">Complemento timbre fiscal</h4>

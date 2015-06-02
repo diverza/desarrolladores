@@ -264,6 +264,215 @@ La declaración de nameSpace es a nivel primario en nodo Comprobante.
     <span class="nt">&lt;/cfdi:Addenda&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
+<hr>
+
+<h2 id="descripción-de-campos">descripción de campos</h2>
+
+<p>A continuación una descripción y ejemplo de cada atributo en el  complemento.</p>
+
+<ul>
+<li><strong>RegistroPatronal</strong>       : 23232<br>
+
+<ul>
+<li> Registro patronal a 20 posiciones máximo</li>
+</ul></li>
+<li><strong>NumEmpleado</strong>            : 9872<br>
+
+<ul>
+<li> Número de empleado de 1 a 15 posiciones</li>
+</ul></li>
+<li><strong>CURP</strong>                   : TARE860821HNLRNL09
+
+<ul>
+<li> CURP del trabajador</li>
+</ul></li>
+<li><strong>TipoRegimen</strong>            : 1<br>
+
+<ul>
+<li> Clave del tipo de régimen por el cual se tiene contratado al trabajador Este tiene dos posibles valores: “Asimilados a salarios” o “Sueldos y salarios”</li>
+</ul></li>
+<li>NumSeguridadSocial     : 98765434
+
+<ul>
+<li> Expresión del número de seguridad social aplicable al trabajador</li>
+</ul></li>
+<li><strong>FechaPago</strong>              : 2013-11-15
+
+<ul>
+<li> Fecha efectiva de erogación del gasto. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
+</ul></li>
+<li><strong>FechaInicialPago</strong>       : 2013-11-01
+
+<ul>
+<li> Fecha inicial del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
+</ul></li>
+<li><strong>FechaFinalPago</strong>         : 2013-11-15<br>
+
+<ul>
+<li> Fecha final del pago. Se expresa en la forma aaaa-mm-dd, de acuerdo con la especificación ISO 8601.</li>
+</ul></li>
+<li>NumDiasPagados         : 15<br>
+
+<ul>
+<li> Número de días pagados</li>
+</ul></li>
+<li>Departamento           : Administración<br>
+
+<ul>
+<li> Departamento o área a la que pertenece el trabajador</li>
+</ul></li>
+<li>CLABE                  : 123123123123123123<br>
+
+<ul>
+<li> CLABE interbancaria</li>
+</ul></li>
+<li>Banco                  : 123<br>
+
+<ul>
+<li> Clave del banco conforme al catalógo, donde se realiza un depósito de nómina</li>
+</ul></li>
+<li><strong>FechaInicioRelLaboral</strong>  : 2009-06-01
+
+<ul>
+<li> Fecha de inicio de la relación laboral entre el empleador y el empleado</li>
+</ul></li>
+<li>Antiguedad             : 228<br>
+
+<ul>
+<li> Número de semanas que el empleado ha mantenido relación laboral con el empleador</li>
+</ul></li>
+<li>Puesto                 : Administración<br>
+
+<ul>
+<li> Puesto asignado al empleado o actividad que realiza</li>
+</ul></li>
+<li>TipoContrato           : Base<br>
+
+<ul>
+<li> Tipo de contrato que tiene el trabajador: Base, Eventual, Confianza, Sindicalizado, a prueba, etc</li>
+</ul></li>
+<li>TipoJornada            : Diurna<br>
+
+<ul>
+<li> Tipo de jornada que cubre el trabajador: Diurna, nocturna, mixta, por hora, reducida, continuada, partida, por turnos, etc.</li>
+</ul></li>
+<li>PeriodicidadPago       : Quincenal<br>
+
+<ul>
+<li> Forma en que se establece el pago del salario: diario, semanal, quincenal, catorcenal mensual, bimestral, unidad de obra, comisión, precio alzado, etc.</li>
+</ul></li>
+<li>SalarioBaseCotApor     : 10000.00<br>
+
+<ul>
+<li> Retribución otorgada al trabajador, que se integra por los pagos hechos en efectivo por cuota diaria, gratificaciones, percepciones, alimentación, habitación, primas, comisiones, prestaciones en especie y cualquiera otra cantidad o prestación que se entregue al trabajador por su trabajo</li>
+</ul></li>
+<li>RiesgoPuesto           : 1<br>
+
+<ul>
+<li> Clave conforme a la Clase en que deben inscribirse los patrones, de acuerdo a las actividades que desempeñan sus trabajadores, según lo previsto en el artículo 196 del Reglamento en Materia de Afiliación Clasificación de Empresas, Recaudación y Fiscalización. Catálogo publicado en el portal del SAT en internet</li>
+</ul></li>
+<li>SalarioDiarioIntegrado : 696.80<br>
+
+<ul>
+<li> Salario diario integrado</li>
+</ul></li>
+<li><p>Percepciones:</p>
+
+<ul>
+<li><strong>TotalGravado</strong> : 10000.00</li>
+<li>El total de Percepciones gravados que se relaciona en el comprobante</li>
+<li><strong>TotalExento</strong>  : 0.00</li>
+<li>El total de Percepciones exentos que se relaciona en el comprobante<br></li>
+<li><strong>Percepcion</strong> : (nodo que se repite por cada percepción)
+
+<ul>
+<li><strong>TipoPercepcion</strong> : 001</li>
+<li>Clave para la descripción de un tipo de precepción conforme al catálogo actual del DIMM</li>
+<li><strong>Clave</strong>          : 123</li>
+<li>Clave de precepción de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres</li>
+<li><strong>Concepto</strong>       : Sueldos, Salarios Rayas y Jornales</li>
+<li>Descripción del concepto de precepción</li>
+<li><strong>ImporteGravado</strong> : 10000.00</li>
+<li>Importe gravado de un concepto de precepción</li>
+<li><strong>ImporteExento</strong>  : 0.00</li>
+<li>Importe exento de un concepto de precepción</li>
+</ul></li>
+</ul></li>
+<li><p>Deducciones:</p>
+
+<ul>
+<li><strong>TotalGravado</strong> : 278.00</li>
+<li>El total de Deducciones gravados que se relaciona en el comprobante</li>
+<li><strong>TotalExento</strong>  : 0.00</li>
+<li>El total de Deducciones exentos que se relaciona en el comprobante</li>
+<li><strong>Deduccion</strong> : (nodo que se repite por cada deducción)
+
+<ul>
+<li><strong>TipoDeduccion</strong> : 345</li>
+<li>Clave para la descripción de un tipo de deducción conforme al catálogo actual del DIMM</li>
+<li><strong>Clave</strong>          : 2323</li>
+<li>Clave de dedución de nómina propia de la contabilidad de cada patrón, puede conformarse desde 3 hasta 15 caracteres</li>
+<li><strong>Concepto</strong>       : Seguro Social</li>
+<li>Descripción del concepto de deducción</li>
+<li><strong>ImporteGravado</strong> : 278.39</li>
+<li>Importe gravado de un concepto de deducción</li>
+<li><strong>ImporteExento</strong>  : 0.00</li>
+<li>Importe exento de un concepto de deducción</li>
+</ul></li>
+</ul></li>
+<li><p>Incapacidades (Nodo opcional para expresar información de las incapacidades)</p>
+
+<ul>
+<li>Incapacidad</li>
+<li>Este bloque se repite por cada movimiento de incapacidad</li>
+<li>DiasIncapacidad : 2
+
+<ul>
+<li>Número de días que el trabajador se incapacitó en el periodo</li>
+</ul></li>
+<li>TipoIncapacidad : 1
+
+<ul>
+<li>Razón de la incapacidad: Catálogo publicado en el portal del SAT en internet</li>
+</ul></li>
+<li>Descuento       : 1000.00
+
+<ul>
+<li>Monto del descuento por la incapacidad</li>
+</ul></li>
+</ul></li>
+<li><p>HorasExtra (Nodo opcional para expresar información de las horas extras)</p>
+
+<ul>
+<li>HoraExtra</li>
+<li>Este bloque se repite por cada movimiento de horas extra</li>
+<li>Dias          : 2
+
+<ul>
+<li>Número de días en que el trabajador realizó horas extra en el periodo</li>
+</ul></li>
+<li>TipoHoras     : Dobles
+
+<ul>
+<li>Tipo de pago de las horas extra: dobles o triples Dobles</li>
+</ul></li>
+<li>HorasExtra    : 3
+
+<ul>
+<li>Número de horas extra trabajadas en el periodo</li>
+</ul></li>
+<li>ImportePagado : 1000.00
+
+<ul>
+<li>Importe pagado por las horas extra</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>* Los campos en <strong>negritas</strong> indican atributos obligatorios</p>
+
+<hr>
+
             </div>
           </div>
         </div>

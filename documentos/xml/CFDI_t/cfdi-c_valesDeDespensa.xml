@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante
+  xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/valesdedespensa http://www.sat.gob.mx/sitio_internet/cfd/valesdedespensa/valesdedespensa.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:valesdedespensa="http://www.sat.gob.mx/valesdedespensa"
+  fecha="2015-03-05T10:33:52" tipoDeComprobante="ingreso" serie="C" folio="38"
+  LugarExpedicion="Monterrey, Nuevo León" metodoDePago="No Identificado"
+  NumCtaPago="No Identificado" formaDePago="PAGO EN UNA SOLA EXHIBICION" total="40600.00"
+  descuento="0.00" subTotal="35000.00" Moneda="Pesos"
+  certificado="MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww=="
+  noCertificado="20001000000100005867"
+  sello="E7jP8+lIdr7RLZWVz1tHZ1yLJsuILS+pSX+JkReNOVqW7SaaOZbtMXAFSmcUazdkdcSIAq41aZCxk0UaX0Eet9kSDvkZo46n76zFOkl5khnvYqZfmoKW77FCsJvTtUfUGnf/f4EbuQZT64Kr4EdZJXRimFStneoQFwxjbcQMiNc="
+  version="3.2">
+  <cfdi:Emisor rfc="AAA010101AAA" nombre="Empresa de Pruebas SA">
+    <cfdi:DomicilioFiscal colonia="Fracc. San Pedro" calle="Encinos" noExterior="1452"
+      municipio="Monterrey" estado="Nuevo León" pais="México" codigoPostal="64000"/>
+    <cfdi:RegimenFiscal Regimen="Regimen General de Ley Personas Morales de Prueba"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="E&amp;Ñ831019M53" nombre="Exportadora de Ganado HOLSTEIN S.A.">
+    <cfdi:Domicilio colonia="Ejido La Siembra" calle="Av. Principal" noExterior="102"
+      municipio="Zacatecas" estado="Zacatecas" pais="México" codigoPostal="99170"
+      localidad="Ejido La Siembra"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" descripcion="Módulo de embarque serie A-6743-Ñ" valorUnitario="35000.00"
+      unidad="LTE" importe="35000.00">
+      <cfdi:InformacionAduanera numero="32441223" fecha="2015-02-10"/>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosRetenidos="0.00" totalImpuestosTrasladados="5600.00">
+    <cfdi:Retenciones>
+      <cfdi:Retencion impuesto="ISR" importe="0.00"/>
+      <cfdi:Retencion impuesto="IVA" importe="0.00"/>
+    </cfdi:Retenciones>
+    <cfdi:Traslados>
+      <cfdi:Traslado importe="5600.00" tasa="16.00" impuesto="IVA"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <valesdedespensa:ValesDeDespensa version="1.0" tipoOperacion="monedero electrónico" numeroDeCuenta="03800949426" total="360.00">
+      <valesdedespensa:Conceptos>
+        <valesdedespensa:Concepto identificador="3054003000160212" fecha="2014-08-08T17:02:57" rfc="AAAA010101AAA" curp="AAAA010101HCLJND07" nombre="JORGE VIGIL ESCANDÓN" numSeguridadSocial="91234567890" importe="180.00"/>
+        <valesdedespensa:Concepto identificador="4068010004070241" fecha="2014-08-08T18:01:47" rfc="BABB010101BBB" curp="BABB010101HCLJND07" nombre="ISRAEL RAMÍREZ CUELLAR" numSeguridadSocial="91234567890" importe="180.00"/>
+      </valesdedespensa:Conceptos>
+    </valesdedespensa:ValesDeDespensa>
+  </cfdi:Complemento>
+  <cfdi:Addenda/>
+</cfdi:Comprobante>

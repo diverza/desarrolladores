@@ -1,0 +1,19 @@
+--- !diverza.com/v2.0   # Todo documento debe empezar con esta marca y la indicación de la versión
+
+# Datos generales
+# Debe haber al menos un espacio después de los dos puntos.
+Version                    : "Version"
+Rfc                        : "RFC"
+Mes                        : "Mes"
+Anio                       : "Anio"
+NoCertificado              : "noCertificado" # Optional
+
+# Nodo obligatorio para expresar el detalle de cada cuenta y subcuenta del catálogo.
+CatalogoCuenta:
+- CodigoAsociador          : "CodAgrup"
+  Numero                   : "123456789"
+  Descripcion              : "Desc"
+  Subcuenta                : "SubCtaDe" # Optional
+  Nivel                    : "Nivel"
+  Naturaleza               : "Natur"
+---
