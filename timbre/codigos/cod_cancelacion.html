@@ -96,16 +96,19 @@
               <div class="nav-collapse-brand" id="menu-sub">
                 <ul class="menu nav">
                   <li class="item-102" id="stamp-menu-item">
-                    <a href="/timbre/">Timbre Fiscal</a>
+                    <a href="/timbre/">timbre fiscal</a>
                   </li>
                   <li class="item-103" id="conector-menu-item">
-                    <a href="/conector/">Conector Fiscal</a>
+                    <a href="/conector/">conector fiscal</a>
                   </li>
-                  <li class="item-104">
-                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">Grupos</a>
+                  <li class="item-104" id="docs-menu-item">
+                    <a href="/documentos/">documentos</a>
                   </li>
                   <li class="item-105">
-                    <a href="https://github.com/diverza/desarrolladores" target="_blank">Github</a>
+                    <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">grupos</a>
+                  </li>
+                  <li class="item-106">
+                    <a href="https://github.com/diverza/desarrolladores" target="_blank">github</a>
                   </li>
                 </ul>
               </div>
@@ -158,7 +161,7 @@
 
 <h3 id="Éxito">Éxito</h3>
 
-<p><strong>0</strong> - Proceso realizado con éxito<br>
+<p><strong>0</strong> - Proceso realizado con éxito<br>
 <em>Comprobante cancelado exitosamente</em></p>
 
 <h3 id="errores-generales">Errores generales</h3>
@@ -166,31 +169,31 @@
 <p><strong>13</strong> - Error general<br>
 <em>Necesita ser analizado directamente con el personal de soporte</em></p>
 
-<p><strong>17</strong> - Reporte SAT no encontrado o no válido<br>
-<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
+<p><strong>17</strong> - Reporte SAT no encontrado o no válido<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
-<p><strong>18</strong> - No encontró CFD a cancelar<br>
-<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
+<p><strong>18</strong> - No encontró CFD a cancelar<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
 <p><strong>19</strong> - El CFD ya fue cancelado previamente<br>
-<em>Verificar el estado del comprobante en Buzón Fiscal</em></p>
+<em>Verificar el estado del comprobante en Buzón Fiscal</em></p>
 
-<p><strong>20</strong> - No se encontró el folio para ser cancelado<br>
-<em>Verificar los datos de la  petición (RFC emisor, RFC receptor, serie, folio, refid)</em></p>
+<p><strong>20</strong> - No se encontró el folio para ser cancelado<br>
+<em>Verificar los datos de la  petición (RFC emisor, RFC receptor, serie, folio, refid)</em></p>
 
-<p><strong>22</strong> - Error de tipo “excepción”<br>
+<p><strong>22</strong> - Error de tipo “excepción”<br>
 <em>Error general</em></p>
 
-<p><strong>892</strong> - Ocurrió un error al cancelar comprobante<br>
+<p><strong>892</strong> - Ocurrió un error al cancelar comprobante<br>
 <em>Contacta con un asesor</em></p>
 
 <p><strong>453</strong> - Estructura de WebService incompleta<br>
-<em>Verificar que la llamada esté escrita de forma correcta</em></p>
+<em>Verificar que la llamada esté escrita de forma correcta</em></p>
 
 <h3 id="error-de-token-o-autorización">Error de token o autorización</h3>
 
-<p><strong>300</strong> - Token no es válido<br>
-<em>Revisar que el token corresponda al cliente correcto de ser así, contactar al asesor para que genere un nuevo token</em></p>
+<p><strong>300</strong> - Token no es válido<br>
+<em>Revisar que el token corresponda al cliente correcto de ser así, contactar al asesor para que genere un nuevo token</em></p>
 
 <p><strong>301</strong> - Token no registrado para esta empresa<br>
 <em>El token no es el correspondiente para la empresa que lo solicita. Contactar con a tu asesor</em></p>
@@ -201,13 +204,13 @@
 <p><strong>303</strong> - Token deshabilitado  </p>
 
 <p><strong>25</strong> - No se pudo obtener el certificado de sello<br>
-<em>Revisar que esté dado de alta el certificado de sellos en el portal de Buzón Fiscal</em></p>
+<em>Revisar que esté dado de alta el certificado de sellos en el portal de Buzón Fiscal</em></p>
 
 <p><strong>40</strong> - Se ha suspendido el servicio<br>
 <em>Contactar a un asesor, cuenta no tiene permisos para emitir</em></p>
 
-<p><strong>201</strong> - El RFC {RFC} no está autorizado para realizar una cancelación<br>
-<em>Cancelación sin autorización o permisos</em></p>
+<p><strong>201</strong> - El RFC {RFC} no está autorizado para realizar una cancelación<br>
+<em>Cancelación sin autorización o permisos</em></p>
 
             </div>
           </div>
@@ -243,32 +246,11 @@
                     <ul class="menu">
                         <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
-                        <li class="item-178"><a href="/timbre/recursos/">recursos</a></li>
+                        <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
                     </ul>
                 </div>
 
-
-<!--
-                <h3>complementos<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd/complementos/">cfdi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos_ret/">retenciones</a></li>
-                    </ul>               
-                </div>
--->
-
-<!--                 <h3>cancelación<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/endpoints/endpointsCan.html">servicio</a></li>
-                    </ul>               
-                </div> -->
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -280,89 +262,7 @@
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
-                <!--
-                <h3>CFDI<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd">Datos del CFDi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/complementos/">Complementos del CFDi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/retencion.html">CFDi de retenciones</a></li>
-                    </ul>
-                </div>
-
-                <h3>Sello<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd/cadena.html">La cadena original</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/cadena-retenciones.html">La cadena original para el documento de retenciones</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/certificado.html">Los datos del certificado</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/sello.html">El sello digital</a></li>
-                    </ul>               
-                </div>
-
-                <br />
-                <h3>Servicio<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/endpoints.html">Endpoints</a></li>
-                        <li class="item-178"><a href="/timbre/refid.html">RefID</a></li>
-                        <li class="item-178"><a href="/timbre/codigos">Códigos de respuesta</a></li>
-                    </ul>
-                </div>
-
-                <h3>Cancelación<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cancelacion/">Servicio</a></li>
-                        <li class="item-178"><a href="/timbre/cancelacion/respuesta_cancelacion.html">Códigos de respuesta</a></li>
-                    </ul>               
-                </div>
-
-                <br />
-                <h3>Ejemplos<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/c-sharp">C# .NET</a></li>
-                        <li class="item-178"><a href="/timbre/c-c++">C / C++</a></li>
-                        <li class="item-178"><a href="/timbre/elixir-erlang">Elixir / Erlang</a></li>
-                        <li class="item-178"><a href="/timbre/go">Go</a></li>
-                        <li class="item-178"><a href="/timbre/java">Java</a></li>
-                        <li class="item-178"><a href="/timbre/php">PHP</a></li>
-                        <li class="item-178"><a href="/timbre/perl">Perl</a></li>
-                        <li class="item-178"><a href="/timbre/python">Python</a></li>
-                        <li class="item-178"><a href="/timbre/ruby">Ruby</a></li>
-                        <li class="item-178"><a href="/timbre/terminal">Terminal</a></li>
-                        <li class="item-178"><a href="/timbre/visual-basic-6">Visual Basic 6</a></li>
-                    </ul>               
-                </div>
-                -->
-
-                <!-- <br />
-                <h3>herramientas<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/oficinas/aguascalientes">Prueba el Servicio</a></li>
-                        <li class="item-178"><a href="/stamp/validate">Valida CFD</a></li>
-                    </ul>               
-                </div> -->
+ 
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>

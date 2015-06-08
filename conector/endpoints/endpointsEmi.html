@@ -126,7 +126,7 @@
 </div>
 
   <style>
-  #stamp-menu-item { color: #fff !important;
+  #conector-menu-item { color: #fff !important;
     background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -157,11 +157,9 @@
               <h1>servicio de emisión<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar, en esta sección te mostraremos lo referente al servicio de emisión, el cual corresponde al producto de <strong>Conector Fiscal®</strong>.</p>
+              <p><strong>El servicio de emisión en REST de diverza, es usado por Conector Fiscal®</strong></p>
 
-<p><legend>
-Disponible <strong>sólo</strong> para clientes de Conector Fiscal®
-</legend></p>
+<p>La siguiente información comprende la emisión de un comprobante sin sello, donde obtienes todo el comprobante; *<em>disponible sólo para clientes de Conector Fiscal®</em></p>
 
 <p><br>
 <code>https://staging.diverza.com/api/v1/emitir</code></p>
@@ -320,58 +318,73 @@ Conoce más sobre esta opción en la <a href="../refid.html">documentación sobr
         <div class=" ">
             <div class="module">
 
-                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
-                <div class="clr"></div>
-                <div class="module-content"></div>
 
-                <h3>servicio<span class="diverza-dot">.</span></h3>
+<!--                 <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/conector_java/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/conector_java/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/codigos.html">Códigos de respuesta</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>documentos<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
-                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
-                    </ul>
+                        <li class="item-178"><a href="/conector/formatos/CFDI/">CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosCFDI/">complementos de CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/RET/">retenciones</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosRET/">complementos de retenciones</a></li>
+                        <li class="item-178"><a href="/conector/index-contabilidad.html">contabilidad electrónica</a></li>
+                    </ul>               
                 </div>
 
+                <br />
+                <h3>endpoints REST<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/endpoints/endpointsEmi.html">emisión</a></li>
+                        <li class="item-178"><a href="/conector/endpoints/endpointsCan.html">cancelación</a></li>
+                        <li class="item-178"><a href="/conector/endpoints/respuesta_cancelacion.html">códigos error cancelación</a></li>
+                    </ul>               
+                </div>
+
+                <br />
                 <h3>recursos<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
-                        <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
-                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
-                </div>
-
-
-                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu menu-lines">
-                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
-                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
-                    </ul>
-                </div>
- 
-                <h3>FAQ's<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
-                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                        <li class="item-178"><a href="/conector/formatos/recursos/">ejemplos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/guia_conector_java.html">guia conector java</a></li>
                     </ul>               
                 </div>
-            </div>
+<!--
+                <br />
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
+                    </ul>               
+                </div>
+                !-->
+
+              </div>
             <div class="clr"></div>
         </div>
     </div>
