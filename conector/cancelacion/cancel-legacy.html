@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>servicio de cancelación</title>
+  <title>Servicio de cancelación 2014</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -126,7 +126,7 @@
 </div>
 
   <style>
-  #stamp-menu-item { color: #fff !important;
+  #conector-menu-item { color: #fff !important;
     background: #ddd;
     -webkit-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -154,125 +154,59 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>servicio de cancelación<span class="diverza-dot">.</span></h1>
+              <h1>Servicio de cancelación 2014<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
               <p>El servicio de cancelación consta de un servicio REST para cancelación de CFDIs timbrados ante el SAT, a partir del UUID del comprobante.</p>
 
-<p><legend>
-Para cancelación de un comprobante normal de CFDI, ingrese <a href="../cancelacion/cancel-legacy.html">aquí</a>
-</legend></p>
+<p>La siguiente guía explica cómo utilizar el servicio de cancelación, usando como ejemplo la <em>Terminal</em> o <em>Linea de comandos</em> y <em>cURL</em>.</p>
 
-<p>La siguiente guía explica cómo utilizar el servicio de cancelación, usando como ejemplo la <em>Terminal</em> o <em>Linea de comandos</em> y <em>cURL</em>.
-<br>
-Para un ambiente productivo, es indispensable contar con un CSD instalado en tu <a href="../cfd/timbreweb.html">cuenta web de <strong>Timbre Fiscal®</strong></a> ó <strong>Conector Fiscal®</strong>.
-<br></p>
-
-<p><strong>Cancelación de un comprobante a través del servicio REST: <br></strong></p>
-
-<p><code>https://staging.diverza.com/api/v1/cancelar</code></p>
-
-<hr>
-
-<h2 id="encabezados">encabezados</h2>
-
-<p>Todas las peticiones requieren los siguientes ecabezados:</p>
-
-<h3 id="x-auth-token:">x-auth-token:</h3>
-
-<p>Incluirá el token que nosotros te proporcionaremos para que te reconozcamos y podamos brindarte el servicio.
-Para propósitos de pruebas, puedes usar el valor <strong>ABCD1234</strong> asignado al RFC Emisor AAA010101AAA.</p>
-
-<h3 id="content-type:">Content-Type:</h3>
-
-<p>Indicará el tipo de documento que deseas procesar:</p>
-
-<p><code>Cancelación de CFDI</code></p>
-
-<ul>
-<li><strong><em>application/vnd.diverza.cancela.cfdi+xml; charset=UTF-8</em></strong></li>
-</ul>
-
-<p><code>Cancelación de constancia de retención</code></p>
-
-<ul>
-<li><strong><em>application/vnd.diverza.cancela.retencion+xml; charset=UTF-8</em></strong></li>
-</ul>
-
-<h3 id="content-md5:">Content-MD5:</h3>
-
-<p>Contendrá el hash del archivo enviado en tu petición, expresado como una cadena de 32 caracteres.
-Te recomendamos ampliamente implementar este valor, ya que te proporciona un mecanismo de certeza adicional.
-Para propósito de pruebas, el valor de este atributo no será validado</p>
-
-<hr>
-
-<h2>cancelar<span class="diverza-dot">.</span></h2>
-
-<p><br>
-La siguiente es la estructura de la información contenida en el &quot;body&quot; de la petición, para el caso de uso de &quot;Terminal&quot;, se usará un archivo XML con éste contenido.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Cancelacion&gt;</span>
-    <span class="nt">&lt;rfcEmisor&gt;</span>AAA010101AAA<span class="nt">&lt;/rfcEmisor&gt;</span>
-    <span class="nt">&lt;Folios&gt;</span>
-        <span class="nt">&lt;UUID&gt;</span>2fbac5d4-5814-42c0-b387-171d08f7c58a<span class="nt">&lt;/UUID&gt;</span>
-    <span class="nt">&lt;/Folios&gt;</span>
-<span class="nt">&lt;/Cancelacion&gt;</span>
-</code></pre></div>
 <hr>
 
 <h2 id="servicio">Servicio</h2>
 
-<p>Para el siguiente ejemplo de cancelación de un comprobante timbrado, usaremos:</p>
+<p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: https://staging.diverza.com/
- Servicio: /api/v1/cancelar
+ Servicio: /stamp/cancel/{RFC}
  Metodo HTTP: POST
  Header HTTP: x-auth-token
- Header HTTP: Content-Type
- Header HTTP: Content-MD5
  Token de prueba: ABCD1234
- Content-Type: application/vnd.diverza.cancela.retencion+xml; charset=UTF-8
- Content-MD5: (Es el &quot;hash&quot; del archivo enviado en tu petición, expresado en una cadena de 32 caracteres.)
- UUID de prueba: 2fbac5d4-5814-42c0-b387-171d08f7c58a
+ UUID de prueba: f7da0c0d-2c2e-4753-9d56-b0f080252eda
 </code></pre></div>
-<p><strong>Si lo que deseas es cancelar un CFDI, sólo deberás cambiar el Content-Type por el siguiente:</strong></p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="s2">&quot;Content-Type: application/vnd.diverza.cancela.cfdi+xml; charset=UTF-8&quot;</span>
-</code></pre></div>
-<p><strong>Nota:</strong> Es importante que utilices el mismo token con el que timbraste el comprobante. Con él, comprobaremos que tu haces la petición y obtendremos los datos necesarios para procesar la cancelación con el SAT.</p>
+<p><strong>Nota:</strong> Es importante que utilices el mismo token con el que timbraste el comprobante. Con él comprobaremos que tu haces la petición y obtendremos la información necesaria para procesar la cancelación con el SAT.</p>
 
 <p><strong>Nota:</strong> El UUID es un atributo del complemento <em>TimbreFiscalDigital</em></p>
 
 <hr>
 
-<h3 id="petición-terminal">Petición terminal</h3>
+<h3 id="petición-http">Petición HTTP</h3>
 
-<p>Usando la terminal o linea de comandos, ejecutar lo siguiente (ejemplo de cancelación de comprobante de retenciones y pagos):</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST https://staging.diverza.com/api/v1/cancelar --data @Cancela2.xml -H <span class="s2">&quot;Content-MD5: HASH/DOC&quot;</span> -H <span class="s2">&quot;Content-type: application/vnd.diverza.cancela.retencion+xml; charset=UTF-8&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;https://staging.diverza.com/issue/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
-<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST; como headers, el token de seguridad, el Content-Type y el Content-MD5, el token que se utiliza para el ambiende de pruebas es <strong>ABCD1234</strong>.</p>
+<p>Si revisamos el comando prodremos ver que la petición es dirigida a la URL del servicio de cancelación, utilizando el metodo POST, agregando como último recurso el UUID del CFDI a cancelar, y como header el token de seguridad, que en este caso es el que se utiliza para el ambiende de pruebas <strong>ABCD1234</strong>.</p>
 
 <h3 id="respuesta">Respuesta</h3>
 
 <p>Una vez ejecutado el comando podremos observar en la respuesta:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1 200 OK
-Server: nginx/1.0.15
-Date: Wed, 28 Jan 2015 15:13:30 GMT
-Content-Type: text/xml;charset=UTF-8
-Connection: keep-alive
-Content-Length: 92
+Date: Fri, 16 May 2014 13:26:02 GMT
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: text/plain; charset=UTF-8
 
-HTTP/1.1 0 Proceso realizado con éxito
+HTTP/1.1 0 Proceso realizado con éxito
 connection: keep-alive
 server: Cowboy
-date: Wed, 28 Jan 2015 15:13:30 GMT
+date: Fri, 16 May 2014 13:26:02 GMT
 content-length: 30
 cache-control: max-age=0, private, must-revalidate
 
-Proceso realizado con éxito
+Proceso realizado con éxito
 </code></pre></div>
-<p><br>
-El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong> y <strong>0 Proceso realizado con éxito</strong> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../cancelacion1/respuesta_cancelacion.html">Lista de Códigos de Respuesta para cancelación</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
+<p>El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong> y <strong>0 Proceso realizado con éxito</strong> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../endpoints/respuesta_cancelacion.html">Lista de Códigos de Respuesta para cancelación</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
 
             </div>
           </div>
@@ -283,58 +217,73 @@ El código de respuesta tambien es devuelto y debera ser <strong>200 OK</strong>
         <div class=" ">
             <div class="module">
 
-                <h3><a href="/timbre/indice.html">mapa del sitio<span class="diverza-dot">.</span></a></h3>
-                <div class="clr"></div>
-                <div class="module-content"></div>
 
-                <h3>servicio<span class="diverza-dot">.</span></h3>
+<!--                 <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/conector_java/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/conector_java/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/codigos.html">Códigos de respuesta</a></li>
+                    </ul>               
+                </div> -->
+
+                <h3>documentos<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/endpoints/">endpoints</a></li>
-                        <li class="item-178"><a href="/timbre/refid.html">el refID</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/timbreWeb.html">cuenta web</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/repImpresa.html">representación impresa</a></li>
-                    </ul>
+                        <li class="item-178"><a href="/conector/formatos/CFDI/">CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosCFDI/">complementos de CFDi</a></li>
+                        <li class="item-178"><a href="/conector/formatos/RET/">retenciones</a></li>
+                        <li class="item-178"><a href="/conector/formatos/complementosRET/">complementos de retenciones</a></li>
+                        <li class="item-178"><a href="/conector/index-contabilidad.html">contabilidad electrónica</a></li>
+                    </ul>               
                 </div>
 
+                <br />
+                <h3>endpoints REST<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/endpoints/endpointsEmi.html">emisión</a></li>
+                        <li class="item-178"><a href="/conector/endpoints/endpointsCan.html">cancelación</a></li>
+                        <li class="item-178"><a href="/conector/endpoints/respuesta_cancelacion.html">códigos error cancelación</a></li>
+                    </ul>               
+                </div>
+
+                <br />
                 <h3>recursos<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
 
                 <div class="module-content">
                     <ul class="menu">
-                        <li class="item-178"><a href="/timbre/cfd/">cfdi</a></li>
-                        <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
-                        <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
-                        <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
-                </div>
-
-
-                <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu menu-lines">
-                        <li class="item-178"><a href="/timbre/codigos/">emisión y timbrado</a></li>
-                        <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
-                    </ul>
-                </div>
- 
-                <h3>FAQ's<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/timbre/documentacionServicio/pregFrecuentes.html">preguntas frecuentes</a></li>
-                        <li class="item-178"><a href="/timbre/documentacionServicio/errComunes.html">errores comunes</a></li>
+                        <li class="item-178"><a href="/conector/formatos/recursos/">ejemplos</a></li>
+                        <li class="item-178"><a href="/conector/conector_java/guia_conector_java.html">guia conector java</a></li>
                     </ul>               
                 </div>
-            </div>
+<!--
+                <br />
+                <h3>Conector Mercurio<span class="diverza-dot">.</span></h3>
+                <span class="h3-line"></span>
+                <div class="clr"></div>
+
+                <div class="module-content">
+                    <ul class="menu">
+                        <li class="item-178"><a href="/conector/requisitos_tecnicos.html">Prerrequisitos técnicos</a></li>
+                        <li class="item-178"><a href="/conector/arranque_del_servicio/">Arranque del monitoreo</a></li>
+                        <li class="item-178"><a href="/conector/estructura_de_carpetas/">Estructura de carpetas</a></li>
+                        <li class="item-178"><a href="/conector/configuraciones/">Configuraciones</a></li>
+                        <li class="item-178"><a href="/conector/codigos_error.html">Codigos de error</a></li>
+                    </ul>               
+                </div>
+                !-->
+
+              </div>
             <div class="clr"></div>
         </div>
     </div>

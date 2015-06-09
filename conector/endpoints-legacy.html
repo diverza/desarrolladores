@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>servicio de emisión</title>
+  <title>endpoints conector</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -154,88 +154,48 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>servicio de emisión<span class="diverza-dot">.</span></h1>
+              <h1>endpoints conector<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p><strong>El servicio de emisión en REST de diverza, es usado por Conector Fiscal®</strong></p>
-
-<p><legend>
-Para Emisión de un comprobante normal de CFDI, ingrese <a href="../endpoints-legacy.html">aquí</a>
+              <p><legend>
+Esta documentación corresponde a los servicios /issue del 2014.
+<br /><br />
+A partir del 2015, te invitamos a utilizar los <a href="/conector/endpoints/endpointsEmi.html">nuevos endpoints</a> con mayor compatibilidad y mejores prestaciones.
 </legend></p>
 
-<p>La siguiente información comprende la emisión de un comprobante sin sello, donde obtienes todo el comprobante; *<em>disponible sólo para clientes de Conector Fiscal®</em></p>
+<p>El servicio de Conector Fiscal® tiene distintos <strong>endpoints</strong> que puedes utilizar dependiendo del tipo de procesamiento que necesitas:</p>
 
-<p><br>
-<code>https://staging.diverza.com/api/v1/emitir</code></p>
+<p><a href="#issue">Emisión</a> de un comprobante sin sello, donde obtienes todo el comprobante *disponible para clientes de conector fiscal <br>
+<code>https://staging.diverza.com/issue</code></p>
 
-<hr>
-
-<h2 id="encabezados">encabezados</h2>
-
-<p>Todas las peticiones requieren los siguientes ecabezados:</p>
-
-<h3 id="x-auth-token:">x-auth-token:</h3>
-
-<p>Incluirá el token que nosotros te proporcionaremos para que te reconozcamos y podamos brindarte el servicio.
-Para propósitos de pruebas, puedes usar el valor <strong>ABCD1234</strong> asignado al RFC Emisor AAA010101AAA.</p>
-
-<h3 id="content-type:">Content-Type:</h3>
-
-<p>Indicará el tipo de documento que deseas procesar:</p>
-
-<p><code>CFDI</code></p>
-
-<ul>
-<li><strong><em>application/vnd.sat.cfdi+xml; charset=UTF-8</em></strong></li>
-</ul>
-
-<p><code>Constancia de retención</code></p>
-
-<ul>
-<li><strong><em>application/vnd.sat.retencion+xml; charset=UTF-8</em></strong></li>
-</ul>
-
-<h3 id="content-md5:">Content-MD5:</h3>
-
-<p>Contendrá el hash del archivo enviado en tu petición, expresado como una cadena de 32 caracteres.
-Te recomendamos ampliamente implementar este valor, ya que te proporciona un mecanismo de certeza adicional.
-Para propósito de pruebas, el valor de este atributo no será validado</p>
-
-<h3 id="x-refid:">x-refid:</h3>
-
-<p>Te permite identificar cada documento que envíes a procesar con nosotros.
-Por cada RefID único que utilices obtendrás el mismo complemento de timbre (y folio fiscal). <br>
-Conoce más sobre esta opción en la <a href="../refid.html">documentación sobre RefID</a>.</p>
+<p><a href="#issue/cancel">Cancelación</a> de un comprobante timbrado desde nuestros servicios <br>
+<code>https://staging.diverza.com/issue/cancel</code></p>
 
 <hr>
 
-<h2>emitir<span class="diverza-dot">.</span></h2>
+<h2 id="issue">issue</h2>
 
-<p><br></p>
+<p>Ésta dirección es utilizada para el ambiente de pruebas del servicio de Conector Fiscal®, en donde los parámetros de entrada son los que se listan a continuación.</p>
 
-<p>Ésta dirección es utilizada para el ambiente de pruebas del servicio de Conector Fiscal®, en donde los parámetros de entrada son los mismos que en <code>/api/v1/timbrar</code>, con la diferencia que deberás enviar un CFDi que no haya sido sellado.</p>
-
-<p>Anexo a continuación, se encuentra un ejemplo de CFDi sin el sello del comprobante, <strong>es importante incluir los atributos de <code>certificado</code> y <code>noCertificado</code></strong> ya que son necesarios para que el sistema de <strong>Conector Fiscal</strong> reconozca el número de serie y pueda firmar el comprobante con el CSD que hayas instalado en nuestro servicio de emisión y el cual estás indicando en el archivo XML como noCertificado<code>. También es importante incluir el atributo de &quot;sello&quot;, pero se deberá de agregar de esta forma:</code>`sello=&quot;&quot;, es decir, sin valor, sólo el atributo, de otra manera recibiras un mensaje de error: &quot;No válido según esquema&quot;.</p>
+<p>Anexo a continuación, se encuentra un ejemplo de CFDi sin el sello del comprobante, <strong>es importante incluir el atributo de <code>certificado</code> y <code>noCertificado</code></strong> ya que son necesarios para que el sistema de <strong>Conector Fiscal</strong> lo reconozca y pueda firmar el comprobante con los certificados que hayas registrado con nosotros. También es importante incluir el atributo de &quot;sello&quot;, pero se deberá de agregar de esta forma: <code>sello=&quot;&quot;</code>, es decir, sin valor, sólo el atributo, de otra manera recibiras un mensaje de error: &quot;No válido según esquema&quot;.</p>
 
 <p>La respuesta exitosa de este servicio envía todo el comprobante con el complemento de timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: https://staging.diverza.com/api/v1/emitir
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: https://staging.diverza.com/issue
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
-  Header HTTP: Content-MD5
-  Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/emitir -X POST --data @CFD_Timbrar_Ret.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL https://staging.diverza.com/issue -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <h3 id="ejemplo-del-cfdi-sin-sellar">ejemplo del CFDi sin sellar</h3>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="nt">&lt;cfdi:Comprobante</span> <span class="na">LugarExpedicion=</span><span class="s">&quot;CIUDAD DE MEXICO - D.F.&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;NO IDENTIFICADO&quot;</span>
   <span class="na">tipoDeComprobante=</span><span class="s">&quot;egreso&quot;</span> <span class="na">total=</span><span class="s">&quot;208197.77&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;MXP&quot;</span> <span class="na">TipoCambio=</span><span class="s">&quot;1.0000&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;208197.77&quot;</span>
   <span class="na">condicionesDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span>
-  <span class="na">certificado=</span><span class="s">&quot;&quot;</span>
+  <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
   <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;CONTADO&quot;</span>
   <span class="na">sello=</span><span class="s">&quot;&quot;</span>
   <span class="na">fecha=</span><span class="s">&quot;2014-08-18T11:11:59&quot;</span> <span class="na">folio=</span><span class="s">&quot;1&quot;</span> <span class="na">serie=</span><span class="s">&quot;EDR&quot;</span> <span class="na">version=</span><span class="s">&quot;3.2&quot;</span>
@@ -307,11 +267,14 @@ Conoce más sobre esta opción en la <a href="../refid.html">documentación sobr
 
 <hr>
 
-<h2>cancelar<span class="diverza-dot">.</span></h2>
+<h2 id="issue/cancel">issue/cancel</h2>
 
-<p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="endpointsCan.html">Servicio de Cancelación</a>.</p>
+<p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="/conector/cancelacion/cancel-legacy.html">Servicio de Cancelación</a>.</p>
 
-<hr>
+<p>Como referencia la petición de cancelación desde terminal se ejecuta así:</p>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL -X POST <span class="s2">&quot;https://staging.diverza.com/issue/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+</code></pre></div>
+<p>La respuesta te dará códigos de error, donde <code>200 OK y 0 Proceso realizado con éxito</code> indican que la cancelación fue exitosa.</p>
 
             </div>
           </div>
