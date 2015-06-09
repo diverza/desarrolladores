@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>servicio de timbrado</title>
+  <title>servicio de timbrado cfdi-retenciones</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -154,14 +154,16 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>servicio de timbrado<span class="diverza-dot">.</span></h1>
+              <h1>servicio de timbrado cfdi-retenciones<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar, en esta sección te mostraremos lo referente al <strong>servicio de timbrado</strong>.</p>
-
-<p><legend>
-Para Timbrado de un comprobante normal de CFDI, ingrese <a href="../endpoints-legacy.html">aquí</a>
+              <p><legend>
+Esta documentación es para timbrado de CFDIs de retenciones.
+<br />
+Para timbrado de un comprobante normal de CFDI, ingrese <a href="../endpoints-legacy.html">aquí</a>.
 </legend></p>
+
+<p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar, en esta sección te mostraremos lo referente al <strong>servicio de timbrado</strong>.</p>
 
 <p><strong>Timbrado de un comprobante de retenciones, donde obtienes solo el timbre: <br></strong></p>
 
@@ -186,11 +188,10 @@ Para propósitos de pruebas, puedes usar el valor <strong>ABCD1234</strong> asig
 
 <p>Indicará el tipo de documento que deseas procesar:</p>
 
-<p><code>CFDI</code></p>
+<!-- ``CFDI``
 
-<ul>
-<li><strong><em>application/vnd.sat.cfdi+xml; charset=UTF-8</em></strong></li>
-</ul>
+  - ***application/vnd.sat.cfdi+xml; charset=UTF-8***
+ -->
 
 <p><code>Constancia de retención</code></p>
 
@@ -228,7 +229,7 @@ Al mandar tu petición de timbrado a ésta dirección, como mensaje de respuesta
   Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -261,7 +262,7 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
   Header HTTP: Content-Type
 </code></pre></div>
 <h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/timbrar?completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/timbrar?completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
