@@ -179,7 +179,47 @@ En el servicio de emisión de Conector Fiscal®, no necesitas generar el sello d
 
 <p><br>
 En esta sección te mostraremos un ejemplo de CFDI para emisión, éste ejemplo es un CFDI de tipo &quot;ingreso&quot;, y que no contiene complemento, para conocer ejemplos de todos los tipos de comprobantes que podemos certificar, puedes consultar nuestra sección de <a href="../recursos/">recursos</a>, en donde podrás descargar todos los ejemplos que necesitas.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="err">&lt;</span><span class="nt">&lt;aquí</span> <span class="err">ejemplo</span> <span class="err">de</span> <span class="err">CFDI</span> <span class="err">sin</span> <span class="err">sello</span><span class="nt">&gt;</span>&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/aerolineas http://www.sat.gob.mx/sitio_internet/cfd/aerolineas/aerolineas.xsd&quot;</span>
+  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:aerolineas=</span><span class="s">&quot;http://www.sat.gob.mx/aerolineas&quot;</span>
+  <span class="na">fecha=</span><span class="s">&quot;2015-02-25T13:50:00&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span> <span class="na">serie=</span><span class="s">&quot;C&quot;</span> <span class="na">folio=</span><span class="s">&quot;38&quot;</span>
+  <span class="na">LugarExpedicion=</span><span class="s">&quot;Monterrey, Nuevo León&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;No Identificado&quot;</span>
+  <span class="na">NumCtaPago=</span><span class="s">&quot;No Identificado&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> <span class="na">total=</span><span class="s">&quot;40600.00&quot;</span>
+  <span class="na">descuento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;35000.00&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;Pesos&quot;</span>
+  <span class="na">certificado=</span><span class="s">&quot;&quot;</span>
+  <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span>
+  <span class="na">sello=</span><span class="s">&quot;&quot;</span>
+  <span class="na">version=</span><span class="s">&quot;3.2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Empresa de Pruebas SA&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">colonia=</span><span class="s">&quot;Fracc. San Pedro&quot;</span> <span class="na">calle=</span><span class="s">&quot;Encinos&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1452&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales de Prueba&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">rfc=</span><span class="s">&quot;E&amp;amp;Ñ831019M53&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Exportadora de Ganado HOLSTEIN S.A.&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">colonia=</span><span class="s">&quot;Ejido La Siembra&quot;</span> <span class="na">calle=</span><span class="s">&quot;Av. Principal&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;102&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">estado=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;99170&quot;</span>
+      <span class="na">localidad=</span><span class="s">&quot;Ejido La Siembra&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;Módulo de embarque serie A-6743-Ñ&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;35000.00&quot;</span>
+      <span class="na">unidad=</span><span class="s">&quot;LTE&quot;</span> <span class="na">importe=</span><span class="s">&quot;35000.00&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;cfdi:InformacionAduanera</span> <span class="na">numero=</span><span class="s">&quot;32441223&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2015-02-10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Concepto&gt;</span>
+  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+  <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosRetenidos=</span><span class="s">&quot;0.00&quot;</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;5600.00&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Retenciones&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;ISR&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Retenciones&gt;</span>
+    <span class="nt">&lt;cfdi:Traslados&gt;</span>
+      <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;5600.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+  <span class="nt">&lt;cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
 <p><br>
 Consulta <a href="ejemplosXML.html">aquí</a> los ejemplos disponibles en formato XML para los servicios antes descritos.</p>
@@ -199,7 +239,47 @@ Para el servicio de timbre fiscal®, dado que sólo se realiza la certificación
 
 <p><br>
 En esta sección te mostraremos un ejemplo de CFDI para timbrado, éste ejemplo es un CFDI de tipo &quot;ingreso&quot;, y que no contiene complemento, para conocer ejemplos de todos los tipos de comprobantes que podemos certificar, puedes consultar nuestra sección de <a href="../recursos/">recursos</a>, en donde podrás descargar todos los ejemplos que necesitas.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="err">&lt;</span><span class="nt">&lt;aquí</span> <span class="err">ejemplo</span> <span class="err">de</span> <span class="err">CFDI</span> <span class="err">con</span> <span class="err">sello</span><span class="nt">&gt;</span>&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;cfdi:Comprobante</span>
+  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/aerolineas http://www.sat.gob.mx/sitio_internet/cfd/aerolineas/aerolineas.xsd&quot;</span>
+  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:aerolineas=</span><span class="s">&quot;http://www.sat.gob.mx/aerolineas&quot;</span>
+  <span class="na">fecha=</span><span class="s">&quot;2015-02-25T13:50:00&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span> <span class="na">serie=</span><span class="s">&quot;C&quot;</span> <span class="na">folio=</span><span class="s">&quot;38&quot;</span>
+  <span class="na">LugarExpedicion=</span><span class="s">&quot;Monterrey, Nuevo León&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;No Identificado&quot;</span>
+  <span class="na">NumCtaPago=</span><span class="s">&quot;No Identificado&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> <span class="na">total=</span><span class="s">&quot;40600.00&quot;</span>
+  <span class="na">descuento=</span><span class="s">&quot;0.00&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;35000.00&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;Pesos&quot;</span>
+  <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
+  <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span>
+  <span class="na">sello=</span><span class="s">&quot;NWzPEwPwscIrlTqfWZLrx63FLeN0/6NORE18QYYc539TdcWBQ7MDj822bbYIq0ndh+MYwoAVKPDSqgxhGOC1d4oRKjZPNb5XH9WiTkO9JnSai3riN1yBIM839eiMC/JkyDAs/Wdq/kRA9WUDYkvGTttYPK7ZlZKBOgyaas0aoao=&quot;</span>
+  <span class="na">version=</span><span class="s">&quot;3.2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Empresa de Pruebas SA&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">colonia=</span><span class="s">&quot;Fracc. San Pedro&quot;</span> <span class="na">calle=</span><span class="s">&quot;Encinos&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1452&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales de Prueba&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
+  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">rfc=</span><span class="s">&quot;E&amp;amp;Ñ831019M53&quot;</span> <span class="na">nombre=</span><span class="s">&quot;Exportadora de Ganado HOLSTEIN S.A.&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">colonia=</span><span class="s">&quot;Ejido La Siembra&quot;</span> <span class="na">calle=</span><span class="s">&quot;Av. Principal&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;102&quot;</span>
+      <span class="na">municipio=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">estado=</span><span class="s">&quot;Zacatecas&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;99170&quot;</span>
+      <span class="na">localidad=</span><span class="s">&quot;Ejido La Siembra&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
+  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
+    <span class="nt">&lt;cfdi:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;Módulo de embarque serie A-6743-Ñ&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;35000.00&quot;</span>
+      <span class="na">unidad=</span><span class="s">&quot;LTE&quot;</span> <span class="na">importe=</span><span class="s">&quot;35000.00&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;cfdi:InformacionAduanera</span> <span class="na">numero=</span><span class="s">&quot;32441223&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2015-02-10&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Concepto&gt;</span>
+  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
+  <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosRetenidos=</span><span class="s">&quot;0.00&quot;</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;5600.00&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;cfdi:Retenciones&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;ISR&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;cfdi:Retencion</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Retenciones&gt;</span>
+    <span class="nt">&lt;cfdi:Traslados&gt;</span>
+      <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;5600.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16.00&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/cfdi:Traslados&gt;</span>
+  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
+  <span class="nt">&lt;cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
+  <span class="nt">&lt;cfdi:Addenda/&gt;</span>
+<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
 <hr>
 

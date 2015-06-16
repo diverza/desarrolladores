@@ -188,6 +188,133 @@ Para este caso, necesitaremos que envíes la información que tu requeries con l
 
 <p><a href="ejemplosYAML.html">Lista de documentos disponibles</a></p>
 
+<p><br>
+Ejemplo de un documento de CFDI base en formato YAML (debe ser obligatoriamente con <strong>encoding UTF-8</strong>).</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"># Formato del archivo de texto para solicitar la generación de un comprobante fiscal digital por internet.
+# Este formato es compatible con YAML (http://www.yaml.org/spec/1.2/spec.html).
+# Puede generar el archivo manualmente o utilizar algún módulo displonible en: http://en.wikipedia.org/wiki/YAML#Bindings.
+# El archivo DEBE estar códificado en UTF-8 y sólo debe usar espacios para la identación, no tabs.
+# La identación es importante y determina la relación entre los elementos.
+# Los comentarios empiezan con un signo de # y debe existir un espacio después del signo #.
+# Las lineas vacias son ignoradas.
+--- !diverza.com/v2.0   # Todo documento debe empezar con esta marca y la indicación de la versión
+
+# Datos generales
+# Debe haber al menos un espacio después de los dos puntos.
+RefId              : &quot;nom01user1&quot;
+TipoDeComprobante  : &quot;egreso&quot;
+LugarExpedicion    : &quot;México, DF&quot;
+Folio              : &quot;100&quot;
+Serie              : &quot;NOM&quot;
+nombreCfdi         : &quot;reciboEmpleado_nom01user1&quot;
+
+# Datos del emisor
+Emisor:
+  Regimen      : &quot;Persona Moral&quot;
+  Rfc          : &quot;AAA010101AAA&quot;
+  Nombre       : &quot;Empresa de Prueba SA&quot;
+  Calle        : &quot;José María Coss&quot;
+  NoExterior   : &quot;731&quot;
+  NoInterior   : &quot;Piso 9&quot;
+  Colonia      : &quot;Centro&quot;
+  Localidad    : &quot;Centro&quot;
+  Referencia   : &quot;atras teatro&quot;
+  Municipio    : &quot;Monterrey&quot;
+  Estado       : &quot;Nuevo León&quot;
+  Pais         : &quot;México&quot;
+  CodigoPostal : &quot;64000&quot;
+  # Datos opcionales de expedición
+  ExpedidoEn:
+    Calle        : &quot;Dr Coss&quot;
+    NoExterior   : &quot;343&quot;
+    NoInterior   : &quot;34&quot;
+    Colonia      : &quot;Centro&quot;
+    Localidad    : &quot;Localidad&quot;
+    Referencia   : &quot;Referencia&quot;
+    Municipio    : &quot;Monterrey&quot;
+    Estado       : &quot;NL&quot;
+    Pais         : &quot;Mexico&quot;
+    CodigoPostal : &quot;34343&quot;
+    Alias        : &quot;Centro&quot;
+    Telefono     : &quot;83101111&quot;
+
+# Datos del receptor
+Receptor: # Los datos de este bloque corresponden al su cliente es decir, el receptor del CFDi.
+  Rfc          : &quot;TERA010101DEM&quot;
+  Nombre       : &quot;Empleado&quot;
+  Calle        : &quot;Padre Mier&quot;
+  NoExterior   : &quot;731&quot;
+  NoInterior   : &quot;A&quot;
+  Colonia      : &quot;Obispado&quot;
+  Localidad    : &quot;A&quot;
+  Referencia   : &quot;B&quot;
+  Municipio    : &quot;Monterrey&quot;
+  Estado       : &quot;Nuevo León&quot;
+  Pais         : &quot;México&quot;
+  CodigoPostal : &quot;64000&quot;
+  NoCliente    : &quot;34343&quot;
+  Email        : &quot;empleado@diverza.com&quot;
+  Telefono     : &quot;40001500&quot;
+
+# Conceptos
+Conceptos:
+  # El siguiente bloque se repite de acuerdo al número de conceptos que quiera incluir
+  # El símbolo - indica inicio de nuevo concepto. Debe haber un espacio después del símbolo -
+  - NoIndentificacion : &quot;002RFFT&quot;
+    Unidad            : &quot;TON&quot;
+    Descripcion       : &quot;Rollos de tela importada&quot;
+    Cantidad          : &quot;1.00&quot;
+    ValorUnitario     : &quot;13379.00&quot;
+    Importe           : &quot;13379.00&quot;
+  # Puede existir linea vacia entre cada concepto mientras mantenga la identación
+
+
+# Impuestos
+Impuestos:
+  TotalImpuestosRetenidos : &quot;2053.71&quot;
+  # Bloque de datos que determina los impuestos retenidos, se repite por cada impuesto retenido global presente en el CFDi.
+  Retenciones:
+    - Impuesto : &quot;ISR&quot;
+      Importe  : &quot;2053.71&quot;
+
+  TotalImpuestosTraslados : &quot;0.00&quot;
+  # Bloque de datos que determina los impuestos traslados, se repite por cada impuesto global presente en el CFDi.
+  Traslados:
+    - Impuesto :   &quot;IVA&quot;
+      Importe  :   &quot;1000.00&quot;
+      Tasa     :   &quot;16.00&quot;
+
+# Datos complementarios del comprobante a nivel global
+# Datos adicionales que complementan el esquema fiscal del CFDi.
+SubTotal             : &quot;13379.00&quot;
+FormaDePago          : &quot;Pago en una sola Exhibición&quot;
+CondicionesDePago    : &quot;contado&quot;
+MetodoDePago         : &quot;Transferencia&quot;
+NumCtaPago           : &quot;1234&quot;
+Moneda               : &quot;MXN&quot;
+TipoCambio           : &quot;1&quot;
+FolioFiscalOrig      : &quot;&quot;
+SeriefolioFiscalOrig : &quot;&quot;
+FechafolioFiscalOrig : &quot;&quot;
+MontofolioFiscalOrig : &quot;&quot;
+Observaciones        : &quot;Sin deducciones adicionales&quot;
+MontoTotalTexto      : &quot;Trece Mil Trescientos Setenta y Nueve Pesos 00/100 M.N.&quot;
+
+# Totales
+Total           : &quot;13379.00&quot;
+Descuento       : &quot;1278.39&quot;
+MotivoDescuento : &quot;Descuento por promoción&quot;
+
+# Otros. Bloque informativo para especificar información extra que desee expresar en la representación impresa del comprobante.
+LeyendasImpresion:
+  - Atributo : &quot;leyenda1&quot;
+    Valor    : &quot;1231312&quot;
+
+  - Atributo : &quot;registro1&quot;
+    Valor    : &quot;dato1&quot;
+
+...
+</code></pre></div>
 <p>Para conocer sobre las virtudes y beneficios de este servicio, puedes contactar con alguna de nuestras <a href="https://www.diverza.com/oficinas/">oficinas comerciales</a>, o comunicarte al siguiente número <a href="tel://018000704000">telefónico</a>, también puedes enviar un <a href="mailto:ventas@diverza.com?subject=Quiero%20conectarme%20a%20Conector%20Fiscal%20Usando%20YAML">correo electrónico</a> informándonos sobre tu interés.</p>
 
 <hr>

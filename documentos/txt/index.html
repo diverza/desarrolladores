@@ -177,7 +177,84 @@ Conector Fiscal®
 -  Utilizando el Conector Software</p>
 
 <p>Para este caso, necesitaremos que envíes la información que tu requeries con la que se genere tu comprobante, nosotros nos encargaremos de generar el CFDI con su sello correspondiente y con la certificación del timbre. Es importante cuidar la estructura y el contenido de las etiquetas en el archivo TXT que vas a generar, para que pueda ser procesado correctamente. Recuerda que no todos los complementos del CFDI están habilitados para este tipo de documento, consultalos en la página de <a href="../">inicio</a>.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="err">&lt;</span><span class="nt">&lt;aquí</span><span class="err">,</span> <span class="err">ejemplo</span> <span class="err">de</span> <span class="err">TXT</span> <span class="err">de</span> <span class="err">Remisión</span><span class="nt">&gt;</span>&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml">#### Cada documento debe de iniciar con la palabra &quot;HOJA&quot;, y debe de ser almacenado con el encoding UTF-8.
+
+HOJA
+
+########## [Datos del Emisor]
+serie|A
+folio|1215
+asignaFolio|FALSE
+emRfc|AAA010101AAA
+emRegimen|Régimen General de Ley de Personas Morales
+
+############################## [Datos de Expedicion SUCURSALES]
+exAlias|
+exTelefono|
+exCalle|Dr. José María Coss
+exNoExterior|731
+exNoInterior|Piso 9
+exColonia|Centro
+exLocalidad|
+exReferencia|(Macroplaza)
+exMunicipio|Monterrey
+exEstado|Nuevo León
+exPais|México
+exCodigoPostal|64000
+
+############################## [Datos del Receptor]
+reRfc|XAXX010101000
+reNombre|CLIENTE <span class="err">&amp;</span> PRUEBAS PARA SERVICIO Ñ DE EMISIÓN S.A. DE C.V.
+reCalle|Blvd. Circunvalación y Tornos
+reNoExterior|28771
+reNoInterior|Nave 8
+reColonia|Parque Industrial
+reLocalidad|
+reReferencia|
+reMunicipio|Apodaca
+reEstado|Nuevo León
+rePais|México
+reCodigoPostal|68435
+reNoCliente|560465                      
+reEmail|eduardo.valadez@diverza.com
+reTelefono|8140001500
+reFax|
+reComprador|
+reNIM|
+
+############################## [Datos de Conceptos]
+cantidad|1
+unidad|Servicio
+numIdentificacion|
+descripcion|Donativo
+valorUnitario|50000.00
+importe|50000.00
+
+############################## [Datos Complementarios del Comprobante a nivel global]
+subtotalConceptos|50000.00
+descuentoPorcentaje|
+descuentoMonto|
+descuentoMotivo|
+cargos|
+totalConceptos|50000.00
+pagoForma|Pago en una sola exhibición
+pagoCondiciones|
+pagoMetodo|Efectivo
+lugarExpedicion|Monterrey, NL 
+
+############################## [Datos Comerciales del Comprobante a nivel global]
+tipoDocumento|Factura
+trasladadoImpuesto| 
+trasladadoImporte|
+trasladadoTasa|
+subtotalTrasladados|
+
+############################## [Datos Totales del Comprobante]
+montoTotal|50000.00
+montoTotalTexto|(-Cincuenta mil pesos 00/100 M.N.-)
+
+############################## [Leyendas Especiales - Hasta 10]
+LeyendaEspecial1|(Información especial Leyenda Especial)
 </code></pre></div>
 <p><br>
 Consulta <a href="ejemplosTXT.html">aquí</a> los ejemplos disponibles en formato TXT para el servicio antes descrito.</p>

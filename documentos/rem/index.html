@@ -179,7 +179,40 @@ Conector Fiscal®
 -  Desarrollando una conexión a nuestro WebService</p>
 
 <p>Para cualquier de los dos casos, necesitaremos que envíes la información que tu requeries con la que se genere tu comprobante, nosotros nos encargaremos de generar el CFDI con su sello correspondiente y con la certificación del timbre.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="err">&lt;</span><span class="nt">&lt;aquí</span><span class="err">,</span> <span class="err">ejemplo</span> <span class="err">de</span> <span class="err">XML</span> <span class="err">de</span> <span class="err">Remisión</span><span class="nt">&gt;</span>&gt;
+
+<p>El siguiente es un ejemplo de remisión para emisión de CFDI de tipo ingreso. Te podrás percatar que pudiera faltar cierta información como tal, el domicilio del emisor, sin embargo, al identificar el RFC emisor, podremos tomar la información del domicilio de tu cuenta ya configurada.</p>
+
+<p><br></p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;bfr5:Remision</span> <span class="na">xmlns:bfr5=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/remision/52&quot;</span> <span class="na">version=</span><span class="s">&quot;5.2&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;bfr5:InfoBasica</span> <span class="na">rfcEmisor=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">rfcReceptor=</span><span class="s">&quot;XAXX010101000&quot;</span> <span class="na">asignaFolio=</span><span class="s">&quot;false&quot;</span> <span class="na">folio=</span><span class="s">&quot;2817&quot;</span> <span class="na">serie=</span><span class="s">&quot;EMRM&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bfr5:InfoAdicional</span> <span class="na">formaDePago=</span><span class="s">&quot;Pago en una sola exhibición&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;1.00&quot;</span> <span class="na">total=</span><span class="s">&quot;1.00&quot;</span>
+    <span class="na">metodoDePago=</span><span class="s">&quot;Efectivo&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span> <span class="na">lugarExpedicion=</span><span class="s">&quot;Apulia Italia&quot;</span> <span class="na">moneda=</span><span class="s">&quot;MXN&quot;</span>
+    <span class="na">tipoCambio=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bfr5:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;Eduardo Valadez&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;bfr5:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;REGIMEN GENERAL DE LEY DE PERSONAS MORALES&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bfr5:Emisor&gt;</span>
+  <span class="nt">&lt;bfr5:DomicilioFiscal</span> <span class="na">calle=</span><span class="s">&quot;Vía Appia Antica&quot;</span> <span class="na">municipio=</span><span class="s">&quot;Apulia&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span>
+    <span class="na">codigoPostal=</span><span class="s">&quot;64100&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;3189&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;4to. Piano 3B&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Tarento&quot;</span>
+    <span class="na">localidad=</span><span class="s">&quot;Bari&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bfr5:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;Empresa Receptor &amp;amp; de Prueba Ñ S.A. de C.V.&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bfr5:DomicilioReceptor</span> <span class="na">calle=</span><span class="s">&quot;Concordia&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;1&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Centro&quot;</span>
+    <span class="na">localidad=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bfr5:Conceptos&gt;</span>
+    <span class="nt">&lt;bfr5:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1.00&quot;</span> <span class="na">unidad=</span><span class="s">&quot;Servicio&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;Preventa Servicio de Administración de Empresa&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;1.00&quot;</span> <span class="na">importe=</span><span class="s">&quot;1.00&quot;</span>
+      <span class="na">noIdentificacion=</span><span class="s">&quot;77261RRTFS&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/bfr5:Conceptos&gt;</span>
+  <span class="nt">&lt;bfr5:Impuestos/&gt;</span>
+  <span class="nt">&lt;bfr5:Addenda&gt;</span>
+    <span class="nt">&lt;bfa2:AddendaBuzonFiscal</span> <span class="na">xmlns:bfa2=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2&quot;</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;bfa2:Emisor</span> <span class="na">emailComercial=</span><span class="s">&quot;email@comercial.com&quot;</span> <span class="na">emailNotificaciones=</span><span class="s">&quot;email@comercial.com&quot;</span>
+        <span class="na">telefono=</span><span class="s">&quot;81.4000.1500&quot;</span> <span class="na">fax=</span><span class="s">&quot;(81) 4000.1500&quot;</span> <span class="na">web=</span><span class="s">&quot;www.web.com.mx&quot;</span> <span class="na">GLN=</span><span class="s">&quot;9812287366121&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;bfa2:TipoDocumento</span> <span class="na">descripcion=</span><span class="s">&quot;Factura&quot;</span> <span class="na">nombreCorto=</span><span class="s">&quot;FAC&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;bfa2:CFD</span> <span class="na">totalConLetra=</span><span class="s">&quot;Uno pesos 00/100 M.N.&quot;</span> <span class="na">tipoMoneda=</span><span class="s">&quot;MXN&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;bfa2:Extra</span> <span class="na">atributo=</span><span class="s">&quot;T*TOTAL&quot;</span> <span class="na">valor=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bfa2:AddendaBuzonFiscal&gt;</span>
+  <span class="nt">&lt;/bfr5:Addenda&gt;</span>
+<span class="nt">&lt;/bfr5:Remision&gt;</span>
 </code></pre></div>
 <p><br>
 Consulta <a href="ejemplosREM.html">aquí</a> los ejemplos disponibles en formato Remisión XML para el servicio antes descrito.</p>
@@ -191,7 +224,40 @@ Consulta <a href="ejemplosREM.html">aquí</a> los ejemplos disponibles en format
 <p><br></p>
 
 <p>Otro de nuestros servicios, es la facturación de tickets por demanda, y para este servicio, también contamos con una remisión que contiene información básica pero primordial para poder generar tu CFDI, no varía mucho con respecto al ejemplo anterior, sin embargo, se adicionan algunos campos en la sección de Addenda, que serán de utilidad.</p>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="err">&lt;</span><span class="nt">&lt;aquí</span><span class="err">,</span> <span class="err">ejemplo</span> <span class="err">de</span> <span class="err">XML</span> <span class="err">de</span> <span class="err">Remisión</span> <span class="err">para</span> <span class="err">Tickets</span><span class="nt">&gt;</span>&gt;
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;bfr5:Remision</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+ <span class="na">xmlns:bfr5=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/xsd/bf/remision/52&quot;</span>
+ <span class="na">version=</span><span class="s">&quot;5.2&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;bfr5:InfoBasica</span> <span class="na">rfcEmisor=</span><span class="s">&quot;AAA010101AAA&quot;</span> <span class="na">rfcReceptor=</span><span class="s">&quot;XAXX010101000&quot;</span> <span class="na">asignaFolio=</span><span class="s">&quot;true&quot;</span> <span class="na">serie=</span><span class="s">&quot;A&quot;</span> <span class="na">refID=</span><span class="s">&quot;AP11&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bfr5:InfoAdicional</span> <span class="na">formaDePago=</span><span class="s">&quot;Pago en una sola exhibición&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;652.587&quot;</span> <span class="na">total=</span><span class="s">&quot;757.00092&quot;</span>
+        <span class="na">metodoDePago=</span><span class="s">&quot;Tarjeta de Crédito&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;ingreso&quot;</span>
+        <span class="na">moneda=</span><span class="s">&quot;MXN&quot;</span> <span class="na">tipoCambio=</span><span class="s">&quot;1&quot;</span> <span class="na">numCtaPago=</span><span class="s">&quot;1234&quot;</span> <span class="na">lugarExpedicion=</span><span class="s">&quot;MEXICO, DF&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bfr5:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA EMISORA AAA SA DE CV&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;bfr5:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;REGIMEN GENERAL DE LEY&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bfr5:Emisor&gt;</span>
+    <span class="nt">&lt;bfr5:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;Público en General&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bfr5:DomicilioReceptor</span> <span class="na">calle=</span><span class="s">&quot;NA&quot;</span> <span class="na">pais=</span><span class="s">&quot;MEXICO&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;bfr5:Conceptos&gt;</span>
+        <span class="nt">&lt;bfr5:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1.000000&quot;</span> <span class="na">unidad=</span><span class="s">&quot;PZA&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;ARTICULO A&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;171.552000&quot;</span> <span class="na">importe=</span><span class="s">&quot;171.552000&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;bfr5:Concepto</span> <span class="na">cantidad=</span><span class="s">&quot;1.000000&quot;</span> <span class="na">unidad=</span><span class="s">&quot;PZA&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;ARTICULO B&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;20.00&quot;</span> <span class="na">importe=</span><span class="s">&quot;20.00&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bfr5:Conceptos&gt;</span>
+    <span class="nt">&lt;bfr5:Impuestos</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;15.00&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;bfr5:Traslados&gt;</span>
+            <span class="nt">&lt;bfr5:Traslado</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span> <span class="na">importe=</span><span class="s">&quot;15.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/bfr5:Traslados&gt;</span>
+    <span class="nt">&lt;/bfr5:Impuestos&gt;</span>
+    <span class="nt">&lt;bfr5:Addenda&gt;</span>
+        <span class="nt">&lt;bfa2:AddendaBuzonFiscal</span> <span class="na">xmlns:bfa2=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2&quot;</span>
+            <span class="na">version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;bfa2:TipoDocumento</span> <span class="na">descripcion=</span><span class="s">&quot;Factura&quot;</span> <span class="na">nombreCorto=</span><span class="s">&quot;FAC&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;bfa2:CFD</span> <span class="na">totalConLetra=</span><span class="s">&quot;Ciento diecinueve pesos 00/100 M.N.&quot;</span> <span class="na">tipoMoneda=</span><span class="s">&quot;MXN&quot;</span> 
+                <span class="na">fechaEnvio=</span><span class="s">&quot;2015-05-28T08:49:52&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;bfa2:Extra</span> <span class="na">atributo=</span><span class="s">&quot;numeroTicket&quot;</span> <span class="na">valor=</span><span class="s">&quot;AP11&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;bfa2:Extra</span> <span class="na">atributo=</span><span class="s">&quot;T*TOTAL&quot;</span> <span class="na">valor=</span><span class="s">&quot;191.552000&quot;</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;bfa2:Extra</span> <span class="na">atributo=</span><span class="s">&quot;totalArticulos&quot;</span> <span class="na">valor=</span><span class="s">&quot;2&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/bfa2:AddendaBuzonFiscal&gt;</span>
+    <span class="nt">&lt;/bfr5:Addenda&gt;</span>
+<span class="nt">&lt;/bfr5:Remision&gt;</span>
 </code></pre></div>
 <p>Para conocer sobre las virtudes y beneficios de este servicio, puedes contactar con alguna de nuestras <a href="https://www.diverza.com/oficinas/">oficinas comerciales</a>, o comunicarte al siguiente número <a href="tel://018000704000">telefónico</a>, también puedes enviar un <a href="mailto:ventas@diverza.com?subject=Quiero%20conectarme%20a%20Conector%20Fiscal">correo electrónico</a> informándonos sobre tu interés.</p>
 
