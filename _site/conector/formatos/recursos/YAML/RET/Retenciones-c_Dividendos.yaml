@@ -1,0 +1,70 @@
+# Formato del archivo de texto para solicitar la generación de un comprobante de retenciones y pagos.
+# Este formato es compatible con YAML (http://www.yaml.org/spec/1.2/spec.html).
+# Puede generar el archivo manualmente o utilizar algún módulo displonible en: http://en.wikipedia.org/wiki/YAML#Bindings.
+# El archivo DEBE estar códificado en UTF-8 y sólo debe usar espacios para la identación, no "tabs".
+# La identación es importante y determina la relación entre los elementos.
+# Los comentarios empiezan con un signo de # y debe existir un espacio después del signo #.
+# Las lineas vacias son ignoradas.
+--- !diverza.com/v2.0   # Todo documento debe empezar con esta marca y la indicación de la versión
+
+# Datos generales
+# Debe haber al menos un espacio después de los dos puntos.
+Folio                   : "FolioInt"
+ClaveDeRetencion        : "CveRetenc"
+DescripcionDeRetencion  : "DescRetenc"
+
+# Datos del emisor
+Emisor:
+  Rfc                   : "RFCEmisor"
+  Nombre                : "NomDenRazSocE"
+  CURP                  : "CURPE"
+
+# Datos del receptor nacional o extranjero
+Receptor:
+  Nacionalidad          : "Nacionalidad"
+  Nacional:
+    Rfc                 : "RFCRecep"
+    Nombre              : "NomDenRazSocR"
+    CURP                : "CURPR"
+  Extranjero:
+    Id                  : "NumRegIdTrib"
+    Nombre              : "NomDenRazSocR"
+
+# Información del periodo de retenciones e información de pagos
+Periodo:
+  MesInicial            : "MesIni"
+  MesFinal              : "MesFin"
+  EjercicioFiscal       : "Ejerc"
+
+# Información de las retenciones del periodo
+Totales:
+  MontoOperacion        : "montoTotOperacion"
+  MontoGravado          : "montoTotGrav"
+  MontoExcento          : "montoTotExent"
+  MontoRetenciones      : "montoTotRet"
+  ImpuestosRetenidos:
+    - Base                : "BaseRet"
+      TipoDeImpuesto      : "Impuesto"
+      Monto               : "montoRet"
+      TipoDePago          : "TipoPagoRet"
+    - Base                : "BaseRet"
+      TipoDeImpuesto      : "Impuesto"
+      Monto               : "montoRet"
+      TipoDePago          : "TipoPagoRet"
+
+# . . . - - - C O M P L E M E N T O S - - - . . .  
+
+# Información del complemento Dividendos
+Dividendos:
+  DividendosUtilidades:
+      ClaveTipo                         : "CveTipDivOUtil"
+      RetencionNacional                 : "MontISRAcredRetMexico"
+      RetencionHaciaElExtranjero        : "MontISRAcredRetExtranjero"
+      RetencionDesdeElExtranjero        : "MontRetExtDivExt"
+      OrigenDeSociedadDistribuidora     : "TipoSocDistrDiv"
+      IsrAcreditableNacional            : "MontISRAcredNal"
+      DividendoAcumulableNacional       : "MontDivAcumNal"
+      DividendoAcumulableExtranjero     : "MontDivAcumExt"
+  Remanente:
+      ParticipacionDeIntegrantes        : "ProporcionRem"
+...

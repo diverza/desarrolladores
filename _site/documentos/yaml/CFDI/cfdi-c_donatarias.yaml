@@ -1,0 +1,132 @@
+# Formato del archivo de texto para solicitar la generación de un comprobante fiscal digital por internet.
+# Este formato es compatible con YAML (http://www.yaml.org/spec/1.2/spec.html).
+# Puede generar el archivo manualmente o utilizar algún módulo displonible en: http://en.wikipedia.org/wiki/YAML#Bindings.
+# El archivo DEBE estar códificado en UTF-8 y sólo debe usar espacios para la identación, no tabs.
+# La identación es importante y determina la relación entre los elementos.
+# Los comentarios empiezan con un signo de # y debe existir un espacio después del signo #.
+# Las lineas vacias son ignoradas.
+--- !diverza.com/v2.0   # Todo documento debe empezar con esta marca y la indicación de la versión
+
+# Datos generales
+# Debe haber al menos un espacio después de los dos puntos.
+RefId              : nom01user1             # Atributo opcional para expresar un identificador interno que sirva de referencia para relacionar internamente el CFDi con los sistemas del usuario. Tiene una longitud máxima de 32 caracteres de tipo:  a-z,A-Z,0-9.
+TipoDeComprobante  : "egreso"               # Factura, Recibo de Honorarios, Recibo de Arrendamiento, Recibo de Nómina, Nota de Cargo o Nota de Crédito.
+LugarExpedicion    : "México, DF"           # Atributo requerido para incorporar el lugar de expedición del comprobante.
+Folio              : "100"                  # Dato opcional para indicar el folio que se aplicará al CFDi. Este folio serpa asignado por el mismo usuario. Es un dato númerico con una longitud máxima de 9 caracteres.
+Serie              : "NOM"                  # Dato opcional para indicar que serie aplicará al CFDi, es un dato alfabético con una longitud máxima de 10.
+nombreCfdi         : "reciboEmpleado_nom01user1"  # Dato opcional para indicar que nombre se le dara al archivo de salida XML y PDF del comprobante
+
+# Datos del emisor
+Emisor:
+  Regimen      : "Persona Moral"            # Atributo requerido para incorporar el nombre del régimen en el que tributa el contribuyente emisor.
+  Rfc          : "AAA010101AAA"             # Atributo requerido para expresar la Clave del Registro Federal de Contribuyentes correspondiente al emisor.
+  Nombre       : "Empresa de Prueba SA"     # Atributo opcional para expresar el nombre o razón social del emisor.
+  Calle        : "José María Coss"          # Atributo requerido para expresar la avenida, calle, camino o carretera donde se da la ubicación del domicilio fiscal del emisor.
+  NoExterior   : "731"                      # Atributo opcional para expresar el número particular en donde se da la ubicación sobre la calle del domicilio fiscal del emisor.
+  NoInterior   : "Piso 9"                   # Atributo opcional para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar de forma precisa el domicilio del emisor.
+  Colonia      : "Centro"                   # Atributo opcional para expresar la colonia en donde se da la ubicación cuando se desea ser más específico en ubicaciones urbanas.
+  Localidad    : "Centro"                   # Atributo opcional para expresar la ciudad, pueblo o poblado donde se da la ubicación del domicilio fiscal del emisor.
+  Referencia   : "atras teatro"             # Atributo opcional para expresar una referencia de ubicación adicional (p.e. entrecalles) del domicilio fiscal del emisor.
+  Municipio    : "Monterrey"                # Atributo requerido para expresar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación del domicilio fiscal del emisor.
+  Estado       : "Nuevo León"               # Atributo requerido para expresar el estado o entidad federativa donde se da la ubicación del domicilio fiscal del emisor.
+  Pais         : "México"                   # Atributo requerido para expresar el país donde se da la ubicación del domicilio fiscal del emisor.
+  CodigoPostal : "64000"                    # Atributo requerido para expresar el código postal en donde se da la ubicación del domicilio fiscal del emisor.
+  # Datos opcionales de expedición
+  ExpedidoEn:
+    Calle        : "Dr Coss"                # Atributo opcional para expresar la avenida, calle, camino o carretera donde se da la ubicación.
+    NoExterior   : "343"                    # Atributo opcional para expresar el número particular en donde se da la ubicación sobre una calle dada
+    NoInterior   : "34"                     # Atributo opcional para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación de forma precisa.
+    Colonia      : "Centro"                 # Atributo opcional para expresar la colonia en donde se da la ubicación cuando se desea ser más especÌfico en casos de ubicaciones urbanas.
+    Localidad    : "Localidad"              # Atributo opcional para expresar la ciudad, pueblo o poblado donde se da la ubicación.
+    Referencia   : "Referencia"             # Atributo opcional para expresar una referencia de ubicación adicional (p.e. entre calles).
+    Municipio    : "Monterrey"              # Atributo opcional para expresar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación.
+    Estado       : "NL"                     # Atributo opcional para expresar el estado o entidad federativa donde se da la ubicación.
+    Pais         : "Mexico"                 # Atributo requerido para expresar el país donde se da la ubicación.
+    CodigoPostal : "34343"                  # Atributo opcional para expresar el código postal en donde se da la ubicación.
+    Alias        : "Centro"                 # Atributo opcional para expresar nombre abreviado del establecimiento o sucursal.
+    Telefono     : "83101111"               # Atributo opcional para expresar el número telefónico de la sucursal.
+
+# Datos del receptor
+Receptor: # Los datos de este bloque corresponden al su cliente es decir, el receptor del CFDi.
+  Rfc          : "TERA010101DEM"            # Atributo requerido para expresar la Clave del Registro Federal de Contribuyentes correspondiente al receptor del CFDi. Cuando se trate de CFDi globales que amparen una o más operaciones efectuadas con público en general, deberá reportarse el RFC genérico XAXX010101000; y en el caso de CFDi que amparen una o más operaciones efectuadas con clientes extranjeros se deberán reportar con el RFC genérico XEXX010101000.
+  Nombre       : "Empleado"                 # Atributo opcional para expresar el nombre del receptor del CFDi.
+  Calle        : "Padre Mier"               # Atributo opcional para expresar la avenida, calle, camino o carretera donde se da la ubicación.
+  NoExterior   : "731"                      # Atributo opcional para expresar el número particular en donde se da la ubicación sobre una calle dada
+  NoInterior   : "A"                        # Atributo opcional para expresar información adicional para especificar la ubicación cuando calle y número exterior (noExterior) no resulten suficientes para determinar la ubicación de forma precisa.
+  Colonia      : "Obispado"                 # Atributo opcional para expresar la colonia en donde se da la ubicación cuando se desea ser más especÌfico en casos de ubicaciones urbanas.
+  Localidad    : "A"                        # Atributo opcional para expresar la ciudad, pueblo o poblado donde se da la ubicación.
+  Referencia   : "B"                        # Atributo opcional para expresar una referencia de ubicación adicional (p.e. entre calles).
+  Municipio    : "Monterrey"                # Atributo opcional para expresar el municipio o delegación (en el caso del Distrito Federal) en donde se da la ubicación del domicilio fiscal del emisor.
+  Estado       : "Nuevo León"               # Atributo opcional para expresar el estado o entidad federativa donde se da la ubicación del domicilio fiscal del emisor.
+  Pais         : "México"                   # Atributo requerido para expresar el país donde se da la ubicación del domicilio fiscal del emisor.
+  CodigoPostal : "64000"                    # Atributo opcional para expresar el código postal en donde se da la ubicación del domicilio fiscal del emisor.
+  NoCliente    : "34343"                    # Atributo opcional para expresar el número de identificación del receptor en los controles internos de su negocio.
+  Email        : "empleado@diverza.com"     # Atributo opcional para expresar el correo electrónico de contacto del receptor.
+  Telefono     : "40001500"                 # Atributo opcional para expresar el número telefónico del receptor.
+
+# Conceptos
+Conceptos:
+  # El siguiente bloque se repite de acuerdo al número de conceptos que quiera incluir
+  # El símbolo - indica inicio de nuevo concepto. Debe haber un espacio después del símbolo -
+  - NoIndentificacion : "002DVZ"                       # Atributo opcional para expresar el número de serie o identificación del bien amparado por el presente concepto.
+    Unidad            : "Pago nómina"                  # Atributo requerido para expresar la unidad de medida aplicable para la cantidad expresada en el concepto.
+    Descripcion       : "Nómina Semana 43 Año:2013"    # Atributo requerido para expresar la descripción del bien o servicio cubierto por el presente concepto.
+    Cantidad          : "1"                            # Atributo requerido para expresar la cantidad de bienes o servicios del tipo particular definido por el presente concepto.
+    ValorUnitario     : "13379.00"                     # Atributo requerido para expresar el valor o precio unitario del bien o servicio cubierto por el presente concepto.
+    Importe           : "13379.00"                     # Atributo requerido para expresar el importe total de los bienes o servicios del presente concepto. Debe ser equivalente al resultado de multiplicar la cantidad por el valor unitario expresados en el concepto.
+  # Puede existir linea vacia entre cada concepto mientras mantenga la identación
+
+
+# Impuestos
+Impuestos:
+  TotalImpuestosRetenidos : "2053.71"                  # Atributo opcional para expresar la suma de los impuestos retenidos (IVA ó ISR)
+  # Bloque de datos que determina los impuestos retenidos, se repite por cada impuesto retenido global presente en el CFDi.
+  Retenciones:
+    - Impuesto : "ISR"                                 # Atributo requerido para expresar el tipo de impuesto retenido (IVA ó ISR)
+      Importe  : "2053.71"                             # Atributo requerido para expresar el importe del impuesto retenido (IVA ó ISR)
+
+  TotalImpuestosTraslados : "0.00"                     # Atributo opcional para expresar la suma de los impuestos trasladados (IVA ó IEPS)
+  # Bloque de datos que determina los impuestos traslados, se repite por cada impuesto global presente en el CFDi.
+  Traslados:
+    - Impuesto :   "IVA"                               # Atributo requerido para expresar el tipo de impuesto trasladado (IVA ó IEPS)
+      Importe  :   "1000.00"                           # Atributo requerido para expresar el importe del impuesto trasladado (IVA ó IEPS)
+      Tasa     :   "16.00"                             # Atributo requerido para expresar la tasa del impuesto trasladado (IVA ó IEPS) valores como 0.00, 10.00, 15.00 etc. Es un dato numérico de dos decimales.
+
+# Datos complementarios del comprobante a nivel global
+# Datos adicionales que complementan el esquema fiscal del CFDi.
+SubTotal             : "10000.00"                                   # Atributo requerido para representar la suma de los importes antes de descuentos e impuestos.
+FormaDePago          : "Pago en una sola Exhibición"                # Atributo requerido para expresar la forma de pago que aplica para este CFDi. Se determinan leyendas fijas como "Pago en una sola exhibición" o "Parcialidad X de Y "
+CondicionesDePago    : "contado"                                    # Atributo opcional para expresar las condiciones comerciales aplicables para el pago del CFDi.
+MetodoDePago         : "Transferencia"                              # Atributo requerido de texto libre para expresar el método de pago de los bienes o servicios amparados por el comprobante. Se entiende como método de pago leyendas tales como: cheque, tarjeta, depósito en cuenta, etc.
+NumCtaPago           : "1234"                                       # Atributo Opcional para incorporar al menos los cuatro últimos digitos del número de cuenta con la que se realizó el  pago.
+Moneda               : "MXN"                                        # Atributo opcional para expresar la nomenclarura de la moneda aplicada en el comprobante, utilice la nomenclatura del ISO 4217.
+TipoCambio           : "1"                                          # Atributo opcional para expresar la el tipo de cambio correspondiente a "nombre_moneda"
+FolioFiscalOrig      : ""                                           # Atributo opcional para señalar el número de folio fiscal del comprobante que se hubiese expedido por el valor total del comprobante, tratándose del pago en parcialidades.
+SeriefolioFiscalOrig : ""                                           # Atributo opcional para señalar la serie del folio del comprobante que se hubiese expedido por el valor total del comprobante, tratándose del pago en parcialidades.
+FechafolioFiscalOrig : ""                                           # Atributo opcional para señalar la fecha de expedición del comprobante que se hubiese emitido por el valor total del comprobante, tratándose del pago en parcialidades. Se expresa en la forma aaaa-mm-ddThh:mm:ss, de acuerdo con la especificación ISO 8601.
+MontofolioFiscalOrig : ""                                           # Atributo opcional para señalar el total del comprobante que se hubiese expedido por el valor total de la operación, tratándose del pago en parcialidades.
+Observaciones        : "Sin deducciones adicionales"                # Atributo opcional para expresar datos relevantes a interés del emisor o receptor.
+MontoTotalTexto      : "Diez Mil Cuarenta y Seis Pesos 00/100 M.N." # Atributo opcional para expresar el "montoTotal" con letra
+
+# Totales
+Total           : "10046.90"                         # Atributo requerido para representar la suma del subtotal, menos los descuentos aplicables, más los impuestos trasladados, menos los impuestos retenidos.
+Descuento       : "1278.39"                          # Atributo opcional para expresar la suma de los descuentos aplicables al CFDI
+MotivoDescuento : "Descuento por promoción"        # Atributo opcional para expresar el motivo del descuento aplicable.
+
+# Otros. Bloque informativo para especificar información extra que desee expresar en la representación impresa del comprobante.
+LeyendasImpresion:
+  - Atributo : "leyenda1"          # Atributo opcional para expresar el nombre de una leyenda especial.
+    Valor    : "1231312"           # Atributo opcional para expresar el valor de una leyenda espacial breve.
+
+  - Atributo : "registro1"         # Atributo opcional para expresar el nombre de una leyenda especial.
+    Valor    : "dato1"             # Atributo opcional para expresar el valor de una leyenda espacial breve.
+
+# . . . - - - C O M P L E M E N T O S - - - . . .  
+
+Donatarias:                        # Versión del complemento v.1.1
+  NumeroAutorizacion       : "77623"        # Atributo requerido para expresar el número del oficio en que se haya informado a la organización civil o fideicomiso, la procedencia de la autorización para recibir donativos deducibles, o su renovación correspondiente otorgada por el Servicio de Administración Tributaria.
+  FechaAutorizacion        : "2013-01-23"   # Atributo requerido para expresar la fecha del oficio en que se haya informado a la organización civil o fideicomiso, la procedencia de la autorización para recibir donativos deducibles, o su renovación correspondiente otorgada por el Servicio de Administración Tributaria.
+  Leyenda                  : "Este comprobante ampara un donativo, el cual será destinado por la donataria a los fines propios de su objeto social. En el caso de que los bienes donados hayan sido deducidos previamente para los efectos del impuesto sobre la renta, este donativo no es deducible. La reproducción no autorizada de este comprobante constituye un delito en los términos de las disposiciones fiscales."
+  # Atributo requerido para señalar de manera expresa que el comprobante que se expide se deriva de un donativo.
+
+...

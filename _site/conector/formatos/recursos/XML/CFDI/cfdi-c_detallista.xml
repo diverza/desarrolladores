@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante
+  xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/detallista http://www.sat.gob.mx/sitio_internet/cfd/detallista/detallista.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:detallista="http://www.sat.gob.mx/detallista"
+  fecha="2015-02-25T13:50:00" tipoDeComprobante="ingreso" serie="C" folio="38"
+  LugarExpedicion="Monterrey, Nuevo León" metodoDePago="No Identificado"
+  NumCtaPago="No Identificado" formaDePago="PAGO EN UNA SOLA EXHIBICION" total="40600.00"
+  descuento="0.00" subTotal="35000.00" Moneda="Pesos"
+  certificado=""
+  noCertificado="20001000000100005867"
+  sello=""
+  version="3.2">
+  <cfdi:Emisor rfc="AAA010101AAA" nombre="Empresa de Pruebas SA">
+    <cfdi:DomicilioFiscal colonia="Fracc. San Pedro" calle="Encinos" noExterior="1452"
+      municipio="Monterrey" estado="Nuevo León" pais="México" codigoPostal="64000"/>
+    <cfdi:RegimenFiscal Regimen="Regimen General de Ley Personas Morales de Prueba"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="XAXX010101000" nombre="Exportadora de Ganado HOLSTEIN S.A.">
+    <cfdi:Domicilio colonia="Ejido La Siembra" calle="Av. Principal" noExterior="102"
+      municipio="Zacatecas" estado="Zacatecas" pais="México" codigoPostal="99170"
+      localidad="Ejido La Siembra"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" descripcion="Módulo de embarque" valorUnitario="35000.00"
+      unidad="LTE" importe="35000.00">
+      <cfdi:InformacionAduanera numero="32441223" fecha="2015-02-10"/>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosRetenidos="0.00" totalImpuestosTrasladados="5600.00">
+    <cfdi:Retenciones>
+      <cfdi:Retencion impuesto="ISR" importe="0.00"/>
+      <cfdi:Retencion impuesto="IVA" importe="0.00"/>
+    </cfdi:Retenciones>
+    <cfdi:Traslados>
+      <cfdi:Traslado importe="5600.00" tasa="16.00" impuesto="IVA"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <detallista:detallista documentStructureVersion="AMC8.1" documentStatus="ORIGINAL" type="SimpleInvoiceType" contentVersion="1.3.1">
+      <detallista:requestForPaymentIdentification>
+        <detallista:entityType>INVOICE</detallista:entityType>
+      </detallista:requestForPaymentIdentification>
+      <detallista:specialInstruction code="ZZZ">
+        <detallista:text>TRES MIL CIENTO CINCUENTA Y CINCO PESOS 80/100 M.N.</detallista:text>
+      </detallista:specialInstruction>
+      <detallista:orderIdentification>
+        <detallista:referenceIdentification type="ON">18510599</detallista:referenceIdentification>
+        <detallista:ReferenceDate>2014-07-17</detallista:ReferenceDate>
+      </detallista:orderIdentification>
+      <detallista:AdditionalInformation>
+        <detallista:referenceIdentification type="ACE">P00065</detallista:referenceIdentification>
+      </detallista:AdditionalInformation>
+      <detallista:DeliveryNote>
+        <detallista:referenceIdentification>1111111111</detallista:referenceIdentification>
+        <detallista:ReferenceDate>2014-07-23</detallista:ReferenceDate>
+      </detallista:DeliveryNote>
+      <detallista:buyer>
+        <detallista:gln>7504000107903</detallista:gln>
+        <detallista:contactInformation>
+          <detallista:personOrDepartmentName>
+            <detallista:text>0388</detallista:text>
+          </detallista:personOrDepartmentName>
+        </detallista:contactInformation>
+      </detallista:buyer>
+      <detallista:seller>
+        <detallista:gln>7504023722008</detallista:gln>
+        <detallista:alternatePartyIdentification type="SELLER_ASSIGNED_IDENTIFIER_FOR_A_PARTY">130636</detallista:alternatePartyIdentification>
+      </detallista:seller>
+      <detallista:shipTo>
+        <detallista:gln>7504023722000</detallista:gln>
+        <detallista:nameAndAddress>
+          <detallista:name>CONTENEDORES INDUSTRIALES DE PRUEBA</detallista:name>
+          <detallista:streetAddressOne>Av. República Mexicana 1234</detallista:streetAddressOne>
+          <detallista:city>Guaymas</detallista:city>
+          <detallista:postalCode>85450</detallista:postalCode>
+        </detallista:nameAndAddress>
+      </detallista:shipTo>
+      <detallista:InvoiceCreator>
+        <detallista:gln>9199919991999</detallista:gln>
+        <detallista:alternatePartyIdentification type="VA">3271623</detallista:alternatePartyIdentification>
+        <detallista:nameAndAddress>
+          <detallista:name>RECEPTOR COMP DETALLISTA</detallista:name>
+          <detallista:streetAddressOne>Av. República Mexicana 1234</detallista:streetAddressOne>
+          <detallista:city>Guaymas</detallista:city>
+          <detallista:postalCode>85450</detallista:postalCode>
+        </detallista:nameAndAddress>
+      </detallista:InvoiceCreator>
+      <detallista:Customs>
+        <detallista:gln>9919999199821</detallista:gln>
+      </detallista:Customs>
+      <detallista:currency currencyISOCode="MXN">
+        <detallista:currencyFunction>BILLING_CURRENCY</detallista:currencyFunction>
+        <detallista:rateOfChange>13.10</detallista:rateOfChange>
+      </detallista:currency>
+      <detallista:paymentTerms paymentTermsEvent="DATE_OF_INVOICE" PaymentTermsRelationTime="REFERENCE_AFTER">
+        <detallista:netPayment netPaymentTermsType="END_OF_MONTH">
+          <detallista:paymentTimePeriod>
+            <detallista:timePeriodDue timePeriod="DAYS">
+              <detallista:value>30</detallista:value>
+            </detallista:timePeriodDue>
+          </detallista:paymentTimePeriod>
+        </detallista:netPayment>
+        <detallista:discountPayment discountType="ALLOWANCE_BY_PAYMENT_ON_TIME">
+          <detallista:percentage>0.00</detallista:percentage>
+        </detallista:discountPayment>
+      </detallista:paymentTerms>
+      <detallista:shipmentDetail/>
+      <detallista:allowanceCharge allowanceChargeType="CHARGE_GLOBAL" settlementType="BILL_BACK" sequenceNumber="33421123">
+        <detallista:monetaryAmountOrPercentage>
+          <detallista:rate base="INVOICE_VALUE">
+            <detallista:percentage>0.00</detallista:percentage>
+          </detallista:rate>
+        </detallista:monetaryAmountOrPercentage>
+      </detallista:allowanceCharge>
+      <detallista:lineItem type="SimpleInvoiceLineItemType" number="1">
+        <detallista:tradeItemIdentification>
+          <detallista:gtin>FGTSDF</detallista:gtin>
+        </detallista:tradeItemIdentification>
+        <detallista:alternateTradeItemIdentification type="BUYER_ASSIGNED">2222</detallista:alternateTradeItemIdentification>
+        <detallista:tradeItemDescriptionInformation language="ES">
+          <detallista:longText>DESCRIPCIÓN DEL ARTÍCULO 1</detallista:longText>
+        </detallista:tradeItemDescriptionInformation>
+        <detallista:invoicedQuantity unitOfMeasure="PZA">1</detallista:invoicedQuantity>
+        <detallista:aditionalQuantity QuantityType="FREE_GOODS">0.00</detallista:aditionalQuantity>
+        <detallista:grossPrice>
+          <detallista:Amount>12.90</detallista:Amount>
+        </detallista:grossPrice>
+        <detallista:netPrice>
+          <detallista:Amount>13.90</detallista:Amount>
+        </detallista:netPrice>
+        <detallista:AdditionalInformation>
+          <detallista:referenceIdentification type="ON">RFSADC2918</detallista:referenceIdentification>
+        </detallista:AdditionalInformation>
+        <detallista:Customs>
+          <detallista:gln>9999199991999</detallista:gln>
+          <detallista:alternatePartyIdentification type="TN">64GHY73261</detallista:alternatePartyIdentification>
+          <detallista:ReferenceDate>2014-07-23</detallista:ReferenceDate>
+          <detallista:nameAndAddress>
+            <detallista:name>NUEVO LAREDO 2</detallista:name>
+          </detallista:nameAndAddress>
+        </detallista:Customs>
+        <detallista:LogisticUnits>
+          <detallista:serialShippingContainerCode type="SRV">5732GF832871</detallista:serialShippingContainerCode>
+        </detallista:LogisticUnits>
+        <detallista:palletInformation>
+          <detallista:palletQuantity>1</detallista:palletQuantity>
+          <detallista:description type="BOX">Empaque con poliuretano 234 alta resistencia.</detallista:description>
+          <detallista:transport>
+            <detallista:methodOfPayment>PAID_BY_BUYER</detallista:methodOfPayment>
+          </detallista:transport>
+        </detallista:palletInformation>
+        <detallista:extendedAttributes>
+          <detallista:lotNumber productionDate="2014-06-10">4EFE4</detallista:lotNumber>
+        </detallista:extendedAttributes>
+        <detallista:allowanceCharge allowanceChargeType="CHARGE_GLOBAL" settlementType="OFF_INVOICE" sequenceNumber="1">
+          <detallista:specialServicesType>EAB</detallista:specialServicesType>
+          <detallista:monetaryAmountOrPercentage>
+            <detallista:percentagePerUnit>5%</detallista:percentagePerUnit>
+            <detallista:ratePerUnit>
+              <detallista:amountPerUnit>3.00</detallista:amountPerUnit>
+            </detallista:ratePerUnit>
+          </detallista:monetaryAmountOrPercentage>
+        </detallista:allowanceCharge>
+        <detallista:tradeItemTaxInformation>
+          <detallista:taxTypeDescription>OTH</detallista:taxTypeDescription>
+          <detallista:referenceNumber>883720126</detallista:referenceNumber>
+          <detallista:taxCategory>TRANSFERIDO</detallista:taxCategory>
+          <detallista:tradeItemTaxAmount>
+            <detallista:taxPercentage>5.00</detallista:taxPercentage>
+            <detallista:taxAmount>3.00</detallista:taxAmount>
+          </detallista:tradeItemTaxAmount>
+        </detallista:tradeItemTaxInformation>
+        <detallista:totalLineAmount>
+          <detallista:grossAmount>
+            <detallista:Amount>12.90</detallista:Amount>
+          </detallista:grossAmount>
+          <detallista:netAmount>
+            <detallista:Amount>13.90</detallista:Amount>
+          </detallista:netAmount>
+        </detallista:totalLineAmount>
+      </detallista:lineItem>
+      <detallista:totalAmount>
+        <detallista:Amount>13.90</detallista:Amount>
+      </detallista:totalAmount>
+      <detallista:TotalAllowanceCharge allowanceOrChargeType="ALLOWANCE">
+        <detallista:specialServicesType>EAB</detallista:specialServicesType>
+        <detallista:Amount>3.00</detallista:Amount>
+      </detallista:TotalAllowanceCharge>
+    </detallista:detallista>
+  </cfdi:Complemento>
+  <cfdi:Addenda/>
+</cfdi:Comprobante>

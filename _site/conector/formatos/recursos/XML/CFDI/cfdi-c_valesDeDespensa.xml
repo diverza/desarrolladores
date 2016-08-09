@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante
+  xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/valesdedespensa http://www.sat.gob.mx/sitio_internet/cfd/valesdedespensa/valesdedespensa.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:valesdedespensa="http://www.sat.gob.mx/valesdedespensa"
+  fecha="2015-02-25T13:50:00" tipoDeComprobante="ingreso" serie="C" folio="38"
+  LugarExpedicion="Monterrey, Nuevo León" metodoDePago="No Identificado"
+  NumCtaPago="No Identificado" formaDePago="PAGO EN UNA SOLA EXHIBICION" total="40600.00"
+  descuento="0.00" subTotal="35000.00" Moneda="Pesos"
+  certificado=""
+  noCertificado="20001000000100005867"
+  sello=""
+  version="3.2">
+  <cfdi:Emisor rfc="AAA010101AAA" nombre="Empresa de Pruebas SA">
+    <cfdi:DomicilioFiscal colonia="Fracc. San Pedro" calle="Encinos" noExterior="1452"
+      municipio="Monterrey" estado="Nuevo León" pais="México" codigoPostal="64000"/>
+    <cfdi:RegimenFiscal Regimen="Regimen General de Ley Personas Morales de Prueba"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor rfc="E&amp;Ñ831019M53" nombre="Exportadora de Ganado HOLSTEIN S.A.">
+    <cfdi:Domicilio colonia="Ejido La Siembra" calle="Av. Principal" noExterior="102"
+      municipio="Zacatecas" estado="Zacatecas" pais="México" codigoPostal="99170"
+      localidad="Ejido La Siembra"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto cantidad="1" descripcion="Módulo de embarque serie A-6743-Ñ" valorUnitario="35000.00"
+      unidad="LTE" importe="35000.00">
+      <cfdi:InformacionAduanera numero="32441223" fecha="2015-02-10"/>
+    </cfdi:Concepto>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosRetenidos="0.00" totalImpuestosTrasladados="5600.00">
+    <cfdi:Retenciones>
+      <cfdi:Retencion impuesto="ISR" importe="0.00"/>
+      <cfdi:Retencion impuesto="IVA" importe="0.00"/>
+    </cfdi:Retenciones>
+    <cfdi:Traslados>
+      <cfdi:Traslado importe="5600.00" tasa="16.00" impuesto="IVA"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+  <cfdi:Complemento>
+    <valesdedespensa:ValesDeDespensa version="1.0" tipoOperacion="monedero electrónico" numeroDeCuenta="03800949426" total="360.00" registroPatronal="2218271662123312">
+      <valesdedespensa:Conceptos>
+        <valesdedespensa:Concepto identificador="3054003000160212" fecha="2014-08-08T17:02:57" rfc="AAAA010101AAA" curp="AAAA010101HCLJND07" nombre="JORGE VIGIL ESCANDÓN" numSeguridadSocial="91234567890" importe="180.00"/>
+        <valesdedespensa:Concepto identificador="4068010004070241" fecha="2014-08-08T18:01:47" rfc="BABB010101BBB" curp="BABB010101HCLJND07" nombre="ISRAEL RAMÍREZ CUELLAR" numSeguridadSocial="91234567890" importe="180.00"/>
+      </valesdedespensa:Conceptos>
+    </valesdedespensa:ValesDeDespensa>
+  </cfdi:Complemento>
+  <cfdi:Addenda/>
+</cfdi:Comprobante>

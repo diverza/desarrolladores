@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1"
+    xmlns:c_retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1/catalogos"
+    xmlns:arrendamientoenfideicomiso="http://www.sat.gob.mx/esquemas/retencionpago/1/arrendamientoenfideicomiso"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd http://www.sat.gob.mx/esquemas/retencionpago/1/arrendamientoenfideicomiso http://www.sat.gob.mx/esquemas/retencionpago/1/arrendamientoenfideicomiso/arrendamientoenfideicomiso.xsd"
+    Version="1.0" FolioInt="TEST00002"
+    Sello=""
+    NumCert="20001000000100005867"
+    Cert=""
+    FechaExp="" CveRetenc="17">
+    <!-- "DescRetenc="17" Arrendamiento en fideicomiso -->
+    <retenciones:Emisor RFCEmisor="AAA010101AAA"
+        NomDenRazSocE="Empresa DEMO para Rentenciones S de TST" CURPE="AAAA010101HNLMNLD2"/>
+    <retenciones:Receptor Nacionalidad="Nacional">
+        <!-- nodo "Extranjero" sólo cuando Nacionalidad="Extranjero" 
+        <retenciones:Extranjero NumRegIdTrib="NumRegIdTrib0" NomDenRazSocR="NomDenRazSocR0"/>
+        -->
+        <retenciones:Nacional RFCRecep="XAXX010101000" CURPR="VAHE820926HNLLRD02"
+            NomDenRazSocR="PÚBLICO EN GENERAL S DE TST"/>
+    </retenciones:Receptor>
+    <retenciones:Periodo MesIni="6" MesFin="6" Ejerc="2014"/>
+    <retenciones:Totales montoTotOperacion="14000.00" montoTotGrav="13000.00"
+        montoTotExent="1000.00" montoTotRet="3500.00">
+        <retenciones:ImpRetenidos BaseRet="1000.00" Impuesto="01" montoRet="500.00"
+            TipoPagoRet="Pago definitivo"/>
+        <retenciones:ImpRetenidos BaseRet="1000.00" Impuesto="02" montoRet="500.00"
+            TipoPagoRet="Pago provisional"/>
+    </retenciones:Totales>
+    <retenciones:Complemento>
+        <arrendamientoenfideicomiso:Arrendamientoenfideicomiso Version="1.0"
+            PagProvEfecPorFiduc="1230.00" RendimFideicom="400.50" DeduccCorresp="356.00"
+            MontTotRet="2000.00" MontResFiscDistFibras="400.50" MontOtrosConceptDistr="132.00"
+            DescrMontOtrosConceptDistr="Fideicomiso de Inversión y Bienes Raíces"/>
+        <!-- Cuando se incluya "MontOtrosConceptDistr", se deberá agrega obligatorio "DescrMontOtrosConceptDistr" -->
+    </retenciones:Complemento>
+    <retenciones:Addenda> </retenciones:Addenda>
+</retenciones:Retenciones>

@@ -1,0 +1,165 @@
+--- !diverza.com/v2.0   # Todo documento debe empezar con esta marca y la indicación de la versión
+
+# Datos generales
+# Debe haber al menos un espacio después de los dos puntos.
+Folio                   : "FolioInt"              #Atributo opcional para control interno del contribuyente que expresa el folio del documento que ampara la retención e información de pagos. Permite números y/o letras.
+ClaveDeRetencion        : "CveRetenc"             #Atributo requerido para expresar la clave de la retención e información de pagos de acuerdo al catálogo publicado en internet por el SAT.
+DescripcionDeRetencion  : "DescRetenc"            #Atributo opcional que expresa la descripción de la retención e información de pagos en caso de que en el atributo CveRetenc se haya elegido el valor para 'otro tipo de retenciones'
+
+# Datos del emisor
+Emisor:
+  Rfc                   : "RFCEmisor"             #Atributo requerido para incorporar la clave en el Registro Federal de Contribuyentes correspondiente al contribuyente emisor del documento de retención e información de pagos, sin guiones o espacios.
+  Nombre                : "NomDenRazSocE"         #Atributo opcional para el nombre, denominación o razón social del contribuyente emisor del documento de retención e información de pagos.
+  CURP                  : "CURPE"                 #Atributo opcional para la Clave Única del Registro Poblacional del contribuyente emisor del documento de retención e información de pagos.
+
+# Datos del receptor nacional o extranjero
+Receptor:
+  Nacionalidad            : "Nacionalidad"        #Atributo requerido para expresar la nacionalidad del receptor del documento.
+    Nacional:
+      Rfc                 : "RFCRecep"            #Atributo requerido para la clave del Registro Federal de Contribuyentes correspondiente al contribuyente receptor del documento.
+      Nombre              : "NomDenRazSocR"       #Atributo opcional para el nombre, denominación o razón social del contribuyente receptor del documento.
+      CURP                : "CURPR"               #Atributo opcional para la Clave Única del Registro Poblacional del contribuyente receptor del documento.
+    Extranjero:
+      Id                  : "NumRegIdTrib"        #Atributo opcional para expresar el número de registro de identificación fiscal del receptor del documento cuando sea residente en el extranjero
+      Nombre              : "NomDenRazSocR"       #Atributo requerido para expresar el nombre, denominación o razón social del receptor del documento cuando sea residente en el extranjero
+
+# Informacion del periodo de retenciones e información de pagos
+Periodo:
+  MesInicial              : "MesIni"                #Atributo requerido para la expresión del mes inicial del periodo de la retención e información de pagos
+  MesFinal                : "MesFin"                #Atributo requerido para la expresión del mes final del periodo de la retención e información de pagos
+  EjercicioFiscal         : "Ejerc"                 #Atributo requerido para la expresión del ejercicio fiscal (año) 
+
+# Informacion de las retenciones del periodo
+Totales:
+  MontoOperacion          : "montoTotOperacion"     #Atributo requerido para expresar  el total del monto de la operación  que se relaciona en el comprobante 
+  MontoGravado            : "montoTotGrav"          #Atributo requerido para expresar el total del monto gravado de la operación  que se relaciona en el comprobante.
+  MontoExcento            : "montoTotExent"         #Atributo requerido para expresar el total del monto exento de la operación  que se relaciona en el comprobante.
+  MontoRetenciones        : "montoTotRet"           #Atributo requerido para expresar el monto total de las retenciones. Sumatoria de los montos de retención del nodo ImpRetenidos.
+   ImpuestosRetenidos:
+    - Base                : "BaseRet"               #Atributo opcional para expresar la  base del impuesto, que puede ser la diferencia entre los ingresos percibidos y las deducciones autorizadas
+      TipoDeImpuesto      : "Impuesto"              #Atributo opcional para señalar el tipo de impuesto retenido del periodo o ejercicio conforme al catálogo. 
+      Monto               : "montoRet"              #Atributo requerido para expresar el importe del impuesto retenido en el periodo o ejercicio
+      TipoDePago          : "TipoPagoRet"           #Atributo requerido para precisar si el monto de la retención es considerado pago definitivo o pago provisional
+
+    - Base                : "BaseRet"               #Atributo opcional para expresar la  base del impuesto, que puede ser la diferencia entre los ingresos percibidos y las deducciones autorizadas
+      TipoDeImpuesto      : "Impuesto"              #Atributo opcional para señalar el tipo de impuesto retenido del periodo o ejercicio conforme al catálogo. 
+      Monto               : "montoRet"              #Atributo requerido para expresar el importe del impuesto retenido en el periodo o ejercicio
+      TipoDePago          : "TipoPagoRet"           #Atributo requerido para precisar si el monto de la retención es considerado pago definitivo o pago provisional
+
+
+# . . . - - - C O M P L E M E N T O S - - - . . .  
+
+# Informacion del complemento Arrendamiento Fideicomiso
+Arrendamientoenfideicomiso:
+  PagoFiduciario                        : "PagProvEfecPorFiduc"               #Atributo requerido para expresar el importe del  pago efectuado por parte del fiduciario al arrendador de bienes en el periodo
+  RendimientoDeArrendamiento            : "RendimFideicom"                    #Atributo requerido para expresar el importe de  los rendimientos obtenidos en el periodo por el arrendamiento de bienes 
+  DeducciCorresp                        : "DeducciCorresp"                    #!Atributo requerido para expresar el importe de las deducciones correspondientes al arrendamiento de los bienes durante el periodo
+  MontoDeRetenciones                    : "MontTotRet"                        #Atributo opcional para expresar el monto total de la retención del arrendamiento de los bienes del periodo
+  MontoPorFibras                        : "MontResFiscDistFibras"             #Atributo opcional para expresar el monto del resultado fiscal distribuido por FIBRAS
+  MontoDeConceptosDistribuidos          : "MontOtrosConceptDistr"             #Atributo opcional para expresar el monto de otros conceptos distribuidos 
+  DescripcionDeConceptosDistribuidos    : "DescrMontOtrosConceptDistr"        #Atributo opcional para describir los conceptos distribuidos cuando se señalen otros conceptos.
+
+# Informacion del complemento Dividendos
+Dividendos:
+  DividendosUtilidades:
+      ClaveTipo                         : "CveTipDivOUtil"                    #Atributo requerido para expresar la clave del tipo de dividendo o utilidad distribuida de acuerdo al catálogo.
+      RetencionNacional                 : "MontISRAcredRetMexico"             #Atributo requerido para expresar el importe o retención  del dividendo o  utilidad en territorio nacional
+      RetencionHaciaElExtranjero        : "MontISRAcredRetExtranjero"
+      RetencionDesdeElExtranjero        : "MontRetExtDivExt"
+      OrigenDeSociedadDistribuidora     : "TipoSocDistrDiv"                   #Atributo requerido  para expresar si el dividendo es distribuido por sociedades nacionales o extranjeras.
+      IsrAcreditableNacional            : "MontISRAcredNal"                   #Atributo opcional para expresar el monto del ISR acreditable nacional
+      DividendoAcumulableNacional       : "MontDivAcumNal"                    #Atributo opcional para expresar el monto del dividendo acumulable nacional
+      DividendoAcumulableExtranjero     : "MontDivAcumExt"                    #Atributo opcional para expresar el monto del dividendo acumulable extranjero
+  Remanente:
+      ParticipacionDeIntegrantes        : "ProporcionRem"                      #Atributo opcional que expresa el porcentaje de participación de sus integrantes o accionistas
+
+# Informacion del complemento Enajenacion de Acciones
+EnajenaciondeAcciones:
+  ContratoDeIntermediacion              : "ContratoIntermediacion"            #Atributo requerido para expresar la descripción del contrato de intermediación 
+  Ganancia                              : "Ganancia"                          #Atributo requerido para expresar la ganancia obtenida por la enajenación de acciones u operación de valores
+  Perdida                               : "Perdida"                           #Atributo requerido para expresar la pérdida en el contrato de intermediación
+
+# Informacion del complemento Fideicomiso no Empresarial
+FideicomisoNoEmpresarial:
+  IngresosOEntradas:
+      IngresosDelPeriodo                : "MontTotEntradasPeriodo"            #Atributo requerido para expresar el importe total de los ingresos del periodo de los fideicomisos que no realizan actividades empresariales
+      IngresosProporcionalesDelPeriodo  : "PartPropAcumDelFideicom"           #Atributo requerido para expresar la parte proporcional de los ingresos acumulables del periodo que correspondan al  fideicomisario o fideicomitente
+      ProporcionDeParticipacion         : "PropDelMontTot"                    #Atributo requerido para expresar la proporción de participación del fideicomisario o fideicomitente de acuerdo al contrato
+      IntegracionDeIngresos:
+        Concepto                        : "Concepto"                          #Atributo requerido para expresar la descripción del concepto de ingresos de los fideicomisos que no realizan actividades empresariales
+  DeduccionesOSalidas:
+      MontTotEgresPeriodo               : "MontoTotalEgresosPeriodo"          #!Atributo requerido para expresar el importe total de los egresos del periodo de fideicomiso que no realizan actividades empresariales
+      PartPropDelFideicom               : "PartPropDelFideicom"               #!Atributo requerido para expresar el importe total de los egresos del periodo de fideicomiso que no realizan actividades empresariales
+      PropDelMontTot                    : "PropDelMontTot"                    #!Atributo requerido para expresar la proporción de participación del fideicomisario o fideicomitente de acuerdo al contrato
+        ConceptoS                     : "ConceptoS"                         #Atributo requerido para expresar la descripción del concepto de egresos de los fideicomisos que no realizan actividades empresariales
+  RetEfectFideicomiso:
+        MontRetRelPagFideic               : "MontRetRelPagFideic"          #!Atributo requerido para expresar el monto de la retenciones con relación al fideicomiso
+        DescRetRelPagFideic               : "DescRetRelPagFideic"               #!Atributo requerido para expresar la descripción de las retenciones con relación al fideicomiso
+
+
+# Informacion del complemento Intereses
+Intereses:
+  Obtenidos     : "SistFinanciero"                                            #Atributo requerido para expresar si los interés obtenidos en el periodo o ejercicio provienen del sistema financiero
+  Retirados     : "RetiroAORESRetInt"                                         #Atributo requerido para expresar si los intereses obtenidos fueron retirados en el periodo o ejercicio
+  Derivados     : "OperFinancDerivad"                                         #Atributo requerido para expresar si los intereses obtenidos corresponden a operaciones financieras derivadas.
+  Nominales     : "MontIntNominal"                                            #Atributo requerido para expresar el importe del interés Nóminal obtenido en un periodo o ejercicio
+  MontoReal     : "MontIntReal"                                               #Atributo requerido para expresar el monto de los intereses reales  (diferencia que se obtiene restando al tipo de interés nominal y la tasa de inflación del periodo o ejercicio )
+  Perdida       : "Perdida"                                                   #Atributo requerido para expresar la pérdida por los intereses obtenidos en el periodo o ejercicio
+
+# Informacion del complemento Intereses Hipotecarios
+InteresesHipotecarios:
+  CreditoDeInstitucionFinanciera    : "CreditoDeInstFinanc"                 #Atributo requerido para expresar si el  crédito otorgado fue por institución financiera 
+  SaldoInsoluto                     : "SaldoInsoluto"                       #Atributo requerido para expresar el  saldo insoluto al 31 de diciembre del ejercicio inmediato anterior o fecha de contratación si se llevo a cabo en el ejercicio en curso
+  PropDeducDelCredit                : "PropDeducDelCredit"                  #Atributo opcional que expresa la proporción deducible del crédito aplicable sobre los intereses reales devengados y pagados
+  InteresesNominalesDevengados      : "MontTotIntNominalesDev"              #Atributo opcional que expresa el monto total de intereses nominales devengados 
+  InteresesNominalesDevengPagados   : "MontTotIntNominalesDevYPag"          #Atributo opcional que expresa el monto total de intereses nominales devengados y pagados
+  InteresesPagadosDeducibles        : "MontTotIntRealPagDeduc"              #Atributo opcional que expresa el monto total de intereses reales pagados deducibles 
+  Contrato                          : "NumContrato"                         #Atributo opcional que expresa el número de contrato del crédito hipotecario
+
+# Informacion del complemento Operaciones con Derivados
+OperacionesConDerivados:
+  GananciaAcumulable            : "MontGanAcum"                             #Atributo requerido para expresar el monto de la ganancia acumulable.
+  PerdidaDeducible              : "MontPerdDed"                             #Atributo requerido para expresar el monto de la pérdida deducible.
+
+
+# Informacion del complemento Pagos a Extranjeros
+PagosAExtrajeros:
+  MismoBeneficiario             : "EsBenefEfectDelCobro"                    #Atributo requerido para expresar si el beneficiario del pago es la misma persona que retiene
+  Beneficiario:
+      PaisDeResidenciaFiscal    : "PaisDeResidParaEfecFisc"                 #Atributo requerido para expresar la clave del país de residencia del extranjero, conforme al catálogo de países publicado en el Anexo 10 de la RMF. 
+      ConceptoPago              : "ConceptoPago"                            #Atributo requerido para expresar  el tipo contribuyente sujeto a la retención, conforme al catálogo.
+      DescripcionConcepto       : "DescripcionConcepto"                     #Atributo requerido para expresar la descripción de la definición del pago del residente en el extranjero
+  Beneficiario:
+      Rfc                       : "RFC"                                     #Atributo requerido para expresar la clave del registro federal de contribuyentes del representante legal en México
+      CURP                      : "CURP"                                    #Atributo requerido para la expresión de la CURP del representante legal
+      Nombre                    : "NomDenRazSocB"                           #Atributo requerido para expresar el nombre, denominación o razón social del contribuyente en México
+      ConceptoPago              : "ConceptoPago"                            #Atributo requerido para expresar el tipo de contribuyente sujeto a la retención, conforme al catálogo.
+      DescripcionConcepto       : "DescripcionConcepto"                     #Atributo requerido para expresar la descripción de la definición del pago del residente en el extranjero
+
+#Informacion del complemento Planes de Retiro
+# NOTA: Los datos de este complemento deben reflejar lo referente al ejercicio fiscal del año anterior inmediato
+PlanesDeRetiro:
+  SistemaFinanciero             : "SistemaFinanc"                           #Atributo requerido para expresar si los planes personales de retiro son del sistema financiero
+  Aportaciones                  : "MontTotAportAnioInmAnterior"             #Atributo opcional que expresa el monto total de las aportaciones actualizadas en el año inmediato anterior de los planes personales de retiro
+  Intereses                     : "MontIntRealesDevengAniooInmAnt"          #Atributo requerido para expresar el  monto de los intereses reales devengados o percibidos durante el año inmediato anterior de los planes personales de retiro
+  RetiroDeRecursos              : "HuboRetirosAnioInmAntPer"                #Atributo requerido para expresar si se realizaron retiros de recursos invertidos y sus rendimientos en el ejercicio inmediato anterior antes de cumplir los requisitos de permanencia 
+  MontoRetirado                 : "MontTotRetiradoAnioInmAntPer"            #Atributo opcional que expresa el monto total del retiro realizado antes de cumplir con los requisitos de permanencia
+  MontoExcentoRetirado          : "MontTotExentRetiradoAnioInmAnt"          #Atributo opcional que expresa el  monto total exento del retiro realizado en el ejercicio inmediato anterior 
+  MontoExedente                 : "MontTotExedenteAnioInmAnt"               #!Atributo opcional que expresa  el monto total excedente del monto exento del retiro realizado en el ejercicio inmediato anterior
+  MontoRetirado                 : "HuboRetirosAnioInmAnt"                   #Atributo requerido que expresa si se realizaron retiros en el ejercicio inmediato anterior
+  MontoTotalRetirado            : "MontTotRetiradoAnioInmAnt"               #Atributo opcional que expresa el monto total del retiro realizado en el ejercicio inmediato anterior
+
+# Informacion del complemento Premios
+Premios:
+  EntidadFederativa             : "EntidadFederativa"                       #Atributo requerido para expresar la entidad federativa en la que se paga el premio obtenido, conforme al catálogo.
+  PagoTotal                     : "MontTotPago"                             #Atributo requerido para expresar el importe del pago realizado por la obtención de un premio
+  ImporteGravado                : "MontTotPagoGrav"                         #Atributo requerido para expresar el importe  gravado en la obtención de un premio
+  ImporteExcento                : "MontTotPagoExent"                        #Atributo requerido para expresar el monto total exento en la obtención de un premio
+
+# Informacion del complemento SectorFinanciero
+SectorFinanciero:
+  Id                            : "IdFideicom"                              #Atributo requerido para expresar el Identificador o Número del Fideicomiso
+  Nombre                        : "NomFideicom"                             #Atributo opcional para expresar el Nombre del Fideicomiso
+  Descripcion                   : "DescripFideicom"                         #Atributo requerido para expresar el objeto o fin del Fideicomiso
+
+---

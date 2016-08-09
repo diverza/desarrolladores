@@ -1,0 +1,1557 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: ignacio.espinoza
+  Date: 23/01/15
+  Time: 13:26
+  To change this template use File | Settings | File Templates.
+--%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<%@ include file="/WEB-INF/jsp/varios/include.jsp" %>
+<%@ taglib prefix="cn" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.lang.StringBuffer" %>
+<% StringBuffer jsSumString = new StringBuffer("");%>
+<HTML>
+<HEAD>
+<%@ include file="/comun/html/metaData.html"%>
+<link type="text/css" href="/comun/css/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="/comun/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/comun/js/jquery-ui-1.8.16.custom.min.js"></script>
+
+
+<script type="text/javascript" src="/comun/js/remisionUtils.js"></script>
+<script type="text/javascript" src="/comun/js/functionsImportes.js"></script>
+
+
+<script language="javascript"></script>
+<style type="text/css">
+    input { font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size:11px;}
+    .ui-datepicker-trigger{
+        margin-bottom: -3px;
+    }
+</style>
+
+<link href="/comun/css/bf_interior.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY >
+<table cellpadding="0" cellspacing="0" width="100%" height="100%" border="0">
+<tr><td rowspan="2" width="50%" class="col_izq"></td>
+    <td class="mmain"><%@include file="/comun/html/menu_principalBE.html" %></td>
+    <td rowspan="2" width="50%" class="col_der"></td>
+</tr>
+<tr><td height="100%" >
+<TABLE WIDTH=100% height="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0 align="center">
+<TR><TD valign="top" align="center" colspan="2" height="100%" >
+<TABLE WIDTH=100% height="100%" BORDER=0 CELLPADDING=0 CELLSPACING=0>
+<TR><TD align="center" height="100%" >
+<table cellpadding="0" cellspacing="0" class="content" height="100%" >
+<tr><td class="escriizq" height="100%" >
+    <!-- Menu configuracion -->
+    <%@ include file="/comun/html/menu_portafolio.html" %>
+</td>
+<td class="escricentro">
+<table cellpadding="0" cellspacing="0" border="0" class="central">
+<tr><td>
+<!-- content -->
+<form:form name="retencion" commandName="retencion" method="post" action="">
+
+
+<input type="hidden" id="Hjid" name="Hjid" value="<c:out value="${valor}"></c:out>">
+<input type="hidden" id="HrowsRetenciones" name="HrowsRetenciones" value="0">
+<input type="hidden" name="idLineToDelete" id="idLineToDelete" value="">
+<input type="hidden" name="calculateFlag" id="calculateFlag" value="">
+<input type="hidden" name="_page" value="0">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="titleheader"><h1>Retenciones :: Captura</h1></td></tr>
+<tr><td height="15"></td></tr>
+<tr>
+    <td>
+        <spring:hasBindErrors name="retencion">
+            <table width="70%" border="0" cellpadding="0" cellspacing="0" class="contorno" align="center">
+                <tr><td colspan="2" height="8"></td></tr>
+                <tr><td rowspan="2" align="right"><img src="/images/ic_bad.gif" hspace="6"></td>
+                    <td width="100%"><div class="error">Error:</div>
+                        <table cellpadding="0" cellspacing="0" border="0">
+                            <tr><td><p class="mensaje"><form:errors path="*"/></p></td></tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr><td height="10"></td></tr>
+            </table><br>
+        </spring:hasBindErrors>
+    </td>
+</tr>
+<tr><td><p>Capture la información solicitada, es importante que antes de capturar su Retención Electrónica se asegure que tenga habilitado al menos un rango de folios y que haya determinado en el modulo de Configuración dentro de la opción Parámetros los Impuestos y Descuentos, en su caso, aplicables a sus Comprobantes Fiscales Digitales. </p></td></tr>
+<tr>
+<td align="center" class="nada">
+<span id="boton" style="display:block;">
+													<table cellpadding="0" cellspacing="0" border="0" width="100%">
+
+                                                        <tr>
+                                                            <td class="boton" align="right">
+                                                                <a href="/portafolio/default.mvc"> <img src="/images/bn_regresar2.gif" border=0 hspace="6"></a>
+                                                                <input id="btnSave" name="_finish" type="image" src="/images/bn_guardar.gif" value="accion" >
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+												 </span>
+<!-- tipo de remisiones -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" class="list" >
+        <tr>
+            <td height="22" valign="bottom" class="tituloscejilla" width="100%">Retención</td>
+            <td width="35" align="right" valign="top" bgcolor="#B5B5B5"><img src="/images/listado_der.gif" width="35" height="22"></td>
+        </tr>
+    </table>
+</td></tr>
+<tr><td>
+
+<table width="680px" align="center">
+    <tr>
+        <td colspan="6">
+            <div id="tblerrores">
+                <br />
+                <table width='70%' border='0' cellpadding='0' cellspacing='0' class='contorno' align='center'>
+                    <tr>
+                        <td colspan='2' height='8'></td>
+                    </tr>
+                    <tr>
+                        <td rowspan='2' align='right'><img src='/images/ic_bad.gif' hspace='6'></td>
+                        <td width='100%'><div class='error'>Error:</div>
+                            <table cellpadding='0' cellspacing='0' border='0'>
+                                <tr>
+                                    <td>
+                                        <p id='tblerrores_msg_retenciones'></p>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height='10'></td>
+                    </tr>
+                </table>
+                <br />
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table width="680px" border="0" cellpadding="0" cellspacing="0">
+
+<tr>
+    <td class="title3">* Clave Retencion:</td>
+    <td class="editor2">
+        <form:select id ="cveRetenc" path="cveRetenc" cssClass="pulle" onchange="muestraDesc()">
+            <option value="0" selected>Seleccione</option>
+            <option value="01">Servicios profesionales</option>
+            <option value="02">Regalías por derechos de autor</option>
+            <option value="03">Autotransporte terrestre de carga</option>
+            <option value="04">Servicios prestados por comisionistas</option>
+            <option value="05">Arrendamiento</option>
+            <option value="06">Enajenación de acciones</option>
+            <option value="07">Enajenación de bienes objeto de la LIEPS, a través de mediadores, agentes, representantes, corredores, consignatarios o distribuidores</option>
+            <option value="08">Enajenación de bienes inmuebles consignada en escritura pública</option>
+            <option value="09">Enajenación de otros bienes, no consignada en escritura pública</option>
+            <option value="10">Adquisición de desperdicios industriales</option>
+            <option value="11">Adquisición de bienes consignada en escritura pública</option>
+            <option value="12">Adquisición de otros bienes, no consignada en escritura pública</option>
+            <option value="13">Otros retiros de AFORE</option>
+            <option value="14">Dividendos o utilidades distribuidas</option>
+            <option value="15">Remanente distribuible</option>
+            <option value="16">Intereses</option>
+            <option value="17">Arrendamiento en fideicomiso</option>
+            <option value="18">Pagos realizados a favor de residentes en el extranjero</option>
+            <option value="19">Enajenación de acciones u operaciones en bolsa de valores</option>
+            <option value="20">Obtención de premios</option>
+            <option value="21">Fideicomisos que no realizan actividades empresariales</option>
+            <option value="22">Planes personales de retiro</option>
+            <option value="23">Intereses reales deducibles por créditos hipotecarios</option>
+            <option value="24">Operaciones Financieras Derivadas de Capital</option>
+            <option value="25">Otro tipo de retenciones</option>
+        </form:select>
+    </td>
+    <td class="title3" id="lblDesc">Descripcion</td>
+    <td class="editor2" id="inDesc"><form:input path ="descRetenc" cssClass="e"  /></td>
+    <td class="title3">*Folio:</td>
+    <td class="editor2"><form:input id="folioInt" path ="folioInt" cssClass="e"  /></td>
+</tr>
+
+        <!-- Captura Datos Nueva Retencion -->
+        <tr>
+
+            <td class="title3"><form:label path="clienteModel.nombre" cssClass="title3" cssErrorClass="title3">* Nombre o Raz&oacute;n Social:</form:label></td>
+            <td class="editor2" colspan="3"><form:input path="clienteModel.nombre" id="razonSocial" cssClass="e" /></td>
+
+            <td class="title3"><form:label path="nacionalidad" cssClass="title3" cssErrorClass="title3">* Nacionalidad:</form:label></td>
+            <td class="editor2">
+                <form:select id ="nacionalidad" path="nacionalidad" cssClass="pulle" onchange="muestraExt()">
+                    <option value="Nacional" selected>Nacional</option>
+                    <option value="Extranjero">Extranjero</option>
+                </form:select>
+            </td>
+
+        </tr>
+
+
+        <tr id="trNacional">
+
+            <td class="title3" width="11%"> <form:label path="clienteModel.rfc" cssClass="title3" cssErrorClass="title3">* RFC:</form:label></td>
+            <td class="editor2" width="20%"><form:input id="receptorRfc" path="clienteModel.rfc" cssClass="e" maxlength="13" /></td>
+
+            <td class="title3"><form:label path="clienteModel.curp" cssClass="title3" cssErrorClass="title3">CURP</form:label></td>
+            <td class="editor2" ><form:input id="curp" path="clienteModel.curp" cssClass="e" /></td>
+
+
+        </tr>
+        <tr id="trExtranjero">
+
+            <td class="title3" width="11%"> <form:label path="clienteExtranjeroModel.regitroIdFiscal" cssClass="title3" cssErrorClass="title3">Identificacion Fiscal:</form:label></td>
+            <td class="editor2" width="20%"><form:input id="regitroIdFiscal" path="clienteExtranjeroModel.regitroIdFiscal" cssClass="e" maxlength="20" /></td>
+
+        </tr>
+        <tr>
+
+            <td class="title3"><form:label path="ejercicio" cssClass="title3" cssErrorClass="title3">*Ejercicio:</form:label></td>
+            <td class="editor2"><form:input path="ejercicio" cssClass="e" id="ejercicio"/></td>
+            <td class="title3"><form:label path="mesInicioPeriodo" cssClass="title3" cssErrorClass="title3">*Mes Inicio:</form:label></td>
+            <td class="editor2">
+                <form:select id ="mesInicioPeriodo" path="mesInicioPeriodo" cssClass="pulle">
+                    <option value="0">Seleccione</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </form:select>
+            </td>
+            <td class="title3"><form:label path="mesFinPeriodo" cssClass="title3" cssErrorClass="title3">*Mes Final:</form:label></td>
+            <td class="editor2">
+                <form:select id ="mesFinPeriodo" path="mesFinPeriodo" cssClass="pulle">
+                    <option value="0">Seleccione</option>
+                    <option value="1">Enero</option>
+                    <option value="2">Febrero</option>
+                    <option value="3">Marzo</option>
+                    <option value="4">Abril</option>
+                    <option value="5">Mayo</option>
+                    <option value="6">Junio</option>
+                    <option value="7">Julio</option>
+                    <option value="8">Agosto</option>
+                    <option value="9">Septiembre</option>
+                    <option value="10">Octubre</option>
+                    <option value="11">Noviembre</option>
+                    <option value="12">Diciembre</option>
+                </form:select>
+            </td>
+
+
+        </tr>
+
+
+<tr>
+
+
+
+
+
+
+<tr>
+    <td class="contornoconbottom" height="5" colspan="6">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="6">
+<table bgcolor="#cccccc" border="0" cellpadding="0" cellspacing="1" width="100%" id = "tablaRetenciones">
+<tr>
+    <td class="title1" colspan="8"><h2>Lista de Retenciones</h2> </td>
+</tr>
+<tr>
+    <td colspan="6" align="center" valign="bottom" class="title1">
+        <table width="95%" border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <td class="cabezalista">Retencion</td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td class="subcabezalista" width="20%">Tipo de Pago</td>
+    <td class="subcabezalista" width="15%">Impuesto</td>
+    <td class="subcabezalista" width="20%">Base Retención</td>
+    <td class="subcabezalista" width="20%">Monto Retenido</td>
+    <td class="subcabezalista" colspan="2" align="center"><a onclick="mostrarApartadoConcepto(); return false;"><img src="/images/ic_AddConcepto.gif" border="0"></a></td>
+</tr>
+
+<tr class="capturaRetencion">
+<td class="subcabezalista" colspan="8" width="100%">
+<div class="demo">
+<div id="tabs">
+
+<div id="concepto">
+    <table width="100%">
+        <tr>
+            <td colspan="6" class="news" bgcolor="EDEDED"><h3>Descripción de la Retención</h3> 	</td>
+        </tr>
+
+        <tr>
+            <td class="news" width="15%"><div>*Tipo de Pago:</div></td>
+            <td class="editor2 editortop" width="20%">
+                <select id="tipoPagoRet" name="tipoPagoRet" class="pulle">
+                    <option value="0">Escoge un tipo de Pago</option>
+                    <option value="Pago definitivo">Pago definitivo</option>
+                    <option value="Pago provisional">Pago provisional</option>
+                </select>
+            </td>
+
+            <td class="news" width="15%"><div>*Monto Retenido:</div></td>
+            <td class="editor2 editortop" width="20%"><input id="montoRet" class="a"/></td>
+
+            <td class="news" width="10%"><div>Impuesto:</div></td>
+            <td class="editor2 editortop" width="20%">
+                <select id="impuesto" name="impuesto" class="pulle">
+                    <option value="">Escoge un tipo de Impuesto</option>
+                    <option value="01">ISR</option>
+                    <option value="02">IVA</option>
+                    <option value="03">IEPS</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="news"><div>Base Retencion:</div></td>
+            <td class="editor2 editortop" width="20%"><input id="baseRet" class="a"/></td>
+        </tr>
+    </table>
+
+    <table width="100%">
+        <tr>
+            <td width="100%" class="nada" align="right">
+                <input type="image" id = "guardarRetencion" src="/images/bn_guardar.gif">
+                <input type="image" id = "cerrarRetencion"  src="/images/bn_cerrar.gif" >
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</div>
+</div>
+</td>
+</tr>
+</table>
+<!-- Lista de Conceptos Header-->
+</td>
+</tr>
+
+<tr>
+    <td class="title3" colspan="5"><div style="text-align:right; font-weight:bold; color:#333333 ">*Monto Total Retenido:</div></td>
+    <td class="editor2"><form:input id="montoTotRet" path="montoTotRet" cssClass="e numero" onchange="formatNumDecimal6(this);" /></td>
+</tr>
+<tr>
+    <td class="title3" colspan="5"><div style="text-align:right; font-weight:bold; color:#333333 ">*Monto Total Exento:</div></td>
+    <td class="editor2"><form:input id="montoTotExent" path="montoTotExent" cssClass="e numero" onchange="formatNumDecimal6(this);" /></td>
+</tr>
+<tr>
+    <td class="title3" colspan="5"><div style="text-align:right; font-weight:bold; color:#333333 ">*Monto Total Gravado:</div></td>
+    <td class="editor2"><form:input id="montoTotGrav" path="montoTotGrav" cssClass="e numero" onchange="formatNumDecimal6(this);" /></td>
+</tr>
+<tr>
+    <td class="title3" colspan="5"><div style="text-align:right; font-weight:bold; color:#333333 ">*Monto Total Operación:</div></td>
+    <td class="editor2"><form:input id="montoTotOperacion" path="montoTotOperacion" cssClass="e numero" onchange="formatNumDecimal6(this);" /></td>
+</tr>
+
+<tr>
+    <td height="5" colspan="6" class="contornoconbottom">&nbsp;</td>
+</tr>
+<tr>
+   <td colspan="6">
+       <table width="100%" cellspacing="1" cellpadding="0" border="0">
+           <tbody>
+           <tr>
+               <td class="title1"><h2>Complementos</h2></td>
+               <td class="title1" style="vertical-align: middle">
+                   <select class="pulle" onchange="muestraCompl()" id="complementoName" name="complementoName">
+
+                       <option value="0">Seleccione un Complemento</option>
+                       <option value="pagoExtranjeros">Pago a Extranjeros</option>
+                       <option value="dividendos">Dividendos</option>
+                       <option value="intereses">Intereses</option>
+                   </select>
+               </td>
+           </tr>
+           </tbody>
+       </table>
+   </td>
+</tr>
+
+<tr>
+    <td colspan="6">
+         <table id="tPagosExtranjeros">
+             <tr>
+                 <td class="title3">* Beneficiario del Cobro:</td>
+                 <td class="editor2">
+                     <form:select id="esBenefEfectDelCobro" path ="esBenefEfectDelCobro" cssClass="e">
+                         <form:option value="0">Escoje</form:option>
+                         <form:option value="SI">Si</form:option>
+                         <form:option value="NO">No</form:option>
+                     </form:select>
+                 </td>
+
+             </tr>
+             <tr>
+                 <td class="title2" colspan="6" style="vertical-align: top">
+                     <h3>No Beneficiario</h3>
+                 </td>
+             </tr>
+             <tr>
+             <td class="title3" >*Pais de Residencia</td>
+             <td class="editor2"><select class="pulle" id="paisDeResidParaEfecFisc" name ="paisDeResidParaEfecFisc" class="e">
+             <option value="0">Escoje un Pais</option>
+             <option value='AF'>AFGANISTAN (EMIRATO ISLAMICO DE)</option>
+             <option value='AL'>ALBANIA (REPUBLICA DE)</option>
+             <option value='DE'>ALEMANIA (REPUBLICA FEDERAL DE)</option>
+             <option value='AD'>ANDORRA (PRINCIPADO DE)</option>
+             <option value='AO'>ANGOLA (REPUBLICA DE)</option>
+             <option value='AI'>ANGUILA</option>
+             <option value='AQ'>ANTARTIDA</option>
+             <option value='AG'>ANTIGUA Y BARBUDA (COMUNIDAD BRITANICA DE NACIONES)</option>
+             <option value='AN'>ANTILLAS NEERLANDESAS (TERRITORIO HOLANDES DE ULTRAMAR)</option>
+             <option value='SA'>ARABIA SAUDITA (REINO DE)</option>
+             <option value='DZ'>ARGELIA (REPUBLICA DEMOCRATICA Y POPULAR DE)</option>
+             <option value='AR'>ARGENTINA (REPUBLICA)</option>
+             <option value='AM'>ARMENIA (REPUBLICA DE)</option>
+             <option value='AW'>ARUBA (TERRITORIO HOLANDES DE ULTRAMAR)</option>
+             <option value='AU'>AUSTRALIA (COMUNIDAD DE)</option>
+             <option value='AT'>AUSTRIA (REPUBLICA DE)</option>
+             <option value='AZ'>AZERBAIJAN (REPUBLICA AZERBAIJANI)</option>
+             <option value='BS'>BAHAMAS (COMUNIDAD DE LAS)</option>
+             <option value='BH'>BAHREIN (ESTADO DE)</option>
+             <option value='BD'>BANGLADESH (REPUBLICA POPULAR DE)</option>
+             <option value='BB'>BARBADOS (COMUNIDAD BRITANICA DE NACIONES)</option>
+             <option value='BE'>BELGICA (REINO DE)</option>
+             <option value='BZ'>BELICE</option>
+             <option value='BJ'>BENIN (REPUBLICA DE)</option>
+             <option value='BM'>BERMUDAS</option>
+             <option value='BY'>BIELORRUSIA (REPUBLICA DE)</option>
+             <option value='BO'>BOLIVIA (REPUBLICA DE)</option>
+             <option value='BA'>BOSNIA Y HERZEGOVINA</option>
+             <option value='BW'>BOTSWANA (REPUBLICA DE)</option>
+             <option value='BR'>BRASIL (REPUBLICA FEDERATIVA DE)</option>
+             <option value='BN'>BRUNEI (ESTADO DE) (RESIDENCIA DE PAZ)</option>
+             <option value='BG'>BULGARIA (REPUBLICA DE)</option>
+             <option value='BF'>BURKINA FASO</option>
+             <option value='BI'>BURUNDI (REPUBLICA DE)</option>
+             <option value='BT'>BUTAN (REINO DE)</option>
+             <option value='CV'>CABO VERDE (REPUBLICA DE)</option>
+             <option value='TD'>CHAD (REPUBLICA DEL)</option>
+             <option value='KY'>CAIMAN (ISLAS)</option>
+             <option value='KH'>CAMBOYA (REINO DE)</option>
+             <option value='CM'>CAMERUN (REPUBLICA DEL)</option>
+             <option value='CA'>CANADA</option>
+             <option value='CL'>CHILE (REPUBLICA DE)</option>
+             <option value='CN'>CHINA (REPUBLICA POPULAR)</option>
+             <option value='CY'>CHIPRE (REPUBLICA DE)</option>
+             <option value='VA'>CIUDAD DEL VATICANO (ESTADO DE LA)</option>
+             <option value='CC'>COCOS (KEELING, ISLAS AUSTRALIANAS)</option>
+             <option value='CO'>COLOMBIA (REPUBLICA DE)</option>
+             <option value='KM'>COMORAS (ISLAS)</option>
+             <option value='CG'>CONGO (REPUBLICA DEL)</option>
+             <option value='CK'>COOK (ISLAS)</option>
+             <option value='KP'>COREA (REPUBLICA POPULAR DEMOCRATICA DE) (COREA DEL NORTE)</option>
+             <option value='KR'>COREA (REPUBLICA DE) (COREA DEL SUR)</option>
+             <option value='CI'>COSTA DE MARFIL (REPUBLICA DE LA)</option>
+             <option value='CR'>COSTA RICA (REPUBLICA DE)</option>
+             <option value='HR'>CROACIA (REPUBLICA DE)</option>
+             <option value='CU'>CUBA (REPUBLICA DE)</option>
+             <option value='DK'>DINAMARCA (REINO DE)</option>
+             <option value='DJ'>DJIBOUTI (REPUBLICA DE)</option>
+             <option value='DM'>DOMINICA (COMUNIDAD DE)</option>
+             <option value='EC'>ECUADOR (REPUBLICA DEL)</option>
+             <option value='EG'>EGIPTO (REPUBLICA ARABE DE)</option>
+             <option value='SV'>EL SALVADOR (REPUBLICA DE)</option>
+             <option value='AE'>EMIRATOS ARABES UNIDOS</option>
+             <option value='ER'>ERITREA (ESTADO DE)</option>
+             <option value='SI'>ESLOVENIA (REPUBLICA DE)</option>
+             <option value='ES'>ESPAÑA (REINO DE)</option>
+             <option value='FM'>ESTADO FEDERADO DE MICRONESIA</option>
+             <option value='US'>ESTADOS UNIDOS DE AMERICA</option>
+             <option value='EE'>ESTONIA (REPUBLICA DE)</option>
+             <option value='ET'>ETIOPIA (REPUBLICA DEMOCRATICA FEDERAL)</option>
+             <option value='FJ'>FIDJI (REPUBLICA DE)</option>
+             <option value='PH'>FILIPINAS (REPUBLICA DE LAS)</option>
+             <option value='FI'>FINLANDIA (REPUBLICA DE)</option>
+             <option value='FR'>FRANCIA (REPUBLICA FRANCESA)</option>
+             <option value='GA'>GABONESA (REPUBLICA)</option>
+             <option value='GM'>GAMBIA (REPUBLICA DE LA)</option>
+             <option value='GE'>GEORGIA (REPUBLICA DE)</option>
+             <option value='GH'>GHANA (REPUBLICA DE)</option>
+             <option value='GI'>GIBRALTAR (R.U.)</option>
+             <option value='GD'>GRANADA</option>
+             <option value='GR'>GRECIA (REPUBLICA HELENICA)</option>
+             <option value='GL'>GROENLANDIA (DINAMARCA)</option>
+             <option value='GP'>GUADALUPE (DEPARTAMENTO DE)</option>
+             <option value='GU'>GUAM (E.U.A.)</option>
+             <option value='GT'>GUATEMALA (REPUBLICA DE)</option>
+             <option value='GG'>GUERNSEY</option>
+             <option value='GW'>GUINEA-BISSAU (REPUBLICA DE)</option>
+             <option value='GQ'>GUINEA ECUATORIAL (REPUBLICA DE)</option>
+             <option value='GN'>GUINEA (REPUBLICA DE)</option>
+             <option value='GF'>GUYANA FRANCESA</option>
+             <option value='GY'>GUYANA (REPUBLICA COOPERATIVA DE)</option>
+             <option value='HT'>HAITI (REPUBLICA DE)</option>
+             <option value='HN'>HONDURAS (REPUBLICA DE)</option>
+             <option value='HK'>HONG KONG (REGION ADMINISTRATIVA ESPECIAL DE LA REPUBLICA)</option>
+             <option value='HU'>HUNGRIA (REPUBLICA DE)</option>
+             <option value='IN'>INDIA (REPUBLICA DE)</option>
+             <option value='ID'>INDONESIA (REPUBLICA DE)</option>
+             <option value='IQ'>IRAK (REPUBLICA DE)</option>
+             <option value='IR'>IRAN (REPUBLICA ISLAMICA DEL)</option>
+             <option value='IE'>IRLANDA (REPUBLICA DE)</option>
+             <option value='IS'>ISLANDIA (REPUBLICA DE)</option>
+             <option value='BV'>ISLA BOUVET</option>
+             <option value='IM'>ISLA DE MAN</option>
+             <option value='AX'>ISLAS ALAND</option>
+             <option value='FO'>ISLAS FEROE</option>
+             <option value='GS'>ISLAS GEORGIA Y SANDWICH DEL SUR</option>
+             <option value='HM'>ISLAS HEARD Y MCDONALD</option>
+             <option value='FK'>ISLAS MALVINAS (R.U.)</option>
+             <option value='MP'>ISLAS MARIANAS SEPTENTRIONALES</option>
+             <option value='MH'>ISLAS MARSHALL</option>
+             <option value='UM'>ISLAS MENORES DE ULTRAMAR DE ESTADOS UNIDOS DE AMERICA</option>
+             <option value='SB'>ISLAS SALOMON (COMUNIDAD BRITANICA DE NACIONES)</option>
+             <option value='SJ'>ISLAS SVALBARD Y JAN MAYEN (NORUEGA)</option>
+             <option value='TK'>ISLAS TOKELAU</option>
+             <option value='WF'>ISLAS WALLIS Y FUTUNA</option>
+             <option value='IL'>ISRAEL (ESTADO DE)</option>
+             <option value='IT'>ITALIA (REPUBLICA ITALIANA)</option>
+             <option value='JM'>JAMAICA</option>
+             <option value='JP'>JAPON</option>
+             <option value='JE'>JERSEY</option>
+             <option value='JO'>JORDANIA (REINO HACHEMITA DE)</option>
+             <option value='KZ'>KAZAKHSTAN (REPUBLICA DE)</option>
+             <option value='KE'>KENYA (REPUBLICA DE)</option>
+             <option value='KI'>KIRIBATI (REPUBLICA DE)</option>
+             <option value='KW'>KUWAIT (ESTADO DE)</option>
+             <option value='KG'>KYRGYZSTAN (REPUBLICA KIRGYZIA)</option>
+             <option value='LS'>LESOTHO (REINO DE)</option>
+             <option value='LV'>LETONIA (REPUBLICA DE)</option>
+             <option value='LB'>LIBANO (REPUBLICA DE)</option>
+             <option value='LR'>LIBERIA (REPUBLICA DE)</option>
+             <option value='LY'>LIBIA (JAMAHIRIYA LIBIA ARABE POPULAR SOCIALISTA)</option>
+             <option value='LI'>LIECHTENSTEIN (PRINCIPADO DE)</option>
+             <option value='LT'>LITUANIA (REPUBLICA DE)</option>
+             <option value='LU'>LUXEMBURGO (GRAN DUCADO DE)</option>
+             <option value='MO'>MACAO</option>
+             <option value='MK'>MACEDONIA (ANTIGUA REPUBLICA YUGOSLAVA DE)</option>
+             <option value='MG'>MADAGASCAR (REPUBLICA DE)</option>
+             <option value='MY'>MALASIA</option>
+             <option value='MW'>MALAWI (REPUBLICA DE)</option>
+             <option value='MV'>MALDIVAS (REPUBLICA DE)</option>
+             <option value='ML'>MALI (REPUBLICA DE)</option>
+             <option value='MT'>MALTA (REPUBLICA DE)</option>
+             <option value='MA'>MARRUECOS (REINO DE)</option>
+             <option value='MQ'>MARTINICA (DEPARTAMENTO DE) (FRANCIA)</option>
+             <option value='MU'>MAURICIO (REPUBLICA DE)</option>
+             <option value='MR'>MAURITANIA (REPUBLICA ISLAMICA DE)</option>
+             <option value='YT'>MAYOTTE</option>
+             <option value='MX'>MEXICO (ESTADOS UNIDOS MEXICANOS)</option>
+             <option value='MD'>MOLDAVIA (REPUBLICA DE)</option>
+             <option value='MC'>MONACO (PRINCIPADO DE)</option>
+             <option value='MN'>MONGOLIA</option>
+             <option value='MS'>MONSERRAT (ISLA)</option>
+             <option value='ME'>MONTENEGRO</option>
+             <option value='MZ'>MOZAMBIQUE (REPUBLICA DE)</option>
+             <option value='MM'>MYANMAR (UNION DE)</option>
+             <option value='NA'>NAMIBIA (REPUBLICA DE)</option>
+             <option value='NR'>NAURU</option>
+             <option value='CX'>NAVIDAD (CHRISTMAS) (ISLAS)</option>
+             <option value='NP'>NEPAL (REINO DE)</option>
+             <option value='NI'>NICARAGUA (REPUBLICA DE)</option>
+             <option value='NE'>NIGER (REPUBLICA DE)</option>
+             <option value='NG'>NIGERIA (REPUBLICA FEDERAL DE)</option>
+             <option value='NU'>NIVE (ISLA)</option>
+             <option value='NF'>NORFOLK (ISLA)</option>
+             <option value='NO'>NORUEGA (REINO DE)</option>
+             <option value='NC'>NUEVA CALEDONIA (TERRITORIO FRANCES DE ULTRAMAR)</option>
+             <option value='NZ'>NUEVA ZELANDIA</option>
+             <option value='OM'>OMAN (SULTANATO DE)</option>
+             <option value='PIK'>PACIFICO, ISLAS DEL (ADMON. E.U.A.)</option>
+             <option value='NL'>PAISES BAJOS (REINO DE LOS) (HOLANDA)</option>
+             <option value='PK'>PAKISTAN (REPUBLICA ISLAMICA DE)</option>
+             <option value='PW'>PALAU (REPUBLICA DE)</option>
+             <option value='PS'>PALESTINA</option>
+             <option value='PA'>PANAMA (REPUBLICA DE)</option>
+             <option value='PG'>PAPUA NUEVA GUINEA (ESTADO INDEPENDIENTE DE)</option>
+             <option value='PY'>PARAGUAY (REPUBLICA DEL)</option>
+             <option value='PE'>PERU (REPUBLICA DEL)</option>
+             <option value='PN'>PITCAIRNS (ISLAS DEPENDENCIA BRITANICA)</option>
+             <option value='PF'>POLINESIA FRANCESA</option>
+             <option value='PL'>POLONIA (REPUBLICA DE)</option>
+             <option value='PT'>PORTUGAL (REPUBLICA PORTUGUESA)</option>
+             <option value='PR'>PUERTO RICO (ESTADO LIBRE ASOCIADO DE LA COMUNIDAD DE)</option>
+             <option value='QA'>QATAR (ESTADO DE)</option>
+             <option value='GB'>REINO UNIDO DE LA GRAN BRETAÑA E IRLANDA DEL NORTE</option>
+             <option value='CZ'>REPUBLICA CHECA</option>
+             <option value='CF'>REPUBLICA CENTROAFRICANA </option>
+             <option value='LA'>REPUBLICA DEMOCRATICA POPULAR LAOS</option>
+             <option value='RS'>REPUBLICA DE SERBIA</option>
+             <option value='DO'>REPUBLICA DOMINICANA</option>
+             <option value='SK'>REPUBLICA ESLOVACA</option>
+             <option value='CD'>REPUBLICA POPULAR DEL CONGO</option>
+             <option value='RW'>REPUBLICA RUANDESA</option>
+             <option value='RE'>REUNION (DEPARTAMENTO DE LA) (FRANCIA)</option>
+             <option value='RO'>RUMANIA</option>
+             <option value='RU'>RUSIA (FEDERACION RUSA)</option>
+             <option value='EH'>SAHARA OCCIDENTAL (REPUBLICA ARABE SAHARAVI DEMOCRATICA)</option>
+             <option value='WS'>SAMOA (ESTADO INDEPENDIENTE DE)</option>
+             <option value='AS'>SAMOA AMERICANA</option>
+             <option value='BL'>SAN BARTOLOME</option>
+             <option value='KN'>SAN CRISTOBAL Y NIEVES (FEDERACION DE) (SAN KITTS-NEVIS)</option>
+             <option value='SM'>SAN MARINO (SERENISIMA REPUBLICA DE)</option>
+             <option value='MF'>SAN MARTIN</option>
+             <option value='PM'>SAN PEDRO Y MIQUELON</option>
+             <option value='VC'>SAN VICENTE Y LAS GRANADINAS</option>
+             <option value='SH'>SANTA ELENA</option>
+             <option value='LC'>SANTA LUCIA</option>
+             <option value='ST'>SANTO TOME Y PRINCIPE (REPUBLICA DEMOCRATICA DE)</option>
+             <option value='SN'>SENEGAL (REPUBLICA DEL)</option>
+             <option value='SC'>SEYCHELLES (REPUBLICA DE LAS)</option>
+             <option value='SL'>SIERRA LEONA (REPUBLICA DE)</option>
+             <option value='SG'>SINGAPUR (REPUBLICA DE)</option>
+             <option value='SY'>SIRIA (REPUBLICA ARABE)</option>
+             <option value='SO'>SOMALIA</option>
+             <option value='LK'>SRI LANKA (REPUBLICA DEMOCRATICA SOCIALISTA DE)</option>
+             <option value='ZA'>SUDAFRICA (REPUBLICA DE)</option>
+             <option value='SD'>SUDAN (REPUBLICA DEL)</option>
+             <option value='SE'>SUECIA (REINO DE)</option>
+             <option value='CH'>SUIZA (CONFEDERACION)</option>
+             <option value='SR'>SURINAME (REPUBLICA DE)</option>
+             <option value='SZ'>SWAZILANDIA (REINO DE)</option>
+             <option value='TJ'>TADJIKISTAN (REPUBLICA DE)</option>
+             <option value='TH'>TAILANDIA (REINO DE)</option>
+             <option value='TW'>TAIWAN (REPUBLICA DE CHINA)</option>
+             <option value='TZ'>TANZANIA (REPUBLICA UNIDA DE)</option>
+             <option value='IO'>TERRITORIOS BRITANICOS DEL OCEANO INDICO</option>
+             <option value='TF'>TERRITORIOS FRANCESES, AUSTRALES Y ANTARTICOS</option>
+             <option value='TL'>TIMOR ORIENTAL</option>
+             <option value='TG'>TOGO (REPUBLICA TOGOLESA)</option>
+             <option value='TO'>TONGA (REINO DE)</option>
+             <option value='TT'>TRINIDAD Y TOBAGO (REPUBLICA DE)</option>
+             <option value='TN'>TUNEZ (REPUBLICA DE)</option>
+             <option value='TC'>TURCAS Y CAICOS (ISLAS)</option>
+             <option value='TM'>TURKMENISTAN (REPUBLICA DE)</option>
+             <option value='TR'>TURQUIA (REPUBLICA DE)</option>
+             <option value='TV'>TUVALU (COMUNIDAD BRITANICA DE NACIONES)</option>
+             <option value='UA'>UCRANIA</option>
+             <option value='UG'>UGANDA (REPUBLICA DE)</option>
+             <option value='UY'>URUGUAY (REPUBLICA ORIENTAL DEL)</option>
+             <option value='UZ'>UZBEJISTAN (REPUBLICA DE)</option>
+             <option value='VU'>VANUATU</option>
+             <option value='VE'>VENEZUELA (REPUBLICA DE)</option>
+             <option value='VN'>VIETNAM (REPUBLICA SOCIALISTA DE)</option>
+             <option value='VG'>VIRGENES. ISLAS (BRITANICAS)</option>
+             <option value='VI'>VIRGENES. ISLAS (NORTEAMERICANAS)</option>
+             <option value='YE'>YEMEN (REPUBLICA DE)</option>
+             <option value='ZM'>ZAMBIA (REPUBLICA DE)</option>
+             <option value='ZW'>ZIMBABWE (REPUBLICA DE)</option>
+             </select></td>
+             <td class="title3">*Concepto Pago:</td>
+             <td class="editor2"><form:select id="noBenefConceptoPago" path ="noBenefConceptoPago" cssClass="pulle" >
+                 <form:option value="0">Escoje un Tipo</form:option>
+                 <form:option value="1">Artistas, deportistas y espectáculos públicos</form:option>
+                 <form:option value="2">Otras personas físicas</form:option>
+                 <form:option value="3">Persona moral</form:option>
+                 <form:option value="4">Fideicomiso</form:option>
+                 <form:option value="5">Asociación en participación</form:option>
+                 <form:option value="6">Organizaciones Internacionales o de gobierno</form:option>
+                 <form:option value="7">Organizaciones exentas</form:option>
+                 <form:option value="8">Agentes pagadores</form:option>
+                 <form:option value="9">Otros</form:option>
+
+             </form:select></td>
+              </tr>
+             <tr>
+                 <td class="title3">*Descripción Pago:</td>
+                 <td class="editor2"><form:input id="noBenefDescripcionPago" path ="noBenefDescripcionPago" cssClass="e"  /></td>
+             </tr>
+             <tr>
+                 <td class="title2" colspan="6" style="vertical-align: top">
+                     <h3>Beneficiario</h3>
+                 </td>
+             </tr>
+             <tr>
+                 <td class="title3" >*Rfc</td>
+                 <td class="editor2"><form:input id="benRFC" path ="benRFC" cssClass="e"  /></td>
+                 <td class="title3">*CURP:</td>
+                 <td class="editor2"><form:input id="benCURP" path ="benCURP" cssClass="e"  /></td>
+
+             </tr>
+             <tr>
+                 <td class="title3">*Razón Social:</td>
+                 <td class="editor2"><form:input id="nomDenRazSocB" path ="nomDenRazSocB" cssClass="e"  /></td>
+             </tr>
+             <tr>
+                 <td class="title3">*Concepto Pago:</td>
+                 <td class="editor2"><form:select id="benConceptoPago" path ="benConceptoPago" cssClass="pulle">
+                     <form:option value="0">Escoje un Tipo</form:option>
+                     <form:option value="1">Artistas, deportistas y espectáculos públicos</form:option>
+                     <form:option value="2">Otras personas físicas</form:option>
+                     <form:option value="3">Persona moral</form:option>
+                     <form:option value="4">Fideicomiso</form:option>
+                     <form:option value="5">Asociación en participación</form:option>
+                     <form:option value="6">Organizaciones Internacionales o de gobierno</form:option>
+                     <form:option value="7">Organizaciones exentas</form:option>
+                     <form:option value="8">Agentes pagadores</form:option>
+                     <form:option value="9">Otros</form:option>
+                 </form:select></td>
+                 <td class="title3">*Descripción Pago:</td>
+                 <td class="editor2"><form:input id="benDescripcionPago" path ="benDescripcionPago" cssClass="e"  /></td>
+             </tr>
+         </table>
+    </td>
+</tr>
+<tr>
+    <td colspan="6">
+         <table id="tDividendos">
+             <tr>
+                 <td class="title2" colspan="6" style="vertical-align: top">
+                     <h3>Ganancias y Utilidades Generadas</h3>
+                 </td>
+             </tr>
+
+             <tr>
+                 <td class="title3">* Tipo de Dividendo:</td>
+                 <td class="editor2">
+                     <form:select id="cveTipDivOUtil" path ="cveTipDivOUtil" cssClass="pulle" >
+                         <form:option value="0">Escoje un Tipo</form:option>
+                         <form:option value="01">Proviene de CUFIN</form:option>
+                         <form:option value="02">No proviene de CUFIN</form:option>
+                         <form:option value="03">Reembolso o reducción de capital</form:option>
+                         <form:option value="04">Liquidación de la persona moral</form:option>
+                         <form:option value="05">CUFINRE</form:option>
+                         <form:option value="06">Proviene de CUFIN al 31 de diciembre 2013.</form:option>
+                     </form:select>
+                 </td>
+                 <td class="title3">* Importe de retención acreditable del dividendo Nacional:</td>
+                 <td class="editor2">
+                     <form:input id="montISRAcredRetMexico" path ="montISRAcredRetMexico" onchange="formatNumDecimal6(this);" cssClass="e"  />
+                 </td>
+             </tr>
+
+             <tr>
+                 <td class="title3">* Importe de retención acreditable del dividendo Extranjero:</td>
+                 <td class="editor2">
+                     <form:input id="montISRAcredRetExtranjero" path ="montISRAcredRetExtranjero" onchange="formatNumDecimal6(this);" cssClass="e"  />
+                 </td>
+
+                 <td class="title3">Monto de la retención en extranjero sobre dividendos en extranjero:</td>
+                 <td class="editor2">
+                     <form:input id="montRetExtDivExt" path ="montRetExtDivExt" cssClass="e" onchange="formatNumDecimal6(this);"  />
+                 </td>
+             </tr>
+
+             <tr>
+                 <td class="title3">* Tipo de Sociedad:</td>
+                 <td class="editor2">
+                     <form:select id="tipoSocDistrDiv" path ="tipoSocDistrDiv" cssClass="pulle">
+                         <form:option value="Sociedad Nacional">Sociedad Nacional</form:option>
+                         <form:option value="Sociedad Extranjera">Sociedad Extranjera</form:option>
+                     </form:select>
+                 </td>
+
+                 <td class="title3">Monto del ISR acreditable Nacional:</td>
+                 <td class="editor2">
+                     <form:input id="montISRAcredNal" path ="montISRAcredNal" cssClass="e" onchange="formatNumDecimal6(this);" />
+                 </td>
+
+             </tr>
+
+             <tr>
+                 <td class="title3">Monto del dividendo acumulado Nacional:</td>
+                 <td class="editor2">
+                     <form:input id="montDivAcumNal" path ="montDivAcumNal" cssClass="e" onchange="formatNumDecimal6(this);" />
+                 </td>
+
+                 <td class="title3">Monto del dividendo acumulado Extranjero:</td>
+                 <td class="editor2">
+                     <form:input id="montDivAcumExt" path ="montDivAcumExt" cssClass="e"  onchange="formatNumDecimal6(this);"/>
+                 </td>
+
+             </tr>
+
+             <tr>
+                 <td class="title2" colspan="6" style="vertical-align: top">
+                     <h3>Remanente</h3>
+                 </td>
+             </tr>
+
+             <tr>
+                 <td class="title3">Porcentaje de participacion:</td>
+                 <td class="editor2">
+                     <form:input id="proporcionRem" path ="proporcionRem" cssClass="e" onchange="formatNumDecimal6(this);"  />
+                 </td>
+
+
+             </tr>
+
+
+         </table>
+    </td>
+
+</tr>
+<tr>
+    <td colspan="6">
+        <table id="tIntereses">
+            <tr>
+                <td class="title3">* Sistema Financiero:</td>
+                <td class="editor2">
+                    <form:select id="sistFinanciero" path ="sistFinanciero" cssClass="pulle" >
+                        <form:option value="0">Escoje un Sistema</form:option>
+                        <form:option value="SI">Si</form:option>
+                        <form:option value="NO">No</form:option>
+                    </form:select>
+                </td>
+                <td class="title3">* Interes obtenidos retirados:</td>
+                <td class="editor2">
+                    <form:select id="retiroAORESRetInt" path ="retiroAORESRetInt" cssClass="pulle" >
+                        <form:option value="0">Escoje</form:option>
+                        <form:option value="SI">Si</form:option>
+                        <form:option value="NO">No</form:option>
+                    </form:select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title3">* Intereses de Operaciones Financieras derivadas:</td>
+                <td class="editor2">
+                    <form:select id="operFinancDerivad" path ="operFinancDerivad" cssClass="pulle" >
+                        <form:option value="0">Escoje</form:option>
+                        <form:option value="SI">Si</form:option>
+                        <form:option value="NO">No</form:option>
+                    </form:select>
+                </td>
+                <td class="title3">* Importe del Interes nominal:</td>
+                <td class="editor2">
+                    <form:input id="montIntNominal" path ="montIntNominal" onchange="formatNumDecimal6(this);" cssClass="e"  />
+                </td>
+            </tr>
+
+            <tr>
+                <td class="title3">* Monto de intereses reales:</td>
+                <td class="editor2">
+                    <form:input id="montIntReal" path ="montIntReal" onchange="formatNumDecimal6(this);" cssClass="e"  />
+                </td>
+                <td class="title3">* Perdida:</td>
+                <td class="editor2">
+                    <form:input id="perdida" path ="perdida" onchange="formatNumDecimal6(this);" cssClass="e"  />
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+</table>
+</td>
+</tr>
+</table>
+												  <span id="boton" style="display:block;">
+													<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                        <tr><td class="boton" align="right">
+                                                            <a href="/portafolio/remisiones/lista.mvc"> <img src="/images/bn_regresar2.gif" border=0 hspace="6"></a>
+                                                            <input id="btnSaveLow" name="_finish" type="image" src="/images/bn_guardar.gif" value="accion" >
+                                                        </td></tr>
+                                                    </table>
+												 </span>
+</td>
+</tr>
+
+<tr>
+    <td align="center" class="nada">
+</td></tr>
+<tr><td height="60"></td></tr>
+<tr><td>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+        <tr><td valign="top"><%@ include file="/comun/html/top_referencias.html"%></td></tr>
+        <tr>
+            <td class="explica">
+                <ul>
+                    <li>Algunos de los datos de esta forma han sido llenados automáticamente conforme a lo que ha proporcionado anteriormente y a lo que ha configurado en el sistema, complete lo que falta considerando que los datos marcados con asterisco son obligatoriamente requeridos por el SAT.</li>
+                    <li>Por disposición fiscal tenga presente que cuando se trate de <strong>comprobantes fiscales digitales globales</strong> que amparen una o más operaciones efectuadas con público en general, deberá reportarse el <strong>RFC gen?rico XAXX010101000</strong>; y en el caso de <b>comprobantes fiscales digitales que amparen una o más operaciones efectuadas con clientes extranjeros</b> se deberán reportar con el <b>RFC genérico XEXX010101000</b></li>
+                </ul>
+            </td></tr>
+    </table>
+</td></tr>
+</table>
+</form:form>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</TD></TR>
+<tr><td colspan=2><%@include file="/comun/html/pieBE.html" %></TD></TR>
+</TABLE>
+<!-- final-->
+</TD>
+</TR>
+</TABLE>
+</td></tr>
+</table>
+
+<script type="text/javascript">
+
+
+
+var retencionArraySize = 4;
+//Concepto Attributes
+var retencionTipoRetIndex = 0;
+var retencionImpuestoIndex = 1;
+var retencionBaseRetIndex = 2;
+var retencionMontoRetIndex = 3;
+
+var listaRetenciones = new Array();
+
+var hiddenIndexRetencion = '-1';
+
+
+
+$(document).ready(function(){
+
+    cargarInformacion();
+    $(".capturaRetencion").hide();
+    $('#trExtranjero').hide();
+    $("#tPagosExtranjeros").hide();
+    $('#tDividendos').hide();
+    $('#tIntereses').hide();
+    $('#btnSave').click(validar_finish);
+    $('#btnSaveLow').click(validar_finish);
+
+
+
+});
+
+function muestraCompl(){
+
+    cleanCompPagoExtranjeros();
+    cleanCompDividendos();
+    cleanCompIntereses();
+
+    if($('#complementoName').val() == '0'){
+        $("#tPagosExtranjeros").hide();
+        $('#tDividendos').hide();
+        $('#tIntereses').hide();
+    }else if($('#complementoName').val() == 'pagoExtranjeros'){
+
+        $("#tPagosExtranjeros").show();
+        $('#tDividendos').hide();
+        $('#tIntereses').hide();
+
+    }else if($('#complementoName').val() == 'dividendos'){
+
+        $("#tPagosExtranjeros").hide();
+        $('#tDividendos').show();
+        $('#tIntereses').hide();
+    }else if($('#complementoName').val() == 'intereses'){
+
+        $("#tPagosExtranjeros").hide();
+        $('#tDividendos').hide();
+        $('#tIntereses').show();
+    }
+
+}
+
+function cleanCompPagoExtranjeros(){
+
+    $('#esBenefEfectDelCobro').val('0');
+    $('#paisDeResidParaEfecFisc').val('0');
+    $('#noBenefConceptoPago').val('0');
+    $('#noBenefDescripcionPago').val('');
+    $('#benRFC').val('');
+    $('#benCURP').val('');
+    $('#nomDenRazSocB').val('');
+    $('#benConceptoPago').val('0');
+    $('#benDescripcionPago').val('');
+
+
+}
+
+function cleanCompDividendos(){
+    $('#cveTipDivOUtil').val('0');
+    $('#montISRAcredRetMexico').val('');
+    $('#montISRAcredRetExtranjero').val('');
+    $('#montRetExtDivExt').val('');
+    $('#tipoSocDistrDiv').val('0');
+    $('#montISRAcredNal').val('');
+    $('#montDivAcumNal').val('');
+    $('#montDivAcumExt').val('');
+    $('#proporcionRem').val('');
+
+}
+
+function cleanCompIntereses(){
+    $('#sistFinanciero').val('0');
+    $('#retiroAORESRetInt').val('0');
+    $('#operFinancDerivad').val('0');
+    $('#montIntNominal').val('');
+    $('#montIntReal').val('');
+    $('#perdida').val('');
+
+}
+
+function cargarInformacion()
+{
+    checkEmptyErrors();
+    $("#guardarRetencion").click(addRetencionToLista);
+    $("#cerrarRetencion").click(closeRetencion);
+    $('#lblDesc').hide();
+    $('#inDesc').hide();
+}
+
+function mostrarApartadoConcepto()
+{
+    var hiddenHjid = document.getElementById('Hjid');
+    hiddenHjid.value = '-2';
+    $(".capturaRetencion").show();
+}
+function addRetencionToLista()
+{
+    var newRetencion = new Array(retencionArraySize);
+
+    var tipoPago = $("#tipoPagoRet").val();
+    var impuesto = $("#impuesto").val();
+    var baseRetencion = $("#baseRet").val();
+    var montoRetencion = $("#montoRet").val();
+
+    var mensaje = '';
+
+
+    if(tipoPago == '0'){
+        mensaje += '\n el tipo de pago es requerido';
+        alert(mensaje);
+        return false;
+    }
+    if(null== montoRetencion ||
+            montoRetencion == ''){
+        mensaje += '\n El monto de la retención es requerida';
+
+        alert(mensaje);
+        return false;
+    }
+
+    newRetencion[retencionTipoRetIndex] = tipoPago;
+    newRetencion[retencionImpuestoIndex] = impuesto;
+    newRetencion[retencionBaseRetIndex] = baseRetencion;
+    newRetencion[retencionMontoRetIndex] = montoRetencion;
+
+    if(hiddenIndexRetencion == '-1')
+    {
+        // Guardar nuevo concepto
+        listaRetenciones.push(newRetencion);
+
+        // Actualizar el index
+        hiddenIndexRetencion	= listaRetenciones.length - 1;
+
+        mensaje = 'Retención Guardada...';
+
+    }else {
+
+        // Remplazar el concepto viejo por el nuevo
+        listaRetenciones[hiddenIndexRetencion] = newRetencion;
+
+        mensaje = 'Retención Actualizada...';
+    }
+
+    dibujarRowsRetenciones();
+
+    dibujarAllHidden();
+
+    if(mensaje != '')
+    {
+        alert(mensaje);
+    }
+    closeRetencion();
+    return false;
+}
+
+function dibujarRowsRetenciones()
+{
+    var tbl = document.getElementById('tablaRetenciones');
+    // limpia tabla retenciones
+    var tblRows = tbl.rows.length - 1;
+    for(var x = tblRows; x > 3; x--)
+    {
+        tbl.deleteRow(x - 1);
+    }
+
+    // dibuja matriz
+    var br = document.createElement("br");
+    var rows = listaRetenciones.length;
+    for(var index = 0; index < rows; index++)
+    {
+        var atributos = listaRetenciones[index];
+        var newRow = tbl.insertRow(tbl.rows.length - 1);
+        for(var celda = 0; celda < 4; celda++)
+        {
+            var cell = newRow.insertCell(celda);
+            cell.vAlign = 'top';
+            cell.className  = 'colblanca';
+            var elem_strong = document.createElement('strong');
+            var label = document.createTextNode(atributos[celda]);
+            elem_strong.appendChild(label);
+            cell.appendChild(elem_strong);
+            if(celda == 2 || celda == 3)
+            {
+                parseFloat(atributos[celda]);
+            }
+
+        }
+        var cell = newRow.insertCell(4);
+        cell.valign = 'top';
+        cell.className = 'colblanca colbuttons';
+        var img = document.createElement('img');
+        img.src = '/images/ic_editarColBlanca.gif';
+        img.name = 'retencionTr_'+index;
+        img.id = 'retencionTr_'+index;
+        img.onclick = function(){ editRowRetencion(this);};
+        cell.appendChild(img);
+
+        var cell = newRow.insertCell(5);
+        cell.valign = 'top';
+        cell.className = 'colblanca colbuttons';
+        var img = document.createElement('img');
+        img.src = '/images/ic_borrarGris.gif';
+        img.name = 'retencionTr_'+index;
+        img.id = 'retencionTr_'+index;
+        img.onclick = function(){	deleteRowRetencion(this); };
+        cell.appendChild(img);
+    }
+    // Actulizar el hidden de total de retenciones
+    document.getElementById('HrowsRetenciones').value = listaRetenciones.length + 4;
+
+}
+
+function dibujarAllHidden()
+{
+    var tbl = document.getElementById('tablaRetenciones');
+
+    var row = tbl.rows[tbl.rows.length - 2];
+
+    var allRetenciones = listaRetenciones.length;
+
+    for(var rowRetenciones = 0; rowRetenciones < allRetenciones; rowRetenciones++)
+    {
+        // Sacar el concepto
+        var objetoRetencion = listaRetenciones[rowRetenciones];
+        for(var attributoRetencion = 0; attributoRetencion < 4; attributoRetencion++)
+        {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'attributoRetencion'+rowRetenciones+'_'+attributoRetencion;
+            input.id   = 'attributoRetencion'+rowRetenciones+'_'+attributoRetencion;
+            input.value = objetoRetencion[attributoRetencion];
+            row.appendChild(input);
+        }
+    }
+}
+
+function editRowRetencion(elemento)
+{
+
+
+    $(".capturaRetencion").show();
+    var index = elemento.id.substring(elemento.id.indexOf('_') + 1);
+    var retencion = listaRetenciones[index];
+    hiddenIndexRetencion = index;
+    var tipoPago = document.getElementById('tipoPagoRet');
+    var montoRet = document.getElementById('montoRet');
+    var impuesto = document.getElementById('impuesto');
+    var baseRet = document.getElementById('baseRet');
+
+    tipoPago.value = retencion[retencionTipoRetIndex];
+    montoRet.value = retencion[retencionMontoRetIndex];
+    impuesto.value = retencion[retencionImpuestoIndex];
+    baseRet.value = retencion[retencionBaseRetIndex];
+
+
+}
+
+function deleteRowRetencion(elemento)
+{
+    var index = elemento.id.substring(elemento.id.indexOf('_') + 1);
+    listaRetenciones.splice(index, 1);
+    cleanFormRetencion();
+
+    dibujarRowsRetenciones();
+
+
+    dibujarAllHidden();
+
+    alert('Retencion Eliminada...');
+}
+
+function closeRetencion()
+{
+    cleanFormRetencion();
+    dibujarRowsRetenciones();
+    dibujarAllHidden();
+
+    $(".capturaRetencion").hide();
+    return false;
+}
+
+function cleanFormRetencion()
+{
+    hiddenIndexRetencion = -1;
+    $("#tipoPagoRet").val('0');
+    $("#montoRet").val('');
+    $("#impuesto").val('');
+    $("#baseRet").val('');
+}
+
+function TRIM(str){
+    var x = '';
+
+    for (var i = 0; i < str.length; i++)
+        if (str.charAt(i) != ' ')
+            x+=str.charAt(i);
+
+    return x;
+}
+
+function muestraDesc(){
+    if($('#cveRetenc').val()=='25'){
+        $('#lblDesc').show();
+        $('#inDesc').show();
+    }else{
+        $('#lblDesc').hide();
+        $('#inDesc').hide();
+    }
+}
+
+function muestraExt(){
+    if($('#nacionalidad').val()=='Nacional'){
+
+        $('#trExtranjero').hide();
+        $('#regitroIdFiscal').val('');
+
+        $('#trNacional').show();
+
+    }else if($('#nacionalidad').val()=='Extranjero'){
+
+        $('#trNacional').hide();
+        $('#rfcReceptor').val('');
+        $('#curp').val('');
+
+        $('#trExtranjero').show();
+    }
+}
+
+function validar_finish()
+{
+
+    hideError();
+    var continuar = true;
+
+    var cveRet = $('#cveRetenc').val();
+    var folioInt = $('#folioInt').val();
+    var nacionalidad = $('#nacionalidad').val();
+    var razonSocial = $('#razonSocial').val();
+    var rfc = $('#receptorRfc').val();
+    var curp = $('#curp').val();
+    var ejercicio = $('#ejercicio').val();
+    var mesIni = $('#mesInicioPeriodo').val();
+    var mesFin = $('#mesFinPeriodo').val();
+    var totRet = $('#montoTotRet').val();
+    var totExt = $('#montoTotExent').val();
+    var totGrav = $('#montoTotGrav').val();
+    var totOp = $('#montoTotOperacion').val();
+    var imptRetenidosSize = $('#HrowsRetenciones').val();
+
+    if(cveRet == '0'){
+       showError('<li>Escoja una clave de Retención</li>')
+       continuar = false;
+    }
+
+    if(null == folioInt ||
+            folioInt == ''){
+        showError('<li>El folio de la Retención es requerido</li>')
+        continuar = false;
+    }
+
+    if(nacionalidad == '0'){
+        showError('<li>Escoja una nacionalidad</li>')
+        continuar = false;
+    }
+
+    if(null == razonSocial ||
+            razonSocial == ''){
+        showError('<li>La razón social es requerida</li>');
+        continuar = false;
+    }
+
+    if(nacionalidad == 'Nacional'){
+        if(null == rfc ||
+                rfc == ''){
+            showError('<li>El Rfc del receptor es requerido</li>')
+            continuar = false;
+        }else{
+            var pattern_rfc = /[A-Z,Ñ,&amp;]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?/;
+
+            if( rfc.length != 12  && rfc.length != 13){
+                showError('<li>El rfc del receptor debe de ser un minimo de 12 digitos y un máximo de 13 digitos</li>')
+                continuar = false;
+
+            }else if(!pattern_rfc.test(rfc))
+            {
+                showError('<li>El Rfc del receptor no es válido </li>')
+                continuar = false;
+            }
+        }
+
+        if( curp != '' ){
+
+            var pattern_curp = /[A-Z][A,E,I,O,U,X][A-Z]{2}[0-9]{2}[0-1][0-9][0-3][0-9][M,H][A-Z]{2}[B,C,D,F,G,H,J,K,L,M,N,?,P,Q,R,S,T,V,W,X,Y,Z]{3}[0-9,A-Z][0-9]/;
+            if(!pattern_curp.test(curp))
+            {
+                showError('<li>El curp del receptor no es válido </li>');
+                continuar = false;
+            }
+        }
+    }
+
+    if(null == ejercicio ||
+            ejercicio == ''){
+        showError('<li>El ejercicio es requerido</li>')
+        continuar = false;
+    }
+
+    if(mesIni == '0'){
+        showError('<li>Escoja un mes de inicio</li>')
+        continuar = false;
+    }
+
+    if(mesFin == '0'){
+        showError('<li>Escoja un mes de finalización</li>')
+        continuar = false;
+    }
+
+    if(imptRetenidosSize == '0'){
+        showError('<li>Debes agregar al menos una Retención</li>')
+        continuar = false;
+    }
+
+    if(null == totRet ||
+            totRet == ''){
+        showError('<li>El total de las retenciones es requerido</li>')
+        continuar = false;
+    }
+
+    if(null == totExt ||
+            totExt == ''){
+        showError('<li>El total excento es requerido</li>')
+        continuar = false;
+    }
+
+
+    if(null == totGrav ||
+            totGrav == ''){
+        showError('<li>El total gravado es requerido</li>')
+        continuar = false;
+    }
+
+    if(null == totOp ||
+            totOp == ''){
+        showError('<li>El total de operación es reqeurido</li>')
+        continuar = false;
+    }
+
+
+    if($('#complementoName').val() != '0'){
+        if($('#complementoName').val() == 'pagoExtranjeros'){
+
+            if($('#esBenefEfectDelCobro').val() == '0'){
+                showError('<li>El beneficiario del Cobro es requerido</li>')
+                continuar = false;
+            }else if($('#esBenefEfectDelCobro').val() == 'NO'){
+
+                if($('#paisDeResidParaEfecFisc').val() == '0'){
+                    showError('<li>El pais de residencia es requerido</li>')
+                    continuar = false;
+                }
+
+                if($('#noBenefConceptoPago').val() == '0'){
+                    showError('<li>El concepto de pago del No Beneficiaro es requerido</li>')
+                    continuar = false;
+                }
+
+                if($('#noBenefDescripcionPago').val() == null ||
+                        $('#noBenefDescripcionPago').val() == ''){
+                    showError('<li>la descripción del pago del No Beneficiario es requerido</li>')
+                    continuar = false;
+                }
+
+            }else if($('#esBenefEfectDelCobro').val() == 'S'){
+                if($('#benRFC').val() == null ||
+                        $('#benRFC').val() == ''){
+                    showError('<li>El rfc del beneficiario es requerido</li>')
+                    continuar = false;
+                }else{
+                    var pattern_rfc = /[A-Z,Ñ,&amp;]{3,4}[0-9]{2}[0-1][0-9][0-3][0-9][A-Z,0-9]?[A-Z,0-9]?[0-9,A-Z]?/;
+
+                    if(  $('#benRFC').val().length != 12  && $('#benRFC').val().length != 13){
+                        showError('<li>El rfc del beneficiario debe de ser un minimo de 12 digitos y un máximo de 13 digitos</li>')
+                        continuar = false;
+
+                    }else if(!pattern_rfc.test($('#benRFC').val()))
+                    {
+                        showError('<li>El Rfc del beneficiario no es válido </li>')
+                        continuar = false;
+                    }
+                }
+
+                if($('#benCURP').val() == null ||
+                        $('#benCURP').val() == ''){
+                    showError('<li>El CURP del beneficiario es requerido</li>')
+                    continuar = false;
+                }else{
+                    var pattern_curp = /[A-Z][A,E,I,O,U,X][A-Z]{2}[0-9]{2}[0-1][0-9][0-3][0-9][M,H][A-Z]{2}[B,C,D,F,G,H,J,K,L,M,N,?,P,Q,R,S,T,V,W,X,Y,Z]{3}[0-9,A-Z][0-9]/;
+                    if(!pattern_curp.test($('#benCURP').val()))
+                    {
+                        showError('<li>El curp del beneficiario no es válido </li>');
+                        continuar = false;
+                    }
+                }
+
+                if($('#nomDenRazSocB').val() == null ||
+                        $('#nomDenRazSocB').val() == ''){
+                    showError('<li>la Razón social del beneficiario es requerido</li>')
+                    continuar = false;
+                }
+
+
+                if($('#benConceptoPago').val() == '0'){
+                    showError('<li>El concepto de pago del Beneficiaro es requerido</li>')
+                    continuar = false;
+                }
+
+                if($('#benDescripcionPago').val() == null ||
+                        $('#benDescripcionPago').val() == ''){
+                    showError('<li>la descripción del pago del Beneficiario es requerido</li>')
+                    continuar = false;
+                }
+            }
+
+
+
+
+
+
+
+
+
+        }else if($('#complementoName').val() == 'dividendos'){
+
+            if($('#cveTipDivOUtil').val() == '0'){
+                showError('<li>El tipo de dividendo es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#montISRAcredRetMexico').val() == null ||
+                    $('#montISRAcredRetMexico').val() == ''){
+                showError('<li>El importe o retencion nacional es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#montISRAcredRetExtranjero').val() == null ||
+                    $('#montISRAcredRetExtranjero').val() == ''){
+                showError('<li>El importe o retencion extranjero es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#tipoSocDistrDiv').val() == '0'){
+                showError('<li>El tipo de sociedad distribuidora es requerida</li>')
+                continuar = false;
+            }
+
+
+        }else if($('#complementoName').val() == 'intereses'){
+
+            if($('#sistFinanciero').val() == '0'){
+                showError('<li>El sistema financiero es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#retiroAORESRetInt').val() == '0'){
+                showError('<li>El interes obtneido es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#operFinancDerivad').val() == '0'){
+                showError('<li>La operación financiera derivada es requerida</li>')
+                continuar = false;
+            }
+            if($('#montIntNominal').val() == null ||
+                    $('#montIntNominal').val() == ''){
+                showError('<li>El monto de interes nominal es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#montIntReal').val() == null ||
+                    $('#montIntReal').val() == ''){
+                showError('<li>El monto de interes real es requerido</li>')
+                continuar = false;
+            }
+
+            if($('#perdida').val() == null ||
+                    $('#perdida').val() == ''){
+                showError('<li>la perdida es requerido</li>')
+                continuar = false;
+            }
+
+        }
+
+
+
+    }
+
+    return continuar
+
+}
+
+function checkEmptyErrors()
+{
+    if ( $('#tblerrores_msg_retenciones').text() == '')
+        $('#tblerrores').hide();
+}
+
+function showError(msg)
+{
+
+   $('#tblerrores').fadeIn();
+   $('#tblerrores_msg_retenciones').append(msg);
+
+}
+
+function hideError()
+{
+
+  $('#tblerrores_msg_retenciones').empty();
+  checkEmptyErrors();
+}
+
+</script>
+</BODY>
+</HTML>
+<!-- web32705.mail.mud.yahoo.com compressed/chunked Mon Sep 24 09:31:07 PDT 2007 -->

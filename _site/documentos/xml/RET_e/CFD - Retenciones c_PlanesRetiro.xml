@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retenciones:Retenciones xmlns:retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1"
+    xmlns:c_retenciones="http://www.sat.gob.mx/esquemas/retencionpago/1/catalogos"
+    xmlns:planesderetiro="http://www.sat.gob.mx/esquemas/retencionpago/1/planesderetiro"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd http://www.sat.gob.mx/esquemas/retencionpago/1/planesderetiro http://www.sat.gob.mx/esquemas/retencionpago/1/planesderetiro/planesderetiro.xsd"
+    Version="1.0" FolioInt="TEST00010"
+    Sello=""
+    NumCert="20001000000100005867"
+    Cert=""
+    FechaExp="2014-11-28T10:13:51-06:00" CveRetenc="22">
+    <!-- DescRetenc="22" Planes personales de retiro -->
+    <retenciones:Emisor RFCEmisor="AAA010101AAA"
+        NomDenRazSocE="Empresa DEMO para Rentenciones S de TST" CURPE="AAAA010101HNLMNLD2"/>
+    <retenciones:Receptor Nacionalidad="Nacional">
+        <!-- nodo "Extranjero" sólo cuando Nacionalidad="Extranjero" 
+        <retenciones:Extranjero NumRegIdTrib="NumRegIdTrib0" NomDenRazSocR="NomDenRazSocR0"/>
+        -->
+        <retenciones:Nacional RFCRecep="VAHE8209266A1" CURPR="VAHE820926HNLLRD02"
+            NomDenRazSocR="PÚBLICO EN GENERAL S DE TST"/>
+    </retenciones:Receptor>
+    <retenciones:Periodo MesIni="6" MesFin="6" Ejerc="2014"/>
+    <retenciones:Totales montoTotOperacion="14000.00" montoTotGrav="13000.00"
+        montoTotExent="1000.00" montoTotRet="3500.00">
+        <retenciones:ImpRetenidos BaseRet="1000.00" Impuesto="01" montoRet="500.00"
+            TipoPagoRet="Pago definitivo"/>
+        <retenciones:ImpRetenidos BaseRet="1000.00" Impuesto="02" montoRet="500.00"
+            TipoPagoRet="Pago provisional"/>
+    </retenciones:Totales>
+    <retenciones:Complemento>
+        <planesderetiro:Planesderetiro Version="1.0" SistemaFinanc="SI" MontTotAportAnioInmAnterior="62812.8734"
+            MontIntRealesDevengAniooInmAnt="567.21" HuboRetirosAnioInmAntPer="NO"
+            MontTotRetiradoAnioInmAntPer="0.00" MontTotExentRetiradoAnioInmAnt="0.00"
+            MontTotExedenteAnioInmAnt="0.00" HuboRetirosAnioInmAnt="NO"
+            MontTotRetiradoAnioInmAnt="0.00"/>
+    </retenciones:Complemento>
+    <retenciones:Addenda> </retenciones:Addenda>
+</retenciones:Retenciones>
