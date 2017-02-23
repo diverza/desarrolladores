@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">Portada</a>
+              <a href="">portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-103">
+            <li class="item-104">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-104">
+            <li class="item-105">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-105">
+            <li class="item-103 parent">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -167,7 +167,7 @@
 
 <p>El servicio de Timbre Fiscal® incluye el atributo llamado <strong>RefID</strong>, que te permite identificar cada documento que envíes a procesar con nosotros. Por cada RefID único que utilices obtendrás el mismo complemento de timbre (y folio fiscal), así podrás implementar mecanismos de recuperación como reintentos sin que estés generando nuevos timbres por el mismo comprobante.</p>
 
-<h2 id=" ¿cómo-funciona?"> ¿cómo funciona?</h2>
+<h2 id="c-mo-funciona"> ¿cómo funciona?</h2>
 
 <p>No es extraño que tus sistemas internos coloquen un identificador único a cada comprobante, incluso antes de enviarlo a timbrar, digamos que el CFDi que envías tiene como identificador: <code>SGFR98322-20140815T09:40</code>, y envías ese dato como parte del request.</p>
 
@@ -178,10 +178,10 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
 
 <h2 id="escenario-de-ejemplo">escenario de ejemplo</h2>
 
-<h3 id="1.-primer-timbrado-de-un-comprobante">1. Primer timbrado de un comprobante</h3>
+<h3 id="1-primer-timbrado-de-un-comprobante">1. Primer timbrado de un comprobante</h3>
 
 <p>El ejemplo inicia timbrado un CFDi de pruebas con la siguiente información:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    Servidor de prueba: https://staging.diverza.com/api/v1/timbrar
+<div class="highlight"><pre><code class="language-text" data-lang="text">    Servidor de prueba: http://staging.diverza.com/api/v1/timbrar
     Token de prueba: ABCD1234
     **RefID: SGFR98322-20140815T09:40**
     Metodo HTTP: POST
@@ -192,7 +192,7 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
 </code></pre></div>
 <p><strong>Petición</strong></p>
 
-<p><code>cURL https://staging.diverza.com/stamp -X POST --data @cfdi.xml -H &quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot; -H &quot;x-auth-token: ABCD1234&quot; -H &quot;Content-MD5: kso376aw88wkdms1723o21mdasl213u2&quot; -H &quot;x-refid: SGFR98322-20140815T09:40&quot; -i</code></p>
+<p><code>cURL http://staging.diverza.com/stamp -X POST --data @cfdi.xml -H &quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot; -H &quot;x-auth-token: ABCD1234&quot; -H &quot;Content-MD5: kso376aw88wkdms1723o21mdasl213u2&quot; -H &quot;x-refid: SGFR98322-20140815T09:40&quot; -i</code></p>
 
 <p>* El archivo cfdi enviado es igual a cualquier otro, no se ve afectado por el RefID</p>
 
@@ -205,13 +205,13 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
     Server: nginx/1.0.15
 </code></pre></div><div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;rInX4E+pRgkuIxJGRlJp49rTN9kMCjMYQz4t3m+IXjkHsFxbIuEeHTXPdUms7NvcX0ayS3NO1GzpVFQyJLCf6lLcJrao4ngkTVcNSwxWi77U1fjHEGtzU+FFhQUHZ63NX6GCEeb0xsXBN03xzxwBmTLYZ8FdCAFIqUMKX5YN640=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;ElqnU5BgK66ZWCvJU6NMqA6bzAHpJZ1Va2Ilcp+eIit0BtGjHpzPp2UjpRYttpMc01YBQtbHo4ErG/WDJ3jHKsYZ455NJgRirYgHVGvcMV3UdQ0gSILGcubcjLgBIGYozKuipRcYqOtk3wwkzxQa3sEMZpLczNxirVLtbaX/vpU=&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-15T09:43:39&quot;</span> <span class="na">UUID=</span><span class="s">&quot;5e881398-b62a-42c1-bf17-5d44a2f54a84&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-<h3 id="2.-reenvío-del-mismo-comprobante-con-el-mismo-refid">2. Reenvío del mismo comprobante con el mismo RefID</h3>
+<h3 id="2-reenv-o-del-mismo-comprobante-con-el-mismo-refid">2. Reenvío del mismo comprobante con el mismo RefID</h3>
 
 <p>Si enviamos nuevamente la misma petición, utilizando el mismo RefID, obtendremos exactamente la misma respuesta:</p>
 
 <p><strong>Misma petición</strong></p>
 
-<p><code>cURL https://staging.diverza.com/stamp -X POST --data @cfdi.xml -H &quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot; -H &quot;x-auth-token: ABCD1234&quot; &quot;Content-MD5: kso376aw88wkdms1723o21mdasl213u2&quot; -H &quot;x-refid: SGFR98322-20140815T09:40&quot; -i</code></p>
+<p><code>cURL http://staging.diverza.com/stamp -X POST --data @cfdi.xml -H &quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot; -H &quot;x-auth-token: ABCD1234&quot; &quot;Content-MD5: kso376aw88wkdms1723o21mdasl213u2&quot; -H &quot;x-refid: SGFR98322-20140815T09:40&quot; -i</code></p>
 
 <p><strong>Misma respuesta</strong></p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -224,13 +224,13 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
 </code></pre></div>
 <p>No importa cuántas veces se envíe la petición, el resultado será el mismo.</p>
 
-<h3 id="3.-reenvío-de-un-comprobante-diferente,-pero-con-el-mismo-refid">3. Reenvío de un comprobante diferente, pero con el mismo RefID</h3>
+<h3 id="3-reenv-o-de-un-comprobante-diferente-pero-con-el-mismo-refid">3. Reenvío de un comprobante diferente, pero con el mismo RefID</h3>
 
 <p>Ten cuidado: Si hacemos nuevamente la misma petición, utilizando el mismo RefID, pero con un comprobante distinto obtendremos exactamente la misma respuesta:</p>
 
 <p><strong>Misma petición, otro documento</strong></p>
 
-<p><code>cURL https://staging.diverza.com/stamp -X POST --data @otro_cfdi.xml -H &quot;x-auth-token: ABCD1234&quot; -H &quot;x-refid: SGFR98322-20140815T09:40&quot; -i</code></p>
+<p><code>cURL http://staging.diverza.com/stamp -X POST --data @otro_cfdi.xml -H &quot;x-auth-token: ABCD1234&quot; -H &quot;x-refid: SGFR98322-20140815T09:40&quot; -i</code></p>
 
 <p><strong>Misma respuesta</strong></p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -283,9 +283,8 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
+                    </ul>               
                 </div>
-
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -297,7 +296,7 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
- 
+                
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -337,7 +336,7 @@ Por lo tanto, la siguiente ocasión en que envíes una petición de timbrado con
 
 						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 

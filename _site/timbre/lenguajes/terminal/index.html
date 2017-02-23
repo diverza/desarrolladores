@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">Portada</a>
+              <a href="">portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-103">
+            <li class="item-104">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-104">
+            <li class="item-105">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-105">
+            <li class="item-103 parent">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -166,7 +166,7 @@
 <h2 id="generar-timbre">Generar Timbre</h2>
 
 <p>Para generar un timbre utilizando el servidor de pruebas es necesario tener los siguientes datos del servidor a la mano:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: https://staging.diverza.com/stamp
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/stamp
  Token de prueba: ABCD1234
  Metodo HTTP: POST
  Header HTTP: x-auth-token
@@ -212,7 +212,7 @@
 
 <hr>
 
-<h3 id="petición-http">Petición HTTP</h3>
+<h3 id="petici-n-http">Petición HTTP</h3>
 
 <p>La primera accion que debemos realizar es crear un archivo con nombre <em>cfdi.xml</em> donde guardaremos el CFDI que deseemos timbrar:</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -252,7 +252,7 @@
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
 <p>El siguiente paso es usando la terminal o linea de comandos colocarnos en la ruta donde se encuentra el archivo que creamos previamente y ejecutar lo siguiente:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL https://staging.diverza.com/stamp -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/stamp -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
@@ -271,7 +271,7 @@
 
   <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
-<p>El código de respuesta tambien es devuelto y debera ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
+<p>El código de respuesta tambien es devuelto y debera ser <em>200 OK</em> cuando la petición sea exitosa, en caso contrario te invitamos a revisar la <a href="../codigos">Lista de Códigos de Respuesta</a>, que contiene todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones.</p>
 
 <hr>
 
@@ -311,9 +311,8 @@
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
+                    </ul>               
                 </div>
-
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -325,7 +324,7 @@
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
- 
+                
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -365,7 +364,7 @@
 
 						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 

@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">Portada</a>
+              <a href="">portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-103">
+            <li class="item-104">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-104">
+            <li class="item-105">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-105">
+            <li class="item-103 parent">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -181,24 +181,24 @@
 
 <p>De forma aclaratoria, te informamos de las URL y peticiones correctas dependiendo del servicio que necesites.</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  Timbrado CFDI
-    https://staging.diverza.com/stamp (ó ../stamp/complete)
+    http://staging.diverza.com/stamp (ó ../stamp/complete)
     x-auth-token  (obligatorio)
     x-refid       (opcional)
 
   Emisión de CFDI
-    https://staging.diverza.com/issue
+    http://staging.diverza.com/issue
     x-auth-token  (obligatorio)
     x-refid       (opcional)
 
   Timbrado de Retenciones
-    https://staging.diverza.com/api/v1/timbrar (ó ../timbrar?completo)
+    http://staging.diverza.com/api/v1/timbrar (ó ../timbrar?completo)
     x-auth-token  (obligatorio)
     x-refid       (opcional)
     Content-Type  (obligatorio)
     Content-MD5   (obligatorio, aunque no se valida el contenido por el momento)
 
   Emisión de Retenciones
-    https://staging.diverza.com/api/v1/emitir
+    http://staging.diverza.com/api/v1/emitir
     x-auth-token  (obligatorio)
     x-refid       (opcional)
     Content-Type  (obligatorio)
@@ -206,7 +206,7 @@
 </code></pre></div>
 <p><br></br></p>
 
-<h2 id="443-xml-no-válido-segun-esquema">443 XML no válido segun esquema</h2>
+<h2 id="443-xml-no-v-lido-segun-esquema">443 XML no válido segun esquema</h2>
 
 <p><br></br>
 Para este caso en particular podemos decir que tu petición se generó correctamente, y llegó la información a nuestro servicio, adicionalmente validamos el documento y encontramos un inconsistencia en la estructura de tu XML.</p>
@@ -215,7 +215,7 @@ Para este caso en particular podemos decir que tu petición se generó correctam
 En la sección de <code>recursos</code> de la página <code>índice</code>, podrás encontrar los esquemas oficiales para cada tipo de comprobante con sus respectivos complementos.
 <br></br></p>
 
-<h2 id="3015-no-fue-posible-generar-el-timbre-fiscal®,-el-comprobante-ha-sido-timbrado-previamente.---tf">3015 No fue posible generar el Timbre Fiscal®, el comprobante ha sido timbrado previamente. - TF</h2>
+<h2 id="3015-no-fue-posible-generar-el-timbre-fiscal-el-comprobante-ha-sido-timbrado-previamente-tf">3015 No fue posible generar el Timbre Fiscal®, el comprobante ha sido timbrado previamente. - TF</h2>
 
 <p><br></br>
 Ésto sólo ocurre en el caso de enviar un CFDI, que ya contiene el complemento del timbre. El comprobante se debe de enviar a la petición de timbrado, <code>SIN</code> el complemento del <code>TimbreFiscalDigital</code>.
@@ -226,11 +226,11 @@ En la sección de <code>recursos</code> de la página <code>índice</code>, podr
 <p><br></br>
 La URL a la que estás apuntando la petición de timbrado o emisión, no es correcta:</p>
 <div class="highlight"><pre><code class="language-text" data-lang="text">  Ambiente de &quot;staging&quot; ==  http
-  Ambiente correcto de &quot;staging&quot;  ==  https
+  Ambiente productivo   ==  https
 </code></pre></div>
 <p><br></br></p>
 
-<h2 id=" 401-unauthorized"> 401 Unauthorized</h2>
+<h2 id="401-unauthorized"> 401 Unauthorized</h2>
 
 <p><br></br>
 Al recibir este mensaje de error, se indica que el token que estás utilizando para identificarte en nuestro servicio, <code>NO</code>es correcto, necesitarás validar con el contacto administrativo de la empresa que la información ingresada, sea realmente la que nosotros les proporcionamos en el momento de realizar la compra.</p>
@@ -279,9 +279,8 @@ Al recibir este mensaje de error, se indica que el token que estás utilizando p
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
+                    </ul>               
                 </div>
-
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -293,7 +292,7 @@ Al recibir este mensaje de error, se indica que el token que estás utilizando p
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
- 
+                
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -333,7 +332,7 @@ Al recibir este mensaje de error, se indica que el token que estás utilizando p
 
 						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 

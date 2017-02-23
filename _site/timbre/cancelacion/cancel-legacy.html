@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>servicio de cancelación cfdi</title>
+  <title>Servicio de cancelación 2014</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">Portada</a>
+              <a href="">portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-103">
+            <li class="item-104">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-104">
+            <li class="item-105">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-105">
+            <li class="item-103 parent">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -154,19 +154,10 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>servicio de cancelación cfdi<span class="diverza-dot">.</span></h1>
+              <h1>Servicio de cancelación 2014<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p><legend>
-Esta documentación es para cancelar de CFDIs normales.
-<br />
-Para cancelación de CFDI de retenciones, ingrese <a href="/timbre/endpoints/endpointsCan.html">aquí</a>.
-</legend></p>
-
-<p>El servicio de cancelación consta de un servicio REST para cancelación de CFDIs timbrados ante el SAT, a partir del UUID del comprobante.</p>
-
-<p>El endpont del servicio está disponible en: <br />
-<code>https://staging.diverza.com/stamp/cancel</code></p>
+              <p>El servicio de cancelación consta de un servicio REST para cancelación de CFDIs timbrados ante el SAT, a partir del UUID del comprobante.</p>
 
 <p>La siguiente guía explica cómo utilizar el servicio de cancelación, usando como ejemplo la <em>Terminal</em> o <em>Linea de comandos</em> y <em>cURL</em>.</p>
 
@@ -175,7 +166,7 @@ Para cancelación de CFDI de retenciones, ingrese <a href="/timbre/endpoints/end
 <h2 id="servicio">Servicio</h2>
 
 <p>Para el siguiente ejemplo de cancelación de un comprobante timbrado usaremos:</p>
-<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: https://staging.diverza.com/
+<div class="highlight"><pre><code class="language-text" data-lang="text"> Servidor de prueba: http://staging.diverza.com/
  Servicio: /stamp/cancel/{RFC}
  Metodo HTTP: POST
  Header HTTP: x-auth-token
@@ -188,10 +179,10 @@ Para cancelación de CFDI de retenciones, ingrese <a href="/timbre/endpoints/end
 
 <hr>
 
-<h3 id="petición-http">Petición HTTP</h3>
+<h3 id="petici-n-http">Petición HTTP</h3>
 
 <p>Usando la terminal o linea de comandos, ejecutar lo siguiente:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;https://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p><strong>Nota:</strong> La dirección del ejecutable <em>cURL</em> puede variar entre sistemas operativos y procesos de instalación.</p>
 
@@ -253,9 +244,8 @@ Proceso realizado con éxito
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
+                    </ul>               
                 </div>
-
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -267,7 +257,7 @@ Proceso realizado con éxito
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
- 
+                
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -307,7 +297,7 @@ Proceso realizado con éxito
 
 						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 

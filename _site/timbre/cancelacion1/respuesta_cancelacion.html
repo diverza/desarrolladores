@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">Portada</a>
+              <a href="">portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-103">
+            <li class="item-104">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-104">
+            <li class="item-105">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-105">
+            <li class="item-103 parent">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -159,9 +159,9 @@
               <div class="clr">&nbsp;</div>
               <p>La siguiente lista comprende todos los posibles códigos de respuesta del servicio de timbrado y sus posibles soluciones:</p>
 
-<h3 id="Éxito">Éxito</h3>
+<h3 id="xito">Éxito</h3>
 
-<p><strong>0</strong> - Proceso realizado con éxito<br>
+<p><strong>0</strong> - Proceso realizado con éxito<br>
 <em>Comprobante cancelado exitosamente</em></p>
 
 <h3 id="errores-generales">Errores generales</h3>
@@ -169,31 +169,31 @@
 <p><strong>13</strong> - Error general<br>
 <em>Necesita ser analizado directamente con el personal de soporte</em></p>
 
-<p><strong>17</strong> - Reporte SAT no encontrado o no válido<br>
-<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
+<p><strong>17</strong> - Reporte SAT no encontrado o no válido<br>
+<em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
-<p><strong>18</strong> - No encontró CFD a cancelar<br>
+<p><strong>18</strong> - No encontró CFD a cancelar<br>
 <em>Verificar los datos de la petición (RFC, año, mes)</em></p>
 
 <p><strong>19</strong> - El CFD ya fue cancelado previamente<br>
-<em>Verificar el estado del comprobante en tu cuenta Web</em></p>
+<em>Verificar el estado del comprobante en Buzón Fiscal</em></p>
 
-<p><strong>20</strong> - No se encontró el folio para ser cancelado<br>
-<em>Verificar los datos de la  petición (RFC emisor, RFC receptor, serie, folio, refid)</em></p>
+<p><strong>20</strong> - No se encontró el folio para ser cancelado<br>
+<em>Verificar los datos de la  petición (RFC emisor, RFC receptor, serie, folio, refid)</em></p>
 
-<p><strong>22</strong> - Error de tipo “excepción”<br>
+<p><strong>22</strong> - Error de tipo “excepción”<br>
 <em>Error general</em></p>
 
-<p><strong>892</strong> - Ocurrió un error al cancelar comprobante<br>
+<p><strong>892</strong> - Ocurrió un error al cancelar comprobante<br>
 <em>Contacta con un asesor</em></p>
 
 <p><strong>453</strong> - Estructura de WebService incompleta<br>
-<em>Verificar que la llamada esté escrita de forma correcta</em></p>
+<em>Verificar que la llamada esté escrita de forma correcta</em></p>
 
-<h3 id="error-de-token-o-autorización">Error de token o autorización</h3>
+<h3 id="error-de-token-o-autorizaci-n">Error de token o autorización</h3>
 
-<p><strong>300</strong> - Token no es válido<br>
-<em>Revisar que el token corresponda al cliente correcto de ser así, contactar al asesor para que genere un nuevo token</em></p>
+<p><strong>300</strong> - Token no es válido<br>
+<em>Revisar que el token corresponda al cliente correcto de ser así, contactar al asesor para que genere un nuevo token</em></p>
 
 <p><strong>301</strong> - Token no registrado para esta empresa<br>
 <em>El token no es el correspondiente para la empresa que lo solicita. Contactar con a tu asesor</em></p>
@@ -204,13 +204,13 @@
 <p><strong>303</strong> - Token deshabilitado  </p>
 
 <p><strong>25</strong> - No se pudo obtener el certificado de sello<br>
-<em>Revisar que esté dado de alta el certificado de sellos en el portal de Buzón Fiscal</em></p>
+<em>Revisar que esté dado de alta el certificado de sellos en el portal de Buzón Fiscal</em></p>
 
 <p><strong>40</strong> - Se ha suspendido el servicio<br>
 <em>Contactar a un asesor, cuenta no tiene permisos para emitir</em></p>
 
-<p><strong>201</strong> - El RFC {RFC} no está autorizado para realizar una cancelación<br>
-<em>Cancelación sin autorización o permisos</em></p>
+<p><strong>201</strong> - El RFC {RFC} no está autorizado para realizar una cancelación<br>
+<em>Cancelación sin autorización o permisos</em></p>
 
             </div>
           </div>
@@ -248,9 +248,8 @@
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>
+                    </ul>               
                 </div>
-
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -262,7 +261,7 @@
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
- 
+                
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -302,7 +301,7 @@
 
 						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 

@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">Portada</a>
+              <a href="">portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-103">
+            <li class="item-104">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-104">
+            <li class="item-105">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-105">
+            <li class="item-103 parent">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -170,7 +170,7 @@
 
 <hr>
 
-<h2 id="cambio-de-ubicación-de-repositorios">Cambio de ubicación de repositorios</h2>
+<h2 id="cambio-de-ubicaci-n-de-repositorios">Cambio de ubicación de repositorios</h2>
 
 <p>Se refiere a la ubicación de los cuatro directorios necesarios para el funcionamiento del Conector. Al momento de realizarse la instalación son generados los cuatro directorios predefinidos en el archivo, estos pueden ser cambiados a una ruta distinta pero existente, ya que de no existir esa ruta la aplicación no podrá iniciar.</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;com.diverza.bfc.fileDir.default.in&quot;</span><span class="nt">&gt;</span>..\data\in<span class="nt">&lt;/property&gt;</span> 
@@ -216,7 +216,7 @@ RFC_TIPODOCUMENTO_SERIE+FOLIO_FECHA.pdf
 
 <hr>
 
-<h3 id="opción-1">Opción 1</h3>
+<h3 id="opci-n-1">Opción 1</h3>
 
 <p>Carpetas opcionales + nombre default + RefID</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>Default<span class="nt">&lt;/property&gt;</span> 
@@ -253,7 +253,7 @@ Sólo son reconocidas las opciones <code>[C]</code> carpeta, <code>[NI]</code> n
 
 <hr>
 
-<h3 id="opción-2">Opción 2</h3>
+<h3 id="opci-n-2">Opción 2</h3>
 
 <p>Carpetas opcionales + parte nombre default + RefId</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>Default <span class="nt">&lt;/property&gt;</span> 
@@ -286,7 +286,7 @@ Salida = ../out/SP_PABF41.xml
 
 <hr>
 
-<h3 id="opción-3">Opción 3</h3>
+<h3 id="opci-n-3">Opción 3</h3>
 
 <p>Nombre salida = Nombre de entrada </p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>NombreEspecial<span class="nt">&lt;/property&gt;</span> 
@@ -318,7 +318,7 @@ Salida = ../out/0018820ArchivoAFacturar45.xml
 
 <hr>
 
-<h3 id="opción-4">Opción 4</h3>
+<h3 id="opci-n-4">Opción 4</h3>
 
 <p>Especificación de carpetas y nombre por posición.</p>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;entry</span> <span class="na">key=</span><span class="s">&quot;nombreArchivo&quot;</span><span class="nt">&gt;</span>Posicion<span class="nt">&lt;/entry&gt;</span> 
@@ -373,19 +373,6 @@ Carpeta 1: 0018820 Carpeta 2: ArchivoA Nombre: Facturar45
                         <li class="item-178"><a href="/conector/formatos/RET/">retenciones</a></li>
                         <li class="item-178"><a href="/conector/formatos/complementosRET/">complementos de retenciones</a></li>
                         <li class="item-178"><a href="/conector/index-contabilidad.html">contabilidad electrónica</a></li>
-                    </ul>               
-                </div>
-
-                <br />
-                <h3>endpoints REST<span class="diverza-dot">.</span></h3>
-                <span class="h3-line"></span>
-                <div class="clr"></div>
-
-                <div class="module-content">
-                    <ul class="menu">
-                        <li class="item-178"><a href="/conector/endpoints/endpointsEmi.html">emisión</a></li>
-                        <li class="item-178"><a href="/conector/endpoints/endpointsCan.html">cancelación</a></li>
-                        <li class="item-178"><a href="/conector/endpoints/respuesta_cancelacion.html">códigos error cancelación</a></li>
                     </ul>               
                 </div>
 
@@ -447,7 +434,7 @@ Carpeta 1: 0018820 Carpeta 2: ArchivoA Nombre: Facturar45
 
 						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 
