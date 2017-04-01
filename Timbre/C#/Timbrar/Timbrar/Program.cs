@@ -65,7 +65,7 @@ namespace Timbrar
 
                 /* Finalmente ejecutamos la petición al servidor de timbrado indicando la URL completa, el metodo
                 // HTTP en este caso POST y el CFD como cuerpo del mensaje */
-                string stamp = webClient.UploadString("http://staging.diverza.com/stamp", "POST", cfd);
+                string stamp = webClient.UploadString("https://staging.diverza.com/stamp", "POST", cfd);
 
                 Console.WriteLine(string.Format("Timbre: {0}", stamp));
             }
