@@ -1,9 +1,11 @@
 # -*- coding: UTF-8 -*-
 import httplib, urllib
+import json
+import base64
 
 # Creamos una variable para guardar el XML del CFD que queremos timbrar, por facilidad
 # en este caso lo tenemos de manera estatica
-cfd = """<?xml version="1.0" encoding="UTF-8"?>
+x = """<?xml version="1.0" encoding="UTF-8"?>
 <cfdi:Comprobante 
     xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd" 
     xmlns:cfdi="http://www.sat.gob.mx/cfd/3" 
@@ -43,19 +45,42 @@ cfd = """<?xml version="1.0" encoding="UTF-8"?>
 # La URL de prueba es: http://staging.diverza.com/stamp
 # El token de seguridad de prueba es: ABCD1234
 # El RFC emisor de prueba es: AAA010101AAA
-
 # Creamos una nueva instancia del objeto HTTPConnection con la dirección URL 
 # del servicio de timbrado y el puerto que utilizaremos, en este caso 80
-connection = httplib.HTTPConnection("staging.diverza.com")
+x = base64.b64encode(cfdi, 'utf-8')
+connection = httplib.HTTPConnection("cfdi33.conectorfiscal.mx")
 
 # Agregamos un header a la petición indicando el token que utilizaremos, en este caso el de 
 # prueba 'ABCD1234'. Este debe ser modificado una vez que querramos utilizar nuestra propia cuenta
 # para timbrar
-headers = {"x-auth-token": "ABCD1234"}
+credentials = '''{
+    "credentials": {
+        "id": "3935",
+        "token": "ABCD1234"
+    },
+    "issuer": {"rfc": "AAA010101AAA"},
+    "receiver": {"emails": [{
+        "email": "nombre@micliente.com",
+        "format": "xml+pdf",
+        "template": "letter"
+    }]},
+    "document": {
+        "ref-id": "EDV2017040300001",
+        "certificate-number": "20001000000200001428",
+        "section": "all",
+        "format": "xml",
+        "template": "letter",
+        "type": "application/vnd.diverza.cfdi_3.3+xml",
+        "content": %x,
+    }
+}'''
+credential_json = json.dumps(credentials, ensure_ascii=False)
+headers = {"Content-Type": "application/json"}
+
 
 # Solicitamos el timbrado enviando una petición HTTP usando el metodo POST a la URL "/stamp",
 # agregando el header previamente instanciado y enviando el CFD en el cuerpo.
-connection.request("POST", "/stamp", cfd, headers)
+connection.request("POST", '/api/v1/documents/stamp', credential_json, headers)
 
 # Extraemos la respuesta del servidor de timbrado
 response = connection.getresponse()
