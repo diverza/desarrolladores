@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>endpoints timbre</title>
+  <title>servicio de timbrado cfdi</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">portada</a>
+              <a href="">Portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-104">
+            <li class="item-103">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-105">
+            <li class="item-104">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-103 parent">
+            <li class="item-105">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -104,11 +104,9 @@
                   <li class="item-104" id="docs-menu-item">
                     <a href="/documentos/">documentos</a>
                   </li>
-                  <!--
                   <li class="item-105">
                     <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">grupos</a>
                   </li>
-                  -->
                   <li class="item-106">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">github</a>
                   </li>
@@ -116,7 +114,7 @@
               </div>
               <div class="nav-account">
                 <div class="module">
-                  <div class="custom">81.4000.1500</div>
+                  <div class="custom">01.800.070.4000</div>
                 </div>
               </div>
             </div>
@@ -156,28 +154,30 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>endpoints timbre<span class="diverza-dot">.</span></h1>
+              <h1>servicio de timbrado cfdi<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
               <p><legend>
-Esta documentación corresponde a los servicios /stamp o /issue del 2014.
-<br /><br />
-A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos endpoints</a> con mayor compatibilidad y mejores prestaciones.
+Esta documentación es para timbrado de CFDIs normales.
+<br />
+Para CFDIs de retenciones, ingresa <a href="/timbre/endpoints/endpointsTim.html">aquí</a>.
 </legend></p>
 
 <p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar dependiendo del tipo de procesamiento que necesitas:</p>
 
 <p><a href="#stamp">Timbrado</a> de un comprobante, donde obtienes solo el timbre <br>
-<code>http://staging.diverza.com/stamp</code></p>
+<code>https://staging.diverza.com/stamp</code></p>
 
 <p><a href="#stamp/complete">Timbrado</a> de un comprobante, donde obtienes <a href="#stamp/complete">todo</a> el comprobante incluyendo su timbre <br>
-<code>http://staging.diverza.com/stamp/complete</code></p>
+<code>https://staging.diverza.com/stamp/complete</code></p>
 
-<p><a href="#issue">Emisión</a> de un comprobante sin sello, donde obtienes todo el comprobante *disponible para clientes de conector fiscal <br>
-<code>http://staging.diverza.com/issue</code></p>
+<!-- [Emisión](/conector/endpoints/endpointsEmi.html) de un comprobante sin sello, donde obtienes todo el comprobante *disponible para clientes de conector fiscal <br>
+`https://staging.diverza.com/issue`
+Solo disponible para clientes de [conector fiscal](/conector/endpoints-legacy.html)
+ -->
 
 <p><a href="#stamp/cancel">Cancelación</a> de un comprobante timbrado desde nuestros servicios <br>
-<code>http://staging.diverza.com/stamp/cancel</code></p>
+<code>https://staging.diverza.com/stamp/cancel</code></p>
 
 <hr>
 
@@ -188,13 +188,13 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
 <p>Recuerda que todos los complementos se encuentran dentro del nodo <code>&lt;cfdi:Comprobante&gt;</code></p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/stamp
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: https://staging.diverza.com/stamp
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
 </code></pre></div>
-<h3 id="ejemplo-de-la-instrucci-n-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/stamp -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL https://staging.diverza.com/stamp -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -209,20 +209,20 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
 </code></pre></div>
 <hr>
 
-<h2 id="stamp-complete">stamp/complete</h2>
+<h2 id="stamp/complete">stamp/complete</h2>
 
 <p>Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo el timbre.</p>
 
 <p>Dependiendo de tu proceso de trabajo, encontrarás más conveniente recuperar el comprobante completo o solo el timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/stamp/complete
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: https://staging.diverza.com/stamp/complete
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
 </code></pre></div>
-<h3 id="ejemplo-de-la-instrucci-n-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/stamp/complete -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL https://staging.diverza.com/stamp/complete -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -255,108 +255,124 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
   <span class="nt">&lt;/cfdi:Complemento&gt;</span>
 <span class="nt">&lt;/cfdi:Comprobante&gt;</span>
 </code></pre></div>
-<hr>
+<!-- --------------------------------------------------  
 
-<h2 id="issue">issue</h2>
+## issue
 
-<p>Ésta dirección es utilizada para el ambiente de pruebas del servicio de Conector Fiscal®, en donde los parámetros de entrada son los mismos que en <a href="#stamp">stamp</a>, con la diferencia que deberás enviar un CFDi que no haya sido sellado.</p>
+Ésta dirección es utilizada para el ambiente de pruebas del servicio de Conector Fiscal®, en donde los parámetros de entrada son los mismos que en [stamp](#stamp), con la diferencia que deberás enviar un CFDi que no haya sido sellado.
 
-<p>Anexo a continuación, se encuentra un ejemplo de CFDi sin el sello del comprobante, <strong>es importante incluir el atributo de <code>certificado</code> y <code>noCertificado</code></strong> ya que son necesarios para que el sistema de <strong>Conector Fiscal</strong> lo reconozca y pueda firmar el comprobante con los certificados que hayas registrado con nosotros. También es importante incluir el atributo de &quot;sello&quot;, pero se deberá de agregar de esta forma: <code>sello=&quot;&quot;</code>, es decir, sin valor, sólo el atributo, de otra manera recibiras un mensaje de error: &quot;No válido según esquema&quot;.</p>
+Anexo a continuación, se encuentra un ejemplo de CFDi sin el sello del comprobante, **es importante incluir el atributo de ```certificado``` y ```noCertificado```** ya que son necesarios para que el sistema de **Conector Fiscal** lo reconozca y pueda firmar el comprobante con los certificados que hayas registrado con nosotros. También es importante incluir el atributo de "sello", pero se deberá de agregar de esta forma: ```sello=""```, es decir, sin valor, sólo el atributo, de otra manera recibiras un mensaje de error: "No válido según esquema".
 
-<p>La respuesta exitosa de este servicio envía todo el comprobante con el complemento de timbre.</p>
+La respuesta exitosa de este servicio envía todo el comprobante con el complemento de timbre.
 
-<h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/issue
+### servicio de pruebas
+
+```
+  Servidor de prueba: https://staging.diverza.com/issue
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
-</code></pre></div>
-<h3 id="ejemplo-de-la-instrucci-n-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL http://staging.diverza.com/issue -X POST --data @cfdi.xml -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
-</code></pre></div>
-<h3 id="ejemplo-del-cfdi-sin-sellar">ejemplo del CFDi sin sellar</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;cfdi:Comprobante</span> <span class="na">LugarExpedicion=</span><span class="s">&quot;CIUDAD DE MEXICO - D.F.&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;NO IDENTIFICADO&quot;</span>
-  <span class="na">tipoDeComprobante=</span><span class="s">&quot;egreso&quot;</span> <span class="na">total=</span><span class="s">&quot;208197.77&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;MXP&quot;</span> <span class="na">TipoCambio=</span><span class="s">&quot;1.0000&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;208197.77&quot;</span>
-  <span class="na">condicionesDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span>
-  <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
-  <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;CONTADO&quot;</span>
-  <span class="na">sello=</span><span class="s">&quot;&quot;</span>
-  <span class="na">fecha=</span><span class="s">&quot;2014-08-18T11:11:59&quot;</span> <span class="na">folio=</span><span class="s">&quot;1&quot;</span> <span class="na">serie=</span><span class="s">&quot;EDR&quot;</span> <span class="na">version=</span><span class="s">&quot;3.2&quot;</span>
-  <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/consumodecombustibles http://www.sat.gob.mx/sitio_internet/cfd/consumodecombustibles/consumodecombustibles.xsd&quot;</span>
-  <span class="na">xmlns:bfa2=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span>
-  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
-  <span class="na">xmlns:consumodecombustibles=</span><span class="s">&quot;http://www.sat.gob.mx/consumodecombustibles&quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMISOR DEMO S.A. DE C.V.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span>
-      <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Centro&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;4to Piso&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1921&quot;</span>
-      <span class="na">calle=</span><span class="s">&quot;Diego Rivera&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
-  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA RECEPTORA S.A.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;BBB010101BBB&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span>
-      <span class="na">municipio=</span><span class="s">&quot;San Pedro Garza García&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Magistrales&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;3C&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1432&quot;</span>
-      <span class="na">calle=</span><span class="s">&quot;Insurgentes&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
-  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
-    <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;0.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;COMBUSTIBLE&quot;</span>
-      <span class="na">unidad=</span><span class="s">&quot;PZA&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
-  <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;0.00&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:Traslados&gt;</span>
-      <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/cfdi:Traslados&gt;</span>
-  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
-<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
-</code></pre></div>
-<h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
+```
+
+### ejemplo de la instrucción desde terminal
+
+```sh
+cURL https://staging.diverza.com/issue -X POST --data @cfdi.xml -H "x-auth-token: ABCD1234" -i
+```
+
+### ejemplo del CFDi sin sellar
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante LugarExpedicion="CIUDAD DE MEXICO - D.F." metodoDePago="NO IDENTIFICADO"
+  tipoDeComprobante="egreso" total="208197.77" Moneda="MXP" TipoCambio="1.0000" subTotal="208197.77"
+  condicionesDePago="PAGO EN UNA SOLA EXHIBICION"
+  certificado="MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww=="
+  noCertificado="20001000000100005867" formaDePago="CONTADO"
+  sello=""
+  fecha="2014-08-18T11:11:59" folio="1" serie="EDR" version="3.2"
+  xsi:schemaLocation="http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd http://www.sat.gob.mx/consumodecombustibles http://www.sat.gob.mx/sitio_internet/cfd/consumodecombustibles/consumodecombustibles.xsd"
+  xmlns:bfa2="http://www.buzonfiscal.com/ns/addenda/bf/2" xmlns:cfdi="http://www.sat.gob.mx/cfd/3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:consumodecombustibles="http://www.sat.gob.mx/consumodecombustibles">
+  <cfdi:Emisor nombre="EMISOR DEMO S.A. DE C.V." rfc="AAA010101AAA">
+    <cfdi:DomicilioFiscal codigoPostal="64000" pais="México" estado="Nuevo León"
+      municipio="Monterrey" colonia="Centro" noInterior="4to Piso" noExterior="1921"
+      calle="Diego Rivera"/>
+    <cfdi:RegimenFiscal Regimen="Regimen General de Ley Personas Morales"/>
+  </cfdi:Emisor>
+  <cfdi:Receptor nombre="EMPRESA RECEPTORA S.A." rfc="BBB010101BBB">
+    <cfdi:Domicilio codigoPostal="64000" pais="México" estado="Nuevo León"
+      municipio="San Pedro Garza García" colonia="Magistrales" noInterior="3C" noExterior="1432"
+      calle="Insurgentes"/>
+  </cfdi:Receptor>
+  <cfdi:Conceptos>
+    <cfdi:Concepto importe="0.00" valorUnitario="0.00" descripcion="COMBUSTIBLE"
+      unidad="PZA" cantidad="1"/>
+  </cfdi:Conceptos>
+  <cfdi:Impuestos totalImpuestosTrasladados="0.00">
+    <cfdi:Traslados>
+      <cfdi:Traslado importe="0.00" tasa="16" impuesto="IVA"/>
+    </cfdi:Traslados>
+  </cfdi:Impuestos>
+</cfdi:Comprobante>
+```
+
+### encabezado de la respuesta
+
+```
+    Status Code: 200 OK
     Cache-Control: max-age=0, private, must-revalidate
     Connection: keep-alive
     Content-Length: 4594
     Date: Mon, 18 Aug 2014 13:52:07 GMT
     Server: nginx/1.0.15
-</code></pre></div>
-<h3 id="cuerpo-de-la-respuesta">cuerpo de la respuesta</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+```
 
-<span class="nt">&lt;cfdi:Comprobante</span> <span class="na">LugarExpedicion=</span><span class="s">&quot;CIUDAD DE MEXICO - D.F.&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;NO IDENTIFICADO&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;egreso&quot;</span> <span class="na">total=</span><span class="s">&quot;208197.77&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;MXP&quot;</span> <span class="na">TipoCambio=</span><span class="s">&quot;1.0000&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;208197.77&quot;</span> <span class="na">condicionesDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span> <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;CONTADO&quot;</span> <span class="na">sello=</span><span class="s">&quot;myU+JLrM6WIsWQcDhnojOKA3so/f3DZSRBGBYeGjd5CiofHUh+5jdvwLlcNPyPbsjNw6ydpfNTYGelXnED1lNr0M6oIblMnJQLR9VLW4Duim+f19yJYV84SmJbjxfav+2F7L99P7gsmHGhWfrUB9ZR5pS81WikUbmZU/5lZrruA=&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2014-08-18T08:52:07&quot;</span> <span class="na">folio=</span><span class="s">&quot;1&quot;</span> <span class="na">serie=</span><span class="s">&quot;EDR&quot;</span> <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd &quot;</span> <span class="na">xmlns:bfa2=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2&quot;</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMISOR DEMO S.A. DE C.V.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Centro&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;4to Piso&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1921&quot;</span> <span class="na">calle=</span><span class="s">&quot;Diego Rivera&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/cfdi:Emisor&gt;</span>
-    <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA RECEPTORA S.A.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;BBB010101BBB&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">municipio=</span><span class="s">&quot;San Pedro Garza García&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Magistrales&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;3C&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1432&quot;</span> <span class="na">calle=</span><span class="s">&quot;Insurgentes&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/cfdi:Receptor&gt;</span>
-    <span class="nt">&lt;cfdi:Conceptos&gt;</span>
-        <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;0.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;COMBUSTIBLE&quot;</span> <span class="na">unidad=</span><span class="s">&quot;PZA&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
-    <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;0.00&quot;</span><span class="nt">&gt;</span>
-        <span class="nt">&lt;cfdi:Traslados&gt;</span>
-            <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/cfdi:Traslados&gt;</span>
-    <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
-    <span class="nt">&lt;cfdi:Complemento&gt;</span>
-        <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span>  <span class="na">selloSAT=</span><span class="s">&quot;Td7nVapc3EnDy/TgcQ7g7idomGHIO7YOtKHH3TudRpiA/GKSCLjSflKp6GUw8+axKKejYiwAKC7r+NLhcsYEoC3iVmvjuTPxaYOMqoDGRp7ZfRnu7CNVoKlKCzo+23J1shuutwwJN4oXwjkev/SgNS/9Plnnw/qV2wWBR5yoRGc=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;myU+JLrM6WIsWQcDhnojOKA3so/f3DZSRBGBYeGjd5CiofHUh+5jdvwLlcNPyPbsjNw6ydpfNTYGelXnED1lNr0M6oIblMnJQLR9VLW4Duim+f19yJYV84SmJbjxfav+2F7L99P7gsmHGhWfrUB9ZR5pS81WikUbmZU/5lZrruA=&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-18T08:52:07&quot;</span> <span class="na">UUID=</span><span class="s">&quot;3de69e91-0b85-4d48-921e-2a97256bb116&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/cfdi:Complemento&gt;</span>
-    <span class="nt">&lt;cfdi:Addenda&gt;</span>
-        <span class="nt">&lt;bfa2:AddendaBuzonFiscal</span> <span class="na">version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>
-            <span class="nt">&lt;bfa2:TipoDocumento</span> <span class="na">descripcion=</span><span class="s">&quot;Comprobante de Nomina&quot;</span> <span class="na">nombreCorto=</span><span class="s">&quot;N&quot;</span><span class="nt">/&gt;</span>
-            <span class="nt">&lt;bfa2:CFD</span> <span class="na">totalConLetra=</span><span class="s">&quot;Doscientos ocho mil ciento noventa y siete pesos 77/100 M.N.&quot;</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;/bfa2:AddendaBuzonFiscal&gt;</span>
-    <span class="nt">&lt;/cfdi:Addenda&gt;</span>
-<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
-</code></pre></div>
-<p>Como podemos darnos cuenta, el mensaje de respuesta de este servicio de emisión, nos entrega el CFDi completo, con <strong><code>sello</code></strong> y <strong><code>timbre fiscal</code></strong>. </p>
+### cuerpo de la respuesta
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+
+<cfdi:Comprobante LugarExpedicion="CIUDAD DE MEXICO - D.F." metodoDePago="NO IDENTIFICADO" tipoDeComprobante="egreso" total="208197.77" Moneda="MXP" TipoCambio="1.0000" subTotal="208197.77" condicionesDePago="PAGO EN UNA SOLA EXHIBICION" certificado="MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==" noCertificado="20001000000100005867" formaDePago="CONTADO" sello="myU+JLrM6WIsWQcDhnojOKA3so/f3DZSRBGBYeGjd5CiofHUh+5jdvwLlcNPyPbsjNw6ydpfNTYGelXnED1lNr0M6oIblMnJQLR9VLW4Duim+f19yJYV84SmJbjxfav+2F7L99P7gsmHGhWfrUB9ZR5pS81WikUbmZU/5lZrruA=" fecha="2014-08-18T08:52:07" folio="1" serie="EDR" version="3.2" xsi:schemaLocation="http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd " xmlns:bfa2="http://www.buzonfiscal.com/ns/addenda/bf/2" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <cfdi:Emisor nombre="EMISOR DEMO S.A. DE C.V." rfc="AAA010101AAA">
+        <cfdi:DomicilioFiscal codigoPostal="64000" pais="México" estado="Nuevo León" municipio="Monterrey" colonia="Centro" noInterior="4to Piso" noExterior="1921" calle="Diego Rivera"/>
+        <cfdi:RegimenFiscal Regimen="Regimen General de Ley Personas Morales"/>
+    </cfdi:Emisor>
+    <cfdi:Receptor nombre="EMPRESA RECEPTORA S.A." rfc="BBB010101BBB">
+        <cfdi:Domicilio codigoPostal="64000" pais="México" estado="Nuevo León" municipio="San Pedro Garza García" colonia="Magistrales" noInterior="3C" noExterior="1432" calle="Insurgentes"/>
+    </cfdi:Receptor>
+    <cfdi:Conceptos>
+        <cfdi:Concepto importe="0.00" valorUnitario="0.00" descripcion="COMBUSTIBLE" unidad="PZA" cantidad="1"/>
+    </cfdi:Conceptos>
+    <cfdi:Impuestos totalImpuestosTrasladados="0.00">
+        <cfdi:Traslados>
+            <cfdi:Traslado importe="0.00" tasa="16" impuesto="IVA"/>
+        </cfdi:Traslados>
+    </cfdi:Impuestos>
+    <cfdi:Complemento>
+        <tfd:TimbreFiscalDigital xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital" xsi:schemaLocation="http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd"  selloSAT="Td7nVapc3EnDy/TgcQ7g7idomGHIO7YOtKHH3TudRpiA/GKSCLjSflKp6GUw8+axKKejYiwAKC7r+NLhcsYEoC3iVmvjuTPxaYOMqoDGRp7ZfRnu7CNVoKlKCzo+23J1shuutwwJN4oXwjkev/SgNS/9Plnnw/qV2wWBR5yoRGc=" noCertificadoSAT="20001000000100005761" selloCFD="myU+JLrM6WIsWQcDhnojOKA3so/f3DZSRBGBYeGjd5CiofHUh+5jdvwLlcNPyPbsjNw6ydpfNTYGelXnED1lNr0M6oIblMnJQLR9VLW4Duim+f19yJYV84SmJbjxfav+2F7L99P7gsmHGhWfrUB9ZR5pS81WikUbmZU/5lZrruA=" FechaTimbrado="2014-08-18T08:52:07" UUID="3de69e91-0b85-4d48-921e-2a97256bb116" version="1.0"/>
+    </cfdi:Complemento>
+    <cfdi:Addenda>
+        <bfa2:AddendaBuzonFiscal version="2.0">
+            <bfa2:TipoDocumento descripcion="Comprobante de Nomina" nombreCorto="N"/>
+            <bfa2:CFD totalConLetra="Doscientos ocho mil ciento noventa y siete pesos 77/100 M.N."/>
+        </bfa2:AddendaBuzonFiscal>
+    </cfdi:Addenda>
+</cfdi:Comprobante>
+```
+
+Como podemos darnos cuenta, el mensaje de respuesta de este servicio de emisión, nos entrega el CFDi completo, con **```sello```** y **```timbre fiscal```**. 
+ -->
 
 <hr>
 
-<h2 id="stamp-cancel">stamp/cancel</h2>
+<h2 id="stamp/cancel">stamp/cancel</h2>
 
-<p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="/timbre/cancelacion/">Servicio de Cancelación</a>.</p>
+<p>Tenemos un apartado especial para la información relacionada con este servicio, te invito a visitar nuestra sección de <a href="/timbre/cancelacion/cancel-legacy.html">Servicio de Cancelación</a>.</p>
 
 <p>Como referencia la petición de cancelación desde terminal se ejecuta así:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL -X POST <span class="s2">&quot;http://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">cURL -X POST <span class="s2">&quot;https://staging.diverza.com/stamp/cancel/AAA010101AAA/f7da0c0d-2c2e-4753-9d56-b0f080252eda&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -i
 </code></pre></div>
 <p>La respuesta te dará códigos de error, donde <code>200 OK y 0 Proceso realizado con éxito</code> indican que la cancelación fue exitosa.</p>
 
@@ -396,8 +412,9 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>               
+                    </ul>
                 </div>
+
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -409,7 +426,7 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
-                
+ 
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -447,9 +464,9 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
 
 						<div class="span2" style="margin:0px"><a href="http://www.greatplacetowork.com.mx" title="GPTW" class="footer-logo-gptw" style="margin: -20px 0 0 auto;" target="_blank">GPTW</a></div>
 
-						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/pac_timbre_fiscal.aspx" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
+						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 
@@ -476,7 +493,7 @@ A partir del 2015, te invitamos a utilizar los <a href="endpoints.html">nuevos e
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 81.4000.1500</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

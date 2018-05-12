@@ -29,7 +29,7 @@
     ga('create', 'UA-286386-31', 'auto');
     ga('send', 'pageview');
   </script>
-  <title>servicio de timbrado</title>
+  <title>servicio de timbrado cfdi-retenciones</title>
 </head>
 
 <body class="page-content page-columns-2">
@@ -47,18 +47,18 @@
 
           <ul class="menu nav">
             <li class="item-101">
-              <a href="">portada</a>
+              <a href="">Portada</a>
             </li>
             <li class="item-102">
               <a href="http://www.diverza.com/historia" >historia</a>
             </li>
-            <li class="item-104">
+            <li class="item-103">
               <a href="http://blog.diverza.com" >blog</a>
             </li>
-            <li class="item-105">
+            <li class="item-104">
               <a href="http://desarrolladores.diverza.com" id="stamp-navitem-selected">ecosistema</a>
             </li>
-            <li class="item-103 parent">
+            <li class="item-105">
               <a href="http://www.diverza.com/contacto" >contacto</a>
             </li>
             <li class="item-106">
@@ -104,11 +104,9 @@
                   <li class="item-104" id="docs-menu-item">
                     <a href="/documentos/">documentos</a>
                   </li>
-                  <!--
                   <li class="item-105">
                     <a href="https://groups.google.com/forum/#!forum/diverza" target="_blank">grupos</a>
                   </li>
-                  -->
                   <li class="item-106">
                     <a href="https://github.com/diverza/desarrolladores" target="_blank">github</a>
                   </li>
@@ -116,7 +114,7 @@
               </div>
               <div class="nav-account">
                 <div class="module">
-                  <div class="custom">81.4000.1500</div>
+                  <div class="custom">01.800.070.4000</div>
                 </div>
               </div>
             </div>
@@ -156,18 +154,24 @@
           <div class="item-pagepage-history">
             <div class="clr"></div>
             <div class="article-content-text">
-              <h1>servicio de timbrado<span class="diverza-dot">.</span></h1>
+              <h1>servicio de timbrado cfdi-retenciones<span class="diverza-dot">.</span></h1>
               <span class="h1-line"></span>
               <div class="clr">&nbsp;</div>
-              <p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar, en esta sección te mostraremos lo referente al <strong>servicio de timbrado</strong>.</p>
+              <p><legend>
+Esta documentación es para timbrado de CFDIs de retenciones.
+<br />
+Para timbrado de un comprobante normal de CFDI, ingrese <a href="../endpoints-legacy.html">aquí</a>.
+</legend></p>
 
-<p><strong>Timbrado de un comprobante, donde obtienes solo el timbre: <br></strong></p>
+<p>El servicio de timbre fiscal tiene distintos <strong>endpoints</strong> que puedes utilizar, en esta sección te mostraremos lo referente al <strong>servicio de timbrado</strong>.</p>
 
-<p><code>http://staging.diverza.com/api/v1/timbrar</code></p>
+<p><strong>Timbrado de un comprobante de retenciones, donde obtienes solo el timbre: <br></strong></p>
 
-<p><strong>Timbrado de un comprobante, donde obtienes todo el comprobante incluyendo su timbre: <br></strong></p>
+<p><code>https://staging.diverza.com/api/v1/timbrar</code></p>
 
-<p><code>http://staging.diverza.com/api/v1/timbrar?completo</code></p>
+<p><strong>Timbrado de un comprobante de retenciones, donde obtienes todo el comprobante incluyendo su timbre: <br></strong></p>
+
+<p><code>https://staging.diverza.com/api/v1/timbrar?completo</code></p>
 
 <hr>
 
@@ -175,20 +179,19 @@
 
 <p>Todas las peticiones requieren los siguientes ecabezados:</p>
 
-<h3 id="x-auth-token">x-auth-token:</h3>
+<h3 id="x-auth-token:">x-auth-token:</h3>
 
 <p>Incluirá el token que nosotros te proporcionaremos para que te reconozcamos y podamos brindarte el servicio.
 Para propósitos de pruebas, puedes usar el valor <strong>ABCD1234</strong> asignado al RFC Emisor AAA010101AAA.</p>
 
-<h3 id="content-type">Content-Type:</h3>
+<h3 id="content-type:">Content-Type:</h3>
 
 <p>Indicará el tipo de documento que deseas procesar:</p>
 
-<p><code>CFDI</code></p>
+<!-- ``CFDI``
 
-<ul>
-<li><strong><em>application/vnd.sat.cfdi+xml; charset=UTF-8</em></strong></li>
-</ul>
+  - ***application/vnd.sat.cfdi+xml; charset=UTF-8***
+ -->
 
 <p><code>Constancia de retención</code></p>
 
@@ -196,13 +199,13 @@ Para propósitos de pruebas, puedes usar el valor <strong>ABCD1234</strong> asig
 <li><strong><em>application/vnd.sat.retencion+xml; charset=UTF-8</em></strong></li>
 </ul>
 
-<h3 id="content-md5">Content-MD5:</h3>
+<h3 id="content-md5:">Content-MD5:</h3>
 
 <p>Contendrá el hash del archivo enviado en tu petición, expresado como una cadena de 32 caracteres.
 Te recomendamos ampliamente implementar este valor, ya que te proporciona un mecanismo de certeza adicional.
 Para propósito de pruebas, el valor de este atributo no será validado</p>
 
-<h3 id="x-refid">x-refid:</h3>
+<h3 id="x-refid:">x-refid:</h3>
 
 <p>Te permite identificar cada documento que envíes a procesar con nosotros.
 Por cada RefID único que utilices obtendrás el mismo complemento de timbre (y folio fiscal). <br>
@@ -218,15 +221,15 @@ Al mandar tu petición de timbrado a ésta dirección, como mensaje de respuesta
 <p>Recuerda que todos los complementos se encuentran dentro del nodo <code>&lt;cfdi:Comprobante&gt;</code></p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/api/v1/timbrar
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: https://staging.diverza.com/api/v1/timbrar
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
   Header HTTP: Content-MD5
   Header HTTP: Content-Type
 </code></pre></div>
-<h3 id="ejemplo-de-la-instrucci-n-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/api/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/timbrar -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6-cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -237,7 +240,7 @@ Al mandar tu petición de timbrado a ésta dirección, como mensaje de respuesta
     Server: nginx/1.0.15
 </code></pre></div>
 <h3 id="cuerpo-de-la-respuesta">cuerpo de la respuesta</h3>
-<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;K/037xM0jb64wNRVY5wAhTIs0z78ikLMduI6fH7S8hXAaSpwpCrP7qaoIcm9n8t8NvW4BnezvG5OdbMmQs9rZqHg2yE1CFgyAlMuMEFfyEb9LILzNVl7xCnNvPoCnhquPFLI+4SH+MLuFkfG4c1YBruQFeOyL4/r6PquI+ASnsc=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;ElqnU5BgK66ZWCvJU6NMqA6bzAHpJZ1Va2Ilcp+eIit0BtGjHpzPp2UjpRYttpMc01YBQtbHo4ErG/WDJ3jHKsYZ455NJgRirYgHVGvcMV3UdQ0gSILGcubcjLgBIGYozKuipRcYqOtk3wwkzxQa3sEMZpLczNxirVLtbaX/vpU=&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-14T17:13:37&quot;</span> <span class="na">UUID=</span><span class="s">&quot;280b1fef-381b-4f05-939f-9c6def0c0a4b&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;K/037xM0jb64wNRVY5wAhTIs0z78ikLMduI6fH7S8hXAaSpwpCrP7qaoIcm9n8t8NvW4BnezvG5OdbMmQs9rZqHg2yE1CFgyAlMuMEFfyEb9LILzNVl7xCnNvPoCnhquPFLI+4SH+MLuFkfG4c1YBruQFeOyL4/r6PquI+ASnsc=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;ElqnU5BgK66ZWCvJU6NMqA6bzAHpJZ1Va2Ilcp+eIit0BtGjHpzPp2UjpRYttpMc01YBQtbHo4ErG/WDJ3jHKsYZ455NJgRirYgHVGvcMV3UdQ0gSILGcubcjLgBIGYozKuipRcYqOtk3wwkzxQa3sEMZpLczNxirVLtbaX/vpU=&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-03-05T12:16:03&quot;</span> <span class="na">UUID=</span><span class="s">&quot;280b1fef-381b-4f05-939f-9c6def0c0a4b&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
 </code></pre></div>
 <p><br></br></p>
 
@@ -251,15 +254,15 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
 <p>Dependiendo de tu proceso de trabajo, encontrarás más conveniente recuperar el comprobante completo o solo el timbre.</p>
 
 <h3 id="servicio-de-pruebas">servicio de pruebas</h3>
-<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: http://staging.diverza.com/api/v1/timbrar?completo
+<div class="highlight"><pre><code class="language-text" data-lang="text">  Servidor de prueba: https://staging.diverza.com/api/v1/timbrar?completo
   Token de prueba: ABCD1234
   Metodo HTTP: POST
   Header HTTP: x-auth-token
   Header HTTP: Content-MD5
   Header HTTP: Content-Type
 </code></pre></div>
-<h3 id="ejemplo-de-la-instrucci-n-desde-terminal">ejemplo de la instrucción desde terminal</h3>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl http://staging.diverza.com/api/v1/timbrar?completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.cfdi+xml; charset=UTF-8&quot;</span> -i
+<h3 id="ejemplo-de-la-instrucción-desde-terminal">ejemplo de la instrucción desde terminal</h3>
+<div class="highlight"><pre><code class="language-sh" data-lang="sh">curl https://staging.diverza.com/api/v1/timbrar?completo -X POST --data @cfdi.xml -H <span class="s2">&quot;Content-MD5: 7a3ef6cdd777ffbb3662038ea4092c1c&quot;</span> -H <span class="s2">&quot;x-auth-token: ABCD1234&quot;</span> -H <span class="s2">&quot;Content-Type: application/vnd.sat.retencion+xml; charset=UTF-8&quot;</span> -i
 </code></pre></div>
 <h3 id="encabezado-de-la-respuesta">encabezado de la respuesta</h3>
 <div class="highlight"><pre><code class="language-text" data-lang="text">    Status Code: 200 OK
@@ -271,26 +274,34 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
 </code></pre></div>
 <h3 id="cuerpo-de-la-respuesta">cuerpo de la respuesta</h3>
 <div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="nt">&lt;cfdi:Comprobante</span> <span class="na">xmlns:cfdi=</span><span class="s">&quot;http://www.sat.gob.mx/cfd/3&quot;</span> <span class="na">xmlns:bfa2=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">LugarExpedicion=</span><span class="s">&quot;CIUDAD DE MEXICO - D.F.&quot;</span> <span class="na">metodoDePago=</span><span class="s">&quot;NO IDENTIFICADO&quot;</span> <span class="na">tipoDeComprobante=</span><span class="s">&quot;egreso&quot;</span> <span class="na">total=</span><span class="s">&quot;208197.77&quot;</span> <span class="na">Moneda=</span><span class="s">&quot;MXP&quot;</span> <span class="na">TipoCambio=</span><span class="s">&quot;1.0000&quot;</span> <span class="na">subTotal=</span><span class="s">&quot;208197.77&quot;</span> <span class="na">condicionesDePago=</span><span class="s">&quot;PAGO EN UNA SOLA EXHIBICION&quot;</span> <span class="na">certificado=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span> <span class="na">noCertificado=</span><span class="s">&quot;20001000000100005867&quot;</span> <span class="na">formaDePago=</span><span class="s">&quot;CONTADO&quot;</span> <span class="na">sello=</span><span class="s">&quot;ElqnU5BgK66ZWCvJU6NMqA6bzAHpJZ1Va2Ilcp+eIit0BtGjHpzPp2UjpRYttpMc01YBQtbHo4ErG/WDJ3jHKsYZ455NJgRirYgHVGvcMV3UdQ0gSILGcubcjLgBIGYozKuipRcYqOtk3wwkzxQa3sEMZpLczNxirVLtbaX/vpU=&quot;</span> <span class="na">fecha=</span><span class="s">&quot;2014-08-14T17:11:59&quot;</span> <span class="na">folio=</span><span class="s">&quot;1&quot;</span> <span class="na">serie=</span><span class="s">&quot;ECCAR&quot;</span> <span class="na">version=</span><span class="s">&quot;3.2&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.buzonfiscal.com/ns/addenda/bf/2 http://www.buzonfiscal.com/schema/xsd/Addenda_BF_v20.xsd http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv32.xsd &quot;</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;cfdi:Emisor</span> <span class="na">nombre=</span><span class="s">&quot;EMISOR DEMO S.A. DE C.V.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:DomicilioFiscal</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">municipio=</span><span class="s">&quot;Monterrey&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Centro&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;4to Piso&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1921&quot;</span> <span class="na">calle=</span><span class="s">&quot;Diego Rivera&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;cfdi:RegimenFiscal</span> <span class="na">Regimen=</span><span class="s">&quot;Regimen General de Ley Personas Morales&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Emisor&gt;</span>
-  <span class="nt">&lt;cfdi:Receptor</span> <span class="na">nombre=</span><span class="s">&quot;EMPRESA RECEPTORA DEMO S.A. DE C.V.&quot;</span> <span class="na">rfc=</span><span class="s">&quot;BBB010101BBB&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:Domicilio</span> <span class="na">codigoPostal=</span><span class="s">&quot;64000&quot;</span> <span class="na">pais=</span><span class="s">&quot;México&quot;</span> <span class="na">estado=</span><span class="s">&quot;Nuevo León&quot;</span> <span class="na">municipio=</span><span class="s">&quot;San Pedro Garza García&quot;</span> <span class="na">colonia=</span><span class="s">&quot;Magistrales&quot;</span> <span class="na">noInterior=</span><span class="s">&quot;3C&quot;</span> <span class="na">noExterior=</span><span class="s">&quot;1432&quot;</span> <span class="na">calle=</span><span class="s">&quot;Insurgentes&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Receptor&gt;</span>
-  <span class="nt">&lt;cfdi:Conceptos&gt;</span>
-    <span class="nt">&lt;cfdi:Concepto</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">valorUnitario=</span><span class="s">&quot;0.00&quot;</span> <span class="na">descripcion=</span><span class="s">&quot;CUBIERTA POLIPROPILENO 3&amp;quot;&quot;</span> <span class="na">unidad=</span><span class="s">&quot;PZA&quot;</span> <span class="na">cantidad=</span><span class="s">&quot;1&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Conceptos&gt;</span>
-  <span class="nt">&lt;cfdi:Impuestos</span> <span class="na">totalImpuestosTrasladados=</span><span class="s">&quot;0.00&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;cfdi:Traslados&gt;</span>
-      <span class="nt">&lt;cfdi:Traslado</span> <span class="na">importe=</span><span class="s">&quot;0.00&quot;</span> <span class="na">tasa=</span><span class="s">&quot;16&quot;</span> <span class="na">impuesto=</span><span class="s">&quot;IVA&quot;</span> <span class="nt">/&gt;</span>
-    <span class="nt">&lt;/cfdi:Traslados&gt;</span>
-  <span class="nt">&lt;/cfdi:Impuestos&gt;</span>
-  <span class="nt">&lt;cfdi:Complemento&gt;</span>
-    <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span> <span class="na">UUID=</span><span class="s">&quot;16b34940-d1b9-401d-9c17-06ff93228282&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2014-08-15T09:24:32&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;ElqnU5BgK66ZWCvJU6NMqA6bzAHpJZ1Va2Ilcp+eIit0BtGjHpzPp2UjpRYttpMc01YBQtbHo4ErG/WDJ3jHKsYZ455NJgRirYgHVGvcMV3UdQ0gSILGcubcjLgBIGYozKuipRcYqOtk3wwkzxQa3sEMZpLczNxirVLtbaX/vpU=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;Ll9PHSS4hYf+WQP+7qn4WNG04Fa9R+/vliXgmVlZpvOlYbXGccS8UsQZAg5bGElQh58RIRnfHo/zIaU3+5gFa59I4FmHxMQMdBKNrv1Lv0L5KkCDeiiv484XrF5ZQHYm5yJBrRhqVsbNQBfJZw1HoNo0j8IpAMZVl0/S+97Mraw=&quot;</span> <span class="nt">/&gt;</span>
-  <span class="nt">&lt;/cfdi:Complemento&gt;</span>
-<span class="nt">&lt;/cfdi:Comprobante&gt;</span>
+<span class="nt">&lt;retenciones:Retenciones</span> <span class="na">DescRetenc=</span><span class="s">&quot;Otro tipo de retención&quot;</span> <span class="na">CveRetenc=</span><span class="s">&quot;25&quot;</span>
+    <span class="na">FechaExp=</span><span class="s">&quot;2015-03-05T12:16:02-06:00&quot;</span>
+    <span class="na">Cert=</span><span class="s">&quot;MIIEdDCCA1ygAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDU4NjcwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMjA3MjcxNzAyMDBaFw0xNjA3MjcxNzAyMDBaMIHbMSkwJwYDVQQDEyBBQ0NFTSBTRVJWSUNJT1MgRU1QUkVTQVJJQUxFUyBTQzEpMCcGA1UEKRMgQUNDRU0gU0VSVklDSU9TIEVNUFJFU0FSSUFMRVMgU0MxKTAnBgNVBAoTIEFDQ0VNIFNFUlZJQ0lPUyBFTVBSRVNBUklBTEVTIFNDMSUwIwYDVQQtExxBQUEwMTAxMDFBQUEgLyBIRUdUNzYxMDAzNFMyMR4wHAYDVQQFExUgLyBIRUdUNzYxMDAzTURGUk5OMDkxETAPBgNVBAsTCFVuaWRhZCAxMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC2TTQSPONBOVxpXv9wLYo8jezBrb34i/tLx8jGdtyy27BcesOav2c1NS/Gdv10u9SkWtwdy34uRAVe7H0a3VMRLHAkvp2qMCHaZc4T8k47Jtb9wrOEh/XFS8LgT4y5OQYo6civfXXdlvxWU/gdM/e6I2lg6FGorP8H4GPAJ/qCNwIDAQABox0wGzAMBgNVHRMBAf8EAjAAMAsGA1UdDwQEAwIGwDANBgkqhkiG9w0BAQUFAAOCAQEATxMecTpMbdhSHo6KVUg4QVF4Op2IBhiMaOrtrXBdJgzGotUFcJgdBCMjtTZXSlq1S4DG1jr8p4NzQlzxsdTxaB8nSKJ4KEMgIT7E62xRUj15jI49qFz7f2uMttZLNThipunsN/NF1XtvESMTDwQFvas/Ugig6qwEfSZc0MDxMpKLEkEePmQwtZD+zXFSMVa6hmOu4M+FzGiRXbj4YJXn9Myjd8xbL/c+9UIcrYoZskxDvMxc6/6M3rNNDY3OFhBK+V/sPMzWWGt8S1yjmtPfXgFs1t65AZ2hcTwTAuHrKwDatJ1ZPfa482ZBROAAX1waz7WwXp0gso7sDCm2/yUVww==&quot;</span>
+    <span class="na">NumCert=</span><span class="s">&quot;20001000000100005867&quot;</span>
+    <span class="na">Sello=</span><span class="s">&quot;RL4NSIttJa1ge5Cuztl10w/vboORtsaFgHKPoHM5MbSmsd7HtpAFVhGpeM5STz+igcdAzEt2rMfMOFRSSOX+I1X3m0TK+LCtExDyBPTPr2bvmrhSx/FN39RQNAHiykVXK0nF0Z2COCAVOgdShWLA6ZJqOQGgUmbWFcjCxUY6+Ns=&quot;</span>
+    <span class="na">FolioInt=</span><span class="s">&quot;TEST00001&quot;</span> <span class="na">Version=</span><span class="s">&quot;1.0&quot;</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/esquemas/retencionpago/1 http://www.sat.gob.mx/esquemas/retencionpago/1/retencionpagov1.xsd&quot;</span>
+    <span class="na">xmlns:retenciones=</span><span class="s">&quot;http://www.sat.gob.mx/esquemas/retencionpago/1&quot;</span>
+    <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;retenciones:Emisor</span> <span class="na">CURPE=</span><span class="s">&quot;AAAA010101HNLMNLD2&quot;</span>
+        <span class="na">NomDenRazSocE=</span><span class="s">&quot;Empresa DEMO para Rentenciones S de TST&quot;</span> <span class="na">RFCEmisor=</span><span class="s">&quot;AAA010101AAA&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;retenciones:Receptor</span> <span class="na">Nacionalidad=</span><span class="s">&quot;Nacional&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;retenciones:Nacional</span> <span class="na">CURPR=</span><span class="s">&quot;VAHE820926HNLLRD02&quot;</span> <span class="na">NomDenRazSocR=</span><span class="s">&quot;PÚBLICO EN GENERAL S DE TST&quot;</span>
+            <span class="na">RFCRecep=</span><span class="s">&quot;XAXX010101000&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/retenciones:Receptor&gt;</span>
+    <span class="nt">&lt;retenciones:Periodo</span> <span class="na">Ejerc=</span><span class="s">&quot;2014&quot;</span> <span class="na">MesFin=</span><span class="s">&quot;6&quot;</span> <span class="na">MesIni=</span><span class="s">&quot;6&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;retenciones:Totales</span> <span class="na">montoTotRet=</span><span class="s">&quot;3500.00&quot;</span> <span class="na">montoTotExent=</span><span class="s">&quot;1000.00&quot;</span> <span class="na">montoTotGrav=</span><span class="s">&quot;13000.00&quot;</span>
+        <span class="na">montoTotOperacion=</span><span class="s">&quot;14000.00&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;retenciones:ImpRetenidos</span> <span class="na">TipoPagoRet=</span><span class="s">&quot;Pago definitivo&quot;</span> <span class="na">montoRet=</span><span class="s">&quot;500.00&quot;</span> <span class="na">Impuesto=</span><span class="s">&quot;01&quot;</span>
+            <span class="na">BaseRet=</span><span class="s">&quot;1000.00&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;retenciones:ImpRetenidos</span> <span class="na">TipoPagoRet=</span><span class="s">&quot;Pago provisional&quot;</span> <span class="na">montoRet=</span><span class="s">&quot;500.00&quot;</span> <span class="na">Impuesto=</span><span class="s">&quot;02&quot;</span>
+            <span class="na">BaseRet=</span><span class="s">&quot;1000.00&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/retenciones:Totales&gt;</span>
+    <span class="nt">&lt;retenciones:Complemento&gt;</span>
+        <span class="nt">&lt;tfd:TimbreFiscalDigital</span> <span class="na">xmlns:tfd=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/cfd/TimbreFiscalDigital/TimbreFiscalDigital.xsd&quot;</span> <span class="na">selloSAT=</span><span class="s">&quot;K/037xM0jb64wNRVY5wAhTIs0z78ikLMduI6fH7S8hXAaSpwpCrP7qaoIcm9n8t8NvW4BnezvG5OdbMmQs9rZqHg2yE1CFgyAlMuMEFfyEb9LILzNVl7xCnNvPoCnhquPFLI+4SH+MLuFkfG4c1YBruQFeOyL4/r6PquI+ASnsc=&quot;</span> <span class="na">noCertificadoSAT=</span><span class="s">&quot;20001000000100005761&quot;</span> <span class="na">selloCFD=</span><span class="s">&quot;ElqnU5BgK66ZWCvJU6NMqA6bzAHpJZ1Va2Ilcp+eIit0BtGjHpzPp2UjpRYttpMc01YBQtbHo4ErG/WDJ3jHKsYZ455NJgRirYgHVGvcMV3UdQ0gSILGcubcjLgBIGYozKuipRcYqOtk3wwkzxQa3sEMZpLczNxirVLtbaX/vpU=&quot;</span> <span class="na">FechaTimbrado=</span><span class="s">&quot;2015-03-05T12:16:03&quot;</span> <span class="na">UUID=</span><span class="s">&quot;280b1fef-381b-4f05-939f-9c6def0c0a4b&quot;</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/retenciones:Complemento&gt;</span>
+    <span class="nt">&lt;retenciones:Addenda/&gt;</span>
+<span class="nt">&lt;/retenciones:Retenciones&gt;</span>
 </code></pre></div>
 <p><br></br></p>
 
@@ -338,8 +349,9 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
                         <li class="item-178"><a href="/timbre/cfd/comoGenerarCFDI.html">generar cfdi</a></li>
                         <li class="item-178"><a href="/timbre/recursos/">esquemas y ejemplos</a></li>
                         <li class="item-178"><a href="/timbre/lenguajes/">ejemplos de código</a></li>
-                    </ul>               
+                    </ul>
                 </div>
+
 
                 <h3>códigos de respuesta<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
@@ -351,7 +363,7 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
                         <li class="item-178"><a href="/timbre/codigos/cod_cancelacion.html">cancelación</a></li>
                     </ul>
                 </div>
-                
+ 
                 <h3>FAQ's<span class="diverza-dot">.</span></h3>
                 <span class="h3-line"></span>
                 <div class="clr"></div>
@@ -389,9 +401,9 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
 
 						<div class="span2" style="margin:0px"><a href="http://www.greatplacetowork.com.mx" title="GPTW" class="footer-logo-gptw" style="margin: -20px 0 0 auto;" target="_blank">GPTW</a></div>
 
-						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/pac_timbre_fiscal.aspx" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
+						<div class="span2" style="margin:0 6px 0 20px;"><a href="http://www.sat.gob.mx/sitio_internet/asistencia_contribuyente/principiantes/comprobantes_fiscales/66_20006.html" title="SAT" class="footer-logo-sat" style="margin: -20px auto 0 auto;" target="_blank">SAT</a></div>
 
-						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
+						<div class="span2" style="margin:0px"><a href="http://www.amexipac.org.mx" title="AMEXIPAC" class="footer-logo-amexipac" style="margin: -20px auto 0 0;" target="_blank">AMEXIPAC</a></div>
 
 						<div class="span2"></div>
 
@@ -418,7 +430,7 @@ Este servicio de timbrado responde con el comprobante CFDi completo, incluyendo 
 	document.write('</');
 	document.write('span>');
  //-->
-</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 81.4000.1500</div></div>
+</script></span> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;<a href="https://www.diverza.com/servicio-gratuito">acceso al servicio gratuito</a> &nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp; 01.800.070.4000</div></div>
 </div></div>
 
 </footer>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Remision xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://www.buzonfiscal.com/ns/xsd/bf/remision/52"
+ version="5.2">
+    <InfoBasica rfcEmisor="AAA010101AAA" rfcReceptor="XAXX010101000" asignaFolio="true" serie="A" refID="AP11"/>
+    <InfoAdicional formaDePago="Pago en una sola exhibición" subTotal="652.587" total="757.00092"
+        metodoDePago="Tarjeta de Crédito" tipoDeComprobante="ingreso"
+        moneda="MXN" tipoCambio="1" numCtaPago="1234" lugarExpedicion="MEXICO, DF"/>
+    <Emisor nombre="EMPRESA EMISORA AAA SA DE CV">
+        <RegimenFiscal Regimen="REGIMEN GENERAL DE LEY"/>
+    </Emisor>
+    <Receptor nombre="Público en General"/>
+    <DomicilioReceptor calle="NA" pais="MEXICO"/>
+    <Conceptos>
+        <Concepto cantidad="1.000000" unidad="PZA" descripcion="ARTICULO A" valorUnitario="171.552000" importe="171.552000"/>
+        <Concepto cantidad="1.000000" unidad="PZA" descripcion="ARTICULO B" valorUnitario="20.00" importe="20.00"/>
+    </Conceptos>
+    <Impuestos totalImpuestosTrasladados="15.00">
+        <Traslados>
+            <Traslado impuesto="IVA" importe="15.00" tasa="16"/>
+        </Traslados>
+    </Impuestos>
+    <Addenda>
+        <bfa2:AddendaBuzonFiscal xmlns:bfa2="http://www.buzonfiscal.com/ns/addenda/bf/2"
+            version="2.0">
+            <bfa2:TipoDocumento descripcion="Factura" nombreCorto="FAC"/>
+            <bfa2:CFD totalConLetra="Ciento diecinueve pesos 00/100 M.N." tipoMoneda="MXN" 
+                fechaEnvio="2015-05-28T08:49:52"/>
+            <bfa2:Extra atributo="numeroTicket" valor="AP11"/>
+            <bfa2:Extra atributo="T*TOTAL" valor="191.552000"/>
+            <bfa2:Extra atributo="totalArticulos" valor="2"/>
+        </bfa2:AddendaBuzonFiscal>
+    </Addenda>
+</Remision>
